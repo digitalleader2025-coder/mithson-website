@@ -1,0 +1,1500 @@
+# MITHSON — SOURCE CONTENT MASTER MAP (V2)
+
+Source website:
+https://www.mithson.com/
+
+Extraction scope:
+- Home
+- Who We Are content embedded on Home
+- Quality & Certification
+- all 12 Products
+- Industries → Energy - Oil & Gas
+- all 4 Oil & Gas Seal pages
+- Product Gallery
+- Connect With Us
+- Oil & Gas Expo 2025
+- Expo 2024
+- Expo 2023
+- repeated global navigation/footer/contact content
+
+Extraction date:
+2026-09-21
+
+IMPORTANT COPYRIGHT / REPRODUCTION NOTE
+This is a page-by-page content coverage map for rebuilding the site. It captures the headings, labels, lists, technical facts, numerical values, image roles, navigation and the substance of the explanatory paragraphs. Long source paragraphs are paraphrased rather than reproduced wholesale. This avoids turning the file into a verbatim copy of the public website while keeping the information needed to recreate the website.
+
+============================================================
+GLOBAL SITE CHROME
+============================================================
+
+GLOBAL NAVIGATION — EXACT SOURCE LABELS
+- Who We Are
+  - About Us
+  - Quality & Certification
+- Products
+  - MITH PLATE
+  - M-UNI Seal
+  - Hammer Union Seal
+  - Seals - X-Mas Tree
+  - Seals - Valve
+  - Plug & Lined - Valve
+  - UNI-LUBE Bearing
+  - Seals - Hydraulic
+  - Diaphragm - AODD
+  - Washers - Transmission
+  - Nozzles - Power Grid
+  - Encapsulated O-Ring
+- Industries
+  - Energy - Oil & Gas
+- Oil & Gas Seal
+  - API 6A Wellhead Equipment Seal
+  - Well Service Equipment Seal
+  - Downhole Tool Seal
+  - API 6D Ball Valve & LNG Seal
+- Product Gallery
+- Events
+  - Oil & Gas Expo 2025
+  - Expo 2024
+  - Expo 2023
+- More
+- Connect With Us
+
+GLOBAL FOOTER/CONTACT PROMPT
+- How can Mithson help you?
+- Contact Us
+- sales@mithson.com
+- +91-9994204988
+- CEO - G. M. Samy
+- +91-9382180773 | +91-9003156569
+- gm.samy@mithson.com
+- MD - Mithesh Samy
+- +91-9042611045
+- mithesh@mithson.com
+- ©2026 Mithson Sealing Solutions - All Rights Reserved
+
+============================================================
+PAGE 1 — HOME
+SOURCE: https://www.mithson.com/
+============================================================
+
+BRAND/IDENTITY
+- Fluoro Carbon Seals Group
+- Welcome to Mithson Sealing Solutions
+- Fluoro Carbon Seals Group
+
+HERO
+- Let's Control the Pressure Together
+- Intro positioning: use innovative thinking plus roughly a quarter century of polymer-engineering experience across multiple industries.
+
+TRUST/POSITIONING LABELS
+- WE ARE A TRUSTED PARTNER
+- WE COLLABORATE
+- WE ARE INNOVATOR
+- WE MAKE RELIABLE PRODUCTS
+
+CTA
+- CONTACT US
+
+VISION
+Heading:
+- Our Vision
+
+Vision statement:
+- Global-leadership ambition in Polymer Engineering Technology.
+- The stated route to that ambition is an unwavering commitment to quality, reliability and customer satisfaction.
+
+WHO WE ARE
+Heading:
+- Who We Are
+
+USER-PROVIDED APPROVED COPY
+The following copy was supplied directly by the user and can be used as approved source copy:
+
+“Mithson Sealing Solutions, a member of the Fluoro Carbon Seals Group, is a leading manufacturer of high-performance seals and polymer components for valves, pumps, compressors, and hydraulic systems. We design and engineer precision solutions tailored to our customers’ exact requirements, backed by expert pre- and post-sales support to ensure complete satisfaction.
+
+With a legacy of over 25 years in polymer engineering technology, we manufacture high-performance components for the Oil & Gas, Automotive, Life Science, Mining,Semiconductor, Robotics and Aerospace sectors.
+
+Driven by an engineering mindset, we are dedicated to the design and manufacture of state-of-the-art, durable sealing solutions that protect critical applications in high-stress environments. Our team possesses extensive expertise in advanced materials—ranging from standard Elastomers to high-performance Fluoropolymers and Thermoplastics.
+
+As a trusted global partner, we pride ourselves on being approachable and highly responsive, providing cost-effective, high-performance solutions delivered on time and to your exact specifications.”
+
+Additional source facts to preserve:
+- member of Fluoro Carbon Seals Group
+- high-performance seals and polymer components
+- valves, pumps, compressors and hydraulic systems
+- customer-specific precision engineering
+- expert pre-/post-sales support
+- Oil & Gas, Automotive, Life Science, Mining, Semiconductor, Robotics and Aerospace
+- engineering mindset
+- durable sealing solutions for high-stress environments
+- advanced material expertise spanning elastomers, fluoropolymers and thermoplastics
+- global partner positioning
+- cost-effective, high-performance, on-time delivery
+
+SUSTAINABILITY
+Heading:
+- Sustainability Initiatives – Contribution to Net Zero
+
+Paragraph substance:
+- Mithson describes strategic green initiatives.
+- Initiatives named:
+  - sustainable agriculture practices
+  - EV vehicle for goods movement
+  - solar energy adoption
+  - scrap reduction
+- Objective: reduce carbon footprint across Scope 1, Scope 2 and Scope 3 emissions.
+
+Additional section:
+- Contribution to Net Zero
+
+HISTORY
+Heading:
+- OUR HISTORY
+
+Paragraph 1 — full information:
+- Fluoro Carbon Seals was founded in 1996 in Chennai.
+- Chennai is described as the gateway to South India.
+- The company began by manufacturing high-quality PTFE components.
+- The business reports more than a quarter century of global operations.
+- It has built a strong reputation as a trusted seal manufacturer.
+
+Paragraph 2 — full information:
+- The company is presented as a preferred sealing brand for:
+  - valves
+  - pumps
+  - hydraulic systems
+  - pneumatic systems
+- It has a long-running role in designing/manufacturing custom advanced-polymer components.
+
+MATERIALS NAMED ON HOME PAGE
+- PTFE
+- RTFE
+- Modified PTFE (TFM & NXT)
+- VICTREX® PEEK
+- VESPEL
+- PFA
+- Nylon
+- MOS2
+- HNBR
+- FKM (Viton)
+- FFKM
+- EPDM
+- Delrin (POM)
+- PU
+- other specialized materials
+
+TECHNOLOGY / QUALITY PARAGRAPH SUBSTANCE
+- strong focus on technological innovation
+- manufacturing excellence
+- proprietary sealing technologies
+- quality
+- reliability
+- customer satisfaction
+- ISO 9001:2015 certification
+- international quality standards
+
+IMAGE/SECTION ROLES DISCOVERED
+- Flouro Carbon Tower.jpeg
+- MSS-KAYAR.jpeg
+- Company.jpg
+- Sustainability images
+- History.jpg
+
+============================================================
+PAGE 2 — QUALITY & CERTIFICATION
+SOURCE: https://www.mithson.com/our-certification
+============================================================
+
+BRAND:
+- Fluoro Carbon Seals Group
+
+QUALITY INTRO
+- Quality is described as part of Mithson's core DNA and as a defining principle of the company.
+
+CERTIFICATIONS
+- ISO 9001:2015 certified company
+- QIMA Audited company
+
+INDUSTRY RECOGNIZED MATERIAL
+- API-6A
+- NORSOK
+- BAM
+
+QUALITY SYSTEM PARAGRAPH SUBSTANCE
+- continuous improvement in processes and product development
+- quality is treated as a core company value
+- quality is emphasized across the complete product-development life cycle
+- source explicitly describes an end-to-end path from prototype to production to post-delivery support
+- process is monitored from material selection through final finished product
+- objective is meeting customer needs and expectations
+
+IMAGE/SECTION ROLES
+- Compress Oil and Gas Industry.jpg
+- certification images
+- Quality_Policy-removebg-preview.png
+- multiple industry-recognized-material images
+
+============================================================
+PAGE 3 — MITH PLATE
+SOURCE: https://www.mithson.com/mithplate
+============================================================
+
+HEADINGS
+- MITH PLATE
+- MSS Valve Plates for Reciprocating Compressors
+- Reliable & Precision Solution to the diverse Environment
+- MSS Compressor Valve Plates
+
+MATERIAL LABELS
+- CARBON PTFE
+- GLASS FILLED PEEK
+- NYLON
+
+MAIN EXPLANATION — INFORMATION COVERAGE
+- Product is positioned for the reciprocating branch of positive-displacement compressors.
+- The source calls these compressor valves the “heart” of the positive-displacement compressor concept.
+- Focus is on timed integrity of suction and discharge valves.
+- Mithson supplies high-precision valve plates for reciprocating compressors.
+
+THERMOPLASTIC-OVER-METAL BENEFITS
+1. Micro-Sealing
+   - polymer plate conforms to the valve seat more closely than a rigid metal alternative
+   - intended effect: near-perfect sealing and improved volumetric efficiency
+
+2. Lower Inertia
+   - source claim: plates are 70% lighter than steel
+   - lighter construction responds more quickly to pressure changes
+   - intended effect: reduced/eliminated valve flutter at high RPM
+
+3. Liquid Tolerance
+   - material is described as naturally dampening
+   - source says the plates can survive liquid slugs that could damage metallic alternatives
+
+4. Oil-Free Ready
+   - self-lubricating properties
+   - positioned for medical, food and pharma air applications
+
+IMAGES
+- Compress Oil and Gas Industry.jpg
+- product/material visuals
+
+============================================================
+PAGE 4 — M-UNI SEAL
+SOURCE: https://www.mithson.com/m-uniseal
+============================================================
+
+HEADINGS
+- M-UNI SEAL
+- Spring-Energized Lip Seal
+- Reliable & Precision Solution to the diverse Environment
+- Spring-Energized Seal
+- M-UNI SEAL GENRE
+
+MAIN PARAGRAPH — INFORMATION COVERAGE
+- M-UNI is a spring-energized sealing solution.
+- It uses a spring-actuated, pressure-assisted sealing mechanism.
+- The sealing jacket is PTFE or another suitable polymer.
+- The jacket partially encloses a corrosion-resistant metal spring energizer.
+- Source positions the product for reliable, durable sealing in demanding applications.
+
+IMAGES
+- Compress Oil and Gas Industry.jpg
+- MUNI SEAL.png
+- MUNI SEAL - 2.png
+- MUNI SEAL - 3.png
+- MUNI SEAL - 4.png
+
+============================================================
+PAGE 5 — HAMMER UNION SEAL
+SOURCE: https://www.mithson.com/hammerunionseal
+============================================================
+
+HEADINGS
+- HAMMER UNION SEAL
+- FOR HIGH-PERFORMANCE CONNECTION
+- Reliable & Precision Solution to the diverse Environment
+- HAMMER UNION SEALS
+- FOR HIGH-PERFORMANCE CONNECTIONS
+
+MAIN PARAGRAPHS — INFORMATION COVERAGE
+- Hammer union seals are made from elastomeric or PTFE materials.
+- They sit between male and female subs in a hammer-union connection.
+- Their role is to create a leak-proof joint.
+- They are designed for high pressure, extreme temperature and aggressive fluids.
+- Their purpose is to prevent fluid or gas leakage at the connection.
+
+SIZE/DIMENSION INFORMATION
+- commonly offered from 1 inch to 6 inch inner diameter
+- dimensions described using:
+  - inner diameter (ID)
+  - outer diameter (OD)
+  - overall height
+
+IMAGES
+- Compress Oil and Gas Industry.jpg
+- hammer_uion99-removebg-preview.png
+- Hammer98-removebg-preview.png
+- image.png
+- Hammer-Material-removebg-preview.png
+
+============================================================
+PAGE 6 — SEALS - X-MAS TREE
+SOURCE: https://www.mithson.com/x-mass-tree-valve
+============================================================
+
+HEADINGS
+- CHRISTMAS TREE WELLHEAD GATE VALVE SEALS
+- CHRISTMAS TREE WELL HEAD GATE VALVE SEALS
+
+PRODUCT CATEGORIES
+- Spring Energized Lip Seals
+- Stem Packing
+- Seat seals
+- O-Rings
+
+MAIN PARAGRAPH — INFORMATION COVERAGE
+- full range of sealing solutions for Christmas Tree valve applications
+- products use high-performance polymer materials
+- source associates the products with API 6A Appendix F
+- supplied to meet referenced API 6A requirements/quality expectations
+
+SPRING-ENERGIZED CONSTRUCTION
+- PTFE jacket
+- corrosion-resistant metal energizer spring
+
+STEM PACKING EXPLANATION
+- gate-valve stem packing is described as a critical component surrounding the valve stem
+- primary purpose: prevent leakage
+
+PTFE PROPERTIES LISTED
+- low friction
+- high-temperature capability
+- low-temperature capability
+- chemical/corrosion resistance
+
+SHELF-LIFE STATEMENT
+- source states PTFE spring seals have unlimited shelf life
+
+GALLERY LABELS
+- STEM PACKING
+- SPRING-ENERGIZED SEALS
+- SEAT SEAL
+- ELASTOMER O-RING
+
+IMAGES
+- Compress Oil and Gas Industry.jpg
+- X-Mass Tree with white font.png
+- product-specific seal images
+
+============================================================
+PAGE 7 — SEALS - VALVE
+SOURCE: https://www.mithson.com/valve
+============================================================
+
+HEADINGS
+- VALVE - SEALS
+- VALVE - SEALS
+
+MAIN DESCRIPTION — INFORMATION COVERAGE
+- Mithson presents a broad valve-seal range.
+- Sealing solutions are based on high-performance thermoplastics.
+- Key thermoplastics named:
+  - PTFE
+  - PEEK
+- Valve types explicitly covered:
+  - Gate Valve
+  - Ball Valve
+  - Globe Valve
+  - Plug Valve
+  - Butterfly Valve
+  - Diaphragm Valve
+
+PRODUCT LIST — PRESERVE EVERY LABEL
+- SPRING ENERGIZED LIP SEAL
+- O-RING
+- STEM PACKING - API 6A
+- PTFE CHEVRON PACKING
+- PTFE CARBON GRAPHITE CHEVRON PACKING
+- PTFE CARBON GRAPHITE SEAT
+- PTFE CAVITY SEAT
+- PTFE SEAT
+- PTFE PLUG
+- PTFE SLEEVE
+- PEEK SEAT RING
+- PEEK INSERT METAL SEAT
+- DEVLON SEAT RING
+- DEVLON INSERT METAL SEAT
+- PTFE LINED
+- ELASTOMER O-RINGS
+
+IMAGE ASSOCIATIONS
+- Gemini_Generated_Image_xf2lnwxf2lnwxf2l.png
+- Lip_Seal-removebg-preview.png
+- Spring_Energised_Lip_Seals-removebg-preview.png
+- HP_Spring_Seal-removebg-preview.png
+- PTFE_Chevron_Packing-removebg-preview.png
+- PTFE_Carbon_Chevron_Packing-removebg-preview.png
+- PTFE_Carbon_Graphite-removebg-preview.png
+- PTFE_Cavity_Seat-removebg-preview.png
+- PTFE_SEAT-removebg-preview.png
+- PEEK_Ball_Valve_Seat_Ring-removebg-preview.png
+- PEEK Insert Metal.jpeg
+- Devlon-removebg-preview.png
+- Devlon_Insert_Metal_Seat-removebg-preview.png
+- Devlon_Seat-removebg-preview.png
+
+============================================================
+PAGE 8 — PLUG & LINED - VALVE
+SOURCE: https://www.mithson.com/plug-lined
+============================================================
+
+HEADING
+- HIGH-PERFORMANCE PTFE PLUG VALVE SLEEVES & LINERS
+
+MAIN EXPLANATION
+- precision-engineered PTFE plugs and sleeves are presented as critical sealing components for high-performance plug valves
+- target condition: bubble-tight sealing under demanding process conditions
+- system is designed to avoid traditional lubrication
+- low-torque operation is emphasized
+
+TECHNICAL SUPERIORITY
+1. Self-Lubricating Interface
+   - high-purity Virgin PTFE or reinforced specialty compounds
+   - very low friction
+   - reduced actuator torque
+   - reduced risk of “stiction” after inactivity
+
+2. Extreme Chemical Resistance
+   - designed to resist industrial chemicals, solvents and corrosive media
+   - positioned for chemical processing, Oil & Gas and pharmaceutical use
+
+3. Bi-Directional Sealing
+   - dimensional stability of liners
+   - sealing across upstream and downstream ports
+
+4. Cavity-Free Design
+   - close plug/sleeve fit
+   - minimizes cavities where media can collect, stagnate or contaminate process
+
+MATERIAL OPTIONS
+- Virgin PTFE
+  - maximum chemical purity / low friction positioning
+- Chemically Modified PTFE
+  - improved resistance to cold flow and load-induced deformation
+- Reinforced grades
+  - Carbon-filled PTFE
+  - Glass-filled PTFE
+  - Bronze-filled PTFE
+  - intended for high-pressure cycles and abrasive wear resistance
+
+KEY BENEFITS
+- Zero Leakage
+  - fugitive-emission control
+  - bubble-tight shut-off
+- Extended Service Life
+  - high-density material structure
+  - reduced wear and erosion
+- Maintenance-Free
+  - oilless operation
+  - avoids process contamination from lubricants
+
+IMAGE
+- Plug valves.png
+- LINED-removebg-preview.png
+- product images
+
+============================================================
+PAGE 9 — UNI-LUBE BEARING
+SOURCE: https://www.mithson.com/bearing
+============================================================
+
+HEADINGS
+- UNI-LUBE BEARNING
+  NOTE: source page uses “BEARNING”; preserve source label only if exact source-copy fidelity is required, but corrected “BEARING” may be used for a polished redesign.
+- Self-Lubricating Excellence for High-Stress, Oil-Free Applications.
+- INDUSTRY & APPLICATIONS
+- CHARACTERISTICS
+
+GENERAL BEARING EXPLANATION
+- bearing constrains relative motion to the required motion and reduces friction between moving components
+- source describes sliding or rotating motion
+- simplest plain bearing is a bushing
+- bushing is described as oilless because of self-lubricating material behavior
+
+GENERAL PERFORMANCE
+- can operate across high and low temperatures
+- can operate in extreme environments
+- reduces friction
+- increases stability
+- may improve productivity
+- may reduce cost and time
+
+FAMILY 1
+- MSS-MF SELF LUBE
+- METAL-POLYMER SELF-LUBRICATING
+- LONG LIFE HASLE FREE PERFORMANCE
+Source explanation:
+- highest-performance self-lubricating bearing family
+- very wide application range
+
+CHARACTERISTICS:
+- dry lubrication
+- maintenance-free
+- long life
+- low friction
+- low vibration
+- low noise
+- abrasion resistance in high-load/low-speed conditions
+- dimensional stability
+- heat conductivity
+
+FAMILY 2
+- MSS-MP PRE LUBE
+- METAL-POLYMER SELF-LUBRICATING
+- LONG LIFE HASLE FREE PERFORMANCE
+
+MAIN EXPLANATION:
+- optimized for low-speed/high-load applications
+- described as “prelubricated” due to a lubricant-retention system that preserves lubricant for extended periods
+
+CHARACTERISTICS:
+- intermittent or boundary-condition use
+- high load / low speed
+- rotational movement
+- oscillating movement
+- frequent stop/start
+- boundary-condition operation without adding oil due to retaining pockets
+- damping behavior
+- shock-load resistance
+
+FAMILY 3
+- MSS-BIM BI-METAL
+- B-METAL BUSHING
+- HIGH PERFORMANCE FOR HEAVY LOAD APPLICATION
+
+APPLICATIONS
+- Textile machinery
+- Pneumatic equipment
+- King pin bushes
+- Brake caliper bushes
+- mechanical handling and lifting equipment
+- Hydraulic cylinders
+
+MAIN EXPLANATION:
+- high mechanical strength
+- fatigue resistance
+- wear resistance
+- intended for lubricated operation under extreme loads
+- shock-load and low-speed oscillating-motion use
+- bearing layer variants:
+  - lead bronze
+  - lead-free bronze
+  - lead-free with solid lubricant
+
+CHARACTERISTICS
+- oil/grease condition
+- oscillating movement
+- steel backing for strength/rigidity
+- high-load suitability
+- fatigue strength under dynamic/shock loads
+
+FAMILY 4
+- MSS-MB SOLID BUSH
+- THICK WALL SINGLE METAL BEARNING
+- INDUSTRY & APPLICATIONS
+
+APPLICATIONS
+- water/steam/gas turbines
+- iron foundry
+- steel industry
+- aluminium industry
+- furnaces
+- blowers
+- pumps and compressors
+- sewage purification plants
+- thermal-treatment furnaces
+- hot rolling mills
+- food and beverage industry
+- packaging equipment
+- agriculture
+- construction machines
+
+MAIN EXPLANATION
+- metal bearing with embedded solid lubricants
+- solid-lubricant system described using graphite with oil
+- combines metal load/impact resistance with lower friction
+
+CHARACTERISTICS
+- long service without lubrication
+- high load / low speed
+- rotational movement
+- oscillating movement
+- frequent stop/start
+- anti-wear
+- low friction
+- chemical resistance
+- anti-corrosion
+- source temperature range: -40°C to +300°C
+
+FAMILY 5
+- MSS-MITHLON
+- THERMOPLASTIC BUSHING
+- INDUSTRY & APPLICATIONS
+
+APPLICATIONS/ENVIRONMENT
+- moist conditions
+- underwater applications
+- pump industry
+- marine industry
+- situations where regular maintenance is impractical or not cost-effective
+
+MAIN EXPLANATION
+- unique thermoplastic material
+- long life
+- low friction
+- positioning against limitations of traditional metal bushings
+- available in standard and custom sizes
+
+IMAGES
+- Mining Backhoe.png
+- Bearing_ic-2-removebg-preview.png
+- Stain_less_Steel.png
+- Indus-1.png
+- Dx-Steel-removebg-preview.png
+- Dx-12-removebg-preview.png
+- Indus-2-removebg-preview.png
+- BIM-removebg-preview.png
+- Metla-removebg-preview.png
+- additional product/family visuals
+
+============================================================
+PAGE 10 — SEALS - HYDRAULIC
+SOURCE: https://www.mithson.com/hydraulics
+============================================================
+
+HEADING
+- MITHSON HYDRAULIC SEALS
+
+INTRODUCTION
+- Hydraulic-cylinder systems operate in extreme conditions.
+- This requires high-performance hydraulic seals.
+- Mithson describes polymer designs with strong mechanical properties and chemical compatibility with hydraulic fluids.
+
+WEAR RINGS
+- source states Mithson offers bearing/wear-ring materials with high wear resistance and friction performance
+- function:
+  - prevent metal-to-metal contact
+  - guide piston
+  - guide piston rod
+
+PISTON SEALS
+- dynamic seals
+- single-acting or double-acting reciprocating motion
+- prevent fluid from passing the piston
+- act as a pressure barrier
+- support lubrication film to reduce friction and wear
+
+WIPER SEALS
+- stop external contaminants entering the cylinder assembly
+- contaminants are identified as a major cause of cylinder failure
+- help return lubrication film into the cylinder during rod retraction
+
+ROD SEALS
+- identified as one of the most critical hydraulic-cylinder seals
+- act as pressure barrier
+- keep operating fluid inside cylinder
+- prevent external leakage
+- leakage can reduce equipment performance
+
+IMAGES
+- Mining Backhoe.png
+- Wear_Ring_2-removebg-preview.png
+- Piston_Seal_Final-removebg-preview.png
+- Wiper_Seal_Final-removebg-preview.png
+- Rod_Seal-removebg-preview.png
+
+============================================================
+PAGE 11 — DIAPHRAGM - AODD
+SOURCE: https://www.mithson.com/aodd
+============================================================
+
+HEADING
+- AIR OPERATED DOUBLE DIAPHRAGM PUMP COMPONENTS
+
+MAIN COMPONENT LIST
+- Diaphragm
+- Pilot Shaft
+- PTFE Ball
+- PTFE Valve
+- O-Ring
+- Seat
+
+MAIN EXPLANATION
+- full component range is offered for Air Operated Double Diaphragm Pumps
+- high durability in extreme environments
+- high-performance fluoropolymer/PTFE materials
+- chemical resistance
+- low friction
+- reduced wear
+- compatibility with a wide range of chemicals
+- suitable for low- and high-pressure environments
+
+SECTION LABEL
+- Reliable & Precision Solution to the diverse Environment
+
+GALLERY LABELS
+- DIAPHRAGM
+- PTFE BALL
+- PILOT SHAFT
+- PTFE SEAT
+- PTFE O-RING
+
+IMAGE
+- Paint processing industry.png
+- component images
+
+============================================================
+PAGE 12 — WASHERS - TRANSMISSION
+SOURCE: https://www.mithson.com/washers
+============================================================
+
+HEADINGS
+- HIGH-PERFORMANCE CARBON-FILLED PEEK THRUST WASHERS
+- The Ultimate Solution for Heavy-Duty and High-Torque Automatic Transmissions
+
+PRODUCTS
+- PEEK - THRUST WASHER
+- PEEK - SPLIT LOCK WASHER
+
+MAIN STORY
+- high-performance propulsion/transmission internals must withstand demanding conditions
+- automatic transmissions in industrial/commercial/vocational applications face repeated torque and thermal cycling
+- standard hardware is positioned as insufficient for those conditions
+- Carbon-Filled PEEK thrust washers are presented as a polymer-engineering solution
+- intended to replace traditional metal and glass-filled plastics
+- positioned as combining bearing-like durability with high-performance thermoplastic versatility
+
+WHY CHOOSE CARBON-FILLED PEEK?
+- carbon-reinforced PEEK is positioned above virgin PEEK for the described duty
+- high-modulus carbon fibers
+- extreme axial-load management
+- very low coefficient of friction
+
+BENEFIT 1 — ADVANCED THERMAL MANAGEMENT
+- high-temperature transmission environment
+- carbon fibers improve thermal conductivity
+- heat is dissipated away from friction interface
+- reduces localized hot spots
+- source states structural integrity at continuous temperatures up to 250°C / 482°F
+
+BENEFIT 2 — EXCEPTIONAL PV LIMITS
+- pressure × velocity is used as the relevant wear/operational criterion
+- source claims the Carbon-Filled PEEK can handle nearly double the PV load of glass-filled alternatives
+- applications:
+  - Planetary Gear Carriers
+  - Output Shaft Thrust Positions
+  - High-Pressure Pump Wear Plates
+
+BENEFIT 3 — SELF-LUBRICATING RELIABILITY
+- carbon fiber acts as solid lubricant
+- useful in boundary-lubrication events such as cold starts and high-torque shifts
+- intended to prevent metal-to-metal galling
+- intended to reduce parasitic power loss
+
+IMAGE
+- Transmission.JPG
+- Thrust_Washer_4-removebg-preview.png
+- additional product images
+
+============================================================
+PAGE 13 — NOZZLES - POWER GRID
+SOURCE: https://www.mithson.com/nozzles
+============================================================
+
+HEADING
+- HIGH-PERFORMANCE PTFE NOZZLES FOR SF6 CIRCUIT BREAKERS
+
+PRODUCT LABEL
+- PTFE NOZZLES
+
+MAIN EXPLANATION
+- premium arcing and insulating nozzles
+- intended for high-voltage SF6 / Sulfur Hexafluoride circuit breakers
+- made from high-purity PTFE and specialized polymer composites
+- must withstand extreme thermal and electrical stresses during arc quenching
+- manufactured using Cold Isostatic Pressing (CIP)
+- CIP is presented as a way to achieve high density and structural integrity
+- source contrasts this with standard molded alternatives
+
+IMAGE
+- Power Indus.jpg
+- additional product images
+
+============================================================
+PAGE 14 — ENCAPSULATED O-RING
+SOURCE: https://www.mithson.com/encapsulatedo-ring
+============================================================
+
+HEADINGS
+- FEP ENCAPSULATED O-RINGS: THE ULTIMATE SHIELD FOR CRITICAL SEALING
+- ENCAPSULATED O-RING
+
+CONSTRUCTION
+Source describes a dual-component design:
+1. High-Performance Core
+   - Silicone for extreme-temperature flexibility
+   - FKM/Viton for compression-set resistance
+   - core acts as a continuous spring and maintains sealing pressure
+2. Seamless FEP Jacket
+   - seamless Fluorinated Ethylene Propylene outer layer
+   - acts as a chemical-protection barrier around the elastomer core
+   - protects against swelling/hardening/brittleness caused by aggressive environments
+
+BENEFIT 1 — UNIVERSAL CHEMICAL COMPATIBILITY
+- FEP outer jacket is described as highly inert
+- resists industrial chemicals, solvents and corrosive acids
+- positioned for complex processing lines
+
+BENEFIT 2 — EXCEPTIONAL TEMPERATURE RANGE
+- Silicone core: -60°C to +205°C (-75°F to +400°F)
+- FKM (Viton) core: -20°C to +204°C (-4°F to +400°F)
+
+BENEFIT 3 — LOW FRICTION & NON-STICK SURFACE
+- smooth FEP surface
+- reduces static friction/stiction during equipment startup
+- easier installation
+- lowers risk of seal damage during assembly
+
+BENEFIT 4 — SANITARY & HIGH-PURITY COMPLIANCE
+- described as physiologically indifferent
+- positioned for FDA-regulated environments
+- examples:
+  - pharmaceutical manufacturing
+  - food processing
+  - beverage production
+
+APPLICATIONS
+- Chemical Processing
+  - sealing for aggressive pumping and metering
+- Pharmaceutical & Biotech
+  - Clean-in-Place (CIP)
+  - Steam-in-Place (SIP)
+- Oil & Gas
+  - high-temperature valve sealing
+  - petrochemical refining
+- Food & Beverage
+  - resistance to oils, fats and flavorings that can degrade standard rubber
+
+IMAGE
+- pharma-manufacturing.jpg
+- product images
+
+============================================================
+PAGE 15 — INDUSTRIES: ENERGY - OIL & GAS
+SOURCE: https://www.mithson.com/mithplate/oilgas
+============================================================
+
+HEADINGS
+- OIL AND GAS INDUSTRY SOLUTION
+- Reliable & Precision Sealing Solution
+- Mithson Sealing Solutions for the Oil & Gas Industry
+- Meeting the Industry’s Toughest Challenges
+- Engineered for Performance and Safety
+- Our Expertise in Oil & Gas Applications
+
+FOUR SOLUTION CATEGORIES
+1. API 6A Wellhead Equipment Seals
+   - high pressure
+   - sour gas
+   - HPHT wellhead environments
+
+2. Well Service Equipment Seals
+   - high cycling
+   - high stress service applications
+
+3. Downhole Seals
+   - aggressive fluids
+   - high temperatures
+   - deep-well pressures
+
+4. API 6D Ball Valve & LNG Seals
+   - zero-leakage positioning
+   - safety
+   - gas transmission
+   - cryogenic applications
+
+INDUSTRY PARAGRAPH — INFORMATION COVERAGE
+- reliability is presented as essential in Oil & Gas
+- Mithson positions itself as a supplier of advanced, high-performance sealing systems
+- target scope: upstream, midstream and downstream
+- must meet difficult operational and regulatory requirements
+
+TOUGHEST CHALLENGES
+- regulatory standards
+- HPHT conditions
+- safety risk
+- fire risk
+- sealing challenges
+- safety/equipment/environment consequences
+- source states Mithson sealing technologies are intended to provide leak-free performance and long-term reliability under extreme conditions
+
+ENGINEERED FOR PERFORMANCE AND SAFETY
+- advanced elastomers and thermoplastics
+- PTFE
+- PEEK
+- FKM
+- HNBR
+- Perfluoro elastomers
+- source states products are designed to meet or exceed API, NORSOK, BAM and ISO standards
+- source describes rigorous testing for reliability, chemical resistance and safety
+
+============================================================
+PAGE 16 — API 6A WELLHEAD EQUIPMENT SEAL
+SOURCE: https://www.mithson.com/api6awellheadequipmentseal
+============================================================
+
+HEADING
+- API 6A WELLHEAD EQUIPMENT SEALS
+
+SECTION 1 — STEM PACKING SET
+Explanation:
+- valve stem packing is positioned as a high-pressure sealing solution
+- designed for reliability across a wide temperature range
+- uses premium materials aligned with API requirements/standards
+
+Material:
+- PEEK
+- Elgiloy/SS steel
+- Filled PTFE
+
+Application:
+- Wellhead Gate Valve
+
+SECTION 2 — STEM SEAL
+Explanation:
+- spring-energized stem seals secure internal fluids
+- block external contaminants
+- designed for API 6A valves and API 6D ball valves
+- durability and precision are emphasized
+
+Material:
+- PEEK
+- Elgiloy/SS steel
+- Filled PTFE
+
+Application:
+- Wellhead Gate Valve
+
+SECTION 3 — OD/ID FACE SEAL
+Explanation:
+- spring-loaded lip seal for FLS Gate Valves
+- designed to support gate/seat performance and service life
+- used around the valve seat
+- high-performance PEEK jacket
+- glass-filled PTFE offered as lower-cost alternative
+- ID and OD face seals are typically used together
+
+Material:
+- PEEK
+- Elgiloy/SS steel
+- Filled PTFE
+
+Application:
+- Wellhead Gate Valve
+
+SECTION 4 — BOP SEAL
+Explanation:
+- outer BOP seals are critical to oil-and-gas wellhead blowout preventers
+- form a seal around drill pipe
+- prevent oil/gas leakage
+- support wellhead safety during drilling
+
+Material:
+- NBR
+- HNBR
+
+Application:
+- BOP (Blowout Preventers)
+
+IMAGE ROLE:
+- Compress Oil and Gas Industry.jpg
+- individual product images
+
+============================================================
+PAGE 17 — WELL SERVICE EQUIPMENT SEAL
+SOURCE: https://www.mithson.com/wellserviceequipmentseal
+============================================================
+
+HEADING
+- WELL SERVICE EQUIPMENT SEAL
+
+SECTION 1 — PLUNGER PACKING SET
+Explanation:
+- critical plunger-pump sealing assembly
+- prevents high-pressure fluid leakage as the plunger reciprocates
+
+Materials:
+- Nitrile/Fabric (NBR, Buna-N)
+  - standard oilfield service positioning
+- Viton (FKM)/Fabric
+  - high-temperature and chemical resistance positioning
+- HNBR/Fabric
+  - sour-gas (H₂S) environment positioning
+
+Application:
+- Plunger Pump
+
+SECTION 2 — PUMP PACKING SET
+Explanation:
+- hydraulic fracturing and cementing operations require high-pressure well-service pumps
+- effective sealing around pump plunger/piston prevents fluid leakage
+- source describes a wide material range to suit well conditions and operating parameters
+
+Materials:
+- NBR
+- HNBR
+- FKM
+- filled PTFE
+
+Applications:
+- Mud Pump
+- Frac Pump
+
+SECTION 3 — VALVE SEAT INSERT
+Explanation:
+- designed to seal valve seats in fracturing pumps
+- modified polyurethane
+- resistance to:
+  - extrusion
+  - puncture
+  - fatigue
+- intended for demanding fracturing conditions
+
+Material:
+- PU (Poly Urethane)
+
+Applications:
+- Mud Pump
+- Frac Pump
+
+SECTION 4 — MUD PUMP LINER SEAL
+Explanation:
+- seal between liner and pump housing/fluid-end module
+- prevents drilling mud from escaping around liner exterior
+- liner seal is important to mud circulation and system efficiency
+- failed seal can increase leakage, reduce efficiency and increase wear
+
+Materials:
+- PU (Poly Urethane)
+- NBR
+- HNBR
+
+Application:
+- Mud Pump
+
+============================================================
+PAGE 18 — DOWNHOLE TOOL SEAL
+SOURCE: https://www.mithson.com/downholetoolseal
+============================================================
+
+HEADING
+- DOWNHOLE TOOL SEAL
+
+SECTION 1 — UNIFIED STACK SEAL
+Explanation:
+- unified bi-directional seal
+- proven/reliable positioning
+- suited to HPHT
+- compact design uses less space than traditional seal stacks
+- mechanically locked design helps reduce installation errors
+- intended for sliding sleeves and related well tools
+- source pressure capability: up to 15,000 PSI
+
+Material:
+- Filled PTFE
+- PEEK
+
+Applications:
+- Sliding Sleeves
+- Liner Hanger Seal
+
+SECTION 2 — PACKER
+Explanation:
+- flexible elastomer element
+- seals between production tubing OD and surrounding casing/liner/wellbore
+- designed for harsh downhole environments
+- provides zonal isolation
+- supports integrity/performance of oil-and-gas wells
+
+Materials:
+- NBR
+- HNBR
+- FKM
+
+Applications:
+- Line Hangers
+- Liners
+
+SECTION 3 — RGD O-RING
+Explanation:
+- Rapid Gas Decompression O-rings are designed to resist failure caused by sudden pressure drops
+- harder/high-modulus elastomer compounds help withstand decompression stresses
+
+Materials:
+- HNBR
+- FKM
+- FFKM
+
+Applications:
+- Wellhead
+- Packers
+- BOP
+
+SECTION 4 — PEEK BACK-UP RING
+Explanation:
+- secondary sealing component used in subsurface safety valves
+- works with primary seals such as O-rings
+- helps prevent elastomer extrusion under high pressure/high temperature
+- improves sealing integrity and reliability
+- configurations:
+  - uncut
+  - scarf-cut
+  - spiral-cut
+
+Material:
+- PEEK
+
+Application:
+- Subsurface Safety Valve
+
+============================================================
+PAGE 19 — API 6D BALL VALVE & LNG SEAL
+SOURCE: https://www.mithson.com/api6dballvalvelngseal
+============================================================
+
+HEADING
+- API 6D BALL VALVE & LNG SEALS
+
+SECTION 1 — BODY–BONNET SEAL
+Explanation:
+- primary pressure-containing seal between valve body and bonnet/closure in a trunnion-mounted ball valve
+- prevents internal liquid/gas escaping through the body/bonnet joint
+- source pressure capability: up to 10,000 PSI
+
+Material:
+- CFT
+- Elgiloy Spring
+
+Application:
+- Trunnion Mount Ball Valve
+
+SECTION 2 — SEAT RETAINER
+Explanation:
+- primary seal between seat retainer/seat insert and valve body
+- prevents process fluid leaking behind valve seat
+- maintains pressure integrity through the ball-seat interface
+- PEEK T-ring supports/energizes the PTFE lip
+- source pressure capability: up to 10,000 PSI
+
+Materials:
+- PTFE
+- Elgiloy Spring
+- PEEK
+
+Application:
+- Trunnion Mount Ball Valve
+
+SECTION 3 — PEEK SEAT RING
+Explanation:
+- key ball-valve sealing component between the ball and body
+- creates a tight seal to permit/block flow
+- trunnion-mounted versions may be spring-loaded or pressure-energized
+- floating-ball versions use line pressure to push the ball toward the downstream seat ring
+
+Material:
+- PEEK
+
+Applications:
+- Trunnion Mount Ball Valve
+- Floating Ball Valve
+
+SECTION 4 — LNG SEAL
+Explanation:
+- spring-energized sealing component for LNG ball valves
+- LNG service involves cryogenic conditions
+- source temperature context: about -162°C / -260°F
+- sealing system must handle cold, pressure variation and thermal cycling
+- conventional elastomers are described as unsuitable for the stated extreme condition
+
+Materials:
+- PTFE
+- Elgiloy Spring
+
+Application:
+- Ball Valve
+
+============================================================
+PAGE 20 — PRODUCT GALLERY
+SOURCE: https://www.mithson.com/gallery
+============================================================
+
+GALLERY PRODUCT/FAMILY LABELS — PRESERVE ALL
+- MSS-MF SELF LUBE
+- MSS-MP PRE LUBE
+- MSS-BIM BI-METAL
+- MSS-MB SOLID BUSH
+- MSS-MITHLON
+- SPRING ENERGIZED LIP SEAL
+- STEM PACKING
+- PEEK SEAT RING
+- SEAT SEAL
+- PTFE CHEVRON PACKING
+- GLAND PAKCING
+- O-RING
+- PTFE CARBON GRAPHITE CHEVRON PACKING
+- PTFE CARBON GRAPHITE SEAT
+- PTFE CAVITY SEAT
+- PTFE SEAT
+- STEM PACKING
+- PTFE SLEEVE
+- PTFE PLUG
+- PTFE LINED
+- PTFE LINED (duplicate source label occurrence)
+- DEVLON SEAT RING
+- DEVLON SEAT RING (duplicate source label occurrence)
+- DEVLON INSERT METAL SEAT
+- SPRING ENERGIZED LIP SEAL (duplicate source occurrence)
+- PISTON SEALS
+- ROD SEALS
+- WEAR RINGS
+- WIPER SEALS
+- DIAPHRAGM
+- PTFE BALL
+- PTFE SEAT
+- PTFE O-RING
+- PEEK - THRUST WASHER
+- PTFE - TRANSMISSION SEAL
+- PEEK - SPLIT LOCK WASHER
+- PTFE - TRANSMISSION SEAL (duplicate source occurrence)
+- BI-METAL PTFE BUSHINGS
+- WEAR RING
+- STUFFING BOX BEARING
+- LINE SHAFT BEARNING (source spelling)
+- PTFE NOZZLES
+- PTFE NOZZLES (duplicate source occurrence)
+- ENCAPSULATED O-RING
+- PTFE NOZZLES (additional source occurrence)
+
+GALLERY SOURCE IMAGES IDENTIFIED
+- image.png
+- MSS-SP-Flanged-removebg-preview.png
+- Dx-12-removebg-preview.png
+- Dx-F.png
+- Bi-Metal-removebg-preview.png
+- Bronze_Flange-removebg-preview.png
+- Line Shaft No BG.png
+- other source product/gallery images
+
+============================================================
+PAGE 21 — CONNECT WITH US
+SOURCE: https://www.mithson.com/connect-with-us
+============================================================
+
+HEADING
+- CONTACT US
+
+CONTACT PERSONS
+CEO:
+- G. M. Samy
+- +91-9382180773 | +91-9003156569
+- gm.samy@mithson.com
+
+MD:
+- Mithesh Samy
+- +91-9042611045
+- mithesh@mithson.com
+
+Sales:
+- +91-9994204988
+- sales@mithson.com
+
+REGISTERED OFFICE / CORPORATE OFFICE
+Mithson Sealing Solutions Private Limited
+3/748, FLUORO CARBON TOWER
+Pillaiyar Kovil Street,
+Mettukuppam, Chennai,
+Tamil Nadu, 600097, India.
+
+UNIT-II
+Mithson Sealing Solutions Private Limited
+238/3, VENBEDU MAIN ROAD,
+Vembedu Bus Stop, Thiruporur,
+Chengalpattu,
+Tamil Nadu, 603110, India.
+
+CONTACT FORM
+- Name
+- Email
+- Subject
+- Submit
+
+SUCCESS MESSAGE SHOWN BY FORM
+- Thanks for submitting!
+
+============================================================
+PAGE 22 — OIL & GAS EXPO 2025
+SOURCE: https://www.mithson.com/oil-gas-1
+============================================================
+
+HEADING
+- MITHSON at Oil Gas & Power World Expo 2025
+
+EVENT LOCATION
+- Venue: Hall 4, Bombay Exhibition Center, Goregaon (East), Mumbai, India
+- Booth# C31
+
+IMAGE
+- Oil & Gas Mumbai 2025.jpeg
+
+============================================================
+PAGE 23 — EXPO 2024
+SOURCE: https://www.mithson.com/copy-of-expo-2023
+============================================================
+
+EVENT / LINK LABELS
+- bauma CONEXPO INDIA 2024 - DELHI
+- VALVE WORLD MUMBAI
+- OPES
+- 2024 - OMAN
+- OPES 2024
+
+SOURCE EXTERNAL LINK CONTEXT
+- bauma label links to valve-world-sea.com
+- Valve World Mumbai label links to automationindiaexpo.com
+- OPES label links to otcnet.org
+- source also carries an event-related chemtech-online.com link labeled 2024 - OMAN
+
+IMAGES
+- bauma.jpeg
+- Valve World.JPG
+- OPES logo.png
+- OPES.jpeg
+
+============================================================
+PAGE 24 — EXPO 2023
+SOURCE: https://www.mithson.com/expo2023
+============================================================
+
+EVENT LABELS
+- VALVE WORLD SOUTHEAST ASIA EXPO 2023 - SINGAPORE
+- AUTOMATION EXPO 2023 - MUMBAI, INDIA
+- OFFSHORE TECHNOLOGY CONFERENCE 2023
+- NRG Park, Houston, Texas, USA
+
+IMAGE ROLES
+- event image for Valve World
+- event image for Automation Expo
+- event image for Offshore Technology Conference
+
+SOURCE EXTERNAL LINKS
+- valve-world-sea.com
+- automationindiaexpo.com
+- 2024.otcnet.org
+
+============================================================
+SOURCE IMAGE/ASSET INVENTORY
+============================================================
+
+HOME
+- Flouro Carbon Tower.jpeg
+- MSS-KAYAR.jpeg
+- Company.jpg
+- image.png (multiple sustainability sections)
+- Sustain_cycle-removebg-preview.png
+- History.jpg
+
+QUALITY
+- Compress Oil and Gas Industry.jpg
+- certification images
+- Quality_Policy-removebg-preview.png
+- industry-recognized-material images
+
+PRODUCTS
+- image.png
+- product-specific PNG/JPEG assets listed on their source pages
+- see page-specific sections above
+
+CONTACT
+- no major product gallery; form/contact layout
+
+EVENTS
+- Oil & Gas Mumbai 2025.jpeg
+- bauma.jpeg
+- Valve World.JPG
+- OPES logo.png
+- OPES.jpeg
+- event images for 2023
+
+============================================================
+IMPLEMENTATION REQUIREMENT
+============================================================
+
+For the new website, map EVERY section above into a real page/component.
+
+Do not reduce a page to:
+- only its navigation
+- only its title
+- only its image
+- only a product name
+
+Each page must preserve the full INFORMATION ARCHITECTURE:
+- headings
+- subheadings
+- explanatory paragraphs (using rewritten wording where needed)
+- lists
+- material names
+- applications
+- standards
+- technical values
+- CTAs
+- image roles
+- contact information
+- event information
+- footer information
+
+The new blue/white 3D design may completely change the appearance, but it must not silently remove source information.
+
+============================================================
+ROUTE MAP
+============================================================
+
+/
+/who-we-are
+/who-we-are/quality-and-certification
+/products
+/products/mith-plate
+/products/m-uni-seal
+/products/hammer-union-seal
+/products/seals-x-mas-tree
+/products/seals-valve
+/products/plug-lined-valve
+/products/uni-lube-bearing
+/products/seals-hydraulic
+/products/diaphragm-aodd
+/products/washers-transmission
+/products/nozzles-power-grid
+/products/encapsulated-o-ring
+/industries
+/industries/energy-oil-gas
+/oil-gas-seal
+/oil-gas-seal/api-6a-wellhead-equipment-seal
+/oil-gas-seal/well-service-equipment-seal
+/oil-gas-seal/downhole-tool-seal
+/oil-gas-seal/api-6d-ball-valve-lng-seal
+/product-gallery
+/connect-with-us
+/events/oil-and-gas-expo-2025
+/events/expo-2024
+/events/expo-2023
+
+END OF SOURCE CONTENT MASTER MAP

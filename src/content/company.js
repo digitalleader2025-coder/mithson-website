@@ -1,0 +1,86 @@
+// Source-derived company facts — do not invent new data
+export const company = {
+  name: 'Mithson Sealing Solutions',
+  legalName: 'Mithson Sealing Solutions Private Limited',
+  group: 'Fluoro Carbon Seals Group',
+  founded: 1996,
+  foundedCity: 'Chennai',
+  experience: '25+',
+  tagline: 'Engineering the Future of Sealing Technology',
+  vision:
+    'To become a global leader in Polymer Engineering Technology through quality, reliability and customer satisfaction.',
+  expertise: ['Elastomers', 'Fluoropolymers', 'Thermoplastics'],
+  sectors: [
+    'Oil & Gas',
+    'Automotive',
+    'Life Science',
+    'Mining',
+    'Semiconductor',
+    'Robotics',
+    'Aerospace',
+  ],
+  materials: [
+    'PTFE',
+    'RTFE',
+    'Modified PTFE (TFM & NXT)',
+    'VICTREX PEEK',
+    'VESPEL',
+    'PFA',
+    'Nylon',
+    'MOS2',
+    'HNBR',
+    'FKM/Viton',
+    'FFKM',
+    'EPDM',
+    'Delrin/POM',
+    'PU',
+  ],
+  certifications: ['ISO 9001:2015', 'QIMA Audited', 'API-6A', 'NORSOK', 'BAM'],
+  sustainability: [
+    'Sustainable agriculture',
+    'EV goods movement',
+    'Solar energy adoption',
+    'Scrap reduction',
+    'Targeting Scope 1, 2 & 3 carbon reduction',
+  ],
+  contacts: {
+    ceo: {
+      name: 'G. M. Samy',
+      title: 'CEO',
+      phones: ['+91-9382180773', '+91-9003156569'],
+      email: 'gm.samy@mithson.com',
+    },
+    md: {
+      name: 'Mithesh Samy',
+      title: 'MD',
+      phones: ['+91-9042611045'],
+      email: 'mithesh@mithson.com',
+    },
+    sales: {
+      phones: ['+91-9994204988'],
+      email: 'sales@mithson.com',
+    },
+  },
+  offices: [
+    {
+      label: 'Registered / Corporate Office',
+      address: [
+        'Mithson Sealing Solutions Private Limited',
+        '3/748, FLUORO CARBON TOWER',
+        'Pillaiyar Kovil Street,',
+        'Mettukuppam, Chennai,',
+        'Tamil Nadu, 600097, India.',
+      ],
+    },
+    {
+      label: 'Unit-II',
+      address: [
+        'Mithson Sealing Solutions Private Limited',
+        '238/3, VENBEDU MAIN ROAD,',
+        'Vembedu Bus Stop, Thiruporur,',
+        'Chengalpattu,',
+        'Tamil Nadu, 603110, India.',
+      ],
+    },
+  ],
+};
