@@ -46,8 +46,6 @@ export function ProductHero({ product }) {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          <ProductBreadcrumb productName={name} />
-          <span className="product-label">Product</span>
           <h1 className="product-hero-title" id="product-hero-title">{name}</h1>
           <p className="product-hero-tagline">{tagline}</p>
         </motion.div>

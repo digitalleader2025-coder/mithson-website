@@ -23,13 +23,33 @@ function MegaMenuItem({ item, onClose }) {
   const location = useLocation();
   const isActive = location.pathname.startsWith(item.path);
   const timerRef = useRef(null);
+  const navItemRef = useRef(null);
+
+  // Close when tapping outside
+  useEffect(() => {
+    if (!open) return;
+    const handleOutsideClick = (e) => {
+      if (navItemRef.current && !navItemRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener('touchstart', handleOutsideClick);
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => {
+      document.removeEventListener('touchstart', handleOutsideClick);
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, [open]);
 
   const handleMouseEnter = () => {
+    // Only apply hover if not a touch device
+    if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
     clearTimeout(timerRef.current);
     if (hasChildren) setOpen(true);
   };
 
   const handleMouseLeave = () => {
+    if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
     timerRef.current = setTimeout(() => setOpen(false), 120);
   };
 
@@ -41,8 +61,24 @@ function MegaMenuItem({ item, onClose }) {
     if (e.key === 'Escape') setOpen(false);
   };
 
+  const handleClick = (e) => {
+    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    if (isTouch && hasChildren) {
+      if (!open) {
+        e.preventDefault(); // First tap opens the menu, don't navigate
+        setOpen(true);
+      } else {
+        setOpen(false); // Second tap navigates, close menu
+      }
+    } else {
+      setOpen(false); // Desktop or no children, close menu
+    }
+    onClose?.();
+  };
+
   return (
     <li
+      ref={navItemRef}
       className={`nav-item${isActive ? ' nav-item--active' : ''}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -53,7 +89,7 @@ function MegaMenuItem({ item, onClose }) {
         aria-haspopup={hasChildren ? 'true' : undefined}
         aria-expanded={hasChildren ? open : undefined}
         onKeyDown={handleKeyDown}
-        onClick={() => { setOpen(false); onClose?.(); }}
+        onClick={handleClick}
       >
         {item.label}
         {hasChildren && <ChevronIcon open={open} />}

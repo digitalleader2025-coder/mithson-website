@@ -9,7 +9,7 @@
   width: 100%;
   z-index: var(--z-nav);
   transition: padding var(--duration-base), background var(--duration-base), box-shadow var(--duration-base);
-  padding: var(--space-4) 0;
+  padding: var(--space-2) 0; /* Reduced from space-4 for compact header */
 }
 
 .navbar--scrolled {

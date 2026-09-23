@@ -76,7 +76,7 @@
   /* Layout */
   --container-max:   1280px;
   --container-wide:  1440px;
-  --nav-height:      80px;
+  --nav-height:      64px; /* Reduced from 80px for a more compact header */
 
   /* Border radius */
   --radius-sm:  4px;
