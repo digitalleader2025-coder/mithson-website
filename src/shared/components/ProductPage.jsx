@@ -39,7 +39,7 @@ export function ProductHero({ product }) {
       <div className="product-hero-inner container">
         {/* Text side */}
         <motion.div
-          className="product-hero-text"
+          className="hero-text-area"
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
@@ -48,20 +48,20 @@ export function ProductHero({ product }) {
           <span className="product-label">Product</span>
           <h1 className="product-hero-title" id="product-hero-title">{name}</h1>
           <p className="product-hero-tagline">{tagline}</p>
+        </motion.div>
+
+        <motion.div 
+          className="hero-desc-area"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+        >
           <p className="product-hero-desc">{shortDescription}</p>
-          <div className="product-hero-actions">
-            <Link to="/connect-with-us" className="btn btn-primary" id={`product-enquire-${product.id}`}>
-              Enquire Now
-            </Link>
-            <Link to="/product-gallery" className="btn btn-outline" id={`product-gallery-${product.id}`}>
-              View Gallery
-            </Link>
-          </div>
         </motion.div>
 
         {/* 3D / image viewer side */}
         <motion.div
-          className="product-hero-viewer"
+          className="hero-viewer-area"
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
@@ -87,6 +87,21 @@ export function ProductHero({ product }) {
             {/* Decorative frame glow */}
             <div className="viewer-glow" style={{ '--glow-color': accent }} />
           </div>
+        </motion.div>
+
+        {/* Action Buttons */}
+        <motion.div 
+          className="hero-actions-area"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+        >
+          <Link to="/connect-with-us" className="btn btn-primary" id={`product-enquire-${product.id}`}>
+            Enquire Now
+          </Link>
+          <Link to="/product-gallery" className="btn btn-outline" id={`product-gallery-${product.id}`}>
+            View Gallery
+          </Link>
         </motion.div>
       </div>
 

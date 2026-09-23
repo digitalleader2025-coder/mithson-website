@@ -15,16 +15,38 @@
 .product-hero-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-16);
-  align-items: center;
+  grid-template-areas:
+    "text viewer"
+    "desc actions";
+  gap: 0 var(--space-16);
   padding-top: var(--space-16);
   padding-bottom: var(--space-16);
+  align-items: start;
 }
 
-.product-hero-text {
+.hero-text-area {
+  grid-area: text;
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+}
+
+.hero-desc-area {
+  grid-area: desc;
+  margin-top: var(--space-6);
+}
+
+.hero-viewer-area {
+  grid-area: viewer;
+}
+
+.hero-actions-area {
+  grid-area: actions;
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  justify-content: flex-end; /* Desktop right align */
+  margin-top: var(--space-6);
 }
 
 .product-breadcrumb {
@@ -96,7 +118,7 @@
 
 /* Viewer */
 .product-hero-viewer {
-  position: relative;
+  /* removed position: relative; */
 }
 
 .product-viewer-frame {
@@ -147,7 +169,8 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: var(--space-16);
-  padding: var(--space-20) 0;
+  padding-top: var(--space-20);
+  padding-bottom: var(--space-20);
 }
 
 /* Section label (small caps) */
@@ -333,7 +356,16 @@
 @media (max-width: 1024px) {
   .product-hero-inner {
     grid-template-columns: 1fr;
-    gap: var(--space-10);
+    grid-template-areas:
+      "text"
+      "viewer"
+      "actions"
+      "desc";
+    gap: var(--space-6);
+  }
+
+  .hero-actions-area {
+    justify-content: center;
   }
 
   .product-hero-viewer {

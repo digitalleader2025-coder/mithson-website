@@ -29,7 +29,7 @@ export default function MITHPLATEPage() {
         <div className="product-hero-inner container">
           {/* Text side */}
           <motion.div
-            className="product-hero-text"
+            className="hero-text-area"
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
@@ -38,7 +38,14 @@ export default function MITHPLATEPage() {
             <span className="product-label">Product</span>
             <h1 className="product-hero-title" id="product-hero-title">{product.name}</h1>
             <p className="product-hero-tagline">{product.tagline}</p>
-            
+          </motion.div>
+
+          <motion.div
+            className="hero-desc-area"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
             <div className="product-hero-desc" style={{ fontSize: '0.95rem', lineHeight: '1.6', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <p>
                 We specialize exclusively in the "heart" of the Positive Displacement compressor. Unlike dynamic machines, reciprocating compressors rely on the timed integrity of suction and discharge valves. We provide the high-precision plates that make this possible, focusing on the Reciprocating branch of the compressor.
@@ -53,20 +60,11 @@ export default function MITHPLATEPage() {
                 <li><strong>Oil-Free Ready:</strong> Self-lubricating properties make them the only choice for Medical, Food, and Pharma air.</li>
               </ul>
             </div>
-
-            <div className="product-hero-actions" style={{ marginTop: '2rem' }}>
-              <Link to="/connect-with-us" className="btn btn-primary" id={`product-enquire-${product.id}`}>
-                Enquire Now
-              </Link>
-              <Link to="/product-gallery" className="btn btn-outline" id={`product-gallery-${product.id}`}>
-                View Gallery
-              </Link>
-            </div>
           </motion.div>
 
           {/* Interactive Image Viewer */}
           <motion.div
-            className="product-hero-viewer"
+            className="hero-viewer-area"
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
@@ -81,6 +79,21 @@ export default function MITHPLATEPage() {
               {/* Decorative frame glow */}
               <div className="viewer-glow" style={{ '--glow-color': product.accent }} />
             </div>
+          </motion.div>
+
+          {/* Action Buttons */}
+          <motion.div
+            className="hero-actions-area"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+          >
+            <Link to="/connect-with-us" className="btn btn-primary" id={`product-enquire-${product.id}`}>
+              Enquire Now
+            </Link>
+            <Link to="/product-gallery" className="btn btn-outline" id={`product-gallery-${product.id}`}>
+              View Gallery
+            </Link>
           </motion.div>
         </div>
 
