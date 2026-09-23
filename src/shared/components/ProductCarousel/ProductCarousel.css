@@ -17,7 +17,7 @@
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-2xl);
-  min-height: 480px;
+  /* Removed min-height so it naturally wraps the content */
 }
 
 .carousel-slide {
@@ -31,9 +31,6 @@
   border: 1px solid var(--color-border-2);
   border-radius: var(--radius-2xl);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05); /* Soft shadow for pure white bg */
-  position: absolute;
-  top: 0;
-  left: 0;
   will-change: transform, opacity;
 }
 
@@ -56,8 +53,14 @@
 
 .carousel-image {
   max-width: 100%;
-  max-height: 380px;
+  max-height: 220px;
   object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  .carousel-image {
+    max-height: 380px;
+  }
 }
 
 .carousel-placeholder {
