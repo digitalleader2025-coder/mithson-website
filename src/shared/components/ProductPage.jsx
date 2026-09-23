@@ -37,8 +37,10 @@ export function ProductHero({ product }) {
   return (
     <section className="product-hero" aria-labelledby="product-hero-title">
       <div className="product-hero-inner container">
-        {/* Text side */}
-        <motion.div
+        {/* Left Column wrapper for Desktop stacking */}
+        <div className="hero-desktop-col-left">
+          {/* Text side */}
+          <motion.div
           className="hero-text-area"
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
@@ -58,8 +60,11 @@ export function ProductHero({ product }) {
         >
           <p className="product-hero-desc">{shortDescription}</p>
         </motion.div>
+        </div>
 
-        {/* 3D / image viewer side */}
+        {/* Right Column wrapper for Desktop stacking */}
+        <div className="hero-desktop-col-right">
+          {/* 3D / image viewer side */}
         <motion.div
           className="hero-viewer-area"
           initial={{ opacity: 0, x: 40 }}
@@ -103,6 +108,7 @@ export function ProductHero({ product }) {
             View Gallery
           </Link>
         </motion.div>
+        </div>
       </div>
 
       {/* Background grid */}

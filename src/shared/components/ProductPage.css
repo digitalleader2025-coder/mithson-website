@@ -13,15 +13,21 @@
 }
 
 .product-hero-inner {
+  /* Default Mobile Grid */
   display: grid;
-  grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    "text viewer"
-    "desc actions";
-  gap: 0 var(--space-16);
+    "text"
+    "viewer"
+    "actions"
+    "desc";
+  gap: var(--space-6);
   padding-top: var(--space-16);
   padding-bottom: var(--space-16);
-  align-items: start;
+}
+
+.hero-desktop-col-left,
+.hero-desktop-col-right {
+  display: contents; /* Unwraps for mobile grid reordering */
 }
 
 .hero-text-area {
@@ -353,6 +359,20 @@
 }
 
 /* Responsive */
+@media (min-width: 1025px) {
+  .product-hero-inner {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: none; /* Reset grid areas since we use columns now */
+    gap: var(--space-16);
+  }
+
+  .hero-desktop-col-left,
+  .hero-desktop-col-right {
+    display: flex; /* Restores standard box behavior for seamless stacking */
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 1024px) {
   .product-hero-inner {
     grid-template-columns: 1fr;

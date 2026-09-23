@@ -27,9 +27,11 @@ export default function MITHPLATEPage() {
       {/* Custom Hero for MITH PLATE */}
       <section className="product-hero" aria-labelledby="product-hero-title">
         <div className="product-hero-inner container">
-          {/* Text side */}
-          <motion.div
-            className="hero-text-area"
+          {/* Left Column wrapper for Desktop stacking */}
+          <div className="hero-desktop-col-left">
+            {/* Text side */}
+            <motion.div
+              className="hero-text-area"
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
@@ -61,9 +63,12 @@ export default function MITHPLATEPage() {
               </ul>
             </div>
           </motion.div>
+          </div>
 
-          {/* Interactive Image Viewer */}
-          <motion.div
+          {/* Right Column wrapper for Desktop stacking */}
+          <div className="hero-desktop-col-right">
+            {/* Interactive Image Viewer */}
+            <motion.div
             className="hero-viewer-area"
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -95,6 +100,7 @@ export default function MITHPLATEPage() {
               View Gallery
             </Link>
           </motion.div>
+          </div>
         </div>
 
         {/* Background grid */}
