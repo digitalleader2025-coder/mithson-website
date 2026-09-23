@@ -37,12 +37,16 @@
   align-items: center;
   gap: var(--space-3);
   z-index: calc(var(--z-nav) + 10);
+  -webkit-tap-highlight-color: transparent; /* Remove mobile tap highlight box */
 }
 
 .logo-image {
   height: 40px;
   width: auto;
   object-fit: contain;
+  -webkit-touch-callout: none; /* Prevent long-press context menu on iOS/Android */
+  user-select: none;
+  pointer-events: none; /* Prevent the image from being seen as a standalone element, let the Link handle the click */
 }
 
 /* --- Desktop Nav --- */
