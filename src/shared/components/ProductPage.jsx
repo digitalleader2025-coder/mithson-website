@@ -57,7 +57,7 @@ export function ProductHero({ product }) {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          <p className="product-hero-desc">{shortDescription}</p>
+          <div className="product-hero-desc">{shortDescription}</div>
         </motion.div>
         </div>
 

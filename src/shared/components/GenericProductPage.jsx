@@ -23,6 +23,11 @@ import imgODFace from '../../pages/Products/M-UNI-Seal/assets/genre/OD Face Seal
 import imgHammerUnionSeal from '../../pages/Products/Hammer-Union-Seal/assets/measurements/Seal Measurement.png';
 import imgHammerUnionMeasurement from '../../pages/Products/Hammer-Union-Seal/assets/measurements/measurement.avif';
 
+import imgXmasElastomer from '../../pages/Products/Seals-X-Mas-Tree/assets/genre/Elastomer O-Ring.png';
+import imgXmasSeat from '../../pages/Products/Seals-X-Mas-Tree/assets/genre/SEAT Seal.png';
+import imgXmasSpring from '../../pages/Products/Seals-X-Mas-Tree/assets/genre/Spring Energized Seals.png';
+import imgXmasStem from '../../pages/Products/Seals-X-Mas-Tree/assets/genre/Stem Packing.png';
+
 export default function GenericProductPage({ product }) {
   // Update document title
   useEffect(() => {
@@ -46,6 +51,11 @@ export default function GenericProductPage({ product }) {
             {product.slug === 'hammer-union-seal' && (
               <ScrollReveal>
                 <HammerUnionCustomSection />
+              </ScrollReveal>
+            )}
+            {product.slug === 'seals-x-mas-tree' && (
+              <ScrollReveal>
+                <XMasTreeCustomSection />
               </ScrollReveal>
             )}
             <ScrollReveal>
@@ -191,6 +201,32 @@ function HammerUnionCustomSection() {
           <img src={imgHammerUnionMeasurement} alt="Hammer Union Seal Measurement Data" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px', objectFit: 'contain' }} />
         </div>
 
+      </div>
+    </div>
+  );
+}
+
+function XMasTreeCustomSection() {
+  const images = [
+    { src: imgXmasSpring, title: 'Spring Energized Seals' },
+    { src: imgXmasStem, title: 'Stem Packing' },
+    { src: imgXmasSeat, title: 'Seat Seal' },
+    { src: imgXmasElastomer, title: 'Elastomer O-Ring' },
+  ];
+
+  return (
+    <div style={{ marginBottom: '3rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '1.5rem' }}>
+        {images.map((img, i) => (
+          <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+            <div style={{ padding: '1rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <img src={img.src} alt={img.title} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+            </div>
+            <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '0.9rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              {img.title}
+            </span>
+          </div>
+        ))}
       </div>
     </div>
   );

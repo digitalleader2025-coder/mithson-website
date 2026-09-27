@@ -1,9 +1,11 @@
 // Source-derived product data — exact names and facts from website-content.txt
 // Do NOT invent technical specifications not listed here.
 
+import React from 'react';
 import mithPlateImg from '../pages/Products/MITH-PLATE/assets/mith-plate.png';
 import muniSealImg from '../pages/Products/M-UNI-Seal/assets/hero.jpg';
 import hammerUnionImg from '../pages/Products/Hammer-Union-Seal/assets/hero.png';
+import xmasTreeImg from '../pages/Products/Seals-X-Mas-Tree/assets/hero.png';
 
 export const products = [
   {
@@ -73,8 +75,13 @@ export const products = [
     slug: 'seals-x-mas-tree',
     name: 'Seals - X-Mas Tree',
     tagline: 'Christmas Tree Wellhead Gate-Valve Sealing',
-    shortDescription:
-      'Spring energized lip seals, stem packing, seat seals and O-rings designed for X-Mas Tree wellhead gate valves per API 6A Appendix F.',
+    shortDescription: (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <p>We provide a comprehensive range of <strong>high-performance sealing solutions</strong> for <strong>Christmas Tree valve applications</strong>, including <strong>Spring-Energized Lip Seals, Stem Packing, Seat Seals, and O-Rings</strong>. Manufactured from advanced <strong>polymer materials</strong>, our sealing components deliver reliable performance under demanding operating conditions and are supplied to meet <strong>API 6A (Appendix F)</strong> requirements.</p>
+        <p><strong>Spring-Energized Seals</strong> combine a <strong>PTFE jacket</strong> with a <strong>corrosion-resistant metal energizer spring</strong>, ensuring consistent sealing performance across a wide range of temperatures and pressures. <strong>Gate Valve Stem Packing</strong> helps prevent leakage around the valve stem, maintaining sealing integrity and reliable valve operation.</p>
+        <p><strong>PTFE materials</strong> offer <strong>low friction, excellent temperature resistance, chemical resistance, and corrosion resistance</strong>. <strong>PTFE Spring-Energized Seals</strong> also provide <strong>unlimited shelf life</strong>, supporting long-term storage without compromising performance.</p>
+      </div>
+    ),
     highlights: [
       'API 6A Appendix F reference',
       'Low friction PTFE jacket',
@@ -87,6 +94,7 @@ export const products = [
     path: '/products/seals-x-mas-tree',
     folder: 'Seals-X-Mas-Tree',
     accent: '#3b7bd4',
+    image: xmasTreeImg,
   },
   {
     id: 'seals-valve',
