@@ -2,6 +2,7 @@
 // Do NOT invent technical specifications not listed here.
 
 import mithPlateImg from '../pages/Products/MITH-PLATE/assets/mith-plate.png';
+import muniSealImg from '../pages/Products/M-UNI-Seal/assets/hero.jpg';
 
 export const products = [
   {
@@ -31,7 +32,7 @@ export const products = [
     name: 'M-UNI Seal',
     tagline: 'Spring-Energized Lip Seal',
     shortDescription:
-      'PTFE or alternative polymer jacket combined with a corrosion-resistant metal spring energizer for pressure-assisted sealing in demanding environments.',
+      'Introducing the M-UNI spring-energized seal: a cutting-edge sealing solution featuring a spring-actuated, pressure-assisted mechanism. Constructed with a PTFE (or alternative polymer) jacket, this seal partially encases a corrosion resistant metal spring energizer. Designed for optimal performance and durability, the M-UNI seal is your go-to choice for reliable sealing in demanding applications.',
     highlights: [
       'Pressure-assisted sealing',
       'PTFE polymer jacket',
@@ -43,6 +44,7 @@ export const products = [
     path: '/products/m-uni-seal',
     folder: 'M-UNI-Seal',
     accent: '#3b7bd4',
+    image: muniSealImg,
   },
   {
     id: 'hammer-union-seal',

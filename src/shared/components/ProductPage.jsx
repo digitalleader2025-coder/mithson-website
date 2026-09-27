@@ -28,10 +28,10 @@ export function ProductBreadcrumb({ productName }) {
 
 /** Hero section with 3D viewer */
 export function ProductHero({ product }) {
-  const { name, tagline, shortDescription, accent, folder } = product;
+  const { name, tagline, shortDescription, accent, folder, image } = product;
 
   // Dynamic asset paths — user drops files here; component reads automatically
-  const heroImageSrc = `/src/pages/Products/${folder}/assets/hero.jpg`;
+  const heroImageSrc = image || `/src/pages/Products/${folder}/assets/hero.jpg`;
   const modelSrc     = `/src/pages/Products/${folder}/models/product.glb`;
 
   return (

@@ -14,6 +14,12 @@ import {
 } from '../../shared/components/ProductPage';
 import { products } from '../../content/products';
 
+import imgCanti from '../../pages/Products/M-UNI-Seal/assets/genre/Canti Seals.png';
+import imgCoil from '../../pages/Products/M-UNI-Seal/assets/genre/Coil Seals.png';
+import imgHeli from '../../pages/Products/M-UNI-Seal/assets/genre/Heli Seals.png';
+import imgIDFace from '../../pages/Products/M-UNI-Seal/assets/genre/ID Face Seals.png';
+import imgODFace from '../../pages/Products/M-UNI-Seal/assets/genre/OD Face Seals.png';
+
 export default function GenericProductPage({ product }) {
   // Update document title
   useEffect(() => {
@@ -132,19 +138,15 @@ function TemperatureRanges({ ranges }) {
 
 function MUNISealCustomSection() {
   const images = [
-    { src: '/src/pages/Products/M-UNI-Seal/assets/genre/Canti Seals.png', title: 'Canti Seals' },
-    { src: '/src/pages/Products/M-UNI-Seal/assets/genre/Coil Seals.png', title: 'Coil Seals' },
-    { src: '/src/pages/Products/M-UNI-Seal/assets/genre/Heli Seals.png', title: 'Heli Seals' },
-    { src: '/src/pages/Products/M-UNI-Seal/assets/genre/ID Face Seals.png', title: 'ID Face Seals' },
-    { src: '/src/pages/Products/M-UNI-Seal/assets/genre/OD Face Seals.png', title: 'OD Face Seals' }
+    { src: imgCanti, title: 'Canti Seals' },
+    { src: imgCoil, title: 'Coil Seals' },
+    { src: imgHeli, title: 'Heli Seals' },
+    { src: imgIDFace, title: 'ID Face Seals' },
+    { src: imgODFace, title: 'OD Face Seals' }
   ];
 
   return (
     <div style={{ marginBottom: '3rem' }}>
-      <p style={{ fontSize: '1.05rem', lineHeight: '1.7', color: 'var(--color-text)', marginBottom: '2.5rem' }}>
-        Introducing the M-UNI spring-energized seal: a cutting-edge sealing solution featuring a spring-actuated, pressure-assisted mechanism. Constructed with a PTFE (or alternative polymer) jacket, this seal partially encases a corrosion resistant metal spring energizer. Designed for optimal performance and durability, the M-UNI seal is your go-to choice for reliable sealing in demanding applications.
-      </p>
-      
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: '1.5rem' }}>
         {images.map((img, i) => (
           <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
