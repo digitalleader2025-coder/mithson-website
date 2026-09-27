@@ -29,6 +29,11 @@ export default function GenericProductPage({ product }) {
         <div className="container product-body-inner">
           {/* Main column */}
           <div>
+            {product.slug === 'm-uni-seal' && (
+              <ScrollReveal>
+                <MUNISealCustomSection />
+              </ScrollReveal>
+            )}
             <ScrollReveal>
               <ProductHighlights highlights={product.highlights} />
             </ScrollReveal>
@@ -118,6 +123,37 @@ function TemperatureRanges({ ranges }) {
               {key} core
             </div>
             <div style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-2)' }}>{val}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function MUNISealCustomSection() {
+  const images = [
+    { src: '/src/pages/Products/M-UNI-Seal/assets/genre/Canti Seals.png', title: 'Canti Seals' },
+    { src: '/src/pages/Products/M-UNI-Seal/assets/genre/Coil Seals.png', title: 'Coil Seals' },
+    { src: '/src/pages/Products/M-UNI-Seal/assets/genre/Heli Seals.png', title: 'Heli Seals' },
+    { src: '/src/pages/Products/M-UNI-Seal/assets/genre/ID Face Seals.png', title: 'ID Face Seals' },
+    { src: '/src/pages/Products/M-UNI-Seal/assets/genre/OD Face Seals.png', title: 'OD Face Seals' }
+  ];
+
+  return (
+    <div style={{ marginBottom: '3rem' }}>
+      <p style={{ fontSize: '1.05rem', lineHeight: '1.7', color: 'var(--color-text)', marginBottom: '2.5rem' }}>
+        Introducing the M-UNI spring-energized seal: a cutting-edge sealing solution featuring a spring-actuated, pressure-assisted mechanism. Constructed with a PTFE (or alternative polymer) jacket, this seal partially encases a corrosion resistant metal spring energizer. Designed for optimal performance and durability, the M-UNI seal is your go-to choice for reliable sealing in demanding applications.
+      </p>
+      
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: '1.5rem' }}>
+        {images.map((img, i) => (
+          <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+            <div style={{ padding: '1rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <img src={img.src} alt={img.title} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+            </div>
+            <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '0.9rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              {img.title}
+            </span>
           </div>
         ))}
       </div>
