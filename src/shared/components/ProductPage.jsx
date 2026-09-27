@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import SceneWrapper from '../../shared/3d/SceneWrapper';
 import ProductViewer from '../../shared/3d/ProductViewer';
 import EnvironmentLight from '../../shared/3d/EnvironmentLight';
+import InteractiveProximityImage from '../../shared/components/InteractiveProximityImage';
 import './ProductPage.css';
 
 /* ----------------------------------------------------------------
@@ -72,21 +73,25 @@ export function ProductHero({ product }) {
         >
           <div
             className="product-viewer-frame"
-            style={{ '--accent': accent }}
+            style={{ '--accent': accent, background: product.has3D ? undefined : 'transparent' }}
           >
-            <SceneWrapper
-              style={{ height: '100%' }}
-              camera={{ position: [0, 0, 4], fov: 45 }}
-              dpr={[1, 1.5]}
-            >
-              <EnvironmentLight shadowOpacity={0.15} />
-              <ProductViewer
-                imageSrc={heroImageSrc}
-                modelSrc={modelSrc}
-                alt={name}
-                accent={accent}
-              />
-            </SceneWrapper>
+            {product.has3D ? (
+              <SceneWrapper
+                style={{ height: '100%' }}
+                camera={{ position: [0, 0, 4], fov: 45 }}
+                dpr={[1, 1.5]}
+              >
+                <EnvironmentLight shadowOpacity={0.15} />
+                <ProductViewer
+                  imageSrc={heroImageSrc}
+                  modelSrc={modelSrc}
+                  alt={name}
+                  accent={accent}
+                />
+              </SceneWrapper>
+            ) : (
+              <InteractiveProximityImage src={heroImageSrc} alt={name} />
+            )}
             {/* Decorative frame glow */}
             <div className="viewer-glow" style={{ '--glow-color': accent }} />
           </div>
