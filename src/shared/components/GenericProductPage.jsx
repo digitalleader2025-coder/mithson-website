@@ -20,6 +20,9 @@ import imgHeli from '../../pages/Products/M-UNI-Seal/assets/genre/Heli Seals.png
 import imgIDFace from '../../pages/Products/M-UNI-Seal/assets/genre/ID Face Seals.png';
 import imgODFace from '../../pages/Products/M-UNI-Seal/assets/genre/OD Face Seals.png';
 
+import imgHammerUnionSeal from '../../pages/Products/Hammer-Union-Seal/assets/measurements/Seal Measurement.png';
+import imgHammerUnionMeasurement from '../../pages/Products/Hammer-Union-Seal/assets/measurements/measurement.avif';
+
 export default function GenericProductPage({ product }) {
   // Update document title
   useEffect(() => {
@@ -38,6 +41,11 @@ export default function GenericProductPage({ product }) {
             {product.slug === 'm-uni-seal' && (
               <ScrollReveal>
                 <MUNISealCustomSection />
+              </ScrollReveal>
+            )}
+            {product.slug === 'hammer-union-seal' && (
+              <ScrollReveal>
+                <HammerUnionCustomSection />
               </ScrollReveal>
             )}
             <ScrollReveal>
@@ -158,6 +166,31 @@ function MUNISealCustomSection() {
             </span>
           </div>
         ))}
+      </div>
+    </div>
+  );
+}
+
+function HammerUnionCustomSection() {
+  return (
+    <div style={{ marginBottom: '3rem' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'center' }}>
+        
+        {/* First Image (Seal) */}
+        <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', maxWidth: '600px', display: 'flex', justifyContent: 'center' }}>
+          <img src={imgHammerUnionSeal} alt="Hammer Union Seal" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px', objectFit: 'contain' }} />
+        </div>
+        
+        {/* Text */}
+        <p style={{ fontSize: '1.05rem', lineHeight: '1.7', color: 'var(--color-text)', textAlign: 'center', maxWidth: '800px' }}>
+          Hammer union seals are commonly offered in sizes ranging from 1″ to 6″ inner diameter, with dimensions specified by inner diameter (ID), outer diameter (OD), and overall height.
+        </p>
+
+        {/* Second Image (Measurement Data) */}
+        <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', display: 'flex', justifyContent: 'center' }}>
+          <img src={imgHammerUnionMeasurement} alt="Hammer Union Seal Measurement Data" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px', objectFit: 'contain' }} />
+        </div>
+
       </div>
     </div>
   );

@@ -1,4 +1,8 @@
 // Gallery items — exact labels from website-content.txt
+import imgMithPlate from '../pages/Products/MITH-PLATE/assets/mith-plate.png';
+import imgHammerUnion from '../pages/Products/Hammer-Union-Seal/assets/hero.png';
+import imgMUni from '../pages/Products/M-UNI-Seal/assets/hero.jpg';
+
 export const galleryItems = [
   { id: 1, label: 'MSS-MF SELF LUBE', category: 'Bearings' },
   { id: 2, label: 'MSS-MP PRE LUBE', category: 'Bearings' },
@@ -36,7 +40,9 @@ export const galleryItems = [
   { id: 34, label: 'LINE SHAFT BEARING', category: 'Bearings' },
   { id: 35, label: 'PTFE NOZZLES', category: 'Power Grid' },
   { id: 36, label: 'ENCAPSULATED O-RING', category: 'Seals' },
-  { id: 37, label: 'MITH PLATE', category: 'Compressors', image: '/src/pages/Products/MITH-PLATE/assets/mith-plate.png' },
+  { id: 37, label: 'MITH PLATE', category: 'Compressors', image: imgMithPlate },
+  { id: 38, label: 'HAMMER UNION SEAL', category: 'Seals', image: imgHammerUnion },
+  { id: 39, label: 'M-UNI SEAL', category: 'Seals', image: imgMUni },
 ];
 
 export const galleryCategories = ['All', 'Seals', 'Bearings', 'Hydraulic', 'AODD', 'Transmission', 'Power Grid', 'Compressors'];

@@ -3,6 +3,7 @@
 
 import mithPlateImg from '../pages/Products/MITH-PLATE/assets/mith-plate.png';
 import muniSealImg from '../pages/Products/M-UNI-Seal/assets/hero.jpg';
+import hammerUnionImg from '../pages/Products/Hammer-Union-Seal/assets/hero.png';
 
 export const products = [
   {
@@ -52,7 +53,7 @@ export const products = [
     name: 'Hammer Union Seal',
     tagline: 'High-Performance Connection Seal',
     shortDescription:
-      'Elastomeric or PTFE component engineered for the interface between male and female subs — rated for high pressure, extreme temperature and aggressive fluids.',
+      'Hammer union seals are sealing components made from elastomeric or PTFE materials, positioned between the male and female subs to ensure a leak-proof connection. They are designed to withstand high pressures, extreme temperatures, and aggressive fluids, effectively preventing fluid or gas leakage at the joint.',
     highlights: [
       'High pressure rated',
       'Extreme temperature capable',
@@ -60,11 +61,12 @@ export const products = [
       'Elastomeric or PTFE construction',
       'Typical ID range 1–6 inch',
     ],
-    materials: ['Elastomers', 'PTFE'],
+    materials: ['NBR', 'HNBR', 'FKM/VITON', 'BRASS/STAINLESS STEEL REINFORCED ELASTOMER', 'PTFE'],
     applications: ['Hammer Union Connections', 'High-Pressure Fluid Lines'],
     path: '/products/hammer-union-seal',
     folder: 'Hammer-Union-Seal',
     accent: '#42A4FF',
+    image: hammerUnionImg,
   },
   {
     id: 'seals-x-mas-tree',
