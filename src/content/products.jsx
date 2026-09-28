@@ -165,6 +165,7 @@ export const products = [
     path: '/products/seals-valve',
     folder: 'Seals-Valve',
     accent: '#42A4FF',
+    carouselImage: vsImg10,
     image: valveSealsImages,
   },
   {
