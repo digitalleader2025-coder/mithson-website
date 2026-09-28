@@ -27,6 +27,12 @@ const valveSealsImages = [
   vsImg8, vsImg9, vsImg10, vsImg11, vsImg12, vsImg13, vsImg14
 ];
 
+import plvImg1 from '../pages/Products/Plug-Lined-Valve/assets/Image1.png';
+import plvImg2 from '../pages/Products/Plug-Lined-Valve/assets/Image2.png';
+import plvImg3 from '../pages/Products/Plug-Lined-Valve/assets/Image3.png';
+
+const plugLinedImages = [plvImg1, plvImg2, plvImg3];
+
 export const products = [
   {
     id: 'mith-plate',
@@ -173,8 +179,13 @@ export const products = [
     slug: 'plug-lined-valve',
     name: 'Plug & Lined - Valve',
     tagline: 'PTFE Plug-Valve Sleeves and Liners',
-    shortDescription:
-      'High-performance PTFE plug-valve sleeves and liners delivering bubble-tight sealing with low torque and maintenance-free operation.',
+    shortDescription: (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <p>Our precision-engineered <strong>PTFE Plugs and Sleeves</strong> are designed for high-performance <strong>plug valve applications</strong>, delivering reliable <strong>bubble-tight sealing</strong> under demanding process conditions. Manufactured from <strong>Virgin PTFE and reinforced specialty compounds</strong>, they provide <strong>low friction, chemical resistance, and maintenance-free operation</strong>, making them suitable for Oil & Gas, Chemical Processing, and Pharmaceutical industries. Their <strong>bi-directional sealing</strong> and precision-fit design minimize leakage, wear, and media entrapment.</p>
+        <p>Depending on application <strong>pressure and temperature requirements</strong>, we offer <strong>Virgin PTFE</strong> for maximum chemical purity, <strong>Chemically Modified PTFE</strong> for enhanced resistance to deformation, and <strong>Carbon, Glass, or Bronze-Filled PTFE</strong> for high-pressure cycles, improved wear resistance, and abrasive media applications.</p>
+      </div>
+    ),
+    summary: 'High-performance PTFE plugs and sleeves delivering bubble-tight sealing with low torque and maintenance-free operation for plug valve applications.',
     highlights: [
       'Bubble-tight sealing',
       'Low torque operation',
@@ -187,14 +198,15 @@ export const products = [
     materials: [
       'Virgin PTFE',
       'Chemically Modified PTFE',
-      'Carbon-filled PTFE',
-      'Glass-filled PTFE',
-      'Bronze-filled PTFE',
+      'Carbon-Filled PTFE',
+      'Glass-Filled PTFE',
+      'Bronze-Filled PTFE',
     ],
     applications: ['Plug Valves', 'Lined Valves'],
     path: '/products/plug-lined-valve',
     folder: 'Plug-Lined-Valve',
     accent: '#3b7bd4',
+    image: plugLinedImages,
   },
   {
     id: 'uni-lube-bearing',

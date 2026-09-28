@@ -43,6 +43,10 @@ import vsImg12 from '../../pages/Products/Seals-Valve/assets/Spring Energized Se
 import vsImg13a from '../../pages/Products/Seals-Valve/assets/Stem packing API 6A.png';
 import vsImg13b from '../../pages/Products/Seals-Valve/assets/Stem Packing API 6A (unpacked).png';
 
+import plvImg1 from '../../pages/Products/Plug-Lined-Valve/assets/Image1.png';
+import plvImg2 from '../../pages/Products/Plug-Lined-Valve/assets/Image2.png';
+import plvImg3 from '../../pages/Products/Plug-Lined-Valve/assets/Image3.png';
+
 export default function GenericProductPage({ product }) {
   // Update document title
   useEffect(() => {
@@ -76,6 +80,11 @@ export default function GenericProductPage({ product }) {
             {product.slug === 'seals-valve' && (
               <ScrollReveal>
                 <SealsValveCustomSection />
+              </ScrollReveal>
+            )}
+            {product.slug === 'plug-lined-valve' && (
+              <ScrollReveal>
+                <PlugLinedValveCustomSection />
               </ScrollReveal>
             )}
             <ScrollReveal>
@@ -295,6 +304,31 @@ function SealsValveCustomSection() {
           <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
             <CyclingImage images={item.images} title={item.title} interval={10000} />
             <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '0.85rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              {item.title}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PlugLinedValveCustomSection() {
+  const items = [
+    { images: [plvImg1], title: 'PTFE Plug Valve Sleeve' },
+    { images: [plvImg2], title: 'PTFE Bushings and Sleeves' },
+    { images: [plvImg3], title: 'PTFE Valve Liners' },
+  ];
+
+  return (
+    <div style={{ marginBottom: '3rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem' }}>
+        {items.map((item, i) => (
+          <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+            <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <img src={item.images[0]} alt={item.title} style={{ maxWidth: '90%', maxHeight: '90%', objectFit: 'contain' }} />
+            </div>
+            <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '0.95rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               {item.title}
             </span>
           </div>
