@@ -105,7 +105,9 @@ export default function ProductCarousel() {
                     ))}
                   </div>
 
-                  <p className="carousel-desc">{currentProduct.shortDescription}</p>
+                  <div className="carousel-desc">
+                    {currentProduct.summary || currentProduct.shortDescription}
+                  </div>
                   
                   <Link to={currentProduct.path} className="btn btn-primary carousel-view-btn">
                     View Product

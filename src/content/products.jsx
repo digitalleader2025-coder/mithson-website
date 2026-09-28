@@ -35,6 +35,7 @@ export const products = [
     tagline: 'MSS Valve Plates for Reciprocating Compressors',
     shortDescription:
       'High-performance valve plates engineered for reciprocating compressors — 70% lighter than steel with superior micro-sealing capability.',
+    summary: 'High-performance valve plates engineered for reciprocating compressors — 70% lighter than steel with superior micro-sealing capability.',
     highlights: [
       '70% lighter than steel',
       'Micro-sealing precision',
@@ -56,6 +57,7 @@ export const products = [
     tagline: 'Spring-Energized Lip Seal',
     shortDescription:
       'Introducing the M-UNI spring-energized seal: a cutting-edge sealing solution featuring a spring-actuated, pressure-assisted mechanism. Constructed with a PTFE (or alternative polymer) jacket, this seal partially encases a corrosion resistant metal spring energizer. Designed for optimal performance and durability, the M-UNI seal is your go-to choice for reliable sealing in demanding applications.',
+    summary: 'A cutting-edge spring-actuated, pressure-assisted seal featuring a PTFE jacket and corrosion-resistant metal spring for optimal durability in demanding applications.',
     highlights: [
       'Pressure-assisted sealing',
       'PTFE polymer jacket',
@@ -76,6 +78,7 @@ export const products = [
     tagline: 'High-Performance Connection Seal',
     shortDescription:
       'Hammer union seals are sealing components made from elastomeric or PTFE materials, positioned between the male and female subs to ensure a leak-proof connection. They are designed to withstand high pressures, extreme temperatures, and aggressive fluids, effectively preventing fluid or gas leakage at the joint.',
+    summary: 'High-performance elastomeric or PTFE sealing components designed to withstand extreme pressures and temperatures, ensuring leak-proof hammer union connections.',
     highlights: [
       'High pressure rated',
       'Extreme temperature capable',
@@ -101,6 +104,7 @@ export const products = [
         <p><strong>Gate Valve Stem Packing</strong> prevents leakage around the valve stem, ensuring reliable operation and sealing integrity. <strong>PTFE materials</strong> offer <strong>low friction, excellent temperature resistance, chemical resistance, and corrosion resistance</strong>. <strong>PTFE Spring-Energized Seals</strong> also provide <strong>unlimited shelf life</strong>, supporting long-term storage without compromising performance.</p>
       </div>
     ),
+    summary: 'High-performance sealing solutions for Christmas Tree valve applications, meeting API 6A (Appendix F) requirements. Features PTFE jackets and corrosion-resistant springs for extreme conditions.',
     highlights: [
       'API 6A Appendix F reference',
       'Low friction PTFE jacket',
@@ -142,6 +146,7 @@ export const products = [
         </ol>
       </div>
     ),
+    summary: 'Comprehensive range of high-performing Thermoplastic (PTFE/PEEK) sealing solutions for Gate, Ball, Globe, Plug, Butterfly, and Diaphragm valves.',
     highlights: [
       'Gate / Ball / Globe / Plug / Butterfly / Diaphragm valves',
       'PTFE and PEEK materials',
