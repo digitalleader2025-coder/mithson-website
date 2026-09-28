@@ -8,17 +8,22 @@
   left: 0;
   width: 100%;
   z-index: var(--z-nav);
-  transition: padding var(--duration-base), background var(--duration-base), box-shadow var(--duration-base);
+  transition: transform 0.3s ease-in-out, padding var(--duration-base), background var(--duration-base), box-shadow var(--duration-base);
   padding: var(--space-2) 0; /* Reduced from space-4 for compact header */
+  transform: translateY(0);
 }
 
 .navbar--scrolled {
   padding: var(--space-2) 0;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 4px 30px rgba(3, 54, 163, 0.08); /* soft shadow */
   border-bottom: 1px solid rgba(66, 164, 255, 0.15); /* subtle blue border */
+}
+
+.navbar--hidden {
+  transform: translateY(-100%);
 }
 
 .navbar-inner {
@@ -90,16 +95,16 @@
   color: var(--color-blue-accent);
 }
 
-/* --- Dropdown (Dark theme as requested) --- */
+/* --- Dropdown (White and Blue theme) --- */
 .dropdown {
   position: absolute;
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(15, 23, 42, 0.95); /* Black/very dark slate for panel */
+  background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(3, 54, 163, 0.08);
   border-radius: var(--radius-xl);
   padding: var(--space-4);
   min-width: 240px;
@@ -141,14 +146,14 @@
   padding: var(--space-2) var(--space-3);
   font-size: var(--text-sm);
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.7); /* Light text on dark bg */
+  color: var(--color-text); /* Dark text on white bg */
   border-radius: var(--radius-md);
   transition: all var(--duration-fast);
 }
 
 .dropdown-link:hover {
-  color: var(--color-white);
-  background: rgba(66, 164, 255, 0.15); /* Accent hover */
+  color: var(--color-blue-accent);
+  background: rgba(3, 54, 163, 0.05); /* Light blue hover background */
 }
 
 /* --- CTA --- */

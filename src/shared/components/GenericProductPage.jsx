@@ -183,22 +183,22 @@ function MUNISealCustomSection() {
 
 function HammerUnionCustomSection() {
   return (
-    <div style={{ marginBottom: '3rem' }}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'center' }}>
+    <div style={{ marginBottom: '2rem' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
         
         {/* First Image (Seal) */}
-        <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', maxWidth: '600px', display: 'flex', justifyContent: 'center' }}>
-          <img src={imgHammerUnionSeal} alt="Hammer Union Seal" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px', objectFit: 'contain' }} />
+        <div style={{ padding: '0.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', maxWidth: '350px', display: 'flex', justifyContent: 'center' }}>
+          <img src={imgHammerUnionSeal} alt="Hammer Union Seal" style={{ maxWidth: '100%', maxHeight: '200px', height: 'auto', borderRadius: '8px', objectFit: 'contain' }} />
         </div>
         
         {/* Text */}
-        <p style={{ fontSize: '1.05rem', lineHeight: '1.7', color: 'var(--color-text)', textAlign: 'center', maxWidth: '800px' }}>
+        <p style={{ fontSize: '0.95rem', lineHeight: '1.5', color: 'var(--color-text)', textAlign: 'center', maxWidth: '600px', margin: '0' }}>
           Hammer union seals are commonly offered in sizes ranging from 1″ to 6″ inner diameter, with dimensions specified by inner diameter (ID), outer diameter (OD), and overall height.
         </p>
 
         {/* Second Image (Measurement Data) */}
-        <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', display: 'flex', justifyContent: 'center' }}>
-          <img src={imgHammerUnionMeasurement} alt="Hammer Union Seal Measurement Data" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px', objectFit: 'contain' }} />
+        <div style={{ padding: '0.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', maxWidth: '500px', display: 'flex', justifyContent: 'center' }}>
+          <img src={imgHammerUnionMeasurement} alt="Hammer Union Seal Measurement Data" style={{ maxWidth: '100%', maxHeight: '250px', height: 'auto', borderRadius: '8px', objectFit: 'contain' }} />
         </div>
 
       </div>

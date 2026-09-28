@@ -50,7 +50,7 @@ function MegaMenuItem({ item, onClose }) {
 
   const handleMouseLeave = () => {
     if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
-    timerRef.current = setTimeout(() => setOpen(false), 120);
+    timerRef.current = setTimeout(() => setOpen(false), 10);
   };
 
   const handleKeyDown = (e) => {
@@ -144,6 +144,7 @@ function MegaMenuItem({ item, onClose }) {
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -158,10 +159,21 @@ export default function Navbar() {
 
   useEffect(() => {
     let ticking = false;
+    let lastScrollY = window.scrollY;
+    
     const handler = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          setScrolled(window.scrollY > 20);
+          const currentScrollY = window.scrollY;
+          setScrolled(currentScrollY > 20);
+          
+          if (currentScrollY > 80 && currentScrollY > lastScrollY) {
+            setHidden(true); // scrolling down
+          } else if (currentScrollY < lastScrollY || currentScrollY <= 80) {
+            setHidden(false); // scrolling up
+          }
+          
+          lastScrollY = currentScrollY;
           ticking = false;
         });
         ticking = true;
@@ -181,7 +193,7 @@ export default function Navbar() {
 
   return (
     <div style={{ pointerEvents: isTransitioning ? 'none' : 'auto' }}>
-      <header className={`navbar${scrolled ? ' navbar--scrolled' : ''}${mobileOpen ? ' navbar--open' : ''}`} role="banner">
+      <header className={`navbar${scrolled ? ' navbar--scrolled' : ''}${mobileOpen ? ' navbar--open' : ''}${hidden && !mobileOpen ? ' navbar--hidden' : ''}`} role="banner">
         <div className="navbar-inner">
           {/* Logo */}
           <Link to="/" className="navbar-logo" aria-label="Mithson Sealing Solutions — Home" onClick={closeMobile}>
