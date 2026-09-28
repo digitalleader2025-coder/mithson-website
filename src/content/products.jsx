@@ -120,8 +120,28 @@ export const products = [
     slug: 'seals-valve',
     name: 'Seals - Valve',
     tagline: 'Complete Valve Sealing Solutions',
-    shortDescription:
-      'Comprehensive range of seals for Gate, Ball, Globe, Plug, Butterfly and Diaphragm valves — PTFE and PEEK materials.',
+    shortDescription: (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <p>We offer a full range of sealing solutions which are made from high performing Thermoplastic such as PTFE and PEEK for Gate Valve, Ball Valve, Globe Valve, Plug Valve, Butterfly Valve and Diaphragm Valve.</p>
+        <ol style={{ paddingLeft: '1.5rem', lineHeight: '1.6', fontSize: '0.95rem' }}>
+          <li>SPRING ENERGIZED LIP SEAL</li>
+          <li>O-RING</li>
+          <li>STEM PACKING - API 6A</li>
+          <li>PTFE CHEVRON PACKING</li>
+          <li>PTFE CARBON GRAPHITE CHEVRON PACKING</li>
+          <li>PTFE CARBON GRAPHITE SEAT</li>
+          <li>PTFE CAVITY SEAT</li>
+          <li>PTFE SEAT</li>
+          <li>PTFE PLUG</li>
+          <li>PTFE SLEEVE</li>
+          <li>PEEK SEAT RING</li>
+          <li>PEEK INSERT METAL SEAT</li>
+          <li>DEVLON SEAT RING</li>
+          <li>DEVLON INSERT METAL SEAT</li>
+          <li>PTFE LINED</li>
+        </ol>
+      </div>
+    ),
     highlights: [
       'Gate / Ball / Globe / Plug / Butterfly / Diaphragm valves',
       'PTFE and PEEK materials',
