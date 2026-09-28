@@ -7,6 +7,26 @@ import muniSealImg from '../pages/Products/M-UNI-Seal/assets/hero.jpg';
 import hammerUnionImg from '../pages/Products/Hammer-Union-Seal/assets/hero.png';
 import xmasTreeImg from '../pages/Products/Seals-X-Mas-Tree/assets/hero.png';
 
+import vsImg1 from '../pages/Products/Seals-Valve/assets/Devlon Insert Metal Seat.png';
+import vsImg2 from '../pages/Products/Seals-Valve/assets/Devlon Seat Ring (2).png';
+import vsImg3 from '../pages/Products/Seals-Valve/assets/Devlon Seat Ring.png';
+import vsImg4 from '../pages/Products/Seals-Valve/assets/Elastomer O-Ring.png';
+import vsImg5 from '../pages/Products/Seals-Valve/assets/PTFE Carbon Graphite Chevron Packing.png';
+import vsImg6 from '../pages/Products/Seals-Valve/assets/PTFE Carbon Graphite Seat.png';
+import vsImg7 from '../pages/Products/Seals-Valve/assets/PTFE Cavity Seat.png';
+import vsImg8 from '../pages/Products/Seals-Valve/assets/PTFE Chevron Packing.png';
+import vsImg9 from '../pages/Products/Seals-Valve/assets/PTFE Seat.png';
+import vsImg10 from '../pages/Products/Seals-Valve/assets/Peek Insert Metal Seat.png';
+import vsImg11 from '../pages/Products/Seals-Valve/assets/Peek Seat Ring.png';
+import vsImg12 from '../pages/Products/Seals-Valve/assets/Spring Energized Seals.png';
+import vsImg13 from '../pages/Products/Seals-Valve/assets/Stem Packing API 6A (unpacked).png';
+import vsImg14 from '../pages/Products/Seals-Valve/assets/Stem packing API 6A.png';
+
+const valveSealsImages = [
+  vsImg1, vsImg2, vsImg3, vsImg4, vsImg5, vsImg6, vsImg7, 
+  vsImg8, vsImg9, vsImg10, vsImg11, vsImg12, vsImg13, vsImg14
+];
+
 export const products = [
   {
     id: 'mith-plate',
@@ -120,6 +140,7 @@ export const products = [
     path: '/products/seals-valve',
     folder: 'Seals-Valve',
     accent: '#42A4FF',
+    image: valveSealsImages,
   },
   {
     id: 'plug-lined-valve',

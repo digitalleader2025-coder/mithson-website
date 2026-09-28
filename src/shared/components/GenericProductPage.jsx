@@ -2,7 +2,7 @@
  * Generic product page template.
  * Receives product data from data.js in each product folder.
  */
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import ScrollReveal from '../../shared/components/ScrollReveal';
 import {
   ProductHero,
@@ -27,6 +27,21 @@ import imgXmasElastomer from '../../pages/Products/Seals-X-Mas-Tree/assets/genre
 import imgXmasSeat from '../../pages/Products/Seals-X-Mas-Tree/assets/genre/SEAT Seal.png';
 import imgXmasSpring from '../../pages/Products/Seals-X-Mas-Tree/assets/genre/Spring Energized Seals.png';
 import imgXmasStem from '../../pages/Products/Seals-X-Mas-Tree/assets/genre/Stem Packing.png';
+
+import vsImg1 from '../../pages/Products/Seals-Valve/assets/Devlon Insert Metal Seat.png';
+import vsImg2a from '../../pages/Products/Seals-Valve/assets/Devlon Seat Ring.png';
+import vsImg2b from '../../pages/Products/Seals-Valve/assets/Devlon Seat Ring (2).png';
+import vsImg4 from '../../pages/Products/Seals-Valve/assets/Elastomer O-Ring.png';
+import vsImg5 from '../../pages/Products/Seals-Valve/assets/PTFE Carbon Graphite Chevron Packing.png';
+import vsImg6 from '../../pages/Products/Seals-Valve/assets/PTFE Carbon Graphite Seat.png';
+import vsImg7 from '../../pages/Products/Seals-Valve/assets/PTFE Cavity Seat.png';
+import vsImg8 from '../../pages/Products/Seals-Valve/assets/PTFE Chevron Packing.png';
+import vsImg9 from '../../pages/Products/Seals-Valve/assets/PTFE Seat.png';
+import vsImg10 from '../../pages/Products/Seals-Valve/assets/Peek Insert Metal Seat.png';
+import vsImg11 from '../../pages/Products/Seals-Valve/assets/Peek Seat Ring.png';
+import vsImg12 from '../../pages/Products/Seals-Valve/assets/Spring Energized Seals.png';
+import vsImg13a from '../../pages/Products/Seals-Valve/assets/Stem packing API 6A.png';
+import vsImg13b from '../../pages/Products/Seals-Valve/assets/Stem Packing API 6A (unpacked).png';
 
 export default function GenericProductPage({ product }) {
   // Update document title
@@ -56,6 +71,11 @@ export default function GenericProductPage({ product }) {
             {product.slug === 'seals-x-mas-tree' && (
               <ScrollReveal>
                 <XMasTreeCustomSection />
+              </ScrollReveal>
+            )}
+            {product.slug === 'seals-valve' && (
+              <ScrollReveal>
+                <SealsValveCustomSection />
               </ScrollReveal>
             )}
             <ScrollReveal>
@@ -224,6 +244,58 @@ function XMasTreeCustomSection() {
             </div>
             <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '0.9rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               {img.title}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function CyclingImage({ images, interval = 10000, title }) {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const t = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, interval);
+    return () => clearInterval(t);
+  }, [images.length, interval]);
+
+  return (
+    <div style={{ padding: '1rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
+      {images.map((src, i) => (
+        <img key={i} src={src} alt={title} style={{ position: 'absolute', maxWidth: '90%', maxHeight: '90%', objectFit: 'contain', opacity: i === index ? 1 : 0, transition: 'opacity 0.8s ease-in-out' }} />
+      ))}
+    </div>
+  );
+}
+
+function SealsValveCustomSection() {
+  const items = [
+    { images: [vsImg1], title: 'Devlon Insert Metal Seat' },
+    { images: [vsImg2a, vsImg2b], title: 'Devlon Seat Ring' },
+    { images: [vsImg4], title: 'Elastomer O-Ring' },
+    { images: [vsImg5], title: 'PTFE Carbon Graphite Chevron Packing' },
+    { images: [vsImg6], title: 'PTFE Carbon Graphite Seat' },
+    { images: [vsImg7], title: 'PTFE Cavity Seat' },
+    { images: [vsImg8], title: 'PTFE Chevron Packing' },
+    { images: [vsImg9], title: 'PTFE Seat' },
+    { images: [vsImg10], title: 'Peek Insert Metal Seat' },
+    { images: [vsImg11], title: 'Peek Seat Ring' },
+    { images: [vsImg12], title: 'Spring Energized Seals' },
+    { images: [vsImg13a, vsImg13b], title: 'Stem Packing API 6A' },
+  ];
+
+  return (
+    <div style={{ marginBottom: '3rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1.5rem' }}>
+        {items.map((item, i) => (
+          <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+            <CyclingImage images={item.images} title={item.title} interval={10000} />
+            <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '0.85rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              {item.title}
             </span>
           </div>
         ))}

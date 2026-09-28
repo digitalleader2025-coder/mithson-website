@@ -3,7 +3,18 @@ import { useRef, useState, useEffect } from 'react';
 export default function InteractiveProximityImage({ src, alt }) {
   const containerRef = useRef(null);
   const [proximity, setProximity] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
   
+  const images = Array.isArray(src) ? src : [src];
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   useEffect(() => {
     let ticking = false;
     
@@ -83,22 +94,28 @@ export default function InteractiveProximityImage({ src, alt }) {
           zIndex: 0
         }}
       />
-      {/* Image in front */}
-      <img 
-        src={src} 
-        alt={alt}
-        style={{
-          position: 'relative',
-          zIndex: 1,
-          width: '90%',
-          height: 'auto',
-          objectFit: 'contain',
-          transform: `scale(${scale}) translateZ(${proximity * 30}px)`,
-          transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-          filter: 'drop-shadow(0 15px 30px rgba(0,0,0,0.1))',
-          pointerEvents: 'none' // Let container capture mouse seamlessly
-        }}
-      />
+      {/* Image(s) in front */}
+      <div style={{ position: 'relative', width: '90%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        {images.map((imgSrc, index) => (
+          <img 
+            key={index}
+            src={imgSrc} 
+            alt={alt}
+            style={{
+              position: 'absolute',
+              zIndex: 1,
+              width: '100%',
+              height: '100%',
+              objectFit: 'contain',
+              opacity: index === currentIndex ? 1 : 0,
+              transform: `scale(${scale}) translateZ(${proximity * 30}px)`,
+              transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease-in-out',
+              filter: 'drop-shadow(0 15px 30px rgba(0,0,0,0.1))',
+              pointerEvents: 'none' // Let container capture mouse seamlessly
+            }}
+          />
+        ))}
+      </div>
     </div>
   );
 }
