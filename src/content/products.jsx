@@ -317,8 +317,12 @@ export const products = [
     slug: 'washers-transmission',
     name: 'Washers - Transmission',
     tagline: 'Carbon-Filled PEEK Thrust & Split-Lock Washers',
-    shortDescription:
-      'Heavy-duty PEEK thrust washers and split-lock washers for high-torque automatic transmissions — continuous operation to 250°C.',
+    shortDescription: (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <p><strong>Mithson Carbon-Filled PEEK Thrust Washers</strong> are engineered for <strong>heavy-duty, high-torque automatic transmissions</strong>, providing exceptional durability, low friction, and reliable performance under extreme operating conditions. Reinforced with high-modulus carbon fibers, they withstand <strong>high axial loads</strong>, improve thermal conductivity, and maintain structural integrity at continuous temperatures up to <strong>250°C (482°F)</strong>.</p>
+        <p>With exceptional <strong>Pressure-Velocity (PV) performance</strong>, these washers are ideal for <strong>planetary gear carriers, output shaft thrust positions, and high-pressure pump wear plates</strong>. Their <strong>self-lubricating properties</strong> reduce friction, prevent metal-to-metal galling, minimize power loss, and provide dependable performance during cold starts and high-torque operating conditions.</p>
+      </div>
+    ),
     highlights: [
       'Continuous temperature to 250°C / 482°F',
       'Thermal management',
