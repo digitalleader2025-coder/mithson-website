@@ -511,6 +511,18 @@ function UniLubeBearingCustomSection() {
         MSS-MITHLON bushings, made from unique thermoplastic material give long life and low friction which traditional metal-based bushings are struggling to provide. It is available in both standard and custom sizes, offering material advantages.
       </p>
       
+      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>CHARACTERISTICS</p>
+      <ul style={{ paddingLeft: '1.2rem', marginBottom: '1.5rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.4rem', lineHeight: '1.4', textTransform: 'capitalize' }}>
+        <li>No grease</li>
+        <li>Corrosion resistance</li>
+        <li>Low friction</li>
+        <li>Less noise</li>
+        <li>Low weight</li>
+        <li>Shaft friendly</li>
+        <li>No delamination</li>
+        <li>Eco friendly</li>
+      </ul>
+      
       <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>INDUSTRY & APPLICATIONS</p>
       <p style={{ lineHeight: '1.4' }}>
         Mithlon specifically recommended for moist and underwater applications. These include the pump and marine industry, where regular maintenance is not practically feasible or cost-effective.
