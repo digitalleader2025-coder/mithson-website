@@ -35,6 +35,13 @@ const plugLinedImages = [plvImg1, plvImg2, plvImg3];
 
 import uniLubeImg from '../pages/Products/UNI-LUBE-Bearing/assets/Main Image.png';
 
+import shImg1 from '../pages/Products/Seals-Hydraulic/assets/Wear Rings.png';
+import shImg2 from '../pages/Products/Seals-Hydraulic/assets/Piston Seals.png';
+import shImg3 from '../pages/Products/Seals-Hydraulic/assets/Wiper Seals.png';
+import shImg4 from '../pages/Products/Seals-Hydraulic/assets/Rod Seals.png';
+
+const sealsHydraulicImages = [shImg1, shImg2, shImg3, shImg4];
+
 export const products = [
   {
     id: 'mith-plate',
@@ -250,7 +257,8 @@ export const products = [
     name: 'Seals - Hydraulic',
     tagline: 'Hydraulic Cylinder Seals for Extreme Environments',
     shortDescription:
-      'Complete hydraulic sealing solutions including wear rings, piston seals, wiper seals and rod seals for demanding hydraulic applications.',
+      'Hydraulic cylinder systems are sealed to withstand extreme operating environments which necessitate high-performance hydraulic seals. We at Mithson designs with high-performance design polymer materials that provide outstanding mechanical properties and excellent chemical compatibility with various hydraulic fluids.',
+    summary: 'High-performance polymer hydraulic seals designed for extreme operating environments, offering outstanding mechanical properties and excellent chemical compatibility.',
     highlights: [
       'Wear rings prevent metal-to-metal contact',
       'Piston seals — dynamic pressure barrier',
@@ -267,6 +275,8 @@ export const products = [
     path: '/products/seals-hydraulic',
     folder: 'Seals-Hydraulic',
     accent: '#3b7bd4',
+    carouselImage: sealsHydraulicImages,
+    image: sealsHydraulicImages,
   },
   {
     id: 'diaphragm-aodd',
