@@ -291,8 +291,12 @@ export const products = [
     slug: 'diaphragm-aodd',
     name: 'Diaphragm - AODD',
     tagline: 'Air Operated Double Diaphragm Pump Components',
-    shortDescription:
-      'PTFE and fluoropolymer components for AODD pumps — delivering durability, chemical resistance, low friction and reduced wear.',
+    shortDescription: (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <p>We offer a full range of solutions for Air Operated Double Diaphragm Pumps - Diaphragm, Pilot Shaft, PTFE Ball, PTFE Valve, O-Ring, and Seat.</p>
+        <p>These components are designed to offer high durability in extreme environments and are made from high-performance Fluoropolymer materials (PTFE). These components are chemical resistant, provide low friction, and reduce wear. They are compatible to work with a wide range of chemicals that are designed for low- and high-pressure environments.</p>
+      </div>
+    ),
     highlights: [
       'PTFE/fluoropolymer durability',
       'Chemical resistance',
