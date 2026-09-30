@@ -302,7 +302,7 @@ export const products = [
     folder: 'Seals-Hydraulic',
     accent: '#3b7bd4',
     carouselImage: sealsHydraulicImages,
-    image: sealsHydraulicImages,
+    image: shImg3,
   },
   {
     id: 'diaphragm-aodd',
@@ -329,7 +329,7 @@ export const products = [
     folder: 'Diaphragm-AODD',
     accent: '#42A4FF',
     carouselImage: diaphragmAODDImages,
-    image: diaphragmAODDImages,
+    image: diaImg2,
   },
   {
     id: 'washers-transmission',
@@ -360,7 +360,7 @@ export const products = [
     folder: 'Washers-Transmission',
     accent: '#3b7bd4',
     carouselImage: washersTransmissionImages,
-    image: washersTransmissionImages,
+    image: wtImg2,
   },
   {
     id: 'nozzles-power-grid',
@@ -388,7 +388,7 @@ export const products = [
     folder: 'Nozzles-Power-Grid',
     accent: '#42A4FF',
     carouselImage: nozzlesPowerGridImages,
-    image: nozzlesPowerGridImages,
+    image: npImg1,
   },
   {
     id: 'encapsulated-o-ring',
