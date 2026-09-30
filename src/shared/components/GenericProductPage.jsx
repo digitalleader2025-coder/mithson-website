@@ -373,7 +373,7 @@ function CarouselImage({ images, interval = 5000, title }) {
   const hasMultiple = images.length > 1;
 
   return (
-    <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
+    <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', overflow: 'visible' }}>
       {images.map((src, i) => (
         <img key={i} src={src} alt={title} style={{ position: 'absolute', maxWidth: '80%', maxHeight: '80%', objectFit: 'contain', opacity: i === index ? 1 : 0, transition: 'opacity 0.8s ease-in-out' }} />
       ))}
@@ -382,14 +382,14 @@ function CarouselImage({ images, interval = 5000, title }) {
           <button 
             onClick={prevSlide}
             aria-label="Previous image"
-            style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255, 255, 255, 0.9)', border: '1px solid #eee', borderRadius: '50%', width: '36px', height: '36px', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', zIndex: 10, color: 'var(--color-blue-accent)' }}
+            style={{ position: 'absolute', left: '-15px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255, 255, 255, 0.95)', border: '1px solid #eee', borderRadius: '50%', width: '36px', height: '36px', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer', boxShadow: '0 4px 12px rgba(0,0,0,0.15)', zIndex: 10, color: 'var(--color-blue-accent)' }}
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
           </button>
           <button 
             onClick={nextSlide}
             aria-label="Next image"
-            style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255, 255, 255, 0.9)', border: '1px solid #eee', borderRadius: '50%', width: '36px', height: '36px', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', zIndex: 10, color: 'var(--color-blue-accent)' }}
+            style={{ position: 'absolute', right: '-15px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255, 255, 255, 0.95)', border: '1px solid #eee', borderRadius: '50%', width: '36px', height: '36px', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer', boxShadow: '0 4px 12px rgba(0,0,0,0.15)', zIndex: 10, color: 'var(--color-blue-accent)' }}
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </button>
@@ -400,8 +400,36 @@ function CarouselImage({ images, interval = 5000, title }) {
 }
 
 function UniLubeBearingCustomSection() {
+  const mssMfDetails = (
+    <div style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', textAlign: 'left', width: '100%', marginTop: '0.5rem' }}>
+      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)', fontSize: '0.85rem' }}>
+        METAL-POLYMER SELF-LUBRICATING<br />LONG LIFE HASSLE FREE PERFORMANCE
+      </p>
+      <p style={{ marginBottom: '1.5rem', lineHeight: '1.5' }}>
+        MSS-MF series are the highest performance self-lubricating bearings. Its performance is unmatched by any other self-lubricating bearing material and has the widest application range.
+      </p>
+      
+      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>CHARACTERISTICS</p>
+      <ul style={{ paddingLeft: '1.2rem', marginBottom: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.4rem', lineHeight: '1.4' }}>
+        <li>Dry Lubrication and maintenance free.</li>
+        <li>Long life and frictionless</li>
+        <li>Low vibration and low noise</li>
+        <li>Abrasion resistance in high load and low speed condition.</li>
+        <li>Provides excellent dimensional stability and heat conductivity</li>
+      </ul>
+      
+      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>INDUSTRY & APPLICATIONS</p>
+      <ul style={{ paddingLeft: '1.2rem', display: 'flex', flexDirection: 'column', gap: '0.4rem', lineHeight: '1.4' }}>
+        <li><strong>Hydraulics and Valves:</strong> Pumps – Centrifugal, Water axial piston, Hydraulic actuators, Ball, Butterfly and check valves</li>
+        <li><strong>Textiles Equipment:</strong> Spinning machinery, Weaving machinery</li>
+        <li><strong>Agricultural Equipment:</strong> Tractors, tillers, Harvesters</li>
+        <li><strong>Automotive:</strong> Earthmovers, Trucks</li>
+      </ul>
+    </div>
+  );
+
   const items = [
-    { images: [ubImg1, ubImg2], title: 'MSS-MF Self Lube' },
+    { images: [ubImg1, ubImg2], title: 'MSS-MF Self Lube', details: mssMfDetails },
     { images: [ubImg3, ubImg4], title: 'MSS-MP Pre Lube' },
     { images: [ubImg5], title: 'MSS-BIM Bi-Metal' },
     { images: [ubImg6], title: 'MSS-MB Solid Bush' },
@@ -410,13 +438,14 @@ function UniLubeBearingCustomSection() {
 
   return (
     <div style={{ marginBottom: '3rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem', alignItems: 'start' }}>
         {items.map((item, i) => (
           <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
             <CarouselImage images={item.images} title={item.title} interval={5000} />
-            <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '0.95rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '1.1rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               {item.title}
             </span>
+            {item.details && item.details}
           </div>
         ))}
       </div>
