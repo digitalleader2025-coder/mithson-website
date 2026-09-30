@@ -6,7 +6,6 @@ import mithPlateImg from '../pages/Products/MITH-PLATE/assets/mith-plate.png';
 import muniSealImg from '../pages/Products/M-UNI-Seal/assets/hero.jpg';
 import hammerUnionImg from '../pages/Products/Hammer-Union-Seal/assets/hero.png';
 import xmasTreeImg from '../pages/Products/Seals-X-Mas-Tree/assets/hero.png';
-import uniLubeImg from '../../images/Uni Lube Bearing/Main Image.png';
 
 import vsImg1 from '../pages/Products/Seals-Valve/assets/Devlon Insert Metal Seat.png';
 import vsImg2 from '../pages/Products/Seals-Valve/assets/Devlon Seat Ring (2).png';
