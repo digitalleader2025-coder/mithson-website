@@ -301,7 +301,7 @@ export const products = [
     path: '/products/seals-hydraulic',
     folder: 'Seals-Hydraulic',
     accent: '#3b7bd4',
-    carouselImage: sealsHydraulicImages,
+    carouselImage: shImg3,
     image: shImg3,
   },
   {
@@ -328,7 +328,7 @@ export const products = [
     path: '/products/diaphragm-aodd',
     folder: 'Diaphragm-AODD',
     accent: '#42A4FF',
-    carouselImage: diaphragmAODDImages,
+    carouselImage: diaImg2,
     image: diaImg2,
   },
   {
@@ -359,7 +359,7 @@ export const products = [
     path: '/products/washers-transmission',
     folder: 'Washers-Transmission',
     accent: '#3b7bd4',
-    carouselImage: washersTransmissionImages,
+    carouselImage: wtImg2,
     image: wtImg2,
   },
   {
@@ -387,7 +387,7 @@ export const products = [
     path: '/products/nozzles-power-grid',
     folder: 'Nozzles-Power-Grid',
     accent: '#42A4FF',
-    carouselImage: nozzlesPowerGridImages,
+    carouselImage: npImg1,
     image: npImg1,
   },
   {
