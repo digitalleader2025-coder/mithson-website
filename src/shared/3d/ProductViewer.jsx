@@ -42,7 +42,7 @@ function ImagePlane({ src, alt, accent }) {
   // Use Html to show image in 3D space (parallax tilt applied by parent)
   return (
     <Html center style={{ width: 320, height: 320, pointerEvents: 'none' }}>
-      <img
+      <img loading="lazy" 
         src={src}
         alt={alt}
         style={{

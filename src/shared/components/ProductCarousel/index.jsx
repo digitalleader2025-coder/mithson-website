@@ -87,7 +87,7 @@ export default function ProductCarousel() {
               >
                 <div className="carousel-visual">
                   {currentProduct.image || currentProduct.carouselImage ? (
-                    <img src={currentProduct.carouselImage || (Array.isArray(currentProduct.image) ? currentProduct.image[0] : currentProduct.image)} alt={currentProduct.name} className="carousel-image" />
+                    <img loading="lazy" src={currentProduct.carouselImage || (Array.isArray(currentProduct.image) ? currentProduct.image[0] : currentProduct.image)} alt={currentProduct.name} className="carousel-image" />
                   ) : (
                     <div className="carousel-placeholder">
                       <div className="gallery-card-shape lightbox-shape" />

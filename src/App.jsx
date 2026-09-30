@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './shared/components/Navbar';
 import Footer from './shared/components/Footer';
 import PageTransition from './shared/components/PageTransition';
+import Lenis from 'lenis';
 
 // Lazy loaded pages
 const Home = lazy(() => import('./pages/Home'));
@@ -58,6 +59,26 @@ function ScrollToTop() {
 
 export default function App() {
   const location = useLocation();
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
+      smoothTouch: false,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
 
   return (
     <>

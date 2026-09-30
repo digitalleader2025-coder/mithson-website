@@ -1,10 +1,11 @@
+
 import { useRef, useState, useEffect } from 'react';
 
 export default function InteractiveProximityImage({ src, alt }) {
   const containerRef = useRef(null);
   const [proximity, setProximity] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
-  
+
   const images = Array.isArray(src) ? src : [src];
 
   useEffect(() => {
@@ -17,7 +18,7 @@ export default function InteractiveProximityImage({ src, alt }) {
 
   useEffect(() => {
     let ticking = false;
-    
+
     const handleMouseMove = (e) => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
@@ -25,16 +26,16 @@ export default function InteractiveProximityImage({ src, alt }) {
             ticking = false;
             return;
           }
-          
+
           const rect = containerRef.current.getBoundingClientRect();
           const centerX = rect.left + rect.width / 2;
           const centerY = rect.top + rect.height / 2;
-          
+
           const distance = Math.sqrt(
-            Math.pow(e.clientX - centerX, 2) + 
+            Math.pow(e.clientX - centerX, 2) +
             Math.pow(e.clientY - centerY, 2)
           );
-          
+
           const maxDistance = 350; // Activation radius in pixels
           if (distance < maxDistance) {
             // Closer = higher value (0 to 1)
@@ -46,13 +47,13 @@ export default function InteractiveProximityImage({ src, alt }) {
           } else {
             setProximity(0);
           }
-          
+
           ticking = false;
         });
         ticking = true;
       }
     };
-    
+
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
@@ -65,15 +66,15 @@ export default function InteractiveProximityImage({ src, alt }) {
   const glowScale = 1 + (proximity * 0.2);
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className="interactive-image-container"
-      style={{ 
-        position: 'relative', 
-        width: '100%', 
-        height: '100%', 
-        display: 'flex', 
-        alignItems: 'center', 
+      style={{
+        position: 'relative',
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
         justifyContent: 'center',
         perspective: '1200px',
         padding: '2rem', // Prevent collision when scaling
@@ -81,7 +82,7 @@ export default function InteractiveProximityImage({ src, alt }) {
       }}
     >
       {/* Glow behind */}
-      <div 
+      <div
         style={{
           position: 'absolute',
           width: '100%',
@@ -97,9 +98,8 @@ export default function InteractiveProximityImage({ src, alt }) {
       {/* Image(s) in front */}
       <div style={{ position: 'relative', width: '90%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         {images.map((imgSrc, index) => (
-          <img 
-            key={index}
-            src={imgSrc} 
+          <img loading="lazy"             key={index}
+            src={imgSrc}
             alt={alt}
             style={{
               position: 'absolute',

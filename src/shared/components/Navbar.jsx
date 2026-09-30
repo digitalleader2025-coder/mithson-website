@@ -197,7 +197,7 @@ export default function Navbar() {
         <div className="navbar-inner">
           {/* Logo */}
           <Link to="/" className="navbar-logo" aria-label="Mithson Sealing Solutions — Home" onClick={closeMobile}>
-            <img src={logoImage} alt="Mithson Sealing Solutions" className="logo-image" />
+            <img loading="lazy" src={logoImage} alt="Mithson Sealing Solutions" className="logo-image" />
           </Link>
 
           {/* Desktop navigation */}

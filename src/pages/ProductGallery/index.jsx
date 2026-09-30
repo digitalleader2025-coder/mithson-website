@@ -87,7 +87,7 @@ export default function ProductGalleryPage() {
                   {/* Placeholder or Image visual */}
                   <div className="gallery-card-visual" aria-hidden="true" style={{ overflow: 'hidden' }}>
                     {item.image ? (
-                      <img src={item.image} alt={item.label} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                      <img loading="lazy" src={item.image} alt={item.label} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                     ) : (
                       <>
                         <div className="gallery-card-shape" />
@@ -141,7 +141,7 @@ export default function ProductGalleryPage() {
               </button>
               <div className="lightbox-visual" aria-hidden="true" style={{ overflow: 'hidden' }}>
                 {lightbox.image ? (
-                  <img src={lightbox.image} alt={lightbox.label} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                  <img loading="lazy" src={lightbox.image} alt={lightbox.label} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                 ) : (
                   <>
                     <div className="gallery-card-shape lightbox-shape" />

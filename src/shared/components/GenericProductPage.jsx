@@ -94,7 +94,7 @@ export default function GenericProductPage({ product }) {
           <div>
             <ScrollReveal>
               <div style={{ marginBottom: '3rem', display: 'flex', justifyContent: 'center' }}>
-                <img src={productDetailsImg} alt="Product Details" style={{ maxWidth: '100%', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)' }} />
+                <img loading="lazy" src={productDetailsImg} alt="Product Details" style={{ maxWidth: '100%', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)' }} />
               </div>
             </ScrollReveal>
             {product.slug === 'm-uni-seal' && (
@@ -263,7 +263,7 @@ function MUNISealCustomSection() {
         {images.map((img, i) => (
           <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
             <div style={{ padding: '1rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img src={img.src} alt={img.title} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+              <img loading="lazy" src={img.src} alt={img.title} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
             </div>
             <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '0.9rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               {img.title}
@@ -282,7 +282,7 @@ function HammerUnionCustomSection() {
         
         {/* First Image (Seal) */}
         <div style={{ padding: '0.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', maxWidth: '350px', display: 'flex', justifyContent: 'center' }}>
-          <img src={imgHammerUnionSeal} alt="Hammer Union Seal" style={{ maxWidth: '100%', maxHeight: '200px', height: 'auto', borderRadius: '8px', objectFit: 'contain' }} />
+          <img loading="lazy" src={imgHammerUnionSeal} alt="Hammer Union Seal" style={{ maxWidth: '100%', maxHeight: '200px', height: 'auto', borderRadius: '8px', objectFit: 'contain' }} />
         </div>
         
         {/* Text */}
@@ -292,7 +292,7 @@ function HammerUnionCustomSection() {
 
         {/* Second Image (Measurement Data) */}
         <div style={{ padding: '0.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', maxWidth: '500px', display: 'flex', justifyContent: 'center' }}>
-          <img src={imgHammerUnionMeasurement} alt="Hammer Union Seal Measurement Data" style={{ maxWidth: '100%', maxHeight: '250px', height: 'auto', borderRadius: '8px', objectFit: 'contain' }} />
+          <img loading="lazy" src={imgHammerUnionMeasurement} alt="Hammer Union Seal Measurement Data" style={{ maxWidth: '100%', maxHeight: '250px', height: 'auto', borderRadius: '8px', objectFit: 'contain' }} />
         </div>
 
       </div>
@@ -314,7 +314,7 @@ function XMasTreeCustomSection() {
         {images.map((img, i) => (
           <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
             <div style={{ padding: '1rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img src={img.src} alt={img.title} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+              <img loading="lazy" src={img.src} alt={img.title} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
             </div>
             <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '0.9rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               {img.title}
@@ -340,7 +340,7 @@ function CyclingImage({ images, interval = 10000, title }) {
   return (
     <div style={{ padding: '1rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
       {images.map((src, i) => (
-        <img key={i} src={src} alt={title} style={{ position: 'absolute', maxWidth: '90%', maxHeight: '90%', objectFit: 'contain', opacity: i === index ? 1 : 0, transition: 'opacity 0.8s ease-in-out' }} />
+        <img loading="lazy" key={i} src={src} alt={title} style={{ position: 'absolute', maxWidth: '90%', maxHeight: '90%', objectFit: 'contain', opacity: i === index ? 1 : 0, transition: 'opacity 0.8s ease-in-out' }} />
       ))}
     </div>
   );
@@ -391,7 +391,7 @@ function PlugLinedValveCustomSection() {
         {items.map((item, i) => (
           <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
             <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img src={item.images[0]} alt={item.title} style={{ maxWidth: '90%', maxHeight: '90%', objectFit: 'contain' }} />
+              <img loading="lazy" src={item.images[0]} alt={item.title} style={{ maxWidth: '90%', maxHeight: '90%', objectFit: 'contain' }} />
             </div>
             <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '0.95rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               {item.title}
@@ -427,7 +427,7 @@ function CarouselImage({ images, interval = 5000, title }) {
   return (
     <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', overflow: 'visible' }}>
       {images.map((src, i) => (
-        <img key={i} src={src} alt={title} style={{ position: 'absolute', maxWidth: '80%', maxHeight: '80%', objectFit: 'contain', opacity: i === index ? 1 : 0, transition: 'opacity 0.8s ease-in-out' }} />
+        <img loading="lazy" key={i} src={src} alt={title} style={{ position: 'absolute', maxWidth: '80%', maxHeight: '80%', objectFit: 'contain', opacity: i === index ? 1 : 0, transition: 'opacity 0.8s ease-in-out' }} />
       ))}
       {hasMultiple && (
         <>
@@ -637,7 +637,7 @@ function SealsHydraulicCustomSection() {
         {items.map((item, i) => (
           <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
             <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img src={item.image} alt={item.title} style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }} />
+              <img loading="lazy" src={item.image} alt={item.title} style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }} />
             </div>
             <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '1.1rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               {item.title}
@@ -667,7 +667,7 @@ function DiaphragmAoddCustomSection() {
         {items.map((item, i) => (
           <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
             <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img src={item.image} alt={item.title} style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }} />
+              <img loading="lazy" src={item.image} alt={item.title} style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }} />
             </div>
             <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '1.1rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               {item.title}
@@ -692,7 +692,7 @@ function WashersTransmissionCustomSection() {
         {items.map((item, i) => (
           <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
             <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img src={item.image} alt={item.title} style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }} />
+              <img loading="lazy" src={item.image} alt={item.title} style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }} />
             </div>
             <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '1.1rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               {item.title}
@@ -717,7 +717,7 @@ function NozzlesPowerGridCustomSection() {
         {items.map((item, i) => (
           <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
             <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img src={item.image} alt={item.title} style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }} />
+              <img loading="lazy" src={item.image} alt={item.title} style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }} />
             </div>
             <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '1.1rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               {item.title}
@@ -732,7 +732,7 @@ function NozzlesPowerGridCustomSection() {
 function EncapsulatedORingCustomSection() {
   return (
     <div style={{ marginBottom: '3rem', display: 'flex', justifyContent: 'center' }}>
-      <img src={eoImg1} alt="Encapsulated O-Ring" style={{ maxWidth: '100%', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)' }} />
+      <img loading="lazy" src={eoImg1} alt="Encapsulated O-Ring" style={{ maxWidth: '100%', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)' }} />
     </div>
   );
 }

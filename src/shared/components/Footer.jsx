@@ -18,7 +18,7 @@ export default function Footer() {
             {/* Brand column */}
             <div className="footer-brand">
               <div className="footer-logo">
-                <img src={logoImage} alt="Mithson Sealing Solutions" className="logo-image" />
+                <img loading="lazy" src={logoImage} alt="Mithson Sealing Solutions" className="logo-image" />
               </div>
               <p className="footer-tagline">
                 Part of the <strong>Fluoro Carbon Seals Group</strong> — over {company.experience} years of polymer
