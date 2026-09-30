@@ -478,11 +478,35 @@ function UniLubeBearingCustomSection() {
     </div>
   );
 
+  const mssMbDetails = (
+    <div style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', textAlign: 'left', width: '100%', marginTop: '0.5rem' }}>
+      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)', fontSize: '0.85rem' }}>
+        THICK WALL SINGLE METAL BEARING
+      </p>
+      <p style={{ marginBottom: '1.5rem', lineHeight: '1.5' }}>
+        MSS-MB bearings are made of metal and embedded with solid lubricants in line. The solid lubricants are made of graphite with oil. With the combination of heavy load and impact resistance of the metal and the low friction factor of the non-metal, this material is good for the various working conditions.
+      </p>
+      
+      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>CHARACTERISTICS</p>
+      <ul style={{ paddingLeft: '1.2rem', marginBottom: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.4rem', lineHeight: '1.4' }}>
+        <li>Long service life without lubrication.</li>
+        <li>Suitable for high load and low speed of Rotational, Oscillating or frequent stop or start.</li>
+        <li>Good anti wear and low friction and resistance to chemical and anti corrosion.</li>
+        <li>Suitable for application temperature range from -40°C to +300°C.</li>
+      </ul>
+      
+      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>INDUSTRY & APPLICATIONS</p>
+      <p style={{ lineHeight: '1.4' }}>
+        Turbines (water, steam and gas), iron foundry, steel and aluminum industry, furnaces, blower, pumps and compressors, sewage purification plants, thermal treatment furnaces, hot rolling mills, food and beverage industry, packaging equipment, agriculture and construction machines.
+      </p>
+    </div>
+  );
+
   const items = [
     { images: [ubImg1, ubImg2], title: 'MSS-MF Self Lube', details: mssMfDetails },
     { images: [ubImg3, ubImg4], title: 'MSS-MP Pre Lube', details: mssMpDetails },
     { images: [ubImg5], title: 'MSS-BIM Bi-Metal', details: mssBimDetails },
-    { images: [ubImg6], title: 'MSS-MB Solid Bush' },
+    { images: [ubImg6], title: 'MSS-MB Solid Bush', details: mssMbDetails },
     { images: [ubImg7], title: 'MSS-MITHLON' },
   ];
 
