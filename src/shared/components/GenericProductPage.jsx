@@ -428,9 +428,35 @@ function UniLubeBearingCustomSection() {
     </div>
   );
 
+  const mssMpDetails = (
+    <div style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', textAlign: 'left', width: '100%', marginTop: '0.5rem' }}>
+      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)', fontSize: '0.85rem' }}>
+        METAL-POLYMER SELF-LUBRICATING<br />LONG LIFE HASSLE FREE PERFORMANCE
+      </p>
+      <p style={{ marginBottom: '1.5rem', lineHeight: '1.5' }}>
+        MSS-MP series bearing provides extraordinary performance with low speed and high load application. It is referred as “pre-lubricated” because it requires traces of lubricant that last for to a very long period due to its unique lubricant retention system.
+      </p>
+      
+      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>CHARACTERISTICS</p>
+      <ul style={{ paddingLeft: '1.2rem', marginBottom: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.4rem', lineHeight: '1.4' }}>
+        <li>Recommended to use where intermittent operation or boundary condition.</li>
+        <li>Suitable for high load and low speed of Rotational, Oscillating or frequent stop or start.</li>
+        <li>Work longer in boundary condition without adding oil due to lubricant retaining pockets in the material.</li>
+        <li>Good damping behavior and good resistance to shock loads.</li>
+      </ul>
+      
+      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>INDUSTRY & APPLICATIONS</p>
+      <ul style={{ paddingLeft: '1.2rem', display: 'flex', flexDirection: 'column', gap: '0.4rem', lineHeight: '1.4' }}>
+        <li><strong>Hydraulics & Pneumatics:</strong> Hydraulic oil seals and components in hydraulic pumps, Piston rod guide – Hydraulic engineering</li>
+        <li><strong>Agricultural Equipment:</strong> Gearboxes and transmissions, Seals and components for harvesters, Valves for balers and tractors, Bearings for gearboxes, Plain bearings for harvesters</li>
+        <li><strong>Handling and Lifting Equipment:</strong> Vertical shaft gearboxes and components, Gearboxes and drive sprockets, For crane transmission</li>
+      </ul>
+    </div>
+  );
+
   const items = [
     { images: [ubImg1, ubImg2], title: 'MSS-MF Self Lube', details: mssMfDetails },
-    { images: [ubImg3, ubImg4], title: 'MSS-MP Pre Lube' },
+    { images: [ubImg3, ubImg4], title: 'MSS-MP Pre Lube', details: mssMpDetails },
     { images: [ubImg5], title: 'MSS-BIM Bi-Metal' },
     { images: [ubImg6], title: 'MSS-MB Solid Bush' },
     { images: [ubImg7], title: 'MSS-MITHLON' },
