@@ -135,7 +135,7 @@ export const products = [
     slug: 'seals-x-mas-tree',
     name: 'Seals - X-Mas Tree',
     tagline: 'Christmas Tree Wellhead Gate-Valve Sealing',
-    shortDescription: 'View full details and specifications on the product page.',
+    shortDescription: 'High-performance API 6A compliant sealing solutions for Christmas Tree valve applications. Includes Spring-Energized Lip Seals, Stem Packing, Seat Seals, and O-Rings engineered from advanced polymer materials.',
     heroDescription: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <p>We provide <strong>high-performance sealing solutions</strong> for <strong>Christmas Tree valve applications</strong>, including <strong>Spring-Energized Lip Seals, Stem Packing, Seat Seals, and O-Rings</strong>. Manufactured from advanced <strong>polymer materials</strong>, our components deliver reliable performance and meet <strong>API 6A (Appendix F)</strong> requirements. <strong>Spring-Energized Seals</strong> combine a <strong>PTFE jacket</strong> with a <strong>corrosion-resistant metal energizer spring</strong>, providing consistent sealing under demanding conditions.</p>
@@ -162,7 +162,7 @@ export const products = [
     slug: 'seals-valve',
     name: 'Seals - Valve',
     tagline: 'Complete Valve Sealing Solutions',
-    shortDescription: 'View full details and specifications on the product page.',
+    shortDescription: 'Comprehensive sealing solutions engineered from high-performance thermoplastics like PTFE and PEEK. Designed for optimal performance in Gate, Ball, Globe, Plug, Butterfly, and Diaphragm valves.',
     heroDescription: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <p>We offer a full range of sealing solutions which are made from high performing Thermoplastic such as PTFE and PEEK for Gate Valve, Ball Valve, Globe Valve, Plug Valve, Butterfly Valve and Diaphragm Valve.</p>
@@ -212,7 +212,7 @@ export const products = [
     slug: 'plug-lined-valve',
     name: 'Plug & Lined - Valve',
     tagline: 'PTFE Plug-Valve Sleeves and Liners',
-    shortDescription: 'View full details and specifications on the product page.',
+    shortDescription: 'Precision-engineered PTFE Plugs and Sleeves delivering reliable bubble-tight sealing for plug valve applications. Manufactured from Virgin PTFE and specialty compounds for low friction and chemical resistance.',
     heroDescription: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <p>Our precision-engineered <strong>PTFE Plugs and Sleeves</strong> are designed for high-performance <strong>plug valve applications</strong>, delivering reliable <strong>bubble-tight sealing</strong> under demanding process conditions. Manufactured from <strong>Virgin PTFE and reinforced specialty compounds</strong>, they provide <strong>low friction, chemical resistance, and maintenance-free operation</strong>, making them suitable for Oil & Gas, Chemical Processing, and Pharmaceutical industries. Their <strong>bi-directional sealing</strong> and precision-fit design minimize leakage, wear, and media entrapment.</p>
@@ -247,7 +247,7 @@ export const products = [
     slug: 'uni-lube-bearing',
     name: 'UNI-LUBE Bearing',
     tagline: 'Self-Lubricating Bearing Family',
-    shortDescription: 'View full details and specifications on the product page.',
+    shortDescription: 'High-performance self-lubricating bearings and bushings designed to constrain motion and reduce friction without external lubrication. Engineered for reliable sliding and rotating applications.',
     heroDescription: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <p>A bearing is a machine element that constrains relative motion to only the desired motion and reduces friction between moving parts. The motion should be sliding or rotating. The simplest form of plain bearing is called bushing, which is oilless due to the nature of self-lubricating materials.</p>
@@ -309,7 +309,7 @@ export const products = [
     slug: 'diaphragm-aodd',
     name: 'Diaphragm - AODD',
     tagline: 'Air Operated Double Diaphragm Pump Components',
-    shortDescription: 'View full details and specifications on the product page.',
+    shortDescription: 'Complete high-durability solutions for Air Operated Double Diaphragm Pumps including Diaphragms, Pilot Shafts, and Valves. Manufactured from chemical-resistant Fluoropolymers for extreme environments.',
     heroDescription: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <p>We offer a full range of solutions for Air Operated Double Diaphragm Pumps - Diaphragm, Pilot Shaft, PTFE Ball, PTFE Valve, O-Ring, and Seat.</p>
@@ -336,7 +336,7 @@ export const products = [
     slug: 'washers-transmission',
     name: 'Washers - Transmission',
     tagline: 'Carbon-Filled PEEK Thrust & Split-Lock Washers',
-    shortDescription: 'View full details and specifications on the product page.',
+    shortDescription: 'Heavy-duty Carbon-Filled PEEK Thrust Washers engineered for high-torque automatic transmissions. Features exceptional durability, low friction, and extreme load resistance at continuous temperatures up to 250°C.',
     heroDescription: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <p><strong>Mithson Carbon-Filled PEEK (Polyether Ether Ketone) Thrust Washers</strong> are engineered for <strong>heavy-duty, high-torque automatic transmissions</strong>, offering exceptional durability, low friction, and reliable performance under demanding conditions. Reinforced with <strong>high-modulus carbon fibers</strong>, they withstand extreme axial loads while improving thermal conductivity and maintaining structural integrity at continuous temperatures up to <strong>250°C (482°F)</strong>.</p>
@@ -367,7 +367,7 @@ export const products = [
     slug: 'nozzles-power-grid',
     name: 'Nozzles - Power Grid',
     tagline: 'PTFE Nozzles for SF6 Circuit Breakers',
-    shortDescription: 'View full details and specifications on the product page.',
+    shortDescription: 'Premium Arcing and Insulating Nozzles engineered for high-voltage SF6 circuit breakers. Crafted from high-purity PTFE to withstand extreme thermal and electrical stresses during arc-quenching.',
     heroDescription: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <p>Enhance the safety and operational longevity of your switchgear with our premium range of Arcing and Insulating Nozzles. Specifically engineered for high-voltage SF6 (Sulfur Hexafluoride) circuit breakers, our nozzles are crafted from high-purity PTFE (Polytetrafluoroethylene) and specialized polymer composites.</p>
