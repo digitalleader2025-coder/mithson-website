@@ -66,6 +66,10 @@ import diaImg3 from '../../pages/Products/Diaphragm-AODD/assets/PTFE Ball.png';
 import diaImg4 from '../../pages/Products/Diaphragm-AODD/assets/PTFE O-Ring.png';
 import diaImg5 from '../../pages/Products/Diaphragm-AODD/assets/PTFE Seat.png';
 
+import wtImg1 from '../../pages/Products/Washers-Transmission/assets/PEEK-Split Lock Washer.png';
+import wtImg2 from '../../pages/Products/Washers-Transmission/assets/PEEK-Thrust Washer.png';
+import wtImg3 from '../../pages/Products/Washers-Transmission/assets/Product 1.png';
+
 export default function GenericProductPage({ product }) {
   // Update document title
   useEffect(() => {
@@ -119,6 +123,11 @@ export default function GenericProductPage({ product }) {
             {product.slug === 'diaphragm-aodd' && (
               <ScrollReveal>
                 <DiaphragmAoddCustomSection />
+              </ScrollReveal>
+            )}
+            {product.slug === 'washers-transmission' && (
+              <ScrollReveal>
+                <WashersTransmissionCustomSection />
               </ScrollReveal>
             )}
             <ScrollReveal>
@@ -633,6 +642,31 @@ function DiaphragmAoddCustomSection() {
   return (
     <div style={{ marginBottom: '3rem' }}>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2.5rem', alignItems: 'start' }}>
+        {items.map((item, i) => (
+          <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+            <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <img src={item.image} alt={item.title} style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }} />
+            </div>
+            <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '1.1rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              {item.title}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function WashersTransmissionCustomSection() {
+  const items = [
+    { image: wtImg1, title: 'PEEK-Split Lock Washer' },
+    { image: wtImg2, title: 'PEEK-Thrust Washer' },
+    { image: wtImg3, title: 'Product 1' }
+  ];
+
+  return (
+    <div style={{ marginBottom: '3rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2.5rem', alignItems: 'start' }}>
         {items.map((item, i) => (
           <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
             <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

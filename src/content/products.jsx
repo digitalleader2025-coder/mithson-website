@@ -50,6 +50,12 @@ import diaImg5 from '../pages/Products/Diaphragm-AODD/assets/PTFE Seat.png';
 
 const diaphragmAODDImages = [diaImg1, diaImg2, diaImg3, diaImg4, diaImg5];
 
+import wtImg1 from '../pages/Products/Washers-Transmission/assets/PEEK-Split Lock Washer.png';
+import wtImg2 from '../pages/Products/Washers-Transmission/assets/PEEK-Thrust Washer.png';
+import wtImg3 from '../pages/Products/Washers-Transmission/assets/Product 1.png';
+
+const washersTransmissionImages = [wtImg1, wtImg2, wtImg3];
+
 export const products = [
   {
     id: 'mith-plate',
@@ -319,8 +325,8 @@ export const products = [
     tagline: 'Carbon-Filled PEEK Thrust & Split-Lock Washers',
     shortDescription: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        <p><strong>Mithson Carbon-Filled PEEK Thrust Washers</strong> are engineered for <strong>heavy-duty, high-torque automatic transmissions</strong>, providing exceptional durability, low friction, and reliable performance under extreme operating conditions. Reinforced with high-modulus carbon fibers, they withstand <strong>high axial loads</strong>, improve thermal conductivity, and maintain structural integrity at continuous temperatures up to <strong>250°C (482°F)</strong>.</p>
-        <p>With exceptional <strong>Pressure-Velocity (PV) performance</strong>, these washers are ideal for <strong>planetary gear carriers, output shaft thrust positions, and high-pressure pump wear plates</strong>. Their <strong>self-lubricating properties</strong> reduce friction, prevent metal-to-metal galling, minimize power loss, and provide dependable performance during cold starts and high-torque operating conditions.</p>
+        <p><strong>Mithson Carbon-Filled PEEK (Polyether Ether Ketone) Thrust Washers</strong> are engineered for <strong>heavy-duty, high-torque automatic transmissions</strong>, offering exceptional durability, low friction, and reliable performance under demanding conditions. Reinforced with <strong>high-modulus carbon fibers</strong>, they withstand extreme axial loads while improving thermal conductivity and maintaining structural integrity at continuous temperatures up to <strong>250°C (482°F)</strong>.</p>
+        <p>With excellent <strong>Pressure-Velocity (PV) performance</strong>, these washers are ideal for <strong>planetary gear carriers, output shaft thrust positions, and high-pressure pump wear plates</strong>. Their <strong>self-lubricating properties</strong> reduce friction, prevent metal-to-metal galling, minimize power loss, and ensure reliable performance during <strong>cold starts and high-torque shifts</strong>, even under demanding lubrication conditions.</p>
       </div>
     ),
     highlights: [
@@ -339,6 +345,8 @@ export const products = [
     path: '/products/washers-transmission',
     folder: 'Washers-Transmission',
     accent: '#3b7bd4',
+    carouselImage: washersTransmissionImages,
+    image: washersTransmissionImages,
   },
   {
     id: 'nozzles-power-grid',
