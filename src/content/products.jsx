@@ -56,6 +56,12 @@ import wtImg3 from '../pages/Products/Washers-Transmission/assets/Product 1.png'
 
 const washersTransmissionImages = [wtImg1, wtImg2, wtImg3];
 
+import npImg1 from '../pages/Products/Nozzles-Power-Grid/assets/PTFE Nozzles-1.png';
+import npImg2 from '../pages/Products/Nozzles-Power-Grid/assets/PTFE Nozzles-2.png';
+import npImg3 from '../pages/Products/Nozzles-Power-Grid/assets/PTFE Nozzles-3.png';
+
+const nozzlesPowerGridImages = [npImg1, npImg2, npImg3];
+
 export const products = [
   {
     id: 'mith-plate',
@@ -353,8 +359,12 @@ export const products = [
     slug: 'nozzles-power-grid',
     name: 'Nozzles - Power Grid',
     tagline: 'PTFE Nozzles for SF6 Circuit Breakers',
-    shortDescription:
-      'High-performance PTFE nozzles for SF6 circuit breakers — arcing and insulating nozzles for high-voltage applications manufactured via Cold Isostatic Pressing.',
+    shortDescription: (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <p>Enhance the safety and operational longevity of your switchgear with our premium range of Arcing and Insulating Nozzles. Specifically engineered for high-voltage SF6 (Sulfur Hexafluoride) circuit breakers, our nozzles are crafted from high-purity PTFE (Polytetrafluoroethylene) and specialized polymer composites.</p>
+        <p>These critical components are designed to withstand extreme thermal and electrical stresses during arc-quenching within the power grid. To ensure maximum density and structural integrity, our nozzles are manufactured using advanced Cold Isostatic Pressing (CIP) technology, providing superior performance compared to standard molded alternatives.</p>
+      </div>
+    ),
     highlights: [
       'SF6 circuit breaker rated',
       'Arcing nozzle design',
@@ -368,6 +378,8 @@ export const products = [
     path: '/products/nozzles-power-grid',
     folder: 'Nozzles-Power-Grid',
     accent: '#42A4FF',
+    carouselImage: nozzlesPowerGridImages,
+    image: nozzlesPowerGridImages,
   },
   {
     id: 'encapsulated-o-ring',
