@@ -60,6 +60,12 @@ import shImg2 from '../../pages/Products/Seals-Hydraulic/assets/Piston Seals.png
 import shImg3 from '../../pages/Products/Seals-Hydraulic/assets/Wiper Seals.png';
 import shImg4 from '../../pages/Products/Seals-Hydraulic/assets/Rod Seals.png';
 
+import diaImg1 from '../../pages/Products/Diaphragm-AODD/assets/Diaphragm.png';
+import diaImg2 from '../../pages/Products/Diaphragm-AODD/assets/PILOT Shaft.png';
+import diaImg3 from '../../pages/Products/Diaphragm-AODD/assets/PTFE Ball.png';
+import diaImg4 from '../../pages/Products/Diaphragm-AODD/assets/PTFE O-Ring.png';
+import diaImg5 from '../../pages/Products/Diaphragm-AODD/assets/PTFE Seat.png';
+
 export default function GenericProductPage({ product }) {
   // Update document title
   useEffect(() => {
@@ -108,6 +114,11 @@ export default function GenericProductPage({ product }) {
             {product.slug === 'seals-hydraulic' && (
               <ScrollReveal>
                 <SealsHydraulicCustomSection />
+              </ScrollReveal>
+            )}
+            {product.slug === 'diaphragm-aodd' && (
+              <ScrollReveal>
+                <DiaphragmAoddCustomSection />
               </ScrollReveal>
             )}
             <ScrollReveal>
@@ -603,6 +614,33 @@ function SealsHydraulicCustomSection() {
             <p style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', textAlign: 'left', lineHeight: '1.5' }}>
               {item.desc}
             </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function DiaphragmAoddCustomSection() {
+  const items = [
+    { image: diaImg1, title: 'Diaphragm' },
+    { image: diaImg2, title: 'Pilot Shaft' },
+    { image: diaImg3, title: 'PTFE Ball' },
+    { image: diaImg4, title: 'PTFE O-Ring' },
+    { image: diaImg5, title: 'PTFE Seat' }
+  ];
+
+  return (
+    <div style={{ marginBottom: '3rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2.5rem', alignItems: 'start' }}>
+        {items.map((item, i) => (
+          <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+            <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <img src={item.image} alt={item.title} style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }} />
+            </div>
+            <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '1.1rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              {item.title}
+            </span>
           </div>
         ))}
       </div>

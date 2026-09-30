@@ -42,6 +42,14 @@ import shImg4 from '../pages/Products/Seals-Hydraulic/assets/Rod Seals.png';
 
 const sealsHydraulicImages = [shImg1, shImg2, shImg3, shImg4];
 
+import diaImg1 from '../pages/Products/Diaphragm-AODD/assets/Diaphragm.png';
+import diaImg2 from '../pages/Products/Diaphragm-AODD/assets/PILOT Shaft.png';
+import diaImg3 from '../pages/Products/Diaphragm-AODD/assets/PTFE Ball.png';
+import diaImg4 from '../pages/Products/Diaphragm-AODD/assets/PTFE O-Ring.png';
+import diaImg5 from '../pages/Products/Diaphragm-AODD/assets/PTFE Seat.png';
+
+const diaphragmAODDImages = [diaImg1, diaImg2, diaImg3, diaImg4, diaImg5];
+
 export const products = [
   {
     id: 'mith-plate',
@@ -297,6 +305,8 @@ export const products = [
     path: '/products/diaphragm-aodd',
     folder: 'Diaphragm-AODD',
     accent: '#42A4FF',
+    carouselImage: diaphragmAODDImages,
+    image: diaphragmAODDImages,
   },
   {
     id: 'washers-transmission',
