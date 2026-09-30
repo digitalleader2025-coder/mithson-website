@@ -47,6 +47,14 @@ import plvImg1 from '../../pages/Products/Plug-Lined-Valve/assets/Image1.png';
 import plvImg2 from '../../pages/Products/Plug-Lined-Valve/assets/Image2.png';
 import plvImg3 from '../../pages/Products/Plug-Lined-Valve/assets/Image3.png';
 
+import ubImg1 from '../../pages/Products/UNI-LUBE-Bearing/assets/MSS-MF Self Lube - 1.png';
+import ubImg2 from '../../pages/Products/UNI-LUBE-Bearing/assets/MSS-MF Self Lube - 2.png';
+import ubImg3 from '../../pages/Products/UNI-LUBE-Bearing/assets/MSS-MP Pre Lube - 1.png';
+import ubImg4 from '../../pages/Products/UNI-LUBE-Bearing/assets/MSS-MF Pre Lube - 2.png';
+import ubImg5 from '../../pages/Products/UNI-LUBE-Bearing/assets/MSS-BIM BI-Metal.png';
+import ubImg6 from '../../pages/Products/UNI-LUBE-Bearing/assets/MSS-MB Solid Bush.png';
+import ubImg7 from '../../pages/Products/UNI-LUBE-Bearing/assets/MSS-Mithlon.png';
+
 export default function GenericProductPage({ product }) {
   // Update document title
   useEffect(() => {
@@ -85,6 +93,11 @@ export default function GenericProductPage({ product }) {
             {product.slug === 'plug-lined-valve' && (
               <ScrollReveal>
                 <PlugLinedValveCustomSection />
+              </ScrollReveal>
+            )}
+            {product.slug === 'uni-lube-bearing' && (
+              <ScrollReveal>
+                <UniLubeBearingCustomSection />
               </ScrollReveal>
             )}
             <ScrollReveal>
@@ -328,6 +341,79 @@ function PlugLinedValveCustomSection() {
             <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <img src={item.images[0]} alt={item.title} style={{ maxWidth: '90%', maxHeight: '90%', objectFit: 'contain' }} />
             </div>
+            <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '0.95rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              {item.title}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function CarouselImage({ images, interval = 5000, title }) {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const t = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, interval);
+    return () => clearInterval(t);
+  }, [images.length, interval]);
+
+  const nextSlide = () => {
+    setIndex((prev) => (prev + 1) % images.length);
+  };
+  
+  const prevSlide = () => {
+    setIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const hasMultiple = images.length > 1;
+
+  return (
+    <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
+      {images.map((src, i) => (
+        <img key={i} src={src} alt={title} style={{ position: 'absolute', maxWidth: '80%', maxHeight: '80%', objectFit: 'contain', opacity: i === index ? 1 : 0, transition: 'opacity 0.8s ease-in-out' }} />
+      ))}
+      {hasMultiple && (
+        <>
+          <button 
+            onClick={prevSlide}
+            aria-label="Previous image"
+            style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255, 255, 255, 0.9)', border: '1px solid #eee', borderRadius: '50%', width: '36px', height: '36px', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', zIndex: 10, color: 'var(--color-blue-accent)' }}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <button 
+            onClick={nextSlide}
+            aria-label="Next image"
+            style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255, 255, 255, 0.9)', border: '1px solid #eee', borderRadius: '50%', width: '36px', height: '36px', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', zIndex: 10, color: 'var(--color-blue-accent)' }}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </>
+      )}
+    </div>
+  );
+}
+
+function UniLubeBearingCustomSection() {
+  const items = [
+    { images: [ubImg1, ubImg2], title: 'MSS-MF Self Lube' },
+    { images: [ubImg3, ubImg4], title: 'MSS-MP Pre Lube' },
+    { images: [ubImg5], title: 'MSS-BIM Bi-Metal' },
+    { images: [ubImg6], title: 'MSS-MB Solid Bush' },
+    { images: [ubImg7], title: 'MSS-MITHLON' },
+  ];
+
+  return (
+    <div style={{ marginBottom: '3rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem' }}>
+        {items.map((item, i) => (
+          <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+            <CarouselImage images={item.images} title={item.title} interval={5000} />
             <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '0.95rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               {item.title}
             </span>

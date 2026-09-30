@@ -6,6 +6,7 @@ import mithPlateImg from '../pages/Products/MITH-PLATE/assets/mith-plate.png';
 import muniSealImg from '../pages/Products/M-UNI-Seal/assets/hero.jpg';
 import hammerUnionImg from '../pages/Products/Hammer-Union-Seal/assets/hero.png';
 import xmasTreeImg from '../pages/Products/Seals-X-Mas-Tree/assets/hero.png';
+import uniLubeImg from '../../images/Uni Lube Bearing/Main Image.png';
 
 import vsImg1 from '../pages/Products/Seals-Valve/assets/Devlon Insert Metal Seat.png';
 import vsImg2 from '../pages/Products/Seals-Valve/assets/Devlon Seat Ring (2).png';
@@ -32,6 +33,8 @@ import plvImg2 from '../pages/Products/Plug-Lined-Valve/assets/Image2.png';
 import plvImg3 from '../pages/Products/Plug-Lined-Valve/assets/Image3.png';
 
 const plugLinedImages = [plvImg1, plvImg2, plvImg3];
+
+import uniLubeImg from '../pages/Products/UNI-LUBE-Bearing/assets/Main Image.png';
 
 export const products = [
   {
@@ -213,8 +216,13 @@ export const products = [
     slug: 'uni-lube-bearing',
     name: 'UNI-LUBE Bearing',
     tagline: 'Self-Lubricating Bearing Family',
-    shortDescription:
-      'A complete family of self-lubricating bearings covering dry, pre-lubricated, bi-metal and thermoplastic applications.',
+    shortDescription: (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <p>A bearing is a machine element that constrains relative motion to only the desired motion and reduces friction between moving parts. The motion should be sliding or rotating. The simplest form of plain bearing is called bushing, which is oilless due to the nature of self-lubricating materials.</p>
+        <p>Bearing can withstand both high and low temperatures and an extreme environment and helps to reduce friction and increase stability, which can improve productivity and save cost and time.</p>
+      </div>
+    ),
+    summary: 'A family of high-performance, self-lubricating plain bearings designed to reduce friction and withstand extreme temperatures and environments, saving cost and time.',
     highlights: [
       'Dry lubrication / maintenance-free',
       'High load / low speed options',
@@ -234,6 +242,8 @@ export const products = [
     path: '/products/uni-lube-bearing',
     folder: 'UNI-LUBE-Bearing',
     accent: '#42A4FF',
+    carouselImage: uniLubeImg,
+    image: uniLubeImg,
   },
   {
     id: 'seals-hydraulic',
