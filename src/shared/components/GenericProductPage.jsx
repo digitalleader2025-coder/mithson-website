@@ -502,12 +502,28 @@ function UniLubeBearingCustomSection() {
     </div>
   );
 
+  const mssMithlonDetails = (
+    <div style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', textAlign: 'left', width: '100%', marginTop: '0.5rem' }}>
+      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)', fontSize: '0.85rem' }}>
+        THERMOPLASTIC BUSHING
+      </p>
+      <p style={{ marginBottom: '1.5rem', lineHeight: '1.5' }}>
+        MSS-MITHLON bushings, made from unique thermoplastic material give long life and low friction which traditional metal-based bushings are struggling to provide. It is available in both standard and custom sizes, offering material advantages.
+      </p>
+      
+      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>INDUSTRY & APPLICATIONS</p>
+      <p style={{ lineHeight: '1.4' }}>
+        Mithlon specifically recommended for moist and underwater applications. These include the pump and marine industry, where regular maintenance is not practically feasible or cost-effective.
+      </p>
+    </div>
+  );
+
   const items = [
     { images: [ubImg1, ubImg2], title: 'MSS-MF Self Lube', details: mssMfDetails },
     { images: [ubImg3, ubImg4], title: 'MSS-MP Pre Lube', details: mssMpDetails },
     { images: [ubImg5], title: 'MSS-BIM Bi-Metal', details: mssBimDetails },
     { images: [ubImg6], title: 'MSS-MB Solid Bush', details: mssMbDetails },
-    { images: [ubImg7], title: 'MSS-MITHLON' },
+    { images: [ubImg7], title: 'MSS-MITHLON', details: mssMithlonDetails },
   ];
 
   return (
