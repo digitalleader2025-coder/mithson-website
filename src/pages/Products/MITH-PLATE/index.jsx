@@ -94,9 +94,6 @@ export default function MITHPLATEPage() {
             <Link to="/connect-with-us" className="btn btn-primary" id={`product-enquire-${product.id}`}>
               Enquire Now
             </Link>
-            <Link to="/product-gallery" className="btn btn-outline" id={`product-gallery-${product.id}`}>
-              View Gallery
-            </Link>
           </motion.div>
           </div>
         </div>

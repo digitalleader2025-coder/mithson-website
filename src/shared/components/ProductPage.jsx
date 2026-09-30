@@ -29,7 +29,7 @@ export function ProductBreadcrumb({ productName }) {
 
 /** Hero section with 3D viewer */
 export function ProductHero({ product }) {
-  const { name, tagline, shortDescription, accent, folder, image } = product;
+  const { name, tagline, shortDescription, heroDescription, accent, folder, image } = product;
 
   // Dynamic asset paths — user drops files here; component reads automatically
   const heroImageSrc = image || `/src/pages/Products/${folder}/assets/hero.jpg`;
@@ -57,7 +57,7 @@ export function ProductHero({ product }) {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          <div className="product-hero-desc">{shortDescription}</div>
+          <div className="product-hero-desc">{heroDescription || shortDescription}</div>
         </motion.div>
         </div>
 
@@ -106,9 +106,6 @@ export function ProductHero({ product }) {
         >
           <Link to="/connect-with-us" className="btn btn-primary" id={`product-enquire-${product.id}`}>
             Enquire Now
-          </Link>
-          <Link to="/product-gallery" className="btn btn-outline" id={`product-gallery-${product.id}`}>
-            View Gallery
           </Link>
         </motion.div>
         </div>
