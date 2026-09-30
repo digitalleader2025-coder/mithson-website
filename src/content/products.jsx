@@ -62,6 +62,8 @@ import npImg3 from '../pages/Products/Nozzles-Power-Grid/assets/PTFE Nozzles-3.p
 
 const nozzlesPowerGridImages = [npImg1, npImg2, npImg3];
 
+import eoImg1 from '../pages/Products/Encapsulated-O-Ring/assets/Encapsulated O-Ring.png';
+
 export const products = [
   {
     id: 'mith-plate',
@@ -133,7 +135,8 @@ export const products = [
     slug: 'seals-x-mas-tree',
     name: 'Seals - X-Mas Tree',
     tagline: 'Christmas Tree Wellhead Gate-Valve Sealing',
-    shortDescription: (
+    shortDescription: 'View full details and specifications on the product page.',
+    heroDescription: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <p>We provide <strong>high-performance sealing solutions</strong> for <strong>Christmas Tree valve applications</strong>, including <strong>Spring-Energized Lip Seals, Stem Packing, Seat Seals, and O-Rings</strong>. Manufactured from advanced <strong>polymer materials</strong>, our components deliver reliable performance and meet <strong>API 6A (Appendix F)</strong> requirements. <strong>Spring-Energized Seals</strong> combine a <strong>PTFE jacket</strong> with a <strong>corrosion-resistant metal energizer spring</strong>, providing consistent sealing under demanding conditions.</p>
         <p><strong>Gate Valve Stem Packing</strong> prevents leakage around the valve stem, ensuring reliable operation and sealing integrity. <strong>PTFE materials</strong> offer <strong>low friction, excellent temperature resistance, chemical resistance, and corrosion resistance</strong>. <strong>PTFE Spring-Energized Seals</strong> also provide <strong>unlimited shelf life</strong>, supporting long-term storage without compromising performance.</p>
@@ -159,7 +162,8 @@ export const products = [
     slug: 'seals-valve',
     name: 'Seals - Valve',
     tagline: 'Complete Valve Sealing Solutions',
-    shortDescription: (
+    shortDescription: 'View full details and specifications on the product page.',
+    heroDescription: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <p>We offer a full range of sealing solutions which are made from high performing Thermoplastic such as PTFE and PEEK for Gate Valve, Ball Valve, Globe Valve, Plug Valve, Butterfly Valve and Diaphragm Valve.</p>
         <ol style={{ paddingLeft: '1.5rem', lineHeight: '1.6', fontSize: '0.95rem' }}>
@@ -208,7 +212,8 @@ export const products = [
     slug: 'plug-lined-valve',
     name: 'Plug & Lined - Valve',
     tagline: 'PTFE Plug-Valve Sleeves and Liners',
-    shortDescription: (
+    shortDescription: 'View full details and specifications on the product page.',
+    heroDescription: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <p>Our precision-engineered <strong>PTFE Plugs and Sleeves</strong> are designed for high-performance <strong>plug valve applications</strong>, delivering reliable <strong>bubble-tight sealing</strong> under demanding process conditions. Manufactured from <strong>Virgin PTFE and reinforced specialty compounds</strong>, they provide <strong>low friction, chemical resistance, and maintenance-free operation</strong>, making them suitable for Oil & Gas, Chemical Processing, and Pharmaceutical industries. Their <strong>bi-directional sealing</strong> and precision-fit design minimize leakage, wear, and media entrapment.</p>
         <p>Depending on application <strong>pressure and temperature requirements</strong>, we offer <strong>Virgin PTFE</strong> for maximum chemical purity, <strong>Chemically Modified PTFE</strong> for enhanced resistance to deformation, and <strong>Carbon, Glass, or Bronze-Filled PTFE</strong> for high-pressure cycles, improved wear resistance, and abrasive media applications.</p>
@@ -242,7 +247,8 @@ export const products = [
     slug: 'uni-lube-bearing',
     name: 'UNI-LUBE Bearing',
     tagline: 'Self-Lubricating Bearing Family',
-    shortDescription: (
+    shortDescription: 'View full details and specifications on the product page.',
+    heroDescription: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <p>A bearing is a machine element that constrains relative motion to only the desired motion and reduces friction between moving parts. The motion should be sliding or rotating. The simplest form of plain bearing is called bushing, which is oilless due to the nature of self-lubricating materials.</p>
         <p>Bearing can withstand both high and low temperatures and an extreme environment and helps to reduce friction and increase stability, which can improve productivity and save cost and time.</p>
@@ -303,7 +309,8 @@ export const products = [
     slug: 'diaphragm-aodd',
     name: 'Diaphragm - AODD',
     tagline: 'Air Operated Double Diaphragm Pump Components',
-    shortDescription: (
+    shortDescription: 'View full details and specifications on the product page.',
+    heroDescription: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <p>We offer a full range of solutions for Air Operated Double Diaphragm Pumps - Diaphragm, Pilot Shaft, PTFE Ball, PTFE Valve, O-Ring, and Seat.</p>
         <p>These components are designed to offer high durability in extreme environments and are made from high-performance Fluoropolymer materials (PTFE). These components are chemical resistant, provide low friction, and reduce wear. They are compatible to work with a wide range of chemicals that are designed for low- and high-pressure environments.</p>
@@ -329,7 +336,8 @@ export const products = [
     slug: 'washers-transmission',
     name: 'Washers - Transmission',
     tagline: 'Carbon-Filled PEEK Thrust & Split-Lock Washers',
-    shortDescription: (
+    shortDescription: 'View full details and specifications on the product page.',
+    heroDescription: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <p><strong>Mithson Carbon-Filled PEEK (Polyether Ether Ketone) Thrust Washers</strong> are engineered for <strong>heavy-duty, high-torque automatic transmissions</strong>, offering exceptional durability, low friction, and reliable performance under demanding conditions. Reinforced with <strong>high-modulus carbon fibers</strong>, they withstand extreme axial loads while improving thermal conductivity and maintaining structural integrity at continuous temperatures up to <strong>250°C (482°F)</strong>.</p>
         <p>With excellent <strong>Pressure-Velocity (PV) performance</strong>, these washers are ideal for <strong>planetary gear carriers, output shaft thrust positions, and high-pressure pump wear plates</strong>. Their <strong>self-lubricating properties</strong> reduce friction, prevent metal-to-metal galling, minimize power loss, and ensure reliable performance during <strong>cold starts and high-torque shifts</strong>, even under demanding lubrication conditions.</p>
@@ -359,7 +367,8 @@ export const products = [
     slug: 'nozzles-power-grid',
     name: 'Nozzles - Power Grid',
     tagline: 'PTFE Nozzles for SF6 Circuit Breakers',
-    shortDescription: (
+    shortDescription: 'View full details and specifications on the product page.',
+    heroDescription: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <p>Enhance the safety and operational longevity of your switchgear with our premium range of Arcing and Insulating Nozzles. Specifically engineered for high-voltage SF6 (Sulfur Hexafluoride) circuit breakers, our nozzles are crafted from high-purity PTFE (Polytetrafluoroethylene) and specialized polymer composites.</p>
         <p>These critical components are designed to withstand extreme thermal and electrical stresses during arc-quenching within the power grid. To ensure maximum density and structural integrity, our nozzles are manufactured using advanced Cold Isostatic Pressing (CIP) technology, providing superior performance compared to standard molded alternatives.</p>
@@ -386,8 +395,13 @@ export const products = [
     slug: 'encapsulated-o-ring',
     name: 'Encapsulated O-Ring',
     tagline: 'FEP Encapsulated O-Rings',
-    shortDescription:
-      'Two-part construction: silicone or FKM/Viton elastomer core enclosed in a seamless FEP jacket — combining chemical compatibility with elastomeric resilience.',
+    shortDescription: 'Two-part construction: silicone or FKM/Viton elastomer core enclosed in a seamless FEP jacket.',
+    heroDescription: (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <p>Our <strong>Encapsulated O-Rings</strong> feature a dual-component construction combining a high-performance <strong>Silicone or FKM (Viton) core</strong> with a seamless <strong>FEP jacket</strong>. The elastomeric core maintains sealing pressure, while the FEP jacket provides exceptional <strong>chemical resistance, low friction, and non-stick performance</strong>.</p>
+        <p>Designed for demanding environments, these seals offer excellent <strong>temperature resistance</strong>, with Silicone cores operating from <strong>–60°C to +205°C</strong> and FKM cores from <strong>–20°C to +204°C</strong>. Their high-purity properties make them suitable for <strong>Pharmaceutical, Chemical Processing, Oil & Gas, Food & Beverage, and Biotech applications</strong>, including <strong>CIP and SIP systems</strong>.</p>
+      </div>
+    ),
     highlights: [
       'Seamless FEP jacket',
       'Silicone core: -60°C to +205°C (-75°F to +400°F)',
@@ -410,6 +424,7 @@ export const products = [
     path: '/products/encapsulated-o-ring',
     folder: 'Encapsulated-O-Ring',
     accent: '#3b7bd4',
+    image: eoImg1,
   },
 ];
 

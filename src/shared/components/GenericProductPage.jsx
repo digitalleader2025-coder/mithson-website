@@ -74,6 +74,9 @@ import npImg1 from '../../pages/Products/Nozzles-Power-Grid/assets/PTFE Nozzles-
 import npImg2 from '../../pages/Products/Nozzles-Power-Grid/assets/PTFE Nozzles-2.png';
 import npImg3 from '../../pages/Products/Nozzles-Power-Grid/assets/PTFE Nozzles-3.png';
 
+import productDetailsImg from '../../shared/assets/Product details.png';
+import eoImg1 from '../../pages/Products/Encapsulated-O-Ring/assets/Encapsulated O-Ring.png';
+
 export default function GenericProductPage({ product }) {
   // Update document title
   useEffect(() => {
@@ -89,6 +92,11 @@ export default function GenericProductPage({ product }) {
         <div className="container product-body-inner">
           {/* Main column */}
           <div>
+            <ScrollReveal>
+              <div style={{ marginBottom: '3rem', display: 'flex', justifyContent: 'center' }}>
+                <img src={productDetailsImg} alt="Product Details" style={{ maxWidth: '100%', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)' }} />
+              </div>
+            </ScrollReveal>
             {product.slug === 'm-uni-seal' && (
               <ScrollReveal>
                 <MUNISealCustomSection />
@@ -137,6 +145,11 @@ export default function GenericProductPage({ product }) {
             {product.slug === 'nozzles-power-grid' && (
               <ScrollReveal>
                 <NozzlesPowerGridCustomSection />
+              </ScrollReveal>
+            )}
+            {product.slug === 'encapsulated-o-ring' && (
+              <ScrollReveal>
+                <EncapsulatedORingCustomSection />
               </ScrollReveal>
             )}
             <ScrollReveal>
@@ -712,6 +725,14 @@ function NozzlesPowerGridCustomSection() {
           </div>
         ))}
       </div>
+    </div>
+  );
+}
+
+function EncapsulatedORingCustomSection() {
+  return (
+    <div style={{ marginBottom: '3rem', display: 'flex', justifyContent: 'center' }}>
+      <img src={eoImg1} alt="Encapsulated O-Ring" style={{ maxWidth: '100%', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)' }} />
     </div>
   );
 }
