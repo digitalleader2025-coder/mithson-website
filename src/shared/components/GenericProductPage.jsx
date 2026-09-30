@@ -454,10 +454,34 @@ function UniLubeBearingCustomSection() {
     </div>
   );
 
+  const mssBimDetails = (
+    <div style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', textAlign: 'left', width: '100%', marginTop: '0.5rem' }}>
+      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)', fontSize: '0.85rem' }}>
+        HIGH PERFORMANCE FOR HEAVY LOAD APPLICATION BI-METAL BUSHING
+      </p>
+      <p style={{ marginBottom: '1.5rem', lineHeight: '1.5' }}>
+        The Bi-metal bearings offers a very high mechanical strength, fatigue and wear resistance. MSS-BIM bearings are particularly recommended for lubricated applications working under extreme loads, including shock loads and low speed oscillating movements. The bearing layer includes lead bronze, lead-free bronze and lead-free with solid lubricant for high performance.
+      </p>
+      
+      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>CHARACTERISTICS</p>
+      <ul style={{ paddingLeft: '1.2rem', marginBottom: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.4rem', lineHeight: '1.4' }}>
+        <li>Recommended to use oil and grease condition.</li>
+        <li>Good performance under oscillating movement.</li>
+        <li>Steel backing provides strength and rigidity and suitable for high load application.</li>
+        <li>Great fatigue strength under dynamic and shock load application.</li>
+      </ul>
+      
+      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>INDUSTRY & APPLICATIONS</p>
+      <p style={{ lineHeight: '1.4' }}>
+        Textile machinery, Pneumatic equipment, King pin bushes, Brake caliper bushes, Mechanical handling and lifting equipment, Hydraulic cylinders.
+      </p>
+    </div>
+  );
+
   const items = [
     { images: [ubImg1, ubImg2], title: 'MSS-MF Self Lube', details: mssMfDetails },
     { images: [ubImg3, ubImg4], title: 'MSS-MP Pre Lube', details: mssMpDetails },
-    { images: [ubImg5], title: 'MSS-BIM Bi-Metal' },
+    { images: [ubImg5], title: 'MSS-BIM Bi-Metal', details: mssBimDetails },
     { images: [ubImg6], title: 'MSS-MB Solid Bush' },
     { images: [ubImg7], title: 'MSS-MITHLON' },
   ];
