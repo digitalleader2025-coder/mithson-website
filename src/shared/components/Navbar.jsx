@@ -209,10 +209,9 @@ export default function Navbar() {
             </ul>
           </nav>
 
-          {/* CTA */}
           <div className="navbar-cta">
             <Link to="/connect-with-us" className="btn btn-primary btn--sm" id="nav-contact-cta">
-              Get in Touch
+              Enquire Now
             </Link>
           </div>
 
@@ -294,7 +293,7 @@ export default function Navbar() {
                 </div>
               ))}
               <Link to="/connect-with-us" className="btn btn-primary mobile-nav-cta" onClick={closeMobile} id="mobile-nav-cta">
-                Get in Touch
+                Enquire Now
               </Link>
             </div>
           </motion.nav>

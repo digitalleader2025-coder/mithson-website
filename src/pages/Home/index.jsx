@@ -113,11 +113,8 @@ function HeroSection() {
           </p>
 
           <div className="hero-actions hero-line">
-            <Link to="/products" className="btn btn-primary" id="hero-explore-products">
-              Explore Products
-            </Link>
-            <Link to="/who-we-are/about-us" className="btn btn-ghost" id="hero-learn-more">
-              Who We Are
+            <Link to="/connect-with-us" className="btn btn-primary" id="hero-enquire-now">
+              Enquire Now
             </Link>
           </div>
 
