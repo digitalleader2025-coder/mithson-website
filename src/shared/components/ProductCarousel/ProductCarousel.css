@@ -7,108 +7,138 @@
 .product-carousel-container {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  justify-content: center;
   position: relative;
   width: 100%;
+  padding: 0 80px; /* Give space for the absolute arrows */
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.carousel-track {
-  flex: 1;
+/* Glass Card styling now belongs to the track wrapper, completely fixed */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(66, 164, 255, 0.15);
+  border-radius: 28px; 
+  box-shadow: 0 10px 40px rgba(66, 164, 255, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
   position: relative;
-  overflow: hidden;
-  border-radius: var(--radius-2xl);
-  /* Removed min-height so it naturally wraps the content */
+  overflow: hidden; /* hide content sliding out */
+  width: 100%;
+  height: 650px; /* Mobile fixed height */
 }
 
-.carousel-slide {
-  display: flex;
-  flex-direction: column;
+@media (min-width: 900px) {
+  .glass-card {
+    height: 480px; /* Desktop fixed height */
+  }
+}
+
+.carousel-slide-content {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
   padding: var(--space-8);
   gap: var(--space-6);
-  background: #ffffff; /* Explicitly white for the slide card */
-  border: 1px solid var(--color-border-2);
-  border-radius: var(--radius-2xl);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05); /* Soft shadow for pure white bg */
   will-change: transform, opacity;
 }
 
-@media (min-width: 768px) {
-  .carousel-slide {
+@media (min-width: 900px) {
+  .carousel-slide-content {
     flex-direction: row;
-    align-items: center;
-    padding: var(--space-10);
+    padding: var(--space-10) var(--space-12);
+    gap: var(--space-12);
   }
 }
 
 .carousel-visual {
-  flex: 1;
+  flex: none; /* fixed height area on mobile */
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 250px;
+  height: 240px; 
+  width: 100%;
   position: relative;
 }
 
-.carousel-image {
-  max-width: 100%;
-  max-height: 220px;
-  object-fit: contain;
-}
-
-@media (min-width: 768px) {
-  .carousel-image {
-    max-height: 380px;
+@media (min-width: 900px) {
+  .carousel-visual {
+    flex: 1; /* take 50% width on desktop */
+    height: 100%;
+    width: 50%;
   }
 }
 
-.carousel-placeholder {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
+/* Info side */
 .carousel-info {
-  flex: 1.2;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--space-4);
+  justify-content: flex-start;
+  height: calc(100% - 240px); /* Take remaining height */
+  overflow: hidden;
+}
+
+@media (min-width: 900px) {
+  .carousel-info {
+    height: 100%;
+    width: 50%;
+  }
 }
 
 .carousel-product-name {
   font-family: var(--font-display);
   font-size: var(--text-3xl);
   font-weight: 800;
-  color: var(--color-blue);
-  margin-top: -0.5rem;
+  color: #0b1a30; /* MITHSON Dark blue typography */
+  margin-top: 0;
+  margin-bottom: var(--space-2);
 }
 
 .carousel-tagline {
   font-size: var(--text-lg);
   font-weight: 600;
-  color: var(--color-text);
+  color: var(--color-blue);
   line-height: 1.4;
-}
-
-.carousel-desc {
-  color: var(--color-muted);
-  font-size: var(--text-base);
-  line-height: 1.6;
+  margin-bottom: var(--space-4);
 }
 
 .carousel-materials {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.carousel-desc {
+  color: var(--color-text);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  margin-bottom: var(--space-6);
+  flex-grow: 1; /* Pushes the button to the bottom */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 
 .carousel-view-btn {
-  margin-top: var(--space-4);
+  margin-top: auto; /* Locks button to bottom edge of info container */
+  align-self: flex-start;
 }
 
 /* Navigation Buttons */
@@ -117,38 +147,46 @@
   height: 56px;
   border-radius: 50%;
   border: none;
-  background: rgba(66, 164, 255, 0.75); /* Blue theme with 75% opacity as requested */
+  background: rgba(66, 164, 255, 0.9);
   color: #fff;
   font-size: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all var(--duration-fast);
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
   z-index: 10;
-  flex-shrink: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 4px 15px rgba(66, 164, 255, 0.3);
+}
+
+.carousel-btn.prev-btn {
+  left: 0;
+}
+
+.carousel-btn.next-btn {
+  right: 0;
 }
 
 .carousel-btn:hover {
-  background: rgba(66, 164, 255, 0.95);
-  transform: scale(1.05);
+  background: #42A4FF;
+  transform: translateY(-50%) scale(1.08); /* Must keep translateY */
+  box-shadow: 0 6px 20px rgba(66, 164, 255, 0.5);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .product-carousel-container {
-    gap: var(--space-2);
+    padding: 0 40px; 
   }
   .carousel-btn {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     font-size: 18px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
   }
-  .carousel-btn.prev-btn { left: -10px; }
-  .carousel-btn.next-btn { right: -10px; }
-  .carousel-btn:hover { transform: translateY(-50%) scale(1.05); }
+  .carousel-btn.prev-btn { left: -15px; }
+  .carousel-btn.next-btn { right: -15px; }
 }
 
 /* Dots */
@@ -172,5 +210,5 @@
 
 .carousel-dot.active {
   background: var(--color-blue);
-  transform: scale(1.2);
+  transform: scale(1.3);
 }

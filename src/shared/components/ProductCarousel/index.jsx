@@ -37,21 +37,18 @@ export default function ProductCarousel() {
 
   const variants = {
     enter: (dir) => ({
-      x: dir > 0 ? 100 : -100,
+      x: dir > 0 ? 60 : -60,
       opacity: 0,
-      scale: 0.95,
     }),
     center: {
       zIndex: 1,
       x: 0,
       opacity: 1,
-      scale: 1,
     },
     exit: (dir) => ({
       zIndex: 0,
-      x: dir < 0 ? 100 : -100,
+      x: dir < 0 ? 60 : -60,
       opacity: 0,
-      scale: 0.95,
     }),
   };
 
@@ -70,8 +67,8 @@ export default function ProductCarousel() {
             &#10094;
           </button>
           
-          <div className="carousel-track">
-            <AnimatePresence initial={false} custom={direction} mode="wait">
+          <div className="carousel-track glass-card">
+            <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={currentIndex}
                 custom={direction}
@@ -80,14 +77,14 @@ export default function ProductCarousel() {
                 animate="center"
                 exit="exit"
                 transition={{
-                  x: { type: 'spring', stiffness: 300, damping: 30 },
-                  opacity: { duration: 0.3 },
+                  x: { type: 'spring', stiffness: 350, damping: 35 },
+                  opacity: { duration: 0.35 },
                 }}
-                className="carousel-slide glass-card"
+                className="carousel-slide-content"
               >
                 <div className="carousel-visual">
                   {currentProduct.image || currentProduct.carouselImage ? (
-                    <img loading="lazy" src={currentProduct.carouselImage || (Array.isArray(currentProduct.image) ? currentProduct.image[0] : currentProduct.image)} alt={currentProduct.name} className="carousel-image" />
+                    <img loading="lazy" src={(Array.isArray(currentProduct.carouselImage) ? currentProduct.carouselImage[0] : currentProduct.carouselImage) || (Array.isArray(currentProduct.image) ? currentProduct.image[0] : currentProduct.image)} alt={currentProduct.name} className="carousel-image" />
                   ) : (
                     <div className="carousel-placeholder">
                       <div className="gallery-card-shape lightbox-shape" />
