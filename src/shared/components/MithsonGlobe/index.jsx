@@ -77,7 +77,29 @@ const INDUSTRIES = [
 
 export default function MithsonGlobe() {
   const globeEl = useRef();
+  const containerRef = useRef();
   const [hoveredIndustry, setHoveredIndustry] = useState(null);
+  const [dimensions, setDimensions] = useState({ width: 800, height: 800 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Responsive sizing
+  useEffect(() => {
+    const updateSize = () => {
+      if (containerRef.current) {
+        let newWidth = containerRef.current.clientWidth;
+        // Don't let it get larger than 800px or it might overflow parent bounds depending on layout
+        newWidth = Math.min(newWidth, 800);
+        // On very small screens, ensure we have some height
+        const newHeight = newWidth < 500 ? newWidth + 50 : newWidth;
+        setDimensions({ width: newWidth, height: newHeight });
+        setIsMobile(newWidth < 768);
+      }
+    };
+    
+    updateSize();
+    window.addEventListener('resize', updateSize);
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
   
   // Create arc data connecting India to all industries
   const arcsData = useMemo(() => {
@@ -109,25 +131,25 @@ export default function MithsonGlobe() {
       controls.enableZoom = false; // Disable zoom to keep it stable
       
       // Setup initial camera position to look roughly between India and Europe/Africa
-      globeEl.current.pointOfView({ lat: 25, lng: 55, altitude: 2.2 }, 0);
+      globeEl.current.pointOfView({ lat: 25, lng: 55, altitude: isMobile ? 2.5 : 2.2 }, 0);
     }
-  }, []);
+  }, [isMobile]);
 
-  // Custom invisible globe material (since we use hex polygons for landmass)
+  // Adjust material so it doesn't blow out on tablets/phones
   const globeMaterial = new THREE.MeshPhongMaterial({
-    color: '#f0f4fa',
+    color: '#e8f0fe',
     emissive: '#ffffff',
-    emissiveIntensity: 0.1,
+    emissiveIntensity: 0.05,
     transparent: true,
-    opacity: 0.95
+    opacity: 0.98
   });
 
   return (
-    <div className="mithson-globe-wrapper">
+    <div className="mithson-globe-wrapper" ref={containerRef} style={{ width: '100%', maxWidth: '800px', margin: '0 auto' }}>
       <Globe
         ref={globeEl}
-        width={800}
-        height={800}
+        width={dimensions.width}
+        height={dimensions.height}
         backgroundColor="rgba(0,0,0,0)"
         globeMaterial={globeMaterial}
         
@@ -137,8 +159,9 @@ export default function MithsonGlobe() {
         atmosphereAltitude={0.15}
         
         // Landmass rendering (Premium dotted look)
+        // Reduce resolution slightly for better tablet/mobile performance (from 3 to 2)
         hexPolygonsData={worldData.features}
-        hexPolygonResolution={3}
+        hexPolygonResolution={2}
         hexPolygonMargin={0.3}
         hexPolygonColor={() => 'rgba(66, 164, 255, 0.4)'} // Light blue dots
         
@@ -149,7 +172,7 @@ export default function MithsonGlobe() {
         arcDashGap={1.5}
         arcDashInitialGap={d => d.order * 0.3} // Staggered start
         arcDashAnimateTime={3000} // 3 seconds to travel
-        arcStroke={0.7}
+        arcStroke={isMobile ? 0.4 : 0.7}
         arcAltitudeAutoScale={0.4}
 
         // HTML Markers
@@ -172,12 +195,14 @@ export default function MithsonGlobe() {
             // Add interaction events to the marker wrapper
             el.onmouseenter = () => setHoveredIndustry(d.id);
             el.onmouseleave = () => setHoveredIndustry(null);
+            el.ontouchstart = () => setHoveredIndustry(d.id);
             
             el.innerHTML = `
               <div class="globe-marker-dest ${isHovered ? 'hovered' : ''}">
                 <div class="dest-image-wrapper">
                   <img src="${d.image}" alt="${d.name}" class="dest-marker-img" />
                 </div>
+                <div class="dest-label">${d.name}</div>
                 <div class="dest-pulse"></div>
               </div>
             `;
