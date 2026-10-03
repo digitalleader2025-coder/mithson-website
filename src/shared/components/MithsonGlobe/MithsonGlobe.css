@@ -73,39 +73,78 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-/* Destination Markers */
+/* Destination Markers with Images */
 .globe-marker-dest-wrapper {
-  transform: translate(-50%, -50%);
-  width: 40px;
-  height: 40px;
+  transform: translate(-50%, -100%); /* Pin style: origin is at the bottom tip */
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  z-index: 10;
 }
 
 .globe-marker-dest {
-  width: 14px;
-  height: 14px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dest-image-wrapper {
+  width: 48px;
+  height: 48px;
+  background-color: #ffffff;
+  border: 2px solid #8B5CF6;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
 }
 
-.dest-core {
+.dest-marker-img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+
+.dest-pulse {
+  position: absolute;
+  bottom: -4px;
   width: 8px;
   height: 8px;
   background-color: #8B5CF6;
   border-radius: 50%;
-  box-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
-  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
+  z-index: 1;
 }
 
-.globe-marker-dest.hovered .dest-core {
-  transform: scale(1.5);
+/* Add a subtle pin triangle pointing down */
+.dest-image-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0;
+  border-style: solid;
+  border-color: #8B5CF6 transparent transparent transparent;
+}
+
+.globe-marker-dest.hovered .dest-image-wrapper {
+  transform: scale(1.2);
+  border-color: #A855F7;
+  box-shadow: 0 8px 25px rgba(168, 85, 247, 0.4);
+}
+
+.globe-marker-dest.hovered .dest-pulse {
   background-color: #A855F7;
-  box-shadow: 0 0 15px rgba(168, 85, 247, 0.8), 0 0 0 4px rgba(168, 85, 247, 0.2);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 1);
 }
 
 /* Floating UI Overlay for Industry Details */

@@ -140,31 +140,32 @@ import StaggeredText from '../../shared/components/StaggeredText';
 function IndustriesSection() {
   return (
     <section className="industries-section section--lg" aria-labelledby="industries-title">
-      <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        
-        {/* Centered Text */}
-        <div className="industries-text" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto', marginBottom: '3rem' }}>
-          <ScrollReveal>
-            <span className="section-label">Industries</span>
-            <h2 className="section-title" id="industries-title">
-              <StaggeredText text="Serving Global Industries" />
-            </h2>
-            <p className="section-subtitle" style={{ marginTop: '1.5rem' }}>
-              From extreme-pressure Oil & Gas environments to precision Life Science applications —
-              Mithson polymer expertise spans the most demanding sectors worldwide.
-            </p>
-            <Link to="/industries" className="btn btn-outline" style={{ marginTop: '2rem' }} id="home-industries-link">
-              Explore Industries
-            </Link>
-          </ScrollReveal>
-        </div>
-
-        {/* 3D Globe Visualization */}
-        <ScrollReveal delay={0.2}>
-          <div className="industries-globe-container" style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-            <MithsonGlobe />
+      <div className="container">
+        <div className="industries-layout">
+          {/* Left text */}
+          <div className="industries-text">
+            <ScrollReveal>
+              <span className="section-label">Industries</span>
+              <h2 className="section-title" id="industries-title">
+                <StaggeredText text="Serving Global Industries" />
+              </h2>
+              <p className="section-subtitle" style={{ marginTop: '1rem' }}>
+                From extreme-pressure Oil & Gas environments to precision Life Science applications —
+                Mithson polymer expertise spans the most demanding sectors worldwide.
+              </p>
+              <Link to="/industries" className="btn btn-outline" style={{ marginTop: '2rem' }} id="home-industries-link">
+                Explore Industries
+              </Link>
+            </ScrollReveal>
           </div>
-        </ScrollReveal>
+
+          {/* Right Globe Visualization */}
+          <div className="industries-globe-container" style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <ScrollReveal delay={0.2}>
+              <MithsonGlobe />
+            </ScrollReveal>
+          </div>
+        </div>
       </div>
     </section>
   );

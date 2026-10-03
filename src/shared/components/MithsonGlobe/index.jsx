@@ -13,7 +13,8 @@ import SemiconductorImg from '../../../assets/industries/Semiconductor.png';
 import RoboticsImg from '../../../assets/industries/Robotics.png';
 import AerospaceImg from '../../../assets/industries/Aerospace.png';
 
-const INDIA_COORDS = { lat: 20.5937, lng: 78.9629 };
+// Chennai coordinates
+const INDIA_COORDS = { lat: 13.0827, lng: 80.2707 };
 
 const INDUSTRIES = [
   {
@@ -174,7 +175,10 @@ export default function MithsonGlobe() {
             
             el.innerHTML = `
               <div class="globe-marker-dest ${isHovered ? 'hovered' : ''}">
-                <div class="dest-core"></div>
+                <div class="dest-image-wrapper">
+                  <img src="${d.image}" alt="${d.name}" class="dest-marker-img" />
+                </div>
+                <div class="dest-pulse"></div>
               </div>
             `;
           }
