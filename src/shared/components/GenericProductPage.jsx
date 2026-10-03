@@ -92,11 +92,7 @@ export default function GenericProductPage({ product }) {
         <div className="container product-body-inner">
           {/* Main column */}
           <div>
-            <ScrollReveal>
-              <div style={{ marginBottom: '3rem', display: 'flex', justifyContent: 'center' }}>
-                <img loading="lazy" src={productDetailsImg} alt="Product Details" style={{ maxWidth: '100%', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)' }} />
-              </div>
-            </ScrollReveal>
+
             {product.slug === 'm-uni-seal' && (
               <ScrollReveal>
                 <MUNISealCustomSection />
@@ -732,7 +728,7 @@ function NozzlesPowerGridCustomSection() {
 function EncapsulatedORingCustomSection() {
   return (
     <div style={{ marginBottom: '3rem', display: 'flex', justifyContent: 'center' }}>
-      <img loading="lazy" src={eoImg1} alt="Encapsulated O-Ring" style={{ maxWidth: '100%', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)' }} />
+      <img loading="lazy" src={productDetailsImg} alt="Encapsulated O-Ring Details" style={{ maxWidth: '100%', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)' }} />
     </div>
   );
 }
