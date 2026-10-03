@@ -37,11 +37,7 @@ export default function IndustriesPage() {
               <span style={{ color: 'var(--color-accent)', fontSize: '2rem' }}>→</span>
             </Link>
           </ScrollReveal>
-          <ScrollReveal delay={0.1}>
-            <p style={{ color: 'var(--color-muted)', fontSize: 'var(--text-sm)', textAlign: 'center', marginTop: '3rem' }}>
-              Additional industry pages for Automotive, Life Science, Mining, Semiconductor, Robotics and Aerospace — coming soon.
-            </p>
-          </ScrollReveal>
+
         </div>
       </section>
     </div>
