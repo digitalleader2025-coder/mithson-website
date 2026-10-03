@@ -51,7 +51,11 @@ function ScrollToTop() {
   const { pathname } = useLocation();
   
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (window.lenis) {
+      window.lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
   }, [pathname]);
   
   return null;
@@ -67,6 +71,9 @@ export default function App() {
       smooth: true,
       smoothTouch: false,
     });
+    
+    // Expose lenis globally for the ScrollToTop component
+    window.lenis = lenis;
 
     function raf(time) {
       lenis.raf(time);
@@ -77,6 +84,7 @@ export default function App() {
 
     return () => {
       lenis.destroy();
+      window.lenis = undefined;
     };
   }, []);
 

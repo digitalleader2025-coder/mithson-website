@@ -22,6 +22,15 @@ export default function SceneWrapper({
 }) {
   const containerRef = useRef(null);
   const [inView, setInView] = useState(true);
+  
+  // Use a safer default for mobile to prevent lag
+  const [activeDpr, setActiveDpr] = useState(dpr);
+  useEffect(() => {
+    // Cap pixel ratio to 1 on mobile or narrow screens to heavily reduce lag
+    if (window.innerWidth < 768) {
+      setActiveDpr(1);
+    }
+  }, [dpr]);
 
   // Pause WebGL rendering when off-screen to massively improve scroll performance
   useEffect(() => {
@@ -67,7 +76,7 @@ export default function SceneWrapper({
             frameloop={inView ? 'always' : 'demand'}
             camera={camera}
             gl={gl}
-            dpr={dpr}
+            dpr={activeDpr}
             style={{ width: '100%', height: '100%', pointerEvents: 'none' }}
           >
             {children}
