@@ -133,47 +133,38 @@ function HeroSection() {
 
 
 
+import MithsonGlobe from '../../shared/components/MithsonGlobe';
+import StaggeredText from '../../shared/components/StaggeredText';
+
 /* ----- Industries section ----- */
 function IndustriesSection() {
   return (
     <section className="industries-section section--lg" aria-labelledby="industries-title">
-      <div className="container">
-        <div className="industries-layout">
-          {/* Left text */}
-          <div className="industries-text">
-            <ScrollReveal>
-              <span className="section-label">Industries</span>
-              <h2 className="section-title" id="industries-title">
-                Serving Global Industries
-              </h2>
-              <p className="section-subtitle" style={{ marginTop: '1rem' }}>
-                From extreme-pressure Oil & Gas environments to precision Life Science applications —
-                Mithson polymer expertise spans the most demanding sectors.
-              </p>
-              <Link to="/industries" className="btn btn-outline" style={{ marginTop: '2rem' }} id="home-industries-link">
-                Explore Industries
-              </Link>
-            </ScrollReveal>
-          </div>
-
-          {/* Right grid */}
-          <div className="sectors-grid">
-            {sectors.map((sector, i) => (
-              <motion.div
-                key={sector.label}
-                className="sector-card glass-card"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.07, duration: 0.5 }}
-                whileHover={{ scale: 1.04, transition: { duration: 0.2 } }}
-              >
-                <span className="sector-icon" aria-hidden="true">{sector.icon}</span>
-                <span className="sector-label">{sector.label}</span>
-              </motion.div>
-            ))}
-          </div>
+      <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        
+        {/* Centered Text */}
+        <div className="industries-text" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto', marginBottom: '3rem' }}>
+          <ScrollReveal>
+            <span className="section-label">Industries</span>
+            <h2 className="section-title" id="industries-title">
+              <StaggeredText text="Serving Global Industries" />
+            </h2>
+            <p className="section-subtitle" style={{ marginTop: '1.5rem' }}>
+              From extreme-pressure Oil & Gas environments to precision Life Science applications —
+              Mithson polymer expertise spans the most demanding sectors worldwide.
+            </p>
+            <Link to="/industries" className="btn btn-outline" style={{ marginTop: '2rem' }} id="home-industries-link">
+              Explore Industries
+            </Link>
+          </ScrollReveal>
         </div>
+
+        {/* 3D Globe Visualization */}
+        <ScrollReveal delay={0.2}>
+          <div className="industries-globe-container" style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+            <MithsonGlobe />
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

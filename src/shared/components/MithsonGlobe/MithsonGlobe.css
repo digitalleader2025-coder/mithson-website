@@ -1,0 +1,182 @@
+.mithson-globe-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Add subtle background glow */
+  background: radial-gradient(circle at center, rgba(66, 164, 255, 0.05) 0%, transparent 60%);
+  margin-top: 2rem;
+}
+
+/* Adjust globe canvas so it scales nicely */
+.mithson-globe-wrapper canvas {
+  outline: none;
+  border-radius: 50%;
+  cursor: grab;
+}
+
+.mithson-globe-wrapper canvas:active {
+  cursor: grabbing;
+}
+
+/* 
+  MARKERS 
+*/
+.globe-marker-origin {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  transform: translate(-50%, -50%); /* Center perfectly */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* Let globe drag through it */
+}
+
+.origin-core {
+  width: 12px;
+  height: 12px;
+  background-color: #ffffff;
+  border: 3px solid #42A4FF;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #42A4FF;
+  z-index: 2;
+}
+
+.origin-pulse {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(66, 164, 255, 0.6);
+  border-radius: 50%;
+  animation: origin-pulse-anim 2s infinite ease-out;
+  z-index: 1;
+}
+
+@keyframes origin-pulse-anim {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+.origin-label {
+  position: absolute;
+  top: 100%;
+  margin-top: 6px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 800;
+  color: #42A4FF;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Destination Markers */
+.globe-marker-dest-wrapper {
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.globe-marker-dest {
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.dest-core {
+  width: 8px;
+  height: 8px;
+  background-color: #8B5CF6;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
+  transition: all 0.3s ease;
+}
+
+.globe-marker-dest.hovered .dest-core {
+  transform: scale(1.5);
+  background-color: #A855F7;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.8), 0 0 0 4px rgba(168, 85, 247, 0.2);
+}
+
+/* Floating UI Overlay for Industry Details */
+.globe-info-card {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  width: 260px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  padding: 1.25rem;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+}
+
+.globe-info-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.info-card-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.info-card-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #8B5CF6;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-card-img-wrapper {
+  width: 100%;
+  height: 120px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f0f4fa;
+}
+
+.info-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info-card-desc {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .globe-info-card {
+    right: 50%;
+    transform: translateX(50%) translateY(20px);
+    bottom: -20px;
+  }
+  .globe-info-card.visible {
+    transform: translateX(50%) translateY(0);
+  }
+}
