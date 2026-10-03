@@ -49,19 +49,12 @@ export const navigation = [
     children: [],
   },
   {
-    label: 'More',
-    path: '/more',
+    label: 'Events',
+    path: '/events',
     children: [
-      { label: 'Connect With Us', path: '/connect-with-us' },
-      {
-        label: 'Events',
-        path: '/events',
-        children: [
-          { label: 'Oil & Gas Expo 2025', path: '/events/oil-and-gas-expo-2025' },
-          { label: 'Expo 2024', path: '/events/expo-2024' },
-          { label: 'Expo 2023', path: '/events/expo-2023' },
-        ],
-      },
+      { label: 'Oil & Gas Expo 2025', path: '/events/oil-and-gas-expo-2025' },
+      { label: 'Expo 2024', path: '/events/expo-2024' },
+      { label: 'Expo 2023', path: '/events/expo-2023' },
     ],
   },
 ];

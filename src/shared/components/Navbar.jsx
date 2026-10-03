@@ -98,7 +98,7 @@ function MegaMenuItem({ item, onClose }) {
       <AnimatePresence>
         {open && hasChildren && (
           <motion.div
-            className={`dropdown ${item.children.some(c => c.children) ? 'dropdown--wide' : ''}`}
+            className={`dropdown ${item.label === 'Products' ? 'dropdown--grid' : ''} ${item.children.some(c => c.children) ? 'dropdown--wide' : ''}`}
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 6 }}
@@ -107,32 +107,49 @@ function MegaMenuItem({ item, onClose }) {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            {item.children.map((child) =>
-              child.children ? (
-                <div key={child.path} className="dropdown-group">
-                  <span className="dropdown-group-label">{child.label}</span>
-                  {child.children.map((sub) => (
-                    <Link
-                      key={sub.path}
-                      to={sub.path}
-                      className="dropdown-link"
-                      role="menuitem"
-                      onClick={() => { setOpen(false); onClose?.(); }}
-                    >
-                      {sub.label}
-                    </Link>
-                  ))}
-                </div>
-              ) : (
-                <Link
-                  key={child.path}
-                  to={child.path}
-                  className="dropdown-link"
-                  role="menuitem"
-                  onClick={() => { setOpen(false); onClose?.(); }}
-                >
-                  {child.label}
-                </Link>
+            {item.label === 'Products' ? (
+              // Special 2-column grid layout for Products
+              <div className="dropdown-grid-inner">
+                {item.children.map((child) => (
+                  <Link
+                    key={child.path}
+                    to={child.path}
+                    className="dropdown-link"
+                    role="menuitem"
+                    onClick={() => { setOpen(false); onClose?.(); }}
+                  >
+                    {child.label}
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              item.children.map((child) =>
+                child.children ? (
+                  <div key={child.path} className="dropdown-group">
+                    <span className="dropdown-group-label">{child.label}</span>
+                    {child.children.map((sub) => (
+                      <Link
+                        key={sub.path}
+                        to={sub.path}
+                        className="dropdown-link"
+                        role="menuitem"
+                        onClick={() => { setOpen(false); onClose?.(); }}
+                      >
+                        {sub.label}
+                      </Link>
+                    ))}
+                  </div>
+                ) : (
+                  <Link
+                    key={child.path}
+                    to={child.path}
+                    className="dropdown-link"
+                    role="menuitem"
+                    onClick={() => { setOpen(false); onClose?.(); }}
+                  >
+                    {child.label}
+                  </Link>
+                )
               )
             )}
           </motion.div>
