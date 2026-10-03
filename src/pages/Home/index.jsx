@@ -11,7 +11,6 @@ import FloatingRing from '../../shared/3d/FloatingRing';
 import EnvironmentLight from '../../shared/3d/EnvironmentLight';
 import ScrollReveal from '../../shared/components/ScrollReveal';
 import ProductCarousel from '../../shared/components/ProductCarousel';
-import StaggeredText from '../../shared/components/StaggeredText';
 
 import { products } from '../../content/products';
 import { company } from '../../content/company';
@@ -102,10 +101,10 @@ function HeroSection() {
             <span className="badge badge-blue">Part of Fluoro Carbon Seals Group</span>
           </motion.div>
 
-          <h1 className="hero-title" id="hero-title" style={{ display: 'flex', flexDirection: 'column' }}>
-            <StaggeredText text="Engineering the" className="hero-line hero-title-line" staggerDelay={0.06} />
-            <StaggeredText text="Future of" className="hero-line hero-title-line text-gradient" staggerDelay={0.06} />
-            <StaggeredText text="Sealing Technology" className="hero-line hero-title-line" staggerDelay={0.06} />
+          <h1 className="hero-title" id="hero-title">
+            <span className="hero-line hero-title-line">Engineering the</span>
+            <span className="hero-line hero-title-line text-gradient">Future of</span>
+            <span className="hero-line hero-title-line">Sealing Technology</span>
           </h1>
 
           <p className="hero-subtitle hero-line">
