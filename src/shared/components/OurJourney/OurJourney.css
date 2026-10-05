@@ -311,6 +311,9 @@
 .journey-image-wrapper {
   position: absolute;
   inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
@@ -324,9 +327,11 @@
 
 /* Base state for image: scaled up slightly */
 .journey-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* changed from cover so full image is visible */
+  width: auto;
+  height: auto;
+  max-width: 95%; /* slight padding from the frame edge */
+  max-height: 95%;
+  object-fit: contain;
   border-radius: 16px; /* bend the sharp edges of the image itself */
   transform: scale(1.03);
   transition: transform 0.8s ease-in-out;
