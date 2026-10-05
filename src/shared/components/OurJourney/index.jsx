@@ -37,12 +37,11 @@ const journeyData = [
 
 export default function OurJourney() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const containerRef = useRef(null);
-  const milestoneRefs = useRef([]);
+  const wrapperRef = useRef(null);
 
   // Framer Motion for the continuous blue timeline progress
   const { scrollYProgress } = useScroll({
-    target: containerRef,
+    target: wrapperRef,
     offset: ["start center", "end center"]
   });
 
@@ -54,31 +53,19 @@ export default function OurJourney() {
   });
 
   useEffect(() => {
-    // Determine which milestone is active using IntersectionObserver
-    // We use a margin that triggers when a milestone crosses the center of the screen
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const idx = milestoneRefs.current.indexOf(entry.target);
-            if (idx !== -1) {
-              setActiveIndex(idx);
-            }
-          }
-        });
-      },
-      {
-        // Trigger when the element crosses the middle 20% of the viewport height
-        rootMargin: "-40% 0px -40% 0px"
-      }
-    );
-
-    milestoneRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
+    // Derive active index directly from scroll progress
+    const unsubscribe = smoothProgress.on("change", (v) => {
+      // 4 items -> thresholds at roughly 0.15, 0.4, 0.65, 0.9
+      let idx = 0;
+      if (v > 0.2) idx = 1;
+      if (v > 0.5) idx = 2;
+      if (v > 0.8) idx = 3;
+      
+      setActiveIndex(idx);
     });
 
-    return () => observer.disconnect();
-  }, []);
+    return () => unsubscribe();
+  }, [smoothProgress]);
 
   // Preload images
   useEffect(() => {
@@ -90,35 +77,35 @@ export default function OurJourney() {
 
   return (
     <section className="our-journey-section">
-      <div className="our-journey-container" ref={containerRef}>
-        
-        {/* LEFT COLUMN: Timeline */}
-        <div className="journey-left">
-          <div className="journey-header">
-            <span className="journey-eyebrow">HISTORY</span>
-            <h2 className="journey-heading">Our Journey</h2>
-          </div>
-
-          <div className="journey-timeline">
-            <div className="timeline-track-container">
-              <div className="timeline-track-bg" />
-              <motion.div 
-                className="timeline-track-progress" 
-                style={{ scaleY: smoothProgress, transformOrigin: 'top' }}
-              />
+      <div className="our-journey-scroll-wrapper" ref={wrapperRef}>
+        <div className="our-journey-container">
+          
+          {/* LEFT COLUMN: Timeline */}
+          <div className="journey-left">
+            <div className="journey-header">
+              <span className="journey-eyebrow">HISTORY</span>
+              <h2 className="journey-heading">Our Journey</h2>
             </div>
 
-            <div className="timeline-items">
-              {journeyData.map((item, index) => {
-                const isActive = activeIndex === index;
-                const isCompleted = index < activeIndex;
+            <div className="journey-timeline">
+              <div className="timeline-track-container">
+                <div className="timeline-track-bg" />
+                <motion.div 
+                  className="timeline-track-progress" 
+                  style={{ scaleY: smoothProgress, transformOrigin: 'top' }}
+                />
+              </div>
 
-                return (
-                  <div 
-                    key={index} 
-                    className="milestone-block"
-                    ref={(el) => (milestoneRefs.current[index] = el)}
-                  >
+              <div className="timeline-items">
+                {journeyData.map((item, index) => {
+                  const isActive = activeIndex === index;
+                  const isCompleted = index < activeIndex;
+
+                  return (
+                    <div 
+                      key={index} 
+                      className="milestone-block"
+                    >
                     <div className={`milestone-dot ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}`} />
                     
                     <div className="milestone-content">
@@ -181,6 +168,7 @@ export default function OurJourney() {
           </div>
         </div>
 
+        </div>
       </div>
     </section>
   );
