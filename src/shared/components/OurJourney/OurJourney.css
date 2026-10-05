@@ -14,7 +14,7 @@
   flex-direction: column;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: var(--space-6) var(--space-6) 0;
+  padding: var(--space-4) var(--space-4) 0;
   height: 100vh;
   position: sticky;
   top: 0;
@@ -55,7 +55,13 @@
 }
 
 .journey-header {
-  margin-bottom: var(--space-12);
+  margin-bottom: var(--space-4);
+}
+
+@media (min-width: 1024px) {
+  .journey-header {
+    margin-bottom: var(--space-12);
+  }
 }
 
 .journey-eyebrow {
@@ -113,7 +119,13 @@
 .milestone-block {
   display: flex;
   position: relative;
-  padding-bottom: var(--space-6);
+  padding-bottom: var(--space-3);
+}
+
+@media (min-width: 1024px) {
+  .milestone-block {
+    padding-bottom: var(--space-6);
+  }
 }
 
 .milestone-block:last-child {
@@ -166,11 +178,18 @@
 
 .milestone-year {
   font-family: var(--font-display);
-  font-size: var(--text-xl);
+  font-size: var(--text-base);
   font-weight: 800;
   color: var(--color-muted);
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-1);
   transition: color 0.4s ease;
+}
+
+@media (min-width: 1024px) {
+  .milestone-year {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-2);
+  }
 }
 
 .milestone-year.highlight {
@@ -178,15 +197,28 @@
 }
 
 .milestone-text-area {
-  min-height: 80px; /* Reduced from 120px to fit all 4 in one frame compactly */
+  min-height: auto; 
+}
+
+@media (min-width: 1024px) {
+  .milestone-text-area {
+    min-height: 80px; 
+  }
 }
 
 .milestone-title {
   font-family: var(--font-display);
-  font-size: var(--text-2xl);
+  font-size: var(--text-lg);
   font-weight: 700;
   line-height: 1.2;
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-1);
+}
+
+@media (min-width: 1024px) {
+  .milestone-title {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-3);
+  }
 }
 
 .milestone-title.inactive {
@@ -204,8 +236,15 @@
 }
 
 .milestone-desc {
-  font-size: var(--text-lg);
-  line-height: 1.6;
+  font-size: var(--text-sm);
+  line-height: 1.4;
+}
+
+@media (min-width: 1024px) {
+  .milestone-desc {
+    font-size: var(--text-lg);
+    line-height: 1.6;
+  }
 }
 
 .milestone-desc.inactive {
@@ -228,12 +267,12 @@
 
 .journey-right {
   display: flex;
-  flex: 0 0 35vh; /* Image height on mobile */
+  flex: 0 0 28vh; /* Reduced from 35vh for mobile */
   width: 100%;
   align-items: center;
   justify-content: center;
   order: -1; /* Move image to top on mobile */
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-3);
 }
 
 @media (min-width: 1024px) {
