@@ -52,6 +52,9 @@ export default function OurJourney() {
     restDelta: 0.001
   });
 
+  // Clamp the progress between 0 and 1 to prevent the line from scaling upwards on mobile overscroll (bounce)
+  const clampedProgress = useTransform(smoothProgress, [0, 1], [0, 1], { clamp: true });
+
   useEffect(() => {
     // Derive active index directly from scroll progress
     const unsubscribe = smoothProgress.on("change", (v) => {
@@ -92,7 +95,7 @@ export default function OurJourney() {
                 <div className="timeline-track-bg" />
                 <motion.div 
                   className="timeline-track-progress" 
-                  style={{ scaleY: smoothProgress, transformOrigin: 'top' }}
+                  style={{ scaleY: clampedProgress, transformOrigin: 'top' }}
                 />
               </div>
 
