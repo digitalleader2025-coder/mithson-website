@@ -11,6 +11,7 @@ import FloatingRing from '../../shared/3d/FloatingRing';
 import EnvironmentLight from '../../shared/3d/EnvironmentLight';
 import ScrollReveal from '../../shared/components/ScrollReveal';
 import ProductCarousel from '../../shared/components/ProductCarousel';
+import OurJourney from '../../shared/components/OurJourney';
 
 import { products } from '../../content/products';
 import { company } from '../../content/company';
@@ -34,6 +35,7 @@ export default function HomePage() {
     <div className="home-page page-wrapper">
       <HeroSection />
       <ProductCarousel />
+      <OurJourney />
       <IndustriesSection />
       <CertificationSection />
       <SustainabilitySection />
