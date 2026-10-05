@@ -134,11 +134,6 @@ export default function OurJourney() {
                           </>
                         )}
                       </div>
-
-                      {/* Mobile Inline Image */}
-                      <div className={`milestone-mobile-image ${isActive || isCompleted ? 'visible' : ''}`}>
-                        <img src={item.image} alt={item.title} />
-                      </div>
                     </div>
                   </div>
                 );

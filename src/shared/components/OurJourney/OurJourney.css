@@ -14,28 +14,25 @@
   flex-direction: column;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 var(--space-6);
+  padding: var(--space-6) var(--space-6) 0;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow: hidden; /* Prevent anything from bleeding out of the pinned frame */
 }
 
 @media (min-width: 1024px) {
   .our-journey-container {
     flex-direction: row;
-    align-items: flex-start;
-    padding-top: 0;
-    padding-bottom: 0;
-    height: 100%;
+    align-items: center;
+    padding: 0 var(--space-6);
   }
 }
 
-/* Add a wrapper that sets the total scroll height for desktop */
+/* Add a wrapper that sets the total scroll height */
 .our-journey-scroll-wrapper {
   position: relative;
-}
-
-@media (min-width: 1024px) {
-  .our-journey-scroll-wrapper {
-    height: 400vh;
-  }
+  height: 400vh; /* Works for both mobile and desktop now */
 }
 
 /* =======================================
@@ -43,20 +40,17 @@
    ======================================= */
 
 .journey-left {
-  flex: 0 0 100%;
-  padding: var(--space-12) 0;
+  flex: 1; /* take up remaining space on mobile */
+  padding: var(--space-6) 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 @media (min-width: 1024px) {
   .journey-left {
     flex: 0 0 45%;
     padding: var(--space-12) var(--space-8) var(--space-12) 0;
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
 }
 
@@ -124,6 +118,18 @@
 
 .milestone-block:last-child {
   padding-bottom: 0;
+}
+
+/* Hide track extending past the last dot */
+.milestone-block:last-child::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 24px;
+  bottom: 0;
+  width: 24px;
+  background-color: var(--color-bg);
+  z-index: 1;
 }
 
 /* Dot */
@@ -221,30 +227,46 @@
    ======================================= */
 
 .journey-right {
-  display: none;
+  display: flex;
+  flex: 0 0 35vh; /* Image height on mobile */
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  order: -1; /* Move image to top on mobile */
+  margin-bottom: var(--space-4);
 }
 
 @media (min-width: 1024px) {
   .journey-right {
-    display: flex;
     flex: 0 0 55%;
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    align-items: center;
+    height: 100%;
+    order: 0; /* Natural order on desktop */
     justify-content: flex-end;
+    margin-bottom: 0;
   }
 }
 
 .journey-image-frame {
   width: 100%;
-  max-width: 55vw;
-  height: 75vh;
+  height: 100%;
+  max-width: 100%;
   position: relative;
-  border-radius: 24px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(11, 26, 48, 0.08);
-  background-color: var(--color-bg-2);
+  box-shadow: 0 10px 30px rgba(11, 26, 48, 0.06);
+  background-color: #f8fafc; /* subtle background for contained images */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 1024px) {
+  .journey-image-frame {
+    max-width: 55vw;
+    height: 75vh;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(11, 26, 48, 0.08);
+  }
 }
 
 .journey-image-wrapper {
@@ -265,7 +287,7 @@
 .journey-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* changed from cover so full image is visible */
   transform: scale(1.03);
   transition: transform 0.8s ease-in-out;
 }
@@ -292,32 +314,4 @@
   }
 }
 
-/* =======================================
-   MOBILE INLINE IMAGES
-   ======================================= */
-.milestone-mobile-image {
-  margin-top: var(--space-4);
-  border-radius: 16px;
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  transition: all 0.5s ease;
-}
 
-.milestone-mobile-image.visible {
-  max-height: 400px;
-  opacity: 1;
-}
-
-.milestone-mobile-image img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 16px;
-}
-
-@media (min-width: 1024px) {
-  .milestone-mobile-image {
-    display: none;
-  }
-}
