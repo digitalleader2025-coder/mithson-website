@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './shared/components/Navbar';
 import Footer from './shared/components/Footer';
 import PageTransition from './shared/components/PageTransition';
+import IntroAnimation from './shared/components/IntroAnimation/IntroAnimation';
 import Lenis from 'lenis';
 
 // Lazy loaded pages
@@ -90,6 +91,7 @@ export default function App() {
 
   return (
     <>
+      <IntroAnimation />
       <ScrollToTop />
       <Navbar />
       <main style={{ minHeight: '100vh' }}>
