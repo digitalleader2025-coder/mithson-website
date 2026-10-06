@@ -64,8 +64,9 @@ export default function API6APage() {
           defaultIndex={0}
           expandRatio={0.52}
           trigger="hover"
-          accentColor="#0356ca"
-          overlayColor="#060010"
+          backgroundColor="#0336A3"
+          accentColor="#42A4FF"
+          overlayColor="#011b52"
           textColor="#ffffff"
           grayscale
           showLabels

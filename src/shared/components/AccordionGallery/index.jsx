@@ -16,6 +16,7 @@ const DEFAULT_ITEMS = [
 const AccordionGallery = ({
   items = DEFAULT_ITEMS,
   defaultIndex = 2,
+  backgroundColor = '#0336A3',
   accentColor = '#ffffff',
   overlayColor = '#060010',
   textColor = '#ffffff',
@@ -200,6 +201,7 @@ const AccordionGallery = ({
       ref={rootRef}
       className={`accordion-gallery${vertical ? ' accordion-gallery--vertical' : ''}${className ? ` ${className}` : ''}`}
       style={{
+        '--ag-bg': backgroundColor,
         '--ag-accent': accentColor,
         '--ag-overlay': overlayColor,
         '--ag-text': textColor,
