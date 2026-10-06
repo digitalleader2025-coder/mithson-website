@@ -60,7 +60,7 @@ export default function DollyGallery({
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start center", "end bottom"] // Ensure it finishes before leaving screen
+    offset: ["start start", "end end"] 
   });
 
   const totalItems = items.length;
@@ -73,6 +73,7 @@ export default function DollyGallery({
   );
 
   useMotionValueEvent(cameraPos, "change", (latest) => {
+    console.log("Scroll Progress:", scrollYProgress.get(), "Camera Pos:", latest);
     let activeIdx = Math.round(latest);
     if (activeIdx < 0) activeIdx = 0;
     if (activeIdx >= totalItems) activeIdx = totalItems - 1;
