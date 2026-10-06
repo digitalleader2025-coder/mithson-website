@@ -353,6 +353,7 @@ const FlexCarousel = ({
     canvas.style.display = 'block';
     canvas.style.width = '100%';
     canvas.style.height = '100%';
+    canvas.style.touchAction = 'pan-y'; // Force browser to handle vertical scrolling
     canvas.setAttribute('aria-hidden', 'true');
     container.prepend(canvas);
 
@@ -1024,13 +1025,13 @@ const FlexCarousel = ({
       if (pointer.down && e.pointerId === pointer.id) {
         const dx = x - pointer.startX;
         const dy = y - pointer.startY;
-        const slop = pointer.touch ? 10 : 5;
+        const slop = pointer.touch ? 15 : 5; // Increase slop for touch to distinguish scroll vs drag
         if (!pointer.dragging) {
           if (pointer.touch && Math.abs(dy) > slop && Math.abs(dy) > Math.abs(dx)) {
             pointer.down = false;
             return;
           }
-          if (Math.abs(dx) > slop) {
+          if (Math.abs(dx) > slop && (!pointer.touch || Math.abs(dx) >= Math.abs(dy))) {
             pointer.dragging = true;
             pointer.startX = x;
             pointer.startPos = pos;
