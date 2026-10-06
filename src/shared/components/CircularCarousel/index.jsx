@@ -48,15 +48,17 @@ export default function CircularCarousel({
           rotateY: rotation,
           transformStyle: 'preserve-3d'
         }}
-        drag={draggable ? "x" : false}
-        onDragStart={() => setIsDragging(true)}
-        onDragEnd={() => setIsDragging(false)}
-        onDrag={(event, info) => {
-          // Manually update rotation based on drag delta
-          setRotation((prev) => prev + info.delta.x * 0.5);
+        onPanStart={() => {
+          if (draggable) setIsDragging(true);
         }}
-        dragElastic={0}
-        dragMomentum={false}
+        onPanEnd={() => {
+          if (draggable) setIsDragging(false);
+        }}
+        onPan={(event, info) => {
+          if (draggable) {
+            setRotation((prev) => prev + info.delta.x * 0.5);
+          }
+        }}
       >
         {items.map((item, i) => {
           const angle = (360 / totalItems) * i;
