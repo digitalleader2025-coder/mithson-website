@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ScrollReveal from '../../shared/components/ScrollReveal';
 
-export default function OilGasSealTemplate({ title, subtitle, products: productList, label, pageId }) {
+export default function OilGasSealTemplate({ title, subtitle, products: productList, label, pageId, children }) {
   useEffect(() => {
     document.title = `${title} | Mithson Sealing Solutions`;
     return () => { document.title = 'Mithson Sealing Solutions'; };
@@ -21,6 +21,14 @@ export default function OilGasSealTemplate({ title, subtitle, products: productL
         </div>
         <div className="page-hero-bg" aria-hidden="true"><div className="hero-grid" /></div>
       </section>
+
+      {children && (
+        <section className="section" style={{ paddingBottom: 0 }}>
+          <div className="container">
+            {children}
+          </div>
+        </section>
+      )}
 
       <section className="section">
         <div className="container">
