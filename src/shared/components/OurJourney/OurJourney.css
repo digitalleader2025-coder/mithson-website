@@ -116,23 +116,19 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  gap: max(3vh, 20px); /* Dynamic gap for mobile */
   padding-bottom: 60px; /* HALVED: The FINAL READING TAIL length */
+}
+
+@media (min-width: 1024px) {
+  .timeline-items {
+    gap: max(6vh, 40px); /* Dynamic gap for desktop - spreads perfectly but stays in frame */
+  }
 }
 
 .milestone-block {
   display: flex;
   position: relative;
-  padding-bottom: var(--space-3);
-}
-
-@media (min-width: 1024px) {
-  .milestone-block {
-    padding-bottom: var(--space-6);
-  }
-}
-
-.milestone-block:last-child {
-  padding-bottom: 0;
 }
 
 /* Hide grey track extending past the last dot */
