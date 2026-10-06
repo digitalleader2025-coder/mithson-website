@@ -16,6 +16,25 @@ import OurJourney from '../../shared/components/OurJourney';
 import { products } from '../../content/products';
 import { company } from '../../content/company';
 
+import FlexCarousel from '../../shared/components/FlexCarousel';
+import imgOil from '../../assets/industries/Oil & Gas.png';
+import imgAuto from '../../assets/industries/Automotive.png';
+import imgLife from '../../assets/industries/Life Science.png';
+import imgMining from '../../assets/industries/Mining.png';
+import imgSemi from '../../assets/industries/Semiconductor.png';
+import imgRobo from '../../assets/industries/Robotics.png';
+import imgAero from '../../assets/industries/Aerospace.png';
+
+const industryItems = [
+  { src: imgOil, alt: 'Oil & Gas', title: 'Oil & Gas' },
+  { src: imgAuto, alt: 'Automotive', title: 'Automotive' },
+  { src: imgLife, alt: 'Life Science', title: 'Life Science' },
+  { src: imgMining, alt: 'Mining', title: 'Mining' },
+  { src: imgSemi, alt: 'Semiconductor', title: 'Semiconductor' },
+  { src: imgRobo, alt: 'Robotics', title: 'Robotics' },
+  { src: imgAero, alt: 'Aerospace', title: 'Aerospace' },
+];
+
 import './Home.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -158,22 +177,33 @@ function IndustriesSection() {
             </ScrollReveal>
           </div>
 
-          {/* Right grid */}
-          <div className="sectors-grid">
-            {sectors.map((sector, i) => (
-              <motion.div
-                key={sector.label}
-                className="sector-card glass-card"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.07, duration: 0.5 }}
-                whileHover={{ scale: 1.04, transition: { duration: 0.2 } }}
-              >
-                <span className="sector-icon" aria-hidden="true">{sector.icon}</span>
-                <span className="sector-label">{sector.label}</span>
-              </motion.div>
-            ))}
+          {/* Right grid replaced with FlexCarousel */}
+          <div className="sectors-carousel-wrapper" style={{ width: '100%', height: '560px', position: 'relative' }}>
+            <FlexCarousel
+              items={industryItems}
+              preset="liquid"
+              intro="rise"
+              cardHeight={0.5}
+              gap={12}
+              squeeze={0.2}
+              focusOnClick
+              captions
+              fit="natural"
+              radius={12}
+              lensWidth={0.74}
+              lensHeight={1.18}
+              tilt={62}
+              roundness={1}
+              bend={0.34}
+              reach={0.38}
+              curl="twist"
+              dispersion={0.45}
+              liquid={0}
+              followCursor={false}
+              autoplay={false}
+              interval={4}
+              captureWheel={false}
+            />
           </div>
         </div>
       </div>
