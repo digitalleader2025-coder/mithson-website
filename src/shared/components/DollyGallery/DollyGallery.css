@@ -1,0 +1,66 @@
+.dolly-gallery-container {
+  position: relative;
+  width: 100%;
+}
+
+.dolly-gallery-sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Prevent horizontal scrollbars from big scaled items */
+}
+
+.dolly-gallery-perspective {
+  position: relative;
+  /* Centered container where items will stack perfectly on top of each other */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dolly-gallery-item {
+  position: absolute;
+  will-change: transform, opacity, filter;
+  transform-style: preserve-3d;
+  /* Max dimensions so it doesn't break mobile */
+  max-width: 90vw; 
+  /* max-height: 80vh; */
+}
+
+.dolly-image {
+  pointer-events: none;
+  background-color: white; /* Clean white background inside the image frame if transparent */
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .dolly-gallery-container {
+    height: auto !important;
+  }
+  .dolly-gallery-sticky {
+    position: relative;
+    height: auto;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 0;
+    overflow: visible;
+  }
+  .dolly-gallery-perspective {
+    flex-direction: column;
+    gap: 2rem;
+    height: auto;
+  }
+  .dolly-gallery-item {
+    position: relative;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    max-width: 100%;
+  }
+}

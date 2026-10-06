@@ -3,6 +3,21 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import ScrollReveal from '../../../shared/components/ScrollReveal';
 import { company } from '../../../content/company';
+import DollyGallery from '../../../shared/components/DollyGallery';
+
+import imgIso from '../../../assets/certificates/ISO.png';
+import imgApi from '../../../assets/certificates/API 6A FC002B.png';
+import imgNorsok from '../../../assets/certificates/NORSOK E1001.png';
+import imgBam from '../../../assets/certificates/BAM FC002B.png';
+import imgQima from '../../../assets/certificates/QIMA.png';
+
+const certImages = [
+  { id: 1, url: imgIso, alt: "ISO 9001:2015 certification" },
+  { id: 2, url: imgApi, alt: "API-6A certification" },
+  { id: 3, url: imgNorsok, alt: "NORSOK certification" },
+  { id: 4, url: imgBam, alt: "BAM certification" },
+  { id: 5, url: imgQima, alt: "QIMA audited certification" }
+];
 
 const qualityProcess = [
   { step: '01', title: 'Material Selection', desc: 'Rigorous incoming inspection of raw polymers and metals against approved material specifications.' },
@@ -40,23 +55,25 @@ export default function QualityPage() {
 
       {/* Certs */}
       <section className="section">
-        <div className="container">
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <ScrollReveal>
             <span className="section-label">Our Certifications</span>
             <h2 className="section-title" style={{ marginBottom: '2.5rem' }}>
               Internationally Recognised Standards
             </h2>
           </ScrollReveal>
-          <div className="cert-cards-grid">
-            {company.certifications.map((cert, i) => (
-              <ScrollReveal key={cert} delay={i * 0.08}>
-                <div className="cert-page-card glass-card animate-pulse-glow" style={{ '--glow-color': 'var(--color-accent)' }}>
-                  <div className="cert-page-icon" aria-hidden="true">⬡</div>
-                  <div className="cert-page-name">{cert}</div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          
+          <DollyGallery 
+            items={certImages}
+            infinite={false}
+            itemWidth={290}
+            aspectRatio={1.4500000000000002}
+            revealRange={2.2}
+            grayscale={0}
+            autoScroll={0}
+            pauseOnHover={true}
+            backgroundColor="transparent"
+          />
         </div>
       </section>
 
