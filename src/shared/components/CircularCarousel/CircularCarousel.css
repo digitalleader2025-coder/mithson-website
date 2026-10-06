@@ -1,0 +1,30 @@
+.circular-carousel-scene {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.circular-carousel-cylinder {
+  position: relative;
+  width: 0;
+  height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+}
+
+.circular-carousel-cylinder:active {
+  cursor: grabbing;
+}
+
+.circular-carousel-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  backface-visibility: visible;
+}
