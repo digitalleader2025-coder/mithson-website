@@ -101,6 +101,7 @@
   position: absolute;
   inset: 0;
   background-color: var(--color-border);
+  z-index: 0;
 }
 
 .timeline-track-progress {
@@ -108,13 +109,14 @@
   inset: 0;
   background-color: var(--color-blue-accent);
   will-change: transform;
+  z-index: 2;
 }
 
 .timeline-items {
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-bottom: 120px; /* The FINAL READING TAIL length */
+  padding-bottom: 60px; /* HALVED: The FINAL READING TAIL length */
 }
 
 .milestone-block {
@@ -131,6 +133,18 @@
 
 .milestone-block:last-child {
   padding-bottom: 0;
+}
+
+/* Hide grey track extending past the last dot */
+.milestone-block:last-child::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 24px;
+  bottom: -60px; /* Cover the padding area */
+  width: 24px;
+  background-color: var(--color-bg);
+  z-index: 1;
 }
 
 /* Dot */
