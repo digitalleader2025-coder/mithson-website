@@ -124,7 +124,7 @@
 
 @media (min-width: 1024px) {
   .milestone-block {
-    padding-bottom: var(--space-6);
+    padding-bottom: var(--space-4); /* Reduced from space-6 to fit better */
   }
 }
 
@@ -187,8 +187,8 @@
 
 @media (min-width: 1024px) {
   .milestone-year {
-    font-size: var(--text-xl);
-    margin-bottom: var(--space-2);
+    font-size: var(--text-lg); /* Reduced from text-xl */
+    margin-bottom: var(--space-1); /* Reduced from space-2 */
   }
 }
 
@@ -202,7 +202,7 @@
 
 @media (min-width: 1024px) {
   .milestone-text-area {
-    min-height: 80px; 
+    min-height: auto; /* Reduced from 80px to allow tighter packing */
   }
 }
 
@@ -216,8 +216,8 @@
 
 @media (min-width: 1024px) {
   .milestone-title {
-    font-size: var(--text-2xl);
-    margin-bottom: var(--space-3);
+    font-size: var(--text-xl); /* Reduced from text-2xl */
+    margin-bottom: var(--space-1); /* Reduced from space-3 */
   }
 }
 
@@ -242,8 +242,8 @@
 
 @media (min-width: 1024px) {
   .milestone-desc {
-    font-size: var(--text-lg);
-    line-height: 1.6;
+    font-size: var(--text-base); /* Reduced from text-lg */
+    line-height: 1.5; /* Reduced from 1.6 */
   }
 }
 
