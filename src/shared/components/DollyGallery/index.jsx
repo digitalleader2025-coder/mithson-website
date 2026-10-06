@@ -3,43 +3,33 @@ import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-mot
 import './DollyGallery.css';
 
 const DollyItem = ({ index, item, cameraPos, revealRange, itemWidth, aspectRatio, grayscale, totalItems }) => {
-  // Determine target X and Y for a deterministic scatter pattern that matches the screenshots
   const isFinal = index === totalItems - 1;
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   
   let targetX = 0;
   let targetY = 0;
   
-  if (!isMobile && !isFinal) {
-    // Pattern: Right, Left, Center, Right, Left, Center...
-    const xPattern = [250, -250, 0, 250, -250, 0, 250, -250, 0];
-    const yPattern = [20, -30, 0, -20, 30, 0, 20, -30, 0];
+  // Use vw/vh units for responsive scattering, so it works on mobile and desktop identically
+  if (!isFinal) {
+    // Left, Right, Center, Left, Right...
+    const xPattern = ['-25vw', '25vw', '0vw', '-25vw', '25vw', '0vw', '-25vw', '25vw'];
+    const yPattern = ['5vh', '-5vh', '0vh', '5vh', '-5vh', '0vh', '5vh', '-5vh'];
     targetX = xPattern[index % xPattern.length];
     targetY = yPattern[index % yPattern.length];
   }
 
-  // Distance from camera to this item
   const itemZ = useTransform(cameraPos, (pos) => index - pos);
-  
-  // Maps itemZ to visual properties to simulate depth
-  // When itemZ == 0, the item is in focus
-  // When itemZ > 0, the item is far away
-  // When itemZ < 0, the item has passed behind the camera
   
   const scale = useTransform(itemZ, [-0.5, 0, revealRange], [1.8, 1, 0.4]);
   const opacity = useTransform(itemZ, [-0.4, 0, 0.8, revealRange], [0, 1, 0.6, 0]);
   
-  // Parallax Y offset so they stack slightly in distance
-  const baseDepthY = useTransform(itemZ, [-0.5, 0, revealRange], [50, 0, -50]);
+  const baseDepthY = useTransform(itemZ, [-0.5, 0, revealRange], ['10vh', '0vh', '-10vh']);
 
-  // Multiply the scatter translation by scale to create true 3D camera perspective!
-  const x = useTransform(scale, (s) => targetX * s);
-  const y = useTransform([scale, baseDepthY], ([s, depthY]) => (targetY * s) + depthY);
+  // We use string concatenation for responsive units!
+  // Framer motion allows useTransform to return a string template!
+  const x = useTransform(scale, (s) => `calc(${targetX} * ${s})`);
+  const y = useTransform([scale, baseDepthY], ([s, depthY]) => `calc(calc(${targetY} * ${s}) + ${depthY})`);
 
-  // Blur for depth of field
   const blur = useTransform(itemZ, [-0.3, 0, revealRange], ['blur(10px)', 'blur(0px)', 'blur(10px)']);
-
-  // Z-index calculation
   const zIndex = useTransform(itemZ, (z) => 100 - Math.round(z * 10));
 
   return (
