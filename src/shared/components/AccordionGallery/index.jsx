@@ -44,7 +44,17 @@ const AccordionGallery = ({
   const firstRunRef = useRef(true);
   const mediaSizeRef = useRef(320);
 
-  const vertical = orientation === 'vertical';
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 768px)');
+    const update = () => setIsMobile(media.matches);
+    update();
+    media.addEventListener('change', update);
+    return () => media.removeEventListener('change', update);
+  }, []);
+
+  const vertical = orientation === 'vertical' || isMobile;
   const count = items.length;
   const [active, setActive] = useState(Math.min(Math.max(defaultIndex, 0), count - 1));
 
