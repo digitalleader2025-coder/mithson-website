@@ -34,7 +34,8 @@ const AccordionGallery = ({
   showLabels = true,
   grayscale = true,
   className = '',
-  onActiveChange // Added to pass active state up to parent
+  onActiveChange, // Added to pass active state up to parent
+  renderOverlay
 }) => {
   const rootRef = useRef(null);
   const panelRefs = useRef([]);
@@ -245,6 +246,7 @@ const AccordionGallery = ({
                 </span>
               </span>
             )}
+            {renderOverlay && renderOverlay(item, i, isActive)}
           </Tag>
         );
       })}

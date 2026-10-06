@@ -71,32 +71,6 @@ export default function API6APage() {
       pageId="api6a"
     >
       <div style={{ marginBottom: '3rem', position: 'relative' }}>
-        <AnimatePresence>
-          {showToast && (
-            <motion.div
-              initial={{ opacity: 0, y: -20, x: '-50%' }}
-              animate={{ opacity: 1, y: 0, x: '-50%' }}
-              exit={{ opacity: 0, y: -20, x: '-50%' }}
-              style={{
-                position: 'absolute',
-                top: '20px',
-                left: '50%',
-                zIndex: 50,
-                background: 'rgba(0,0,0,0.8)',
-                color: '#fff',
-                padding: '8px 16px',
-                borderRadius: '20px',
-                fontSize: '0.85rem',
-                fontWeight: 500,
-                pointerEvents: 'none',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
-                whiteSpace: 'nowrap'
-              }}
-            >
-              Check the context below 👇
-            </motion.div>
-          )}
-        </AnimatePresence>
         <AccordionGallery
           items={galleryItems}
           defaultIndex={0}
@@ -118,6 +92,34 @@ export default function API6APage() {
           radius={16}
           orientation="horizontal"
           onActiveChange={setActiveIndex}
+          renderOverlay={(item, i, isActive) => (
+            <AnimatePresence>
+              {isActive && isMobile && showToast && (
+                <motion.div
+                  initial={{ opacity: 0, y: -20, x: '-50%' }}
+                  animate={{ opacity: 1, y: 0, x: '-50%' }}
+                  exit={{ opacity: 0, y: -20, x: '-50%' }}
+                  style={{
+                    position: 'absolute',
+                    top: '20px',
+                    left: '50%',
+                    zIndex: 50,
+                    background: 'rgba(0,0,0,0.8)',
+                    color: '#fff',
+                    padding: '8px 16px',
+                    borderRadius: '20px',
+                    fontSize: '0.85rem',
+                    fontWeight: 500,
+                    pointerEvents: 'none',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  Check the context below 👇
+                </motion.div>
+              )}
+            </AnimatePresence>
+          )}
         />
         
         <div style={{ marginTop: '2rem', minHeight: '200px', position: 'relative' }}>
