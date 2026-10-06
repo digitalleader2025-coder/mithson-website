@@ -5,13 +5,13 @@
 
 .dolly-gallery-sticky {
   position: sticky;
-  top: 0;
+  top: 15vh; /* Stick just below the heading */
   width: 100%;
-  height: 100vh;
+  height: 500px; /* Keep it compact, roughly the size of the old card grid */
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* Prevent horizontal scrollbars from big scaled items */
+  overflow: hidden;
 }
 
 .dolly-gallery-perspective {
