@@ -60,9 +60,9 @@ export default function OurJourney() {
     const unsubscribe = smoothProgress.on("change", (v) => {
       // 4 items -> thresholds at roughly 0.15, 0.4, 0.65, 0.9
       let idx = 0;
-      if (v > 0.2) idx = 1;
-      if (v > 0.5) idx = 2;
-      if (v > 0.8) idx = 3;
+      if (v > 0.22) idx = 1;
+      if (v > 0.44) idx = 2;
+      if (v > 0.66) idx = 3;
       
       setActiveIndex(idx);
     });

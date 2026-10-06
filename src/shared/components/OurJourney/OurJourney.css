@@ -32,7 +32,7 @@
 /* Add a wrapper that sets the total scroll height */
 .our-journey-scroll-wrapper {
   position: relative;
-  height: 400vh; /* Works for both mobile and desktop now */
+  height: 500vh; /* 5 distinct scroll phases */
 }
 
 /* =======================================
@@ -114,6 +114,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding-bottom: 120px; /* The FINAL READING TAIL length */
 }
 
 .milestone-block {
@@ -130,18 +131,6 @@
 
 .milestone-block:last-child {
   padding-bottom: 0;
-}
-
-/* Hide track extending past the last dot */
-.milestone-block:last-child::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 24px;
-  bottom: 0;
-  width: 24px;
-  background-color: var(--color-bg);
-  z-index: 1;
 }
 
 /* Dot */
