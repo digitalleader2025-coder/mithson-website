@@ -6,17 +6,27 @@ import { company } from '../../../content/company';
 import DollyGallery from '../../../shared/components/DollyGallery';
 
 import imgIso from '../../../assets/certificates/ISO.png';
-import imgApi from '../../../assets/certificates/API 6A FC002B.png';
-import imgNorsok from '../../../assets/certificates/NORSOK E1001.png';
-import imgBam from '../../../assets/certificates/BAM FC002B.png';
+import imgApi1 from '../../../assets/certificates/API 6A FC002B.png';
+import imgApi2 from '../../../assets/certificates/API 6A FC004G.png';
+import imgApi3 from '../../../assets/certificates/API 6A FC005C.png';
+import imgApi4 from '../../../assets/certificates/API 6A FC021A.png';
+import imgNorsok1 from '../../../assets/certificates/NORSOK E1001.png';
+import imgNorsok2 from '../../../assets/certificates/NORSOK E1004.png';
+import imgBam1 from '../../../assets/certificates/BAM FC002B.png';
+import imgBam2 from '../../../assets/certificates/BAM FC005C.png';
 import imgQima from '../../../assets/certificates/QIMA.png';
 
 const certImages = [
   { id: 1, url: imgIso, alt: "ISO 9001:2015 certification" },
-  { id: 2, url: imgApi, alt: "API-6A certification" },
-  { id: 3, url: imgNorsok, alt: "NORSOK certification" },
-  { id: 4, url: imgBam, alt: "BAM certification" },
-  { id: 5, url: imgQima, alt: "QIMA audited certification" }
+  { id: 2, url: imgApi1, alt: "API-6A certification FC002B" },
+  { id: 3, url: imgApi2, alt: "API-6A certification FC004G" },
+  { id: 4, url: imgApi3, alt: "API-6A certification FC005C" },
+  { id: 5, url: imgApi4, alt: "API-6A certification FC021A" },
+  { id: 6, url: imgNorsok1, alt: "NORSOK certification E1001" },
+  { id: 7, url: imgNorsok2, alt: "NORSOK certification E1004" },
+  { id: 8, url: imgBam1, alt: "BAM certification FC002B" },
+  { id: 9, url: imgBam2, alt: "BAM certification FC005C" },
+  { id: 10, url: imgQima, alt: "QIMA audited certification" }
 ];
 
 const qualityProcess = [

@@ -2,7 +2,22 @@ import { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
 import './DollyGallery.css';
 
-const DollyItem = ({ index, item, cameraPos, revealRange, itemWidth, aspectRatio, grayscale }) => {
+const DollyItem = ({ index, item, cameraPos, revealRange, itemWidth, aspectRatio, grayscale, totalItems }) => {
+  // Determine target X and Y for a deterministic scatter pattern that matches the screenshots
+  const isFinal = index === totalItems - 1;
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  
+  let targetX = 0;
+  let targetY = 0;
+  
+  if (!isMobile && !isFinal) {
+    // Pattern: Right, Left, Center, Right, Left, Center...
+    const xPattern = [250, -250, 0, 250, -250, 0, 250, -250, 0];
+    const yPattern = [20, -30, 0, -20, 30, 0, 20, -30, 0];
+    targetX = xPattern[index % xPattern.length];
+    targetY = yPattern[index % yPattern.length];
+  }
+
   // Distance from camera to this item
   const itemZ = useTransform(cameraPos, (pos) => index - pos);
   
@@ -14,14 +29,17 @@ const DollyItem = ({ index, item, cameraPos, revealRange, itemWidth, aspectRatio
   const scale = useTransform(itemZ, [-0.5, 0, revealRange], [1.8, 1, 0.4]);
   const opacity = useTransform(itemZ, [-0.4, 0, 0.8, revealRange], [0, 1, 0.6, 0]);
   
-  // Parallax Y offset so they stack slightly in distance, looking like a real dolly effect
-  const yOffset = useTransform(itemZ, [-0.5, 0, revealRange], ['10%', '0%', '-15%']);
+  // Parallax Y offset so they stack slightly in distance
+  const baseDepthY = useTransform(itemZ, [-0.5, 0, revealRange], [50, 0, -50]);
+
+  // Multiply the scatter translation by scale to create true 3D camera perspective!
+  const x = useTransform(scale, (s) => targetX * s);
+  const y = useTransform([scale, baseDepthY], ([s, depthY]) => (targetY * s) + depthY);
 
   // Blur for depth of field
   const blur = useTransform(itemZ, [-0.3, 0, revealRange], ['blur(10px)', 'blur(0px)', 'blur(10px)']);
 
-  // Z-index calculation to ensure closer items overlap further ones,
-  // but if it's passed the camera (itemZ < 0), it should still be top-most until it fades out.
+  // Z-index calculation
   const zIndex = useTransform(itemZ, (z) => 100 - Math.round(z * 10));
 
   return (
@@ -32,7 +50,8 @@ const DollyItem = ({ index, item, cameraPos, revealRange, itemWidth, aspectRatio
         aspectRatio,
         scale,
         opacity,
-        y: yOffset,
+        x,
+        y,
         zIndex,
         filter: blur,
         backgroundColor: 'var(--color-bg)' // Ensure crisp edges and cover elements behind it if transparent
@@ -114,6 +133,7 @@ export default function DollyGallery({
                 itemWidth={itemWidth}
                 aspectRatio={aspectRatio}
                 grayscale={grayscale}
+                totalItems={totalItems}
               />
            ))}
         </div>
