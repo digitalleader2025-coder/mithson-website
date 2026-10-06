@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import OilGasSealTemplate from '../OilGasSealTemplate';
 import AccordionGallery from '../../../shared/components/AccordionGallery';
@@ -7,13 +7,6 @@ import imgStemPacking from '../../../assets/api6a/Stem Packing Set.png';
 import imgStemSeal from '../../../assets/api6a/Stem Seal.png';
 import imgFaceSeal from '../../../assets/api6a/ID OD Seal.png';
 import imgBopSeal from '../../../assets/api6a/BOP Seal.png';
-
-const products = [
-  { name: 'Stem Packing Set', materials: ['PEEK', 'Elgiloy/SS Steel', 'Filled PTFE'], application: 'Wellhead Gate Valve', spec: 'API 6A' },
-  { name: 'Stem Seal', materials: ['PTFE', 'Corrosion-resistant metal spring'], application: 'Wellhead Gate Valve — spring-energized', spec: 'API 6A' },
-  { name: 'OD/ID Face Seal', materials: ['PEEK jacket', 'Glass-filled PTFE'], application: 'Valve seat — spring-loaded lip seal', spec: 'API 6A' },
-  { name: 'BOP Seal', materials: ['NBR', 'HNBR'], application: 'Blowout Preventer (BOP)', spec: 'BOP Rated' },
-];
 
 const galleryItems = [
   { 
@@ -50,15 +43,60 @@ export default function API6APage() {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeItem = galleryItems[activeIndex];
 
+  const [isMobile, setIsMobile] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 768px)');
+    const update = () => setIsMobile(media.matches);
+    update();
+    media.addEventListener('change', update);
+    return () => media.removeEventListener('change', update);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) {
+      setShowToast(true);
+      const timer = setTimeout(() => setShowToast(false), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [activeIndex, isMobile]);
+
   return (
     <OilGasSealTemplate
       title="API 6A Wellhead Equipment Seal"
       subtitle="High-pressure, sour-gas and HPHT wellhead sealing — stem packing sets, stem seals, OD/ID face seals and BOP seals manufactured to API 6A."
-      products={products}
+      products={[]}
       label="Oil & Gas Seal"
       pageId="api6a"
     >
-      <div style={{ marginBottom: '3rem' }}>
+      <div style={{ marginBottom: '3rem', position: 'relative' }}>
+        <AnimatePresence>
+          {showToast && (
+            <motion.div
+              initial={{ opacity: 0, y: -20, x: '-50%' }}
+              animate={{ opacity: 1, y: 0, x: '-50%' }}
+              exit={{ opacity: 0, y: -20, x: '-50%' }}
+              style={{
+                position: 'absolute',
+                top: '20px',
+                left: '50%',
+                zIndex: 50,
+                background: 'rgba(0,0,0,0.8)',
+                color: '#fff',
+                padding: '8px 16px',
+                borderRadius: '20px',
+                fontSize: '0.85rem',
+                fontWeight: 500,
+                pointerEvents: 'none',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+                whiteSpace: 'nowrap'
+              }}
+            >
+              Check the context below 👇
+            </motion.div>
+          )}
+        </AnimatePresence>
         <AccordionGallery
           items={galleryItems}
           defaultIndex={0}
