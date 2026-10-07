@@ -90,7 +90,7 @@ export default function GenericProductPage({ product }) {
       <ProductHero product={product} />
 
       <section className="product-body section">
-        <div className={`container product-body-inner ${product.slug === 'seals-valve' ? 'layout-single-column' : ''}`}>
+        <div className={`container product-body-inner ${['seals-valve', 'uni-lube-bearing'].includes(product.slug) ? 'layout-single-column' : ''}`}>
           {/* Main column */}
           <div>
 
@@ -441,131 +441,76 @@ function CarouselImage({ images, interval = 5000, title }) {
 
 function UniLubeBearingCustomSection() {
   const mssMfDetails = (
-    <div style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', textAlign: 'left', width: '100%', marginTop: '0.5rem' }}>
-      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)', fontSize: '0.85rem' }}>
-        METAL-POLYMER SELF-LUBRICATING<br />LONG LIFE HASSLE FREE PERFORMANCE
+    <div style={{ fontSize: '0.95rem', color: 'var(--color-text-secondary)', textAlign: 'center', width: '100%', marginTop: '0.5rem', lineHeight: '1.6' }}>
+      <p style={{ fontWeight: '700', marginBottom: '0.75rem', color: 'var(--color-blue-dark)', fontSize: '1.1rem', textTransform: 'uppercase' }}>
+        Metal-Polymer Self-Lubricating
       </p>
-      <p style={{ marginBottom: '1.5rem', lineHeight: '1.5' }}>
-        MSS-MF series are the highest performance self-lubricating bearings. Its performance is unmatched by any other self-lubricating bearing material and has the widest application range.
+      <p style={{ marginBottom: '1.5rem', maxWidth: '800px', margin: '0 auto 1.5rem auto' }}>
+        MSS-MF series bearings deliver high-performance, self-lubricating operation with a wide range of applications. Designed for maintenance-free, long-life performance, they provide low friction, vibration and noise, excellent abrasion resistance under high loads and low speeds, and strong dimensional stability with efficient heat conductivity.
       </p>
-      
-      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>CHARACTERISTICS</p>
-      <ul style={{ paddingLeft: '1.2rem', marginBottom: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.4rem', lineHeight: '1.4' }}>
-        <li>Dry Lubrication and maintenance free.</li>
-        <li>Long life and frictionless</li>
-        <li>Low vibration and low noise</li>
-        <li>Abrasion resistance in high load and low speed condition.</li>
-        <li>Provides excellent dimensional stability and heat conductivity</li>
-      </ul>
-      
-      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>INDUSTRY & APPLICATIONS</p>
-      <ul style={{ paddingLeft: '1.2rem', display: 'flex', flexDirection: 'column', gap: '0.4rem', lineHeight: '1.4' }}>
-        <li><strong>Hydraulics and Valves:</strong> Pumps – Centrifugal, Water axial piston, Hydraulic actuators, Ball, Butterfly and check valves</li>
-        <li><strong>Textiles Equipment:</strong> Spinning machinery, Weaving machinery</li>
-        <li><strong>Agricultural Equipment:</strong> Tractors, tillers, Harvesters</li>
-        <li><strong>Automotive:</strong> Earthmovers, Trucks</li>
-      </ul>
+      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>Industries & Applications:</p>
+      <p style={{ maxWidth: '800px', margin: '0 auto' }}>
+        Hydraulics and valves, including pumps, actuators and industrial valves; textile machinery such as spinning and weaving equipment; agricultural machinery including tractors, tillers and harvesters; and automotive applications such as earthmovers and trucks.
+      </p>
     </div>
   );
 
   const mssMpDetails = (
-    <div style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', textAlign: 'left', width: '100%', marginTop: '0.5rem' }}>
-      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)', fontSize: '0.85rem' }}>
-        METAL-POLYMER SELF-LUBRICATING<br />LONG LIFE HASSLE FREE PERFORMANCE
+    <div style={{ fontSize: '0.95rem', color: 'var(--color-text-secondary)', textAlign: 'center', width: '100%', marginTop: '0.5rem', lineHeight: '1.6' }}>
+      <p style={{ fontWeight: '700', marginBottom: '0.75rem', color: 'var(--color-blue-dark)', fontSize: '1.1rem', textTransform: 'uppercase' }}>
+        Metal-Polymer Self-Lubricating
       </p>
-      <p style={{ marginBottom: '1.5rem', lineHeight: '1.5' }}>
-        MSS-MP series bearing provides extraordinary performance with low speed and high load application. It is referred as “pre-lubricated” because it requires traces of lubricant that last for to a very long period due to its unique lubricant retention system.
+      <p style={{ marginBottom: '1.5rem', maxWidth: '800px', margin: '0 auto 1.5rem auto' }}>
+        MSS-MP series bearings provide reliable performance under high loads and low speeds. Their pre-lubricated design uses lubricant-retaining pockets for extended operation with minimal maintenance. They are suitable for rotational, oscillating, frequent start-stop and boundary-condition applications, offering good damping and shock-load resistance.
       </p>
-      
-      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>CHARACTERISTICS</p>
-      <ul style={{ paddingLeft: '1.2rem', marginBottom: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.4rem', lineHeight: '1.4' }}>
-        <li>Recommended to use where intermittent operation or boundary condition.</li>
-        <li>Suitable for high load and low speed of Rotational, Oscillating or frequent stop or start.</li>
-        <li>Work longer in boundary condition without adding oil due to lubricant retaining pockets in the material.</li>
-        <li>Good damping behavior and good resistance to shock loads.</li>
-      </ul>
-      
-      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>INDUSTRY & APPLICATIONS</p>
-      <ul style={{ paddingLeft: '1.2rem', display: 'flex', flexDirection: 'column', gap: '0.4rem', lineHeight: '1.4' }}>
-        <li><strong>Hydraulics & Pneumatics:</strong> Hydraulic oil seals and components in hydraulic pumps, Piston rod guide – Hydraulic engineering</li>
-        <li><strong>Agricultural Equipment:</strong> Gearboxes and transmissions, Seals and components for harvesters, Valves for balers and tractors, Bearings for gearboxes, Plain bearings for harvesters</li>
-        <li><strong>Handling and Lifting Equipment:</strong> Vertical shaft gearboxes and components, Gearboxes and drive sprockets, For crane transmission</li>
-      </ul>
+      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>Industries & Applications:</p>
+      <p style={{ maxWidth: '800px', margin: '0 auto' }}>
+        Hydraulics and pneumatics, including hydraulic seals, pumps and piston-rod guides; agricultural equipment such as gearboxes, transmissions, harvesters, balers and tractors; and handling and lifting equipment, including crane transmissions, vertical-shaft gearboxes, drive sprockets and related components.
+      </p>
     </div>
   );
 
   const mssBimDetails = (
-    <div style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', textAlign: 'left', width: '100%', marginTop: '0.5rem' }}>
-      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)', fontSize: '0.85rem' }}>
-        HIGH PERFORMANCE FOR HEAVY LOAD APPLICATION BI-METAL BUSHING
+    <div style={{ fontSize: '0.95rem', color: 'var(--color-text-secondary)', textAlign: 'center', width: '100%', marginTop: '0.5rem', lineHeight: '1.6' }}>
+      <p style={{ fontWeight: '700', marginBottom: '0.75rem', color: 'var(--color-blue-dark)', fontSize: '1.1rem', textTransform: 'uppercase' }}>
+        High-Performance Bi-Metal Bushing
       </p>
-      <p style={{ marginBottom: '1.5rem', lineHeight: '1.5' }}>
-        The Bi-metal bearings offers a very high mechanical strength, fatigue and wear resistance. MSS-BIM bearings are particularly recommended for lubricated applications working under extreme loads, including shock loads and low speed oscillating movements. The bearing layer includes lead bronze, lead-free bronze and lead-free with solid lubricant for high performance.
+      <p style={{ marginBottom: '1.5rem', maxWidth: '800px', margin: '0 auto 1.5rem auto' }}>
+        MSS-BIM bi-metal bushings provide excellent mechanical strength, fatigue resistance and wear resistance for demanding lubricated applications. Designed for extreme loads, shock loads and low-speed oscillating movements, they combine a durable steel backing with high-performance bronze bearing layers, including lead-free options with solid lubricants.
       </p>
-      
-      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>CHARACTERISTICS</p>
-      <ul style={{ paddingLeft: '1.2rem', marginBottom: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.4rem', lineHeight: '1.4' }}>
-        <li>Recommended to use oil and grease condition.</li>
-        <li>Good performance under oscillating movement.</li>
-        <li>Steel backing provides strength and rigidity and suitable for high load application.</li>
-        <li>Great fatigue strength under dynamic and shock load application.</li>
-      </ul>
-      
-      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>INDUSTRY & APPLICATIONS</p>
-      <p style={{ lineHeight: '1.4' }}>
-        Textile machinery, Pneumatic equipment, King pin bushes, Brake caliper bushes, Mechanical handling and lifting equipment, Hydraulic cylinders.
+      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>Industries & Applications:</p>
+      <p style={{ maxWidth: '800px', margin: '0 auto' }}>
+        Suitable for oil- and grease-lubricated systems, textile machinery, pneumatic equipment, king pin and brake caliper bushes, mechanical handling and lifting equipment, and hydraulic cylinders. They deliver reliable performance, rigidity and long fatigue life under dynamic and shock-loading conditions.
       </p>
     </div>
   );
 
   const mssMbDetails = (
-    <div style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', textAlign: 'left', width: '100%', marginTop: '0.5rem' }}>
-      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)', fontSize: '0.85rem' }}>
-        THICK WALL SINGLE METAL BEARING
+    <div style={{ fontSize: '0.95rem', color: 'var(--color-text-secondary)', textAlign: 'center', width: '100%', marginTop: '0.5rem', lineHeight: '1.6' }}>
+      <p style={{ fontWeight: '700', marginBottom: '0.75rem', color: 'var(--color-blue-dark)', fontSize: '1.1rem', textTransform: 'uppercase' }}>
+        Thick-Wall Single Metal Bearing
       </p>
-      <p style={{ marginBottom: '1.5rem', lineHeight: '1.5' }}>
-        MSS-MB bearings are made of metal and embedded with solid lubricants in line. The solid lubricants are made of graphite with oil. With the combination of heavy load and impact resistance of the metal and the low friction factor of the non-metal, this material is good for the various working conditions.
+      <p style={{ marginBottom: '1.5rem', maxWidth: '800px', margin: '0 auto 1.5rem auto' }}>
+        MSS-MB bearings combine a durable metal structure with embedded solid lubricants made from graphite and oil, delivering high load and impact resistance with low friction. They provide reliable, maintenance-free performance across demanding operating conditions, including rotational, oscillating and frequent start-stop movements. With excellent wear resistance, low friction, chemical resistance and corrosion protection, they operate across temperatures from -40°C to +300°C.
       </p>
-      
-      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>CHARACTERISTICS</p>
-      <ul style={{ paddingLeft: '1.2rem', marginBottom: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.4rem', lineHeight: '1.4' }}>
-        <li>Long service life without lubrication.</li>
-        <li>Suitable for high load and low speed of Rotational, Oscillating or frequent stop or start.</li>
-        <li>Good anti wear and low friction and resistance to chemical and anti corrosion.</li>
-        <li>Suitable for application temperature range from -40°C to +300°C.</li>
-      </ul>
-      
-      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>INDUSTRY & APPLICATIONS</p>
-      <p style={{ lineHeight: '1.4' }}>
-        Turbines (water, steam and gas), iron foundry, steel and aluminum industry, furnaces, blower, pumps and compressors, sewage purification plants, thermal treatment furnaces, hot rolling mills, food and beverage industry, packaging equipment, agriculture and construction machines.
+      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>Industries & Applications:</p>
+      <p style={{ maxWidth: '800px', margin: '0 auto' }}>
+        Suitable for water, steam and gas turbines, iron foundries, steel and aluminum industries, furnaces, blowers, pumps, compressors, sewage treatment plants, thermal processing equipment, hot rolling mills, food and beverage machinery, packaging equipment, agricultural machinery and construction equipment.
       </p>
     </div>
   );
 
   const mssMithlonDetails = (
-    <div style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', textAlign: 'left', width: '100%', marginTop: '0.5rem' }}>
-      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)', fontSize: '0.85rem' }}>
-        THERMOPLASTIC BUSHING
+    <div style={{ fontSize: '0.95rem', color: 'var(--color-text-secondary)', textAlign: 'center', width: '100%', marginTop: '0.5rem', lineHeight: '1.6' }}>
+      <p style={{ fontWeight: '700', marginBottom: '0.75rem', color: 'var(--color-blue-dark)', fontSize: '1.1rem', textTransform: 'uppercase' }}>
+        Thermoplastic Bushing
       </p>
-      <p style={{ marginBottom: '1.5rem', lineHeight: '1.5' }}>
-        MSS-MITHLON bushings, made from unique thermoplastic material give long life and low friction which traditional metal-based bushings are struggling to provide. It is available in both standard and custom sizes, offering material advantages.
+      <p style={{ marginBottom: '1.5rem', maxWidth: '800px', margin: '0 auto 1.5rem auto' }}>
+        MSS-MITHLON bushings are made from advanced thermoplastic materials, providing long service life, low friction and reliable performance where traditional metal bushings may struggle. Available in standard and custom sizes, they offer lightweight, corrosion-resistant and maintenance-free operation. With grease-free performance, low noise, shaft-friendly characteristics, no delamination and an eco-friendly design, MITHLON bushings are well suited for demanding environments.
       </p>
-      
-      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>CHARACTERISTICS</p>
-      <ul style={{ paddingLeft: '1.2rem', marginBottom: '1.5rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.4rem', lineHeight: '1.4', textTransform: 'capitalize' }}>
-        <li>No grease</li>
-        <li>Corrosion resistance</li>
-        <li>Low friction</li>
-        <li>Less noise</li>
-        <li>Low weight</li>
-        <li>Shaft friendly</li>
-        <li>No delamination</li>
-        <li>Eco friendly</li>
-      </ul>
-      
-      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>INDUSTRY & APPLICATIONS</p>
-      <p style={{ lineHeight: '1.4' }}>
-        Mithlon specifically recommended for moist and underwater applications. These include the pump and marine industry, where regular maintenance is not practically feasible or cost-effective.
+      <p style={{ fontWeight: '700', marginBottom: '0.5rem', color: 'var(--color-blue-dark)' }}>Industries & Applications:</p>
+      <p style={{ maxWidth: '800px', margin: '0 auto' }}>
+        Particularly recommended for moist and underwater applications where regular maintenance is difficult or costly. Typical applications include pumps, marine equipment and other systems requiring reliable, low-maintenance performance.
       </p>
     </div>
   );
@@ -580,17 +525,7 @@ function UniLubeBearingCustomSection() {
 
   return (
     <div style={{ marginBottom: '3rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem', alignItems: 'start' }}>
-        {items.map((item, i) => (
-          <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-            <CarouselImage images={item.images} title={item.title} interval={5000} />
-            <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '1.1rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              {item.title}
-            </span>
-            {item.details && item.details}
-          </div>
-        ))}
-      </div>
+      <SkewedCarousel items={items} />
     </div>
   );
 }

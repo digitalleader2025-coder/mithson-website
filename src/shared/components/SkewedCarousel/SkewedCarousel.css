@@ -145,6 +145,13 @@
   box-shadow: 0 0 8px rgba(59, 123, 212, 0.4);
 }
 
+.skewed-carousel-details {
+  margin-top: 2.5rem;
+  width: 100%;
+  max-width: 800px;
+  padding: 0 1.5rem;
+}
+
 @media (max-width: 768px) {
   .skewed-carousel-viewport {
     height: 350px;
