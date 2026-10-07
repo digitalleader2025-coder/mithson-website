@@ -90,7 +90,7 @@ export default function GenericProductPage({ product }) {
       <ProductHero product={product} />
 
       <section className="product-body section">
-        <div className={`container product-body-inner ${['seals-valve', 'uni-lube-bearing'].includes(product.slug) ? 'layout-single-column' : ''}`}>
+        <div className={`container product-body-inner ${['seals-valve', 'uni-lube-bearing', 'diaphragm-aodd'].includes(product.slug) ? 'layout-single-column' : ''}`}>
           {/* Main column */}
           <div>
 
@@ -602,27 +602,16 @@ function SealsHydraulicCustomSection() {
 
 function DiaphragmAoddCustomSection() {
   const items = [
-    { image: diaImg1, title: 'Diaphragm' },
-    { image: diaImg2, title: 'Pilot Shaft' },
-    { image: diaImg3, title: 'PTFE Ball' },
-    { image: diaImg4, title: 'PTFE O-Ring' },
-    { image: diaImg5, title: 'PTFE Seat' }
+    { images: [diaImg1], title: 'Diaphragm' },
+    { images: [diaImg2], title: 'Pilot Shaft' },
+    { images: [diaImg3], title: 'PTFE Ball' },
+    { images: [diaImg4], title: 'PTFE O-Ring' },
+    { images: [diaImg5], title: 'PTFE Seat' }
   ];
 
   return (
     <div style={{ marginBottom: '3rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2.5rem', alignItems: 'start' }}>
-        {items.map((item, i) => (
-          <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-            <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img loading="lazy" src={item.image} alt={item.title} style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }} />
-            </div>
-            <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '1.1rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              {item.title}
-            </span>
-          </div>
-        ))}
-      </div>
+      <SkewedCarousel items={items} />
     </div>
   );
 }
