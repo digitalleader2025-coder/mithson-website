@@ -13,6 +13,7 @@ import {
   RelatedProducts,
 } from '../../shared/components/ProductPage';
 import { products } from '../../content/products';
+import SkewedCarousel from '../../shared/components/SkewedCarousel';
 
 import imgCanti from '../../pages/Products/M-UNI-Seal/assets/genre/Canti Seals.png';
 import imgCoil from '../../pages/Products/M-UNI-Seal/assets/genre/Coil Seals.png';
@@ -360,16 +361,7 @@ function SealsValveCustomSection() {
 
   return (
     <div style={{ marginBottom: '3rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1.5rem' }}>
-        {items.map((item, i) => (
-          <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-            <CyclingImage images={item.images} title={item.title} interval={10000} />
-            <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '0.85rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              {item.title}
-            </span>
-          </div>
-        ))}
-      </div>
+      <SkewedCarousel items={items} />
     </div>
   );
 }
