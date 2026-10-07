@@ -12,6 +12,7 @@ import {
   ProductCTA,
   RelatedProducts,
 } from '../../shared/components/ProductPage';
+import TiltedCard from './TiltedCard';
 import { products } from '../../content/products';
 
 import imgCanti from '../../pages/Products/M-UNI-Seal/assets/genre/Canti Seals.png';
@@ -89,7 +90,7 @@ export default function GenericProductPage({ product }) {
       <ProductHero product={product} />
 
       <section className="product-body section">
-        <div className="container product-body-inner">
+        <div className={`container product-body-inner ${product.slug === 'seals-valve' ? 'stack-layout' : ''}`}>
           {/* Main column */}
           <div>
 
@@ -360,10 +361,25 @@ function SealsValveCustomSection() {
 
   return (
     <div style={{ marginBottom: '3rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1.5rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem' }}>
         {items.map((item, i) => (
           <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-            <CyclingImage images={item.images} title={item.title} interval={10000} />
+            <div style={{ padding: '1rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <TiltedCard
+                imageSrc={item.images[0]}
+                altText={item.title}
+                captionText={item.title}
+                containerHeight="100%"
+                containerWidth="100%"
+                imageHeight="100%"
+                imageWidth="100%"
+                rotateAmplitude={12}
+                scaleOnHover={1.05}
+                showMobileWarning={false}
+                showTooltip={true}
+                displayOverlayContent={false}
+              />
+            </div>
             <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '0.85rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               {item.title}
             </span>
