@@ -179,6 +179,16 @@
   padding-bottom: var(--space-20);
 }
 
+.product-body-inner.layout-single-column {
+  grid-template-columns: 1fr;
+}
+
+.product-body-inner.layout-single-column aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
 /* Section label (small caps) */
 .product-section-label {
   font-family: var(--font-display);

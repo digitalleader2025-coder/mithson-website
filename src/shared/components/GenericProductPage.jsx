@@ -90,7 +90,7 @@ export default function GenericProductPage({ product }) {
       <ProductHero product={product} />
 
       <section className="product-body section">
-        <div className="container product-body-inner">
+        <div className={`container product-body-inner ${product.slug === 'seals-valve' ? 'layout-single-column' : ''}`}>
           {/* Main column */}
           <div>
 
