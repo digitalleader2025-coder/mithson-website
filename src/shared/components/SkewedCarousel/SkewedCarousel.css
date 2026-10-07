@@ -70,7 +70,9 @@
 
 .skewed-card-title {
   position: absolute;
-  bottom: -40px;
+  top: calc(100% + 15px);
+  left: 50%;
+  transform: translateX(-50%);
   color: var(--color-blue-dark);
   font-family: var(--font-display);
   font-size: 1.125rem;
@@ -78,7 +80,8 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   text-align: center;
-  width: 200%;
+  width: max-content;
+  max-width: 90vw;
   pointer-events: none;
 }
 
@@ -154,10 +157,13 @@
 
 @media (max-width: 768px) {
   .skewed-carousel-viewport {
-    height: 350px;
+    height: 400px;
   }
   .skewed-carousel-card {
     width: 200px;
     height: 280px;
+  }
+  .skewed-card-title {
+    font-size: 0.95rem;
   }
 }
