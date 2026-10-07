@@ -393,15 +393,7 @@ function SealsValveCustomSection() {
     { images: [vsImg12], title: 'Spring Energized Seals' },
     { 
       images: [vsImg13a, vsImg13b], 
-      title: 'Stem Packing API 6A',
-      details: <CarouselItemDetails 
-        title="Stem Packing Set"
-        description="Engineered for reliability, our valve stem packing delivers exceptional sealing performance under pressure and across a wide temperature range. Crafted from premium materials that meet strict API standards, it's the trusted choice for demanding applications."
-        attributes={[
-          { label: 'Material', value: 'PEEK, Elgiloy/SS steel, Filled PTFE' },
-          { label: 'Application', value: 'Wellhead Gate Valve' }
-        ]}
-      />
+      title: 'Stem Packing API 6A'
     },
   ];
 
