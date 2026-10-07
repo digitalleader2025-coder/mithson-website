@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import ScrollReveal from '../../shared/components/ScrollReveal';
 import { galleryItems, galleryCategories } from '../../content/gallery';
@@ -153,11 +154,16 @@ export default function ProductGalleryPage() {
                 <span className="badge badge-blue" style={{ marginBottom: '0.5rem', display: 'inline-flex' }}>
                   {lightbox.category}
                 </span>
-                <h2 className="lightbox-title">{lightbox.label}</h2>
-                <p style={{ color: 'var(--color-muted)', fontSize: 'var(--text-sm)', marginTop: '1rem', lineHeight: 1.6 }}>
-                  High-performance polymer component. Contact us for technical specifications,
-                  material options and custom dimensions.
-                </p>
+                <h2 className="lightbox-title" style={{ marginBottom: '1.5rem' }}>{lightbox.label}</h2>
+                {lightbox.path && (
+                  <Link 
+                    to={lightbox.path} 
+                    className="btn btn-primary" 
+                    style={{ display: 'inline-block', textDecoration: 'none' }}
+                  >
+                    View Product
+                  </Link>
+                )}
               </div>
             </motion.div>
           </motion.div>
