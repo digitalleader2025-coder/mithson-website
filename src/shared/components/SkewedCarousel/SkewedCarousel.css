@@ -151,8 +151,7 @@
 .skewed-carousel-details {
   margin-top: 2.5rem;
   width: 100%;
-  max-width: 800px;
-  padding: 0 1.5rem;
+  padding: 0;
 }
 
 @media (max-width: 768px) {

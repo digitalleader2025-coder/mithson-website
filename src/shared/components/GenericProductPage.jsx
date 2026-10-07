@@ -249,8 +249,7 @@ function CarouselItemDetails({ title, description, attributes }) {
   return (
     <div style={{
       background: 'linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%)',
-      borderTop: '1px solid #E2E8F0',
-      borderBottom: '1px solid #E2E8F0',
+      border: '1px solid #E2E8F0',
       padding: '2rem',
       textAlign: 'left',
       width: '100%',
