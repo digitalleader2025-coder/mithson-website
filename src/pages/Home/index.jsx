@@ -10,7 +10,6 @@ import ParticleField from '../../shared/3d/ParticleField';
 import FloatingRing from '../../shared/3d/FloatingRing';
 import EnvironmentLight from '../../shared/3d/EnvironmentLight';
 import ScrollReveal from '../../shared/components/ScrollReveal';
-import TechText from '../../shared/components/TechText';
 import ProductCarousel from '../../shared/components/ProductCarousel';
 import OurJourney from '../../shared/components/OurJourney';
 
@@ -125,32 +124,7 @@ function HeroSection() {
 
           <h1 className="hero-title" id="hero-title">
             <span className="hero-line hero-title-line">Engineering the</span>
-            <span className="hero-line hero-title-line text-gradient" style={{ display: 'inline-flex', alignItems: 'center', flexWrap: 'wrap' }}>
-              <div className="hero-tech-text-wrapper">
-                <TechText
-                  text="Future"
-                  fontWeight={900}
-                  fontSize={110}
-                  reveal="letter"
-                  dashLength={4}
-                  dashGap={2}
-                  specks={10}
-                  color="#0336a3"
-                  accentColor="#42a4ff"
-                  letterSpacing={-0.03}
-                  reach={200}
-                  softness={0.7}
-                  strokeWidth={2}
-                  speed={1}
-                  lineStyle="dashed"
-                  selection
-                  labels={false}
-                  draggable
-                  sweep
-                />
-              </div>
-              <span style={{ marginLeft: '0.25rem' }}>of</span>
-            </span>
+            <span className="hero-line hero-title-line text-gradient">Future of</span>
             <span className="hero-line hero-title-line">Sealing Technology</span>
           </h1>
 
