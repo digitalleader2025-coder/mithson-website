@@ -179,10 +179,6 @@
   padding-bottom: var(--space-20);
 }
 
-.product-body-inner.stack-layout {
-  grid-template-columns: 1fr;
-}
-
 /* Section label (small caps) */
 .product-section-label {
   font-family: var(--font-display);
