@@ -3,6 +3,16 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ScrollReveal from '../../../shared/components/ScrollReveal';
 
+import imgExpo2025 from '../../../assets/events/expo 2025/expo 2025.avif';
+
+import imgExpo2024Bauma from '../../../assets/events/expo 2024/Bauma Conexpo India 2024 - Delhi.avif';
+import imgExpo2024Opes from '../../../assets/events/expo 2024/OPES 2024 - Oman.avif';
+import imgExpo2024Valve from '../../../assets/events/expo 2024/Valve World Mumbai 2024.avif';
+
+import imgExpo2023Auto from '../../../assets/events/expo 2023/Automation Expo 2023 - Mumbai, India.avif';
+import imgExpo2023OTC from '../../../assets/events/expo 2023/Offshore Technology Conference 2023 NRG Park, Houston, Texas, USA.avif';
+import imgExpo2023Valve from '../../../assets/events/expo 2023/Valve World Southeast Asia Expo 2023 - Singapore.avif';
+
 export default function Expo2025Page() {
   useEffect(() => {
     document.title = 'Oil & Gas Expo 2025 | Mithson Sealing Solutions';
@@ -15,6 +25,7 @@ export default function Expo2025Page() {
     status="upcoming"
     badge="Booth C31"
     venues={['Hall 4, Bombay Exhibition Center', 'Goregaon (East), Mumbai, India']}
+    images={[imgExpo2025]}
     description="MITHSON is exhibiting at the Oil Gas & Power World Expo 2025 — one of Asia's leading trade events for the energy industry. Visit us at Booth C31, Hall 4, to see our latest sealing solutions for wellhead equipment, well service applications and high-pressure ball valves."
     highlights={['API 6A Wellhead Seals', 'Well Service Packing', 'Downhole Seals', 'API 6D / LNG Seals', 'Spring Energized Lip Seals', 'PTFE & PEEK Components']}
     prevPath="/events/expo-2024"
@@ -32,6 +43,7 @@ export function Expo2024Page() {
     fullTitle="Multiple Events 2024"
     status="past"
     venues={['bauma CONEXPO INDIA 2024 — Delhi', 'Valve World Mumbai', 'OPES 2024 — Oman']}
+    images={[imgExpo2024Bauma, imgExpo2024Valve, imgExpo2024Opes]}
     description="In 2024 MITHSON participated across three major industry events — bauma CONEXPO INDIA in New Delhi covering construction and off-highway equipment, Valve World Mumbai covering valve and fluid control, and OPES 2024 in Oman reaching the Middle East Oil & Gas sector."
     highlights={['Seals for Construction Equipment', 'Valve Sealing Solutions', 'Middle East Oil & Gas Presence']}
     nextPath="/events/oil-and-gas-expo-2025"
@@ -50,13 +62,14 @@ export function Expo2023Page() {
     fullTitle="Multiple Events 2023"
     status="past"
     venues={['Valve World Southeast Asia Expo 2023 — Singapore', 'Automation Expo 2023 — Mumbai, India', 'Offshore Technology Conference 2023, NRG Park, Houston, Texas, USA']}
+    images={[imgExpo2023Valve, imgExpo2023Auto, imgExpo2023OTC]}
     description="In 2023 MITHSON had a global presence — Valve World Southeast Asia in Singapore, Automation Expo in Mumbai, and the Offshore Technology Conference in Houston, Texas. OTC is one of the world's largest gathering of offshore energy professionals."
     highlights={['Southeast Asia Market Entry', 'Automation Sector Presence', 'OTC Houston — Global Oil & Gas']}
     nextPath="/events/expo-2024"
   />;
 }
 
-function ExpoPage({ year, title, fullTitle, status, badge, venues, description, highlights, nextPath, prevPath }) {
+function ExpoPage({ year, title, fullTitle, status, badge, venues, images, description, highlights, nextPath, prevPath }) {
   return (
     <div className="page-wrapper">
       <section className="page-hero">
@@ -80,6 +93,15 @@ function ExpoPage({ year, title, fullTitle, status, badge, venues, description, 
               {venues.map((v, i) => (
                 <p key={i} style={{ fontSize: 'var(--text-base)', color: 'var(--color-accent-l)', fontWeight: 600, marginBottom: '0.25rem' }}>{v}</p>
               ))}
+              
+              {images && images.length > 0 && (
+                <div style={{ display: 'grid', gridTemplateColumns: images.length === 1 ? '1fr' : 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem', marginTop: '1.5rem', marginBottom: '1.5rem' }}>
+                  {images.map((imgSrc, idx) => (
+                    <img key={idx} src={imgSrc} alt={`${title} event image ${idx + 1}`} style={{ width: '100%', height: images.length === 1 ? 'auto' : '220px', borderRadius: '12px', objectFit: 'cover', boxShadow: '0 8px 24px rgba(3, 54, 163, 0.08)' }} />
+                  ))}
+                </div>
+              )}
+
               <p style={{ marginTop: '1.5rem', fontSize: 'var(--text-lg)', color: 'var(--color-text-2)', lineHeight: 1.8 }}>{description}</p>
             </ScrollReveal>
             <div style={{ display: 'flex', gap: '1rem', marginTop: '2.5rem', flexWrap: 'wrap' }}>
