@@ -101,8 +101,8 @@ export default function SkewedCarousel({ items }) {
                   {isCenter && (
                     <motion.div 
                       className="skewed-card-title"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      initial={{ opacity: 0, x: "-50%", y: 10 }}
+                      animate={{ opacity: 1, x: "-50%", y: 0 }}
                       transition={{ delay: 0.1 }}
                     >
                       {item.title}
