@@ -154,16 +154,11 @@ export default function ProductGalleryPage() {
                 <span className="badge badge-blue" style={{ marginBottom: '0.5rem', display: 'inline-flex' }}>
                   {lightbox.category}
                 </span>
-                <h2 className="lightbox-title" style={{ marginBottom: '1.5rem' }}>{lightbox.label}</h2>
-                {lightbox.path && (
-                  <Link 
-                    to={lightbox.path} 
-                    className="btn btn-primary" 
-                    style={{ display: 'inline-block', textDecoration: 'none' }}
-                  >
-                    View Product
-                  </Link>
-                )}
+                <h2 className="lightbox-title">{lightbox.label}</h2>
+                <p style={{ color: 'var(--color-muted)', fontSize: 'var(--text-sm)', marginTop: '1rem', lineHeight: 1.6 }}>
+                  High-performance polymer component. Contact us for technical specifications,
+                  material options and custom dimensions.
+                </p>
               </div>
             </motion.div>
           </motion.div>
