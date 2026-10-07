@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SceneWrapper from '../../shared/3d/SceneWrapper';
@@ -29,7 +29,18 @@ export function ProductBreadcrumb({ productName }) {
 
 /** Hero section with 3D viewer */
 export function ProductHero({ product }) {
-  const { name, tagline, shortDescription, heroDescription, accent, folder, image } = product;
+  const { name, tagline, shortDescription, heroDescription, accent, folder, image, images } = product;
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    if (images && images.length > 1) {
+      const t = setInterval(() => {
+        setCurrentImageIndex((prev) => (prev + 1) % images.length);
+      }, 5000);
+      return () => clearInterval(t);
+    }
+  }, [images]);
 
   // Dynamic asset paths — user drops files here; component reads automatically
   const heroImageSrc = image || `/src/pages/Products/${folder}/assets/hero.jpg`;
@@ -89,6 +100,20 @@ export function ProductHero({ product }) {
                   accent={accent}
                 />
               </SceneWrapper>
+            ) : images && images.length > 1 ? (
+              <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+                {images.map((src, i) => (
+                  <div key={i} style={{ 
+                    position: 'absolute', 
+                    inset: 0, 
+                    opacity: i === currentImageIndex ? 1 : 0, 
+                    transition: 'opacity 0.8s ease-in-out',
+                    pointerEvents: i === currentImageIndex ? 'auto' : 'none'
+                  }}>
+                    <InteractiveProximityImage src={src} alt={`${name} view ${i + 1}`} />
+                  </div>
+                ))}
+              </div>
             ) : (
               <InteractiveProximityImage src={heroImageSrc} alt={name} />
             )}

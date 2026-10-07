@@ -389,6 +389,7 @@ export const products = [
     accent: '#42A4FF',
     carouselImage: npImg1,
     image: npImg1,
+    images: [npImg1, npImg2, npImg3],
   },
   {
     id: 'encapsulated-o-ring',

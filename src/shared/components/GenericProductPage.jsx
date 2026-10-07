@@ -139,11 +139,7 @@ export default function GenericProductPage({ product }) {
                 <WashersTransmissionCustomSection />
               </ScrollReveal>
             )}
-            {product.slug === 'nozzles-power-grid' && (
-              <ScrollReveal>
-                <NozzlesPowerGridCustomSection />
-              </ScrollReveal>
-            )}
+
             {product.slug === 'encapsulated-o-ring' && (
               <ScrollReveal>
                 <EncapsulatedORingCustomSection />
@@ -641,30 +637,6 @@ function WashersTransmissionCustomSection() {
   );
 }
 
-function NozzlesPowerGridCustomSection() {
-  const items = [
-    { image: npImg1, title: 'PTFE Nozzles-1' },
-    { image: npImg2, title: 'PTFE Nozzles-2' },
-    { image: npImg3, title: 'PTFE Nozzles-3' }
-  ];
-
-  return (
-    <div style={{ marginBottom: '3rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2.5rem', alignItems: 'start' }}>
-        {items.map((item, i) => (
-          <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-            <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img loading="lazy" src={item.image} alt={item.title} style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }} />
-            </div>
-            <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '1.1rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              {item.title}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 function EncapsulatedORingCustomSection() {
   return (
