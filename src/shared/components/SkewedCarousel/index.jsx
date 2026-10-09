@@ -3,18 +3,33 @@ import { motion, AnimatePresence } from 'framer-motion';
 import './SkewedCarousel.css';
 
 export default function SkewedCarousel({ items }) {
+  // If we have fewer than 7 items, duplicate them to ensure we have enough "hidden" 
+  // items in the back to prevent visible cross-screen jumping during infinite loop.
+  const renderItems = items.length > 0 && items.length < 7 
+    ? [...items, ...items, ...items]
+    : items;
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const next = () => {
-    setCurrentIndex((prev) => (prev + 1) % items.length);
+    setCurrentIndex((prev) => (prev + 1) % renderItems.length);
   };
 
   const prev = () => {
-    setCurrentIndex((prev) => (prev - 1 + items.length) % items.length);
+    setCurrentIndex((prev) => (prev - 1 + renderItems.length) % renderItems.length);
   };
 
-  const goTo = (index) => {
-    setCurrentIndex(index);
+  const goTo = (idx) => {
+    const currentBase = currentIndex % items.length;
+    let diff = idx - currentBase;
+    
+    if (diff > Math.floor(items.length / 2)) diff -= items.length;
+    if (diff < -Math.floor(items.length / 2)) diff += items.length;
+    
+    let targetIndex = (currentIndex + diff) % renderItems.length;
+    if (targetIndex < 0) targetIndex += renderItems.length;
+    
+    setCurrentIndex(targetIndex);
   };
 
   // Keyboard navigation
@@ -25,22 +40,22 @@ export default function SkewedCarousel({ items }) {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [items.length]);
+  }, [renderItems.length]);
 
   return (
     <div className="skewed-carousel-container">
       <div className="skewed-carousel-viewport">
         <div className="skewed-carousel-track">
           <AnimatePresence initial={false}>
-            {items.map((item, index) => {
+            {renderItems.map((item, index) => {
               // Calculate relative position to current index
               // Handling wrapping for an infinite feel or just bounded.
               // Since we want 2-3 cards on each side, we can calculate a circular distance.
               let diff = index - currentIndex;
-              const half = Math.floor(items.length / 2);
+              const half = Math.floor(renderItems.length / 2);
               
-              if (diff > half) diff -= items.length;
-              if (diff < -half) diff += items.length;
+              if (diff > half) diff -= renderItems.length;
+              if (diff < -half) diff += renderItems.length;
 
               const isCenter = diff === 0;
               const isVisible = Math.abs(diff) <= 3; // Show center + 3 on each side
@@ -88,7 +103,7 @@ export default function SkewedCarousel({ items }) {
                     damping: 20,
                     mass: 0.8
                   }}
-                  onClick={() => goTo(index)}
+                  onClick={() => goTo(index % items.length)}
                 >
                   <div className="skewed-card-inner">
                     <img 
@@ -123,14 +138,17 @@ export default function SkewedCarousel({ items }) {
         </button>
         
         <div className="skewed-carousel-indicators">
-          {items.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => goTo(idx)}
-              className={`skewed-indicator ${idx === currentIndex ? 'active' : ''}`}
-              aria-label={`Go to slide ${idx + 1}`}
-            />
-          ))}
+          {items.map((_, idx) => {
+            const isActive = (currentIndex % items.length) === idx;
+            return (
+              <button
+                key={idx}
+                onClick={() => goTo(idx)}
+                className={`skewed-indicator ${isActive ? 'active' : ''}`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            );
+          })}
         </div>
 
         <button onClick={next} className="skewed-carousel-btn" aria-label="Next">
@@ -142,7 +160,7 @@ export default function SkewedCarousel({ items }) {
       
       {/* Active Item Details */}
       <AnimatePresence mode="wait">
-        {items[currentIndex]?.details && (
+        {renderItems[currentIndex]?.details && (
           <motion.div
             key={currentIndex}
             className="skewed-carousel-details"
@@ -151,7 +169,7 @@ export default function SkewedCarousel({ items }) {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
           >
-            {items[currentIndex].details}
+            {renderItems[currentIndex].details}
           </motion.div>
         )}
       </AnimatePresence>
