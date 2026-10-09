@@ -90,7 +90,7 @@ export default function GenericProductPage({ product }) {
       <ProductHero product={product} />
 
       <section className="product-body section">
-        <div className={`container product-body-inner ${['m-uni-seal', 'seals-valve', 'uni-lube-bearing', 'diaphragm-aodd'].includes(product.slug) ? 'layout-single-column' : ''}`}>
+        <div className={`container product-body-inner ${['m-uni-seal', 'seals-valve', 'uni-lube-bearing', 'diaphragm-aodd', 'seals-x-mas-tree'].includes(product.slug) ? 'layout-single-column' : ''}`}>
           {/* Main column */}
           <div>
 
@@ -322,27 +322,16 @@ function HammerUnionCustomSection() {
 }
 
 function XMasTreeCustomSection() {
-  const images = [
-    { src: imgXmasSpring, title: 'Spring Energized Seals' },
-    { src: imgXmasStem, title: 'Stem Packing' },
-    { src: imgXmasSeat, title: 'Seat Seal' },
-    { src: imgXmasElastomer, title: 'Elastomer O-Ring' },
+  const items = [
+    { images: [imgXmasSpring], title: 'Spring Energized Seals' },
+    { images: [imgXmasStem], title: 'Stem Packing' },
+    { images: [imgXmasSeat], title: 'Seat Seal' },
+    { images: [imgXmasElastomer], title: 'Elastomer O-Ring' },
   ];
 
   return (
     <div style={{ marginBottom: '3rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '1.5rem' }}>
-        {images.map((img, i) => (
-          <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-            <div style={{ padding: '1rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img loading="lazy" src={img.src} alt={img.title} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
-            </div>
-            <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '0.9rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              {img.title}
-            </span>
-          </div>
-        ))}
-      </div>
+      <SkewedCarousel items={items} />
     </div>
   );
 }
