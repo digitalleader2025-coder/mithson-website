@@ -39,7 +39,7 @@
 }
 
 .hero-text {
-  max-width: 900px;
+  max-width: 680px;
   display: flex;
   flex-direction: column;
   gap: var(--space-5);
@@ -57,14 +57,14 @@
 }
 
 .hero-title-line {
-  display: inline;
+  display: block;
 }
 
 .hero-subtitle {
   font-size: clamp(var(--text-base), 2vw, var(--text-xl));
   color: var(--color-text-2);
   line-height: 1.7;
-  max-width: 760px;
+  max-width: 540px;
 }
 
 .hero-actions {
