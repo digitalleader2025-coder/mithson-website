@@ -90,7 +90,10 @@ export default function GenericProductPage({ product }) {
       <ProductHero product={product} />
 
       <section className="product-body section">
-        <div className={`container product-body-inner ${['m-uni-seal', 'seals-valve', 'uni-lube-bearing', 'diaphragm-aodd', 'seals-x-mas-tree', 'plug-lined-valve', 'washers-transmission', 'seals-hydraulic'].includes(product.slug) ? 'layout-single-column' : ''}`}>
+        <div 
+          className={`container product-body-inner ${['m-uni-seal', 'seals-valve', 'uni-lube-bearing', 'diaphragm-aodd', 'seals-x-mas-tree', 'plug-lined-valve', 'washers-transmission', 'seals-hydraulic'].includes(product.slug) ? 'layout-single-column' : ''}`}
+          style={product.slug === 'seals-x-mas-tree' ? { paddingTop: '1rem' } : {}}
+        >
           {/* Main column */}
           <div>
 
