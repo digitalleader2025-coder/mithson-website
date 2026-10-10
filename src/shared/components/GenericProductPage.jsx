@@ -90,7 +90,7 @@ export default function GenericProductPage({ product }) {
       <ProductHero product={product} />
 
       <section className="product-body section">
-        <div className={`container product-body-inner ${['m-uni-seal', 'seals-valve', 'uni-lube-bearing', 'diaphragm-aodd', 'seals-x-mas-tree', 'plug-lined-valve', 'washers-transmission'].includes(product.slug) ? 'layout-single-column' : ''}`}>
+        <div className={`container product-body-inner ${['m-uni-seal', 'seals-valve', 'uni-lube-bearing', 'diaphragm-aodd', 'seals-x-mas-tree', 'plug-lined-valve', 'washers-transmission', 'seals-hydraulic'].includes(product.slug) ? 'layout-single-column' : ''}`}>
           {/* Main column */}
           <div>
 
@@ -513,44 +513,38 @@ function UniLubeBearingCustomSection() {
 function SealsHydraulicCustomSection() {
   const items = [
     {
-      image: shImg1,
+      images: [shImg1],
       title: 'Wear Rings',
-      desc: 'Mithson offers bearings in many materials, all of which offer high wear resistance and excellent friction. It prevents metal-to-metal contact and guides the piston and piston rod of the hydraulic cylinder.'
+      details: <CarouselItemDetails 
+        description="Mithson offers bearings in many materials, all of which offer high wear resistance and excellent friction. It prevents metal-to-metal contact and guides the piston and piston rod of the hydraulic cylinder."
+      />
     },
     {
-      image: shImg2,
+      images: [shImg2],
       title: 'PISTON SEALS',
-      desc: 'Piston seals are dynamic seals that work as a single or double-acting reciprocating movement. It prevents fluid from passing the piston and acts as a pressure barrier. It also allows lubrication film to minimize friction and wear.'
+      details: <CarouselItemDetails 
+        description="Piston seals are dynamic seals that work as a single or double-acting reciprocating movement. It prevents fluid from passing the piston and acts as a pressure barrier. It also allows lubrication film to minimize friction and wear."
+      />
     },
     {
-      image: shImg3,
+      images: [shImg3],
       title: 'WIPER SEALS',
-      desc: 'Wiper seals prevent external contaminants from entering the cylinder assembly which is one of the primary causes of cylinder failure. It also helps the lubrication film back into the cylinder when the rod retracts.'
+      details: <CarouselItemDetails 
+        description="Wiper seals prevent external contaminants from entering the cylinder assembly which is one of the primary causes of cylinder failure. It also helps the lubrication film back into the cylinder when the rod retracts."
+      />
     },
     {
-      image: shImg4,
+      images: [shImg4],
       title: 'Rod Seals',
-      desc: 'Rod seal is the most critical seal hydraulic cylinder. It acts as a pressure barrier and keeps the operating fluid inside the cylinder. It prevents leakage from within the cylinder to the outside which can reduce equipment performance.'
+      details: <CarouselItemDetails 
+        description="Rod seal is the most critical seal hydraulic cylinder. It acts as a pressure barrier and keeps the operating fluid inside the cylinder. It prevents leakage from within the cylinder to the outside which can reduce equipment performance."
+      />
     }
   ];
 
   return (
     <div style={{ marginBottom: '3rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2.5rem', alignItems: 'start' }}>
-        {items.map((item, i) => (
-          <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-            <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img loading="lazy" src={item.image} alt={item.title} style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }} />
-            </div>
-            <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '1.1rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              {item.title}
-            </span>
-            <p style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', textAlign: 'left', lineHeight: '1.5' }}>
-              {item.desc}
-            </p>
-          </div>
-        ))}
-      </div>
+      <SkewedCarousel items={items} />
     </div>
   );
 }
