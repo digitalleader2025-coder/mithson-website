@@ -181,6 +181,7 @@
 
 .product-body-inner.layout-single-column {
   grid-template-columns: 1fr;
+  padding-top: var(--space-4);
 }
 
 .product-body-inner.layout-single-column aside {
