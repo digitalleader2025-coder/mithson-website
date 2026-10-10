@@ -123,8 +123,8 @@ function HeroSection() {
           </motion.div>
 
           <h1 className="hero-title" id="hero-title">
-            <span className="hero-line hero-title-line">Engineering the</span>
-            <span className="hero-line hero-title-line text-gradient">Future of</span>
+            <span className="hero-line hero-title-line">Engineering the </span>
+            <span className="hero-line hero-title-line text-gradient">Future of </span>
             <span className="hero-line hero-title-line">Sealing Technology</span>
           </h1>
 
