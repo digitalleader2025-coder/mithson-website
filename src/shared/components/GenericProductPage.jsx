@@ -90,7 +90,7 @@ export default function GenericProductPage({ product }) {
       <ProductHero product={product} />
 
       <section className="product-body section">
-        <div className={`container product-body-inner ${['m-uni-seal', 'seals-valve', 'uni-lube-bearing', 'diaphragm-aodd', 'seals-x-mas-tree'].includes(product.slug) ? 'layout-single-column' : ''}`}>
+        <div className={`container product-body-inner ${['m-uni-seal', 'seals-valve', 'uni-lube-bearing', 'diaphragm-aodd', 'seals-x-mas-tree', 'plug-lined-valve', 'washers-transmission'].includes(product.slug) ? 'layout-single-column' : ''}`}>
           {/* Main column */}
           <div>
 
@@ -391,18 +391,7 @@ function PlugLinedValveCustomSection() {
 
   return (
     <div style={{ marginBottom: '3rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem' }}>
-        {items.map((item, i) => (
-          <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-            <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img loading="lazy" src={item.images[0]} alt={item.title} style={{ maxWidth: '90%', maxHeight: '90%', objectFit: 'contain' }} />
-            </div>
-            <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '0.95rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              {item.title}
-            </span>
-          </div>
-        ))}
-      </div>
+      <SkewedCarousel items={items} />
     </div>
   );
 }
@@ -584,25 +573,13 @@ function DiaphragmAoddCustomSection() {
 
 function WashersTransmissionCustomSection() {
   const items = [
-    { image: wtImg1, title: 'PEEK-Split Lock Washer' },
-    { image: wtImg2, title: 'PEEK-Thrust Washer' },
-    { image: wtImg3, title: 'Product 1' }
+    { images: [wtImg1], title: 'PEEK-Split Lock Washer' },
+    { images: [wtImg2], title: 'PEEK-Thrust Washer' }
   ];
 
   return (
     <div style={{ marginBottom: '3rem' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2.5rem', alignItems: 'start' }}>
-        {items.map((item, i) => (
-          <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-            <div style={{ padding: '1.5rem', background: '#ffffff', borderRadius: '12px', boxShadow: '0 4px 20px rgba(3, 54, 163, 0.08)', width: '100%', aspectRatio: '1/1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img loading="lazy" src={item.image} alt={item.title} style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }} />
-            </div>
-            <span style={{ color: 'var(--color-blue-accent)', fontWeight: '700', fontSize: '1.1rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              {item.title}
-            </span>
-          </div>
-        ))}
-      </div>
+      <SkewedCarousel items={items} />
     </div>
   );
 }

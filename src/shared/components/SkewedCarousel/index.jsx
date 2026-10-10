@@ -3,23 +3,37 @@ import { motion, AnimatePresence } from 'framer-motion';
 import './SkewedCarousel.css';
 
 export default function SkewedCarousel({ items }) {
-  // If we have fewer than 7 items, duplicate them to ensure we have enough "hidden" 
+  const isInfinite = items.length > 4;
+
+  // If we have fewer than 7 items BUT > 4, duplicate them to ensure we have enough "hidden" 
   // items in the back to prevent visible cross-screen jumping during infinite loop.
-  const renderItems = items.length > 0 && items.length < 7 
+  const renderItems = isInfinite && items.length < 7 
     ? [...items, ...items, ...items]
     : items;
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const next = () => {
-    setCurrentIndex((prev) => (prev + 1) % renderItems.length);
+    if (isInfinite) {
+      setCurrentIndex((prev) => (prev + 1) % renderItems.length);
+    } else {
+      setCurrentIndex((prev) => Math.min(prev + 1, items.length - 1));
+    }
   };
 
   const prev = () => {
-    setCurrentIndex((prev) => (prev - 1 + renderItems.length) % renderItems.length);
+    if (isInfinite) {
+      setCurrentIndex((prev) => (prev - 1 + renderItems.length) % renderItems.length);
+    } else {
+      setCurrentIndex((prev) => Math.max(prev - 1, 0));
+    }
   };
 
   const goTo = (idx) => {
+    if (!isInfinite) {
+      setCurrentIndex(idx);
+      return;
+    }
     const currentBase = currentIndex % items.length;
     let diff = idx - currentBase;
     
@@ -52,10 +66,12 @@ export default function SkewedCarousel({ items }) {
               // Handling wrapping for an infinite feel or just bounded.
               // Since we want 2-3 cards on each side, we can calculate a circular distance.
               let diff = index - currentIndex;
-              const half = Math.floor(renderItems.length / 2);
               
-              if (diff > half) diff -= renderItems.length;
-              if (diff < -half) diff += renderItems.length;
+              if (isInfinite) {
+                const half = Math.floor(renderItems.length / 2);
+                if (diff > half) diff -= renderItems.length;
+                if (diff < -half) diff += renderItems.length;
+              }
 
               const isCenter = diff === 0;
               const isVisible = Math.abs(diff) <= 3; // Show center + 3 on each side
@@ -131,7 +147,13 @@ export default function SkewedCarousel({ items }) {
       </div>
 
       <div className="skewed-carousel-controls">
-        <button onClick={prev} className="skewed-carousel-btn" aria-label="Previous">
+        <button 
+          onClick={prev} 
+          className="skewed-carousel-btn" 
+          disabled={!isInfinite && currentIndex === 0}
+          style={{ opacity: !isInfinite && currentIndex === 0 ? 0.3 : 1, cursor: !isInfinite && currentIndex === 0 ? 'default' : 'pointer' }}
+          aria-label="Previous"
+        >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="15 18 9 12 15 6"></polyline>
           </svg>
@@ -151,7 +173,13 @@ export default function SkewedCarousel({ items }) {
           })}
         </div>
 
-        <button onClick={next} className="skewed-carousel-btn" aria-label="Next">
+        <button 
+          onClick={next} 
+          className="skewed-carousel-btn" 
+          disabled={!isInfinite && currentIndex === items.length - 1}
+          style={{ opacity: !isInfinite && currentIndex === items.length - 1 ? 0.3 : 1, cursor: !isInfinite && currentIndex === items.length - 1 ? 'default' : 'pointer' }}
+          aria-label="Next"
+        >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="9 18 15 12 9 6"></polyline>
           </svg>
