@@ -1,0 +1,255 @@
+/* ==========================================================================
+   Hyperiux Dimensional Switch - White & Blue Theme for Mithson
+   Based on https://framer.com/m/HyperiuxDimensionalSwitch-m2RBxh.js
+   ========================================================================== */
+
+.hpx-dss-root {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  user-select: none;
+  --hpx-accent: var(--color-blue-accent, #0052cc);
+  --hpx-navy: var(--color-navy-base, #001f3f);
+}
+
+/* 3D Card Stage */
+.hpx-dss-card-container {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  perspective: 1200px;
+  -webkit-perspective: 1200px;
+  aspect-ratio: 16 / 10;
+  border-radius: 20px;
+}
+
+.hpx-dss-flipper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Front & Back Faces */
+.hpx-dss-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 20px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 20px 45px -15px rgba(0, 40, 100, 0.16), 0 0 0 1px rgba(0, 82, 204, 0.1);
+  background: #f1f5f9;
+}
+
+.hpx-dss-back-y {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
+
+.hpx-dss-back-x {
+  transform: rotateX(180deg);
+  -webkit-transform: rotateX(180deg);
+}
+
+.hpx-dss-face img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hpx-dss-card-container:hover .hpx-dss-face img {
+  transform: scale(1.02);
+}
+
+/* Subtle Gradient Overlay for High Readability in White/Blue Theme */
+.hpx-dss-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 15, 45, 0.15) 0%,
+    rgba(0, 20, 60, 0.35) 50%,
+    rgba(0, 25, 70, 0.75) 100%
+  );
+  pointer-events: none;
+}
+
+/* Floating 3D Text Overlay with Z-Depth */
+.hpx-dss-textwrap {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+  pointer-events: none;
+  padding: 1.5rem;
+}
+
+.hpx-dss-text {
+  position: absolute;
+  width: fit-content;
+  max-width: 90%;
+  margin: 0;
+  text-align: center;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.hpx-dss-text-next {
+  opacity: 0;
+}
+
+.hpx-dss-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hpx-dss-heading {
+  margin: 0;
+  font-size: clamp(1.85rem, 4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #ffffff;
+  text-shadow: 0 4px 24px rgba(0, 20, 60, 0.6), 0 2px 6px rgba(0, 0, 0, 0.4);
+  letter-spacing: -0.02em;
+}
+
+/* Bottom Bar: Indicators & Controls */
+.hpx-dss-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 580px;
+  margin-top: 1.25rem;
+  padding: 0 0.25rem;
+}
+
+/* Dots */
+.hpx-dss-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hpx-dss-dot {
+  height: 8px;
+  width: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(0, 82, 204, 0.2);
+  cursor: pointer;
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.hpx-dss-dot:hover {
+  background: rgba(0, 82, 204, 0.5);
+}
+
+.hpx-dss-dot[aria-current="true"] {
+  width: 28px;
+  background: var(--hpx-accent);
+  box-shadow: 0 2px 8px rgba(0, 82, 204, 0.35);
+}
+
+/* Controls (Prev/Next buttons) */
+.hpx-dss-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hpx-dss-btn {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 82, 204, 0.2);
+  background: #ffffff;
+  color: var(--hpx-accent);
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 40, 100, 0.08);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hpx-dss-btn:hover:not(:disabled) {
+  background: var(--hpx-accent);
+  color: #ffffff;
+  border-color: var(--hpx-accent);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 20px rgba(0, 82, 204, 0.3);
+}
+
+.hpx-dss-btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.97);
+}
+
+.hpx-dss-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  border-color: rgba(0, 0, 0, 0.08);
+  color: #94a3b8;
+}
+
+.hpx-dss-btn svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .hpx-dss-card-container {
+    aspect-ratio: 4 / 3;
+    border-radius: 16px;
+  }
+  .hpx-dss-face {
+    border-radius: 16px;
+  }
+  .hpx-dss-heading {
+    font-size: 1.5rem;
+  }
+  .hpx-dss-btn {
+    width: 38px;
+    height: 38px;
+  }
+  .hpx-dss-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+}
