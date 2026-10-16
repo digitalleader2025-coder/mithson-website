@@ -101,112 +101,193 @@ function resolveProductImage(prod) {
   return null;
 }
 
-const initialRail = {
-  index: 0,
-  progress: 0,
-  canPrevious: false,
-  canNext: true,
-};
-
 export default function ProductCarousel() {
   const railRef = useRef(null);
   const dragRef = useRef(null);
   const suppressClickUntil = useRef(0);
-  const animationFrame = useRef(null);
-  const [railState, setRailState] = useState(initialRail);
+  const animFrameRef = useRef(null);
+  const smoothGlideRef = useRef(null);
+
+  // Cached layout metrics to prevent layout reflows during scroll
+  const stepRef = useRef(0);
+  const maxScrollRef = useRef(0);
+  const currentIndexRef = useRef(0);
+
+  // Direct DOM refs for 60fps progress bar & counter without React re-renders
+  const progressFillRef = useRef(null);
+  const counterIndexRef = useRef(null);
+
+  // React state ONLY for button disabled states (only updates at ends, not during scroll)
+  const [navState, setNavState] = useState({ canPrev: false, canNext: true });
 
   const railId = useId();
   const headingId = useId();
 
-  // Measure rail position and progress
-  const measureRail = useCallback(() => {
+  // Pure arithmetic UI update — 0 DOM reads, 0 React re-renders, 60-120 FPS
+  const updateUI = useCallback(() => {
     const rail = railRef.current;
     if (!rail) return;
-    const maxScroll = Math.max(0, rail.scrollWidth - rail.clientWidth);
-    const position = Math.max(0, Math.min(maxScroll, rail.scrollLeft));
-    const cards = Array.from(rail.children);
-    if (!cards.length) return;
 
-    const railRect = rail.getBoundingClientRect();
-    let nearestIndex = 0;
-    let nearestDistance = Infinity;
+    const max = maxScrollRef.current;
+    const pos = Math.max(0, Math.min(max, rail.scrollLeft));
+    const step = stepRef.current || 300;
 
-    cards.forEach((card, index) => {
-      const cardRect = card.getBoundingClientRect();
-      const distance = Math.abs(cardRect.left - railRect.left);
-      if (distance < nearestDistance) {
-        nearestDistance = distance;
-        nearestIndex = index;
+    const idx = Math.min(
+      products.length - 1,
+      Math.max(0, Math.round(pos / step))
+    );
+
+    if (currentIndexRef.current !== idx) {
+      currentIndexRef.current = idx;
+      if (counterIndexRef.current) {
+        counterIndexRef.current.textContent = String(idx + 1).padStart(2, '0');
       }
-    });
+    }
 
-    const next = {
-      index: nearestIndex,
-      progress: maxScroll > 1 ? position / maxScroll : 0,
-      canPrevious: position > 4,
-      canNext: position < maxScroll - 4,
-    };
+    if (progressFillRef.current) {
+      const progress = max > 1 ? pos / max : 0;
+      const scale = 0.12 + progress * 0.88;
+      progressFillRef.current.style.transform = `scaleX(${scale})`;
+    }
+  }, []);
 
-    setRailState((prev) => {
-      if (
-        prev.index === next.index &&
-        prev.canPrevious === next.canPrevious &&
-        prev.canNext === next.canNext &&
-        Math.abs(prev.progress - next.progress) < 0.001
-      ) {
-        return prev;
-      }
-      return next;
+  // Sync button disabled states only when boundary values actually change
+  const syncNavState = useCallback(() => {
+    const rail = railRef.current;
+    if (!rail) return;
+    const pos = rail.scrollLeft;
+    const max = maxScrollRef.current;
+    const canPrev = pos > 4;
+    const canNext = pos < max - 4;
+
+    setNavState((prev) => {
+      if (prev.canPrev === canPrev && prev.canNext === canNext) return prev;
+      return { canPrev, canNext };
     });
   }, []);
+
+  // Re-measure container geometry only on resize or mount (NOT on scroll!)
+  const measureGeometry = useCallback(() => {
+    const rail = railRef.current;
+    if (!rail) return;
+
+    const max = Math.max(0, rail.scrollWidth - rail.clientWidth);
+    maxScrollRef.current = max;
+
+    const cards = rail.children;
+    if (cards.length > 0) {
+      const firstCard = cards[0];
+      const cardWidth = firstCard.getBoundingClientRect().width;
+      const gap =
+        cards.length > 1
+          ? cards[1].getBoundingClientRect().left - cards[0].getBoundingClientRect().right
+          : 20;
+      stepRef.current = cardWidth + gap;
+    }
+
+    updateUI();
+    syncNavState();
+  }, [updateUI, syncNavState]);
 
   // Set up listeners for scrolling and resizing
   useEffect(() => {
     const rail = railRef.current;
     if (!rail) return;
-    measureRail();
 
-    const scheduleMeasure = () => {
-      if (animationFrame.current !== null) return;
-      animationFrame.current = requestAnimationFrame(() => {
-        animationFrame.current = null;
-        measureRail();
+    measureGeometry();
+
+    const onScroll = () => {
+      if (animFrameRef.current !== null) return;
+      animFrameRef.current = requestAnimationFrame(() => {
+        animFrameRef.current = null;
+        updateUI();
+        syncNavState();
       });
     };
 
-    rail.addEventListener('scroll', scheduleMeasure, { passive: true });
-    const observer = new ResizeObserver(scheduleMeasure);
-    observer.observe(rail);
-    Array.from(rail.children).forEach((card) => {
-      observer.observe(card);
+    rail.addEventListener('scroll', onScroll, { passive: true });
+
+    const observer = new ResizeObserver(() => {
+      measureGeometry();
     });
+    observer.observe(rail);
 
     return () => {
-      rail.removeEventListener('scroll', scheduleMeasure);
+      rail.removeEventListener('scroll', onScroll);
       observer.disconnect();
-      if (animationFrame.current !== null) {
-        cancelAnimationFrame(animationFrame.current);
-        animationFrame.current = null;
+      if (animFrameRef.current !== null) {
+        cancelAnimationFrame(animFrameRef.current);
+      }
+      if (smoothGlideRef.current !== null) {
+        cancelAnimationFrame(smoothGlideRef.current);
       }
     };
-  }, [measureRail]);
+  }, [measureGeometry, updateUI, syncNavState]);
 
-  // Smoothly move by 1 card step
+  // Hardware-accelerated, mathematical smooth scroll (avoids scroll-snap conflict)
+  const smoothScrollTo = useCallback(
+    (targetLeft, duration = 380) => {
+      const rail = railRef.current;
+      if (!rail) return;
+
+      if (smoothGlideRef.current !== null) {
+        cancelAnimationFrame(smoothGlideRef.current);
+      }
+
+      const max = maxScrollRef.current;
+      const clampedTarget = Math.max(0, Math.min(max, targetLeft));
+      const startLeft = rail.scrollLeft;
+      const distance = clampedTarget - startLeft;
+
+      if (Math.abs(distance) < 2) return;
+
+      // Temporarily disable CSS scroll-snap so browser doesn't stutter or fight easing
+      rail.style.scrollSnapType = 'none';
+
+      const startTime = performance.now();
+
+      // Fluid cubic ease-out curve (same spring-feel as iOS / Framer)
+      function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+      }
+
+      function step(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(1, elapsed / duration);
+        const ease = easeOutCubic(progress);
+
+        rail.scrollLeft = startLeft + distance * ease;
+        updateUI();
+
+        if (progress < 1) {
+          smoothGlideRef.current = requestAnimationFrame(step);
+        } else {
+          rail.scrollLeft = clampedTarget;
+          // Re-enable snapping when glide completes
+          rail.style.removeProperty('scroll-snap-type');
+          smoothGlideRef.current = null;
+          updateUI();
+          syncNavState();
+        }
+      }
+
+      smoothGlideRef.current = requestAnimationFrame(step);
+    },
+    [updateUI, syncNavState]
+  );
+
+  // Move carousel by exactly 1 card step
   function move(direction) {
     const rail = railRef.current;
     if (!rail) return;
-    const cards = Array.from(rail.children);
-    if (!cards.length) return;
 
-    const firstCard = cards[0];
-    const cardWidth = firstCard.getBoundingClientRect().width;
-    const gap =
-      cards.length > 1
-        ? cards[1].getBoundingClientRect().left - cards[0].getBoundingClientRect().right
-        : 20;
-    const scrollStep = cardWidth + gap;
+    const step = stepRef.current || (rail.clientWidth / 3);
+    const current = rail.scrollLeft;
+    const currentIdx = Math.round(current / step);
+    const nextIdx = Math.min(products.length - 1, Math.max(0, currentIdx + direction));
+    const target = nextIdx * step;
 
-    rail.scrollBy({ left: direction * scrollStep, behavior: 'smooth' });
+    smoothScrollTo(target, 360);
   }
 
   // Keyboard navigation
@@ -220,25 +301,32 @@ export default function ProductCarousel() {
       move(-1);
     } else if (event.key === 'Home') {
       event.preventDefault();
-      railRef.current?.scrollTo({ left: 0, behavior: 'smooth' });
+      smoothScrollTo(0, 320);
     } else if (event.key === 'End') {
       event.preventDefault();
-      if (railRef.current) {
-        railRef.current.scrollTo({ left: railRef.current.scrollWidth, behavior: 'smooth' });
-      }
+      smoothScrollTo(maxScrollRef.current, 320);
     }
   }
 
-  // Mouse drag support with click suppression on drag release
+  // Butter-smooth mouse drag with momentum snap
   function onPointerDown(event) {
     if (event.pointerType !== 'mouse' || event.button !== 0 || !event.isPrimary) return;
     const rail = event.currentTarget;
     if (rail.scrollWidth <= rail.clientWidth + 2) return;
+
+    if (smoothGlideRef.current !== null) {
+      cancelAnimationFrame(smoothGlideRef.current);
+      smoothGlideRef.current = null;
+      rail.style.removeProperty('scroll-snap-type');
+    }
+
     dragRef.current = {
       id: event.pointerId,
       startX: event.clientX,
       startY: event.clientY,
       scrollLeft: rail.scrollLeft,
+      lastX: event.clientX,
+      velocity: 0,
       active: false,
     };
   }
@@ -246,6 +334,7 @@ export default function ProductCarousel() {
   function onPointerMove(event) {
     const drag = dragRef.current;
     if (!drag || drag.id !== event.pointerId) return;
+
     const deltaX = event.clientX - drag.startX;
     const deltaY = event.clientY - drag.startY;
 
@@ -262,24 +351,42 @@ export default function ProductCarousel() {
       rail.setPointerCapture(event.pointerId);
     }
 
+    drag.velocity = event.clientX - drag.lastX;
+    drag.lastX = event.clientX;
+
     event.preventDefault();
     event.currentTarget.scrollLeft = drag.scrollLeft - deltaX;
+    updateUI();
   }
 
   function finishDrag(event) {
     const drag = dragRef.current;
     if (!drag || drag.id !== event.pointerId) return;
     const rail = event.currentTarget;
+
     if (drag.active) {
       suppressClickUntil.current = Date.now() + 350;
+
+      // Inertial snap to nearest card with velocity consideration
+      const step = stepRef.current || 300;
+      const current = rail.scrollLeft;
+      let targetIdx = Math.round(current / step);
+
+      if (drag.velocity < -8) {
+        targetIdx = Math.ceil(current / step);
+      } else if (drag.velocity > 8) {
+        targetIdx = Math.floor(current / step);
+      }
+
+      targetIdx = Math.min(products.length - 1, Math.max(0, targetIdx));
+      smoothScrollTo(targetIdx * step, 300);
     }
+
     dragRef.current = null;
     delete rail.dataset.dragging;
-    rail.style.removeProperty('scroll-snap-type');
     if (rail.hasPointerCapture(event.pointerId)) {
       rail.releasePointerCapture(event.pointerId);
     }
-    measureRail();
   }
 
   function onCardClick(event) {
@@ -291,7 +398,7 @@ export default function ProductCarousel() {
   return (
     <section className="product-carousel-section" aria-labelledby={headingId}>
       <div className="container">
-        {/* Header with Title on Left & Arrow Buttons on Top Right */}
+        {/* Header with Title on Left & Controls on Right */}
         <div className="os-header">
           <div className="os-header-copy">
             <span className="os-eyebrow">Our Portfolio</span>
@@ -312,7 +419,7 @@ export default function ProductCarousel() {
                 className="os-nav-button"
                 aria-label="Previous products"
                 aria-controls={railId}
-                disabled={!railState.canPrevious}
+                disabled={!navState.canPrev}
                 onClick={() => move(-1)}
               >
                 <Arrow direction="left" size={19} />
@@ -322,7 +429,7 @@ export default function ProductCarousel() {
                 className="os-nav-button"
                 aria-label="Next products"
                 aria-controls={railId}
-                disabled={!railState.canNext}
+                disabled={!navState.canNext}
                 onClick={() => move(1)}
               >
                 <Arrow direction="right" size={19} />
@@ -368,6 +475,7 @@ export default function ProductCarousel() {
                         src={imgSrc}
                         alt={product.name}
                         loading={index < 3 ? 'eager' : 'lazy'}
+                        decoding="async"
                         draggable={false}
                       />
                     ) : (
@@ -405,18 +513,13 @@ export default function ProductCarousel() {
         <div className="os-footer">
           <div className="os-progress" aria-hidden="true">
             <div
+              ref={progressFillRef}
               className="os-progress-fill"
-              style={{
-                transform: `scaleX(${
-                  railState.canNext || railState.canPrevious
-                    ? 0.12 + railState.progress * 0.88
-                    : 1
-                })`,
-              }}
+              style={{ transform: 'scaleX(0.12)' }}
             />
           </div>
           <div className="os-counter" aria-hidden="true">
-            <strong>{String(railState.index + 1).padStart(2, '0')}</strong> /{' '}
+            <strong ref={counterIndexRef}>01</strong> /{' '}
             {String(products.length).padStart(2, '0')}
           </div>
         </div>

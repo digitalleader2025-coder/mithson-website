@@ -156,6 +156,9 @@
   user-select: none;
   -webkit-user-select: none;
   padding: 4px 2px 6px;
+  transform: translateZ(0);
+  will-change: scroll-position;
+  contain: layout paint;
 }
 
 .os-rail::-webkit-scrollbar {
@@ -173,6 +176,11 @@
   scroll-snap-type: none !important;
 }
 
+.os-rail[data-dragging="true"] .os-card {
+  transform: none !important;
+  pointer-events: none;
+}
+
 /* Product Card — Equal Dimensions */
 .os-card {
   display: flex;
@@ -188,7 +196,10 @@
   box-shadow: 0 4px 20px rgba(11, 26, 48, 0.04);
   padding: 12px;
   box-sizing: border-box;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 .os-card:hover {
@@ -210,6 +221,7 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  transform: translateZ(0);
 }
 
 .os-image-layer {
@@ -230,7 +242,7 @@
   height: auto;
   object-fit: contain;
   pointer-events: none;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .os-card:hover .os-image-layer img {
@@ -244,16 +256,15 @@
   top: 10px;
   left: 10px;
   padding: 3px 9px;
-  background: rgba(255, 255, 255, 0.9);
+  background: #ffffff;
   color: var(--color-navy-base, #0336a3);
-  border: 1px solid rgba(3, 54, 163, 0.12);
+  border: 1px solid rgba(3, 54, 163, 0.16);
   border-radius: 6px;
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 6px rgba(3, 54, 163, 0.08);
 }
 
 /* Hover Action Button (Floating Button inside Media) */
@@ -411,7 +422,7 @@
   background: var(--color-blue-accent, #42a4ff);
   transform-origin: left center;
   border-radius: 999px;
-  transition: transform 0.2s ease-out;
+  will-change: transform;
 }
 
 .os-counter {
