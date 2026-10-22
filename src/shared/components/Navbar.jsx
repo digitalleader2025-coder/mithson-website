@@ -17,7 +17,7 @@ function ChevronIcon({ open }) {
   );
 }
 
-function MegaMenuItem({ item, onClose }) {
+function MegaMenuItem({ item, onClose, isNavbarHidden }) {
   const [open, setOpen] = useState(false);
   const hasChildren = item.children && item.children.length > 0;
   const location = useLocation();
@@ -40,6 +40,25 @@ function MegaMenuItem({ item, onClose }) {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
   }, [open]);
+
+  // Close dropdown immediately when user scrolls the page
+  useEffect(() => {
+    if (!open) return;
+    const handleScroll = () => {
+      setOpen(false);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [open]);
+
+  // Close dropdown when navbar hides on scroll down
+  useEffect(() => {
+    if (isNavbarHidden) {
+      setOpen(false);
+    }
+  }, [isNavbarHidden]);
 
   const handleMouseEnter = () => {
     // Only apply hover if not a touch device
@@ -221,7 +240,7 @@ export default function Navbar() {
           <nav className="navbar-nav" aria-label="Primary navigation">
             <ul className="nav-list" role="list">
               {navigation.map((item) => (
-                <MegaMenuItem key={item.path} item={item} />
+                <MegaMenuItem key={item.path} item={item} isNavbarHidden={hidden} />
               ))}
             </ul>
           </nav>

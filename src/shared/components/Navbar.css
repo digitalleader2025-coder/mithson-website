@@ -26,6 +26,13 @@
   transform: translateY(-100%);
 }
 
+.navbar--hidden .dropdown {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
 .navbar-inner {
   max-width: var(--container-max);
   margin: 0 auto;
