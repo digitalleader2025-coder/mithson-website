@@ -127,17 +127,6 @@
   will-change: transform, opacity;
 }
 
-/* Invisible hover bridge to eliminate gap between nav link and dropdown */
-.dropdown::before {
-  content: '';
-  position: absolute;
-  top: -14px;
-  left: 0;
-  right: 0;
-  height: 14px;
-  background: transparent;
-}
-
 /* Products 2-column grid dropdown */
 .dropdown--grid {
   min-width: 500px;

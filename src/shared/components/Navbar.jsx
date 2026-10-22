@@ -41,13 +41,11 @@ function MegaMenuItem({ item, onClose, isNavbarHidden }) {
     };
   }, [open]);
 
-  // Close dropdown when scrolling down away from header
+  // Close dropdown immediately when user scrolls the page
   useEffect(() => {
     if (!open) return;
     const handleScroll = () => {
-      if (window.scrollY > 40) {
-        setOpen(false);
-      }
+      setOpen(false);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
@@ -63,13 +61,15 @@ function MegaMenuItem({ item, onClose, isNavbarHidden }) {
   }, [isNavbarHidden]);
 
   const handleMouseEnter = () => {
+    // Only apply hover if not a touch device
+    if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
     clearTimeout(timerRef.current);
     if (hasChildren) setOpen(true);
   };
 
   const handleMouseLeave = () => {
-    clearTimeout(timerRef.current);
-    timerRef.current = setTimeout(() => setOpen(false), 180);
+    if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
+    timerRef.current = setTimeout(() => setOpen(false), 10);
   };
 
   const handleKeyDown = (e) => {
