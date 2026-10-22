@@ -17,13 +17,13 @@ import { products } from '../../content/products';
 import { company } from '../../content/company';
 
 import HyperiuxDimensionalSwitch from '../../shared/components/HyperiuxDimensionalSwitch';
-import imgOil from '../../assets/industries/Oil & Gas.png';
-import imgAuto from '../../assets/industries/Automotive.png';
-import imgLife from '../../assets/industries/Life Science.png';
-import imgMining from '../../assets/industries/Mining.png';
-import imgSemi from '../../assets/industries/Semiconductor.png';
-import imgRobo from '../../assets/industries/Robotics.png';
-import imgAero from '../../assets/industries/Aerospace.png';
+import imgOil from '../../assets/industries/Oil & Gas.webp';
+import imgAuto from '../../assets/industries/Automotive.webp';
+import imgLife from '../../assets/industries/Life Science.webp';
+import imgMining from '../../assets/industries/Mining.webp';
+import imgSemi from '../../assets/industries/Semiconductor.webp';
+import imgRobo from '../../assets/industries/Robotics.webp';
+import imgAero from '../../assets/industries/Aerospace.webp';
 
 const industryItems = [
   { src: imgOil, alt: 'Oil & Gas', title: 'Oil & Gas' },

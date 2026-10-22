@@ -61,6 +61,34 @@ const TEXT_ROTATE_DEG = 45;
 const OUTGOING_DURATION = DURATION * 0.45;
 const TEXT_Z = 60;
 
+const preloadedCache = new Set();
+
+function preloadImage(src) {
+  if (!src || preloadedCache.has(src)) return Promise.resolve();
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.src = src;
+    if (img.complete) {
+      preloadedCache.add(src);
+      if (typeof img.decode === 'function') {
+        img.decode().then(resolve).catch(resolve);
+      } else {
+        resolve();
+      }
+    } else {
+      img.onload = () => {
+        preloadedCache.add(src);
+        if (typeof img.decode === 'function') {
+          img.decode().then(resolve).catch(resolve);
+        } else {
+          resolve();
+        }
+      };
+      img.onerror = resolve;
+    }
+  });
+}
+
 function ArrowIcon({ dir }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -151,9 +179,24 @@ export default function HyperiuxDimensionalSwitch({
     isAnimatingRef.current = false;
   }, [flipAxis]);
 
+  // Preload and background-decode all slides on mount
+  useEffect(() => {
+    slides.forEach((slide) => {
+      if (slide.src) preloadImage(slide.src);
+    });
+  }, [slides]);
+
   const flipTo = useCallback(
-    (dir, newIndex) => {
+    async (dir, newIndex) => {
       if (count <= 1 || isAnimatingRef.current) return;
+      isAnimatingRef.current = true;
+
+      // Ensure target slide image is fully loaded and decoded before 3D flip starts
+      const targetSrc = slides[newIndex]?.src;
+      if (targetSrc) {
+        await preloadImage(targetSrc);
+      }
+
       const goingNext = dir === 'next';
       const wasShowingNext = showingNextRef.current;
 
@@ -173,7 +216,6 @@ export default function HyperiuxDimensionalSwitch({
       rotationRef.current += flipGoingNext ? 180 : -180;
       const rotateValue = rotationRef.current;
 
-      isAnimatingRef.current = true;
       const resolvedEase = resolveEase(ease);
 
       const tl = gsap.timeline({
@@ -292,7 +334,8 @@ export default function HyperiuxDimensionalSwitch({
               src={slides[safeFront].src}
               alt={slides[safeFront].alt}
               draggable={false}
-              loading="lazy"
+              loading="eager"
+              decoding="async"
             />
             <div className="hpx-dss-scrim" />
           </div>
@@ -303,7 +346,8 @@ export default function HyperiuxDimensionalSwitch({
               src={slides[safeBack].src}
               alt={slides[safeBack].alt}
               draggable={false}
-              loading="lazy"
+              loading="eager"
+              decoding="async"
             />
             <div className="hpx-dss-scrim" />
           </div>
