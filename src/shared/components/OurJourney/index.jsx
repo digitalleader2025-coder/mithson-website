@@ -8,6 +8,20 @@ import Img2000s from '../../../assets/history/SpringEnergized.png';
 import Img2010s from '../../../assets/history/Certifications.png';
 import ImgToday from '../../../assets/history/Mithson.png';
 
+import { company } from '../../../content/company';
+
+// Dynamically compute decades of experience from founding year (1996) based on the current calendar year
+const getDecadesText = (foundedYear = company?.founded || 1996, inWords = true) => {
+  const currentYear = new Date().getFullYear();
+  const years = Math.max(0, currentYear - foundedYear);
+  const decades = Math.floor(years / 10);
+  const words = [
+    'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'
+  ];
+  const countText = inWords ? (words[decades] || `${decades}`) : `${decades}`;
+  return `${countText} ${decades === 1 ? 'decade' : 'decades'}`;
+};
+
 const journeyData = [
   {
     year: "1996",
@@ -30,7 +44,7 @@ const journeyData = [
   {
     year: "Today",
     title: "Mithson Sealing Solutions",
-    description: "Over two decades of polymer engineering expertise serving the world's most demanding industries.",
+    description: `Over ${getDecadesText()} of polymer engineering expertise serving the world's most demanding industries.`,
     image: ImgToday
   }
 ];
