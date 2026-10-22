@@ -41,7 +41,7 @@ export default function SceneWrapper({
       ([entry]) => {
         setInView(entry.isIntersecting);
       },
-      { rootMargin: '200px' }
+      { rootMargin: '0px', threshold: 0.05 }
     );
 
     observer.observe(el);
