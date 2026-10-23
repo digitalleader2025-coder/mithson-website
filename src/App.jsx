@@ -51,11 +51,13 @@ function ScrollToTop() {
   const { pathname } = useLocation();
   
   useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
     if (window.lenis) {
       window.lenis.scrollTo(0, { immediate: true });
-    } else {
-      window.scrollTo(0, 0);
     }
+    window.scrollTo(0, 0);
   }, [pathname]);
   
   return null;
@@ -65,6 +67,11 @@ export default function App() {
   const location = useLocation();
 
   useEffect(() => {
+    // Prevent Chrome from attempting native scroll restoration which fights Lenis on back button
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -75,14 +82,28 @@ export default function App() {
     // Expose lenis globally for the ScrollToTop component
     window.lenis = lenis;
 
+    let rafId;
     function raf(time) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
+
+    // Sync Lenis bounds when browser Back/Forward (popstate) occurs
+    const handlePopState = () => {
+      requestAnimationFrame(() => {
+        if (window.lenis) {
+          window.lenis.resize();
+        }
+      });
+    };
+
+    window.addEventListener('popstate', handlePopState);
 
     return () => {
+      window.removeEventListener('popstate', handlePopState);
+      cancelAnimationFrame(rafId);
       lenis.destroy();
       window.lenis = undefined;
     };
