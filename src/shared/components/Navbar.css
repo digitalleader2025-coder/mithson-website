@@ -53,12 +53,25 @@
 }
 
 .logo-image {
-  height: 40px;
+  height: 52px;
+  max-height: calc(var(--nav-height) - 16px);
   width: auto;
   object-fit: contain;
   -webkit-touch-callout: none; /* Prevent long-press context menu on iOS/Android */
   user-select: none;
   pointer-events: none; /* Prevent the image from being seen as a standalone element, let the Link handle the click */
+  transition: transform var(--duration-fast);
+}
+
+.navbar-logo:hover .logo-image {
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .logo-image {
+    height: 44px;
+    max-height: calc(var(--nav-height) - 16px);
+  }
 }
 
 /* --- Desktop Nav --- */
