@@ -22,11 +22,11 @@ export default function Expo2025Page() {
     year="2025"
     title="Oil & Gas Expo 2025"
     fullTitle="Oil Gas & Power World Expo 2025"
-    status="upcoming"
+    status="past"
     events={[
       { title: 'Hall 4, Bombay Exhibition Center, Mumbai', image: imgExpo2025 }
     ]}
-    description="MITHSON is exhibiting at the Oil Gas & Power World Expo 2025 — one of Asia's leading trade events for the energy industry. Visit us at Booth C31, Hall 4, to see our latest sealing solutions for wellhead equipment, well service applications and high-pressure ball valves."
+    description="MITHSON exhibited at the Oil Gas & Power World Expo 2025 — one of Asia's leading trade events for the energy industry, showcasing our latest sealing solutions for wellhead equipment, well service applications and high-pressure ball valves."
     highlights={['API 6A Wellhead Seals', 'Well Service Packing', 'Downhole Seals', 'API 6D / LNG Seals', 'Spring Energized Lip Seals', 'PTFE & PEEK Components']}
     prevPath="/events/expo-2024"
   />;

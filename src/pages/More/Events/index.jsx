@@ -9,10 +9,10 @@ const events = [
     title: 'Oil & Gas Expo 2025',
     fullTitle: 'Oil Gas & Power World Expo 2025',
     venue: 'Hall 4, Bombay Exhibition Center, Goregaon (East), Mumbai, India',
-    booth: 'Booth C31',
-    description: 'MITHSON exhibiting at one of Asia\'s premier oil, gas and power expos — showcasing our latest sealing solutions for wellhead, well service and high-pressure applications.',
+    booth: null,
+    description: 'MITHSON exhibited at one of Asia\'s premier oil, gas and power expos — showcasing our latest sealing solutions for wellhead, well service and high-pressure applications.',
     path: '/events/oil-and-gas-expo-2025',
-    status: 'upcoming',
+    status: 'past',
   },
   {
     year: '2024',
@@ -63,7 +63,7 @@ export default function EventsPage() {
                 <Link to={ev.path} className="glass-card" id={`events-${ev.year}`}
                   style={{ padding: '2rem', borderRadius: '1.25rem', display: 'grid', gridTemplateColumns: '80px 1fr auto', gap: '2rem', alignItems: 'center', transition: 'transform 0.3s, border-color 0.3s' }}
                 >
-                  <div style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-3xl)', fontWeight: 900, color: ev.status === 'upcoming' ? 'var(--color-accent)' : 'var(--color-dim)' }}>
+                  <div style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-3xl)', fontWeight: 900, color: (ev.status === 'upcoming' || i === 0) ? 'var(--color-accent)' : 'var(--color-dim)' }}>
                     {ev.year}
                   </div>
                   <div>
