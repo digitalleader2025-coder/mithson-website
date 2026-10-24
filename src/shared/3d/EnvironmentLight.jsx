@@ -14,6 +14,8 @@ export default function EnvironmentLight({
   accentColor = '#42A4FF',
   accentIntensity = 0.6,
 }) {
+  const hasShadows = shadowOpacity > 0;
+
   return (
     <>
       <Environment preset={preset} />
@@ -22,8 +24,8 @@ export default function EnvironmentLight({
         intensity={directionalIntensity}
         position={directionalPosition}
         color="#fff4e0"
-        castShadow
-        shadow-mapSize={[1024, 1024]}
+        castShadow={hasShadows}
+        shadow-mapSize={hasShadows ? [1024, 1024] : undefined}
       />
       <pointLight
         intensity={accentIntensity}
@@ -32,13 +34,15 @@ export default function EnvironmentLight({
         distance={18}
         decay={2}
       />
-      <ContactShadows
-        position={[0, -2, 0]}
-        opacity={shadowOpacity}
-        scale={10}
-        blur={2}
-        far={4}
-      />
+      {hasShadows && (
+        <ContactShadows
+          position={[0, -2, 0]}
+          opacity={shadowOpacity}
+          scale={10}
+          blur={2}
+          far={4}
+        />
+      )}
     </>
   );
 }

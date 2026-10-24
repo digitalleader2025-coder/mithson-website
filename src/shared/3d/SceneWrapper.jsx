@@ -17,20 +17,19 @@ export default function SceneWrapper({
   className = '',
   style = {},
   camera = { position: [0, 0, 5], fov: 50 },
-  gl = { antialias: true, alpha: true },
-  dpr = [1, 1.5],
+  gl = { antialias: true, alpha: true, powerPreference: 'high-performance' },
+  dpr = [1, 1.25],
 }) {
   const containerRef = useRef(null);
   const [inView, setInView] = useState(true);
   
-  // Use a safer default for mobile to prevent lag
-  const [activeDpr, setActiveDpr] = useState(dpr);
+  // Use a safer default for mobile/tablets to prevent lag
+  const [activeDpr, setActiveDpr] = useState([1, 1.25]);
   useEffect(() => {
-    // Cap pixel ratio to 1 on mobile or narrow screens to heavily reduce lag
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 1024) {
       setActiveDpr(1);
     }
-  }, [dpr]);
+  }, []);
 
   // Pause WebGL rendering when off-screen to massively improve scroll performance
   useEffect(() => {
