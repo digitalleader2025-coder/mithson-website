@@ -52,7 +52,7 @@
 }
 
 .navbar-logo .logo-image {
-  height: 72px;
+  height: 64px;
   max-height: calc(var(--nav-height) - 12px);
   width: auto;
   object-fit: contain;
@@ -68,11 +68,11 @@
 
 @media (min-width: 1024px) and (max-width: 1279px) {
   .navbar-inner {
-    height: 80px;
+    height: 74px;
     padding: 0 var(--space-4);
   }
   .navbar-logo .logo-image {
-    height: 56px;
+    height: 54px;
   }
   .navbar-nav {
     margin-right: var(--space-4) !important;
@@ -93,19 +93,19 @@
 
 @media (max-width: 1023px) {
   .navbar-inner {
-    height: 72px;
+    height: 68px;
   }
   .navbar-logo .logo-image {
-    height: 54px;
+    height: 48px;
   }
 }
 
 @media (max-width: 640px) {
   .navbar-inner {
-    height: 64px;
+    height: 60px;
   }
   .navbar-logo .logo-image {
-    height: 46px;
+    height: 42px;
   }
 }
 
