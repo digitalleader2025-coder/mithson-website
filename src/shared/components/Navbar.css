@@ -32,7 +32,7 @@
 }
 
 .navbar-inner {
-  max-width: var(--container-max);
+  max-width: var(--container-wide);
   margin: 0 auto;
   padding: 0 var(--space-6);
   display: flex;
@@ -48,10 +48,12 @@
   gap: var(--space-3);
   z-index: calc(var(--z-nav) + 10);
   -webkit-tap-highlight-color: transparent; /* Remove mobile tap highlight box */
+  flex-shrink: 0;
 }
 
-.logo-image {
-  height: 48px;
+.navbar-logo .logo-image {
+  height: 72px;
+  max-height: calc(var(--nav-height) - 12px);
   width: auto;
   object-fit: contain;
   -webkit-touch-callout: none; /* Prevent long-press context menu on iOS/Android */
@@ -64,9 +66,46 @@
   transform: scale(1.02);
 }
 
-@media (max-width: 768px) {
-  .logo-image {
-    height: 38px;
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .navbar-inner {
+    height: 80px;
+    padding: 0 var(--space-4);
+  }
+  .navbar-logo .logo-image {
+    height: 56px;
+  }
+  .navbar-nav {
+    margin-right: var(--space-4) !important;
+  }
+  .nav-list {
+    gap: 12px !important;
+  }
+  .nav-link {
+    font-size: 0.775rem !important;
+    letter-spacing: 0.02em !important;
+    padding: var(--space-2) 2px !important;
+  }
+  .navbar-cta .btn {
+    padding: 8px 14px !important;
+    font-size: 0.775rem !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .navbar-inner {
+    height: 72px;
+  }
+  .navbar-logo .logo-image {
+    height: 54px;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar-inner {
+    height: 64px;
+  }
+  .navbar-logo .logo-image {
+    height: 46px;
   }
 }
 
@@ -86,7 +125,7 @@
 .nav-list {
   display: flex;
   align-items: center;
-  gap: var(--space-6);
+  gap: clamp(14px, 1.6vw, var(--space-6));
 }
 
 .nav-item {
@@ -100,10 +139,15 @@
   font-size: var(--text-sm);
   font-weight: 600;
   color: var(--color-navy-base);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
+  white-space: nowrap;
   padding: var(--space-2) 0;
   transition: color var(--duration-fast);
+}
+
+.navbar-cta .btn {
+  white-space: nowrap;
 }
 
 .nav-link:hover,
