@@ -198,8 +198,8 @@ ul, ol {
 /* ----- Glass Card ----- */
 .glass {
   background: var(--grad-glass);
-  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-md);
 }
@@ -208,8 +208,8 @@ ul, ol {
   background: var(--grad-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
-  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   box-shadow: var(--shadow-sm);
 }
 
