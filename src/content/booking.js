@@ -11,6 +11,7 @@ export const BOOKING = {
   closedWeekdays: [0], // Sunday
   maxDaysAhead: 60,
   minLeadMinutes: 60, // same-day slots must start at least this far in the future
+  retentionDays: 2, // booking data is deleted from storage this long after the meeting ends
 };
 
 export function minutesToHHMM(minutes) {
@@ -59,6 +60,13 @@ export function nowInIST(now = Date.now()) {
     date: ist.toISOString().slice(0, 10),
     minutes: ist.getUTCHours() * 60 + ist.getUTCMinutes(),
   };
+}
+
+/** Unix time (seconds) when stored booking data should expire: meeting end + `retentionDays`. */
+export function expiryEpochSeconds(dateStr, start, duration) {
+  const [y, m, d] = dateStr.split('-').map(Number);
+  const endUtcMs = Date.UTC(y, m - 1, d) + (start + duration - BOOKING.utcOffsetMinutes) * 60000;
+  return Math.floor(endUtcMs / 1000) + BOOKING.retentionDays * 86400;
 }
 
 export function addDays(dateStr, days) {

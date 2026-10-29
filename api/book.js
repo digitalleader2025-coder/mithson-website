@@ -3,6 +3,7 @@ import { randomUUID } from 'node:crypto';
 import {
   BOOKING,
   blocksFor,
+  expiryEpochSeconds,
   hhmmToMinutes,
   isBookableDate,
   isStartInFuture,
@@ -68,9 +69,10 @@ export default async function handler(req, res) {
 
   const id = randomUUID();
   const blocks = blocksFor(data.start, data.duration);
+  const expiresAt = expiryEpochSeconds(data.date, data.start, data.duration);
 
   try {
-    if (!(await claimBlocks(data.date, blocks, id))) {
+    if (!(await claimBlocks(data.date, blocks, id, expiresAt))) {
       return sendJson(res, 409, { error: 'That time was just booked by someone else. Choose another time.', code: 'taken' });
     }
   } catch (err) {
@@ -111,7 +113,7 @@ export default async function handler(req, res) {
 
   let emailed = false;
   try {
-    await saveBooking(booking);
+    await saveBooking(booking, expiresAt);
     emailed = await sendBookingEmails(booking);
   } catch (err) {
     // The slot and Zoom meeting exist, so keep the booking and tell the customer the email failed.

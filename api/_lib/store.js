@@ -20,10 +20,19 @@ export async function getBusyBlocks(date) {
   return blocks.filter((_, i) => values[i] !== null && values[i] !== undefined);
 }
 
-/** Atomically claims all blocks for a booking. Returns false if any block is already taken. */
-export async function claimBlocks(date, blocks, bookingId) {
+/**
+ * Atomically claims all blocks for a booking. Returns false if any block is already taken.
+ * `expiresAt` (unix seconds) makes Redis delete the blocks automatically after the meeting.
+ */
+export async function claimBlocks(date, blocks, bookingId, expiresAt) {
   const entries = Object.fromEntries(blocks.map((m) => [blockKey(date, m), bookingId]));
-  if (redis) return (await redis.msetnx(entries)) === 1;
+  if (redis) {
+    if ((await redis.msetnx(entries)) !== 1) return false;
+    const pipeline = redis.pipeline();
+    for (const key of Object.keys(entries)) pipeline.expireat(key, expiresAt);
+    await pipeline.exec();
+    return true;
+  }
   if (Object.keys(entries).some((k) => memory.has(k))) return false;
   for (const [k, v] of Object.entries(entries)) memory.set(k, v);
   return true;
@@ -40,8 +49,8 @@ export async function releaseBlocks(date, blocks, bookingId) {
   }
 }
 
-export async function saveBooking(booking) {
+export async function saveBooking(booking, expiresAt) {
   const key = `mithson:booking:${booking.id}`;
-  if (redis) await redis.set(key, JSON.stringify(booking));
+  if (redis) await redis.set(key, JSON.stringify(booking), { exat: expiresAt });
   else memory.set(key, booking);
 }
