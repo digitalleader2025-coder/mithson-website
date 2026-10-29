@@ -38,7 +38,10 @@ export default function Footer() {
                   <Link to={item.path}>{item.label}</Link>
                 </h3>
                 <ul>
-                  {item.children?.map((child) => (
+                  {item.children
+                    ?.flatMap((child) => child.children ?? [child])
+                    .filter((child) => child.path !== item.path)
+                    .map((child) => (
                     <li key={child.path}>
                       <Link to={child.path} className="footer-link">{child.label}</Link>
                     </li>

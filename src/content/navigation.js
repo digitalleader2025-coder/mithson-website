@@ -3,9 +3,11 @@ export const navigation = [
   {
     label: 'Who We Are',
     path: '/who-we-are',
+    activePaths: ['/who-we-are', '/events'],
     children: [
       { label: 'About Us', path: '/who-we-are/about-us' },
       { label: 'Quality & Certification', path: '/who-we-are/quality-and-certification' },
+      { label: 'Events', path: '/events' },
     ],
   },
   {
@@ -29,19 +31,15 @@ export const navigation = [
   {
     label: 'Industries',
     path: '/industries',
+    activePaths: ['/industries', '/oil-gas-seal'],
     children: [
-      { label: 'Energy - Oil & Gas', path: '/industries/energy-oil-gas' },
+      { label: 'Oil & Gas Seal', path: '/oil-gas-seal' },
     ],
   },
   {
-    label: 'Oil & Gas Seal',
-    path: '/oil-gas-seal',
-    children: [
-      { label: 'API 6A Wellhead Equipment Seal', path: '/oil-gas-seal/api-6a-wellhead-equipment-seal' },
-      { label: 'Well Service Equipment Seal', path: '/oil-gas-seal/well-service-equipment-seal' },
-      { label: 'Downhole Tool Seal', path: '/oil-gas-seal/downhole-tool-seal' },
-      { label: 'API 6D Ball Valve & LNG Seal', path: '/oil-gas-seal/api-6d-ball-valve-lng-seal' },
-    ],
+    label: 'Career',
+    path: '/careers',
+    children: [],
   },
   {
     label: 'Product Gallery',
@@ -49,12 +47,8 @@ export const navigation = [
     children: [],
   },
   {
-    label: 'Events',
-    path: '/events',
-    children: [
-      { label: 'Oil & Gas Expo 2025', path: '/events/oil-and-gas-expo-2025' },
-      { label: 'Expo 2024', path: '/events/expo-2024' },
-      { label: 'Expo 2023', path: '/events/expo-2023' },
-    ],
+    label: 'Enquire Now',
+    path: '/connect-with-us',
+    children: [],
   },
 ];

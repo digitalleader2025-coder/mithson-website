@@ -21,7 +21,7 @@ function MegaMenuItem({ item, onClose, isNavbarHidden }) {
   const [open, setOpen] = useState(false);
   const hasChildren = item.children && item.children.length > 0;
   const location = useLocation();
-  const isActive = location.pathname.startsWith(item.path);
+  const isActive = (item.activePaths ?? [item.path]).some((p) => location.pathname.startsWith(p));
   const timerRef = useRef(null);
   const navItemRef = useRef(null);
 
@@ -246,8 +246,8 @@ export default function Navbar() {
           </nav>
 
           <div className="navbar-cta">
-            <Link to="/connect-with-us" className="btn btn-primary btn--sm" id="nav-contact-cta">
-              Enquire Now
+            <Link to="/book-a-meeting" className="btn btn-primary btn--sm" id="nav-book-meeting-cta">
+              Book a Meeting
             </Link>
           </div>
 
@@ -328,8 +328,8 @@ export default function Navbar() {
                   </AnimatePresence>
                 </div>
               ))}
-              <Link to="/connect-with-us" className="btn btn-primary mobile-nav-cta" onClick={closeMobile} id="mobile-nav-cta">
-                Enquire Now
+              <Link to="/book-a-meeting" className="btn btn-primary mobile-nav-cta" onClick={closeMobile} id="mobile-nav-cta">
+                Book a Meeting
               </Link>
             </div>
           </motion.nav>

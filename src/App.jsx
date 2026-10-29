@@ -36,6 +36,10 @@ const WellService = lazy(() => import('./pages/OilGasSeal/WellService'));
 const Downhole = lazy(() => import('./pages/OilGasSeal/Downhole'));
 const API6D = lazy(() => import('./pages/OilGasSeal/API6D'));
 
+// Career & booking
+const Careers = lazy(() => import('./pages/Careers'));
+const BookMeeting = lazy(() => import('./pages/BookMeeting'));
+
 // Gallery
 const ProductGallery = lazy(() => import('./pages/ProductGallery'));
 
@@ -162,6 +166,10 @@ export default function App() {
               <Route path="/events/oil-and-gas-expo-2025" element={<Expo2025 />} />
               <Route path="/events/expo-2024" element={<Expo2024Page />} />
               <Route path="/events/expo-2023" element={<Expo2023Page />} />
+
+              {/* Career & booking */}
+              <Route path="/careers" element={<Careers />} />
+              <Route path="/book-a-meeting" element={<BookMeeting />} />
 
               {/* Fallback */}
               <Route path="*" element={<Navigate to="/" replace />} />

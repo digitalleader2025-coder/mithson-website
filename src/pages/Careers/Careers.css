@@ -1,0 +1,40 @@
+/* Career page styles */
+.careers-hero {
+  padding: var(--space-20) 0 var(--space-12);
+  background: var(--grad-hero);
+}
+
+.careers-hero .section-subtitle {
+  margin-top: var(--space-4);
+}
+
+.careers-card {
+  max-width: 720px;
+  padding: var(--space-8);
+  border-radius: var(--radius-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.careers-card-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-navy-base);
+}
+
+.careers-card p {
+  color: var(--color-text-2);
+  line-height: 1.7;
+}
+
+@media (max-width: 640px) {
+  .careers-hero {
+    padding: var(--space-12) 0 var(--space-8);
+  }
+  .careers-card {
+    padding: var(--space-6);
+  }
+}
