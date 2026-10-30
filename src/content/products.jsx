@@ -68,6 +68,7 @@ export const products = [
   {
     id: 'mith-plate',
     slug: 'mith-plate',
+    category: 'pump',
     name: 'MITH PLATE',
     tagline: 'MSS Valve Plates for Reciprocating Compressors',
     shortDescription:
@@ -90,6 +91,7 @@ export const products = [
   {
     id: 'm-uni-seal',
     slug: 'm-uni-seal',
+    category: 'seals',
     name: 'M-UNI Seal',
     tagline: 'Spring-Energized Lip Seal',
     shortDescription:
@@ -111,6 +113,7 @@ export const products = [
   {
     id: 'hammer-union-seal',
     slug: 'hammer-union-seal',
+    category: 'oilfield',
     name: 'Hammer Union Seal',
     tagline: 'High-Performance Connection Seal',
     shortDescription:
@@ -133,6 +136,7 @@ export const products = [
   {
     id: 'seals-x-mas-tree',
     slug: 'seals-x-mas-tree',
+    category: 'oilfield',
     name: 'Seals - X-Mas Tree',
     tagline: 'Christmas Tree Wellhead Gate-Valve Sealing',
     shortDescription: 'High-performance API 6A compliant sealing solutions for Christmas Tree valve applications. Includes Spring-Energized Lip Seals, Stem Packing, Seat Seals, and O-Rings engineered from advanced polymer materials.',
@@ -160,6 +164,7 @@ export const products = [
   {
     id: 'seals-valve',
     slug: 'seals-valve',
+    category: 'valves',
     name: 'Seals - Valve',
     tagline: 'Complete Valve Sealing Solutions',
     shortDescription: 'Comprehensive sealing solutions engineered from high-performance thermoplastics like PTFE and PEEK. Designed for optimal performance in Gate, Ball, Globe, Plug, Butterfly, and Diaphragm valves.',
@@ -210,6 +215,7 @@ export const products = [
   {
     id: 'plug-lined-valve',
     slug: 'plug-lined-valve',
+    category: 'valves',
     name: 'Plug & Lined - Valve',
     tagline: 'PTFE Plug-Valve Sleeves and Liners',
     shortDescription: 'Precision-engineered PTFE Plugs and Sleeves delivering reliable bubble-tight sealing for plug valve applications. Manufactured from Virgin PTFE and specialty compounds for low friction and chemical resistance.',
@@ -245,6 +251,7 @@ export const products = [
   {
     id: 'uni-lube-bearing',
     slug: 'uni-lube-bearing',
+    category: 'bearings',
     name: 'UNI-LUBE Bearing',
     tagline: 'Self-Lubricating Bearing Family',
     shortDescription: 'High-performance self-lubricating bearings and bushings designed to constrain motion and reduce friction without external lubrication. Engineered for reliable sliding and rotating applications.',
@@ -280,6 +287,7 @@ export const products = [
   {
     id: 'seals-hydraulic',
     slug: 'seals-hydraulic',
+    category: 'seals',
     name: 'Seals - Hydraulic',
     tagline: 'Hydraulic Cylinder Seals for Extreme Environments',
     shortDescription:
@@ -307,6 +315,7 @@ export const products = [
   {
     id: 'diaphragm-aodd',
     slug: 'diaphragm-aodd',
+    category: 'pump',
     name: 'Diaphragm - AODD',
     tagline: 'Air Operated Double Diaphragm Pump Components',
     shortDescription: 'Complete high-durability solutions for Air Operated Double Diaphragm Pumps including Diaphragms, Pilot Shafts, and Valves. Manufactured from chemical-resistant Fluoropolymers for extreme environments.',
@@ -334,6 +343,7 @@ export const products = [
   {
     id: 'washers-transmission',
     slug: 'washers-transmission',
+    category: 'pump',
     name: 'Washers - Transmission',
     tagline: 'Carbon-Filled PEEK Thrust & Split-Lock Washers',
     shortDescription: 'Heavy-duty Carbon-Filled PEEK Thrust Washers engineered for high-torque automatic transmissions. Features exceptional durability, low friction, and extreme load resistance at continuous temperatures up to 250°C.',
@@ -365,6 +375,7 @@ export const products = [
   {
     id: 'nozzles-power-grid',
     slug: 'nozzles-power-grid',
+    category: 'power',
     name: 'Nozzles - Power Grid',
     tagline: 'PTFE Nozzles for SF6 Circuit Breakers',
     shortDescription: 'Premium Arcing and Insulating Nozzles engineered for high-voltage SF6 circuit breakers. Crafted from high-purity PTFE to withstand extreme thermal and electrical stresses during arc-quenching.',
@@ -394,6 +405,7 @@ export const products = [
   {
     id: 'encapsulated-o-ring',
     slug: 'encapsulated-o-ring',
+    category: 'seals',
     name: 'Encapsulated O-Ring',
     tagline: 'FEP Encapsulated O-Rings',
     shortDescription: 'Two-part construction: silicone or FKM/Viton elastomer core enclosed in a seamless FEP jacket.',

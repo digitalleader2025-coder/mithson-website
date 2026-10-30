@@ -28,6 +28,7 @@ const EncapsulatedORing = lazy(() => import('./pages/Products/Encapsulated-O-Rin
 // Industries
 const Industries = lazy(() => import('./pages/Industries'));
 const EnergyOilGas = lazy(() => import('./pages/Industries/EnergyOilGas'));
+const IndustryPage = lazy(() => import('./pages/Industries/IndustryPage'));
 
 // Oil & Gas Seals
 const OilGasSeal = lazy(() => import('./pages/OilGasSeal'));
@@ -146,12 +147,17 @@ export default function App() {
               {/* Industries */}
               <Route path="/industries" element={<Industries />} />
               <Route path="/industries/energy-oil-gas" element={<EnergyOilGas />} />
+              <Route path="/industries/downhole-tools" element={<Downhole />} />
+              <Route path="/industries/life-science" element={<IndustryPage slug="life-science" />} />
+              <Route path="/industries/semiconductor" element={<IndustryPage slug="semiconductor" />} />
+              <Route path="/industries/aerospace" element={<IndustryPage slug="aerospace" />} />
+              <Route path="/industries/automotive" element={<IndustryPage slug="automotive" />} />
 
               {/* Oil & Gas Seal */}
               <Route path="/oil-gas-seal" element={<OilGasSeal />} />
               <Route path="/oil-gas-seal/api-6a-wellhead-equipment-seal" element={<API6A />} />
               <Route path="/oil-gas-seal/well-service-equipment-seal" element={<WellService />} />
-              <Route path="/oil-gas-seal/downhole-tool-seal" element={<Downhole />} />
+              <Route path="/oil-gas-seal/downhole-tool-seal" element={<Navigate to="/industries/downhole-tools" replace />} />
               <Route path="/oil-gas-seal/api-6d-ball-valve-lng-seal" element={<API6D />} />
 
               {/* Product Gallery */}

@@ -2,11 +2,13 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ScrollReveal from '../../shared/components/ScrollReveal';
+import TypicalSpecs, { ElastomerRanges } from '../../shared/components/TypicalSpecs';
+import { oilGasSpringSeals } from '../../content/typicalSpecs';
 
 const subPages = [
   { title: 'API 6A Wellhead Equipment Seal', path: '/oil-gas-seal/api-6a-wellhead-equipment-seal', desc: 'Stem packing sets, stem seals, OD/ID face seals and BOP seals for wellhead gate valves and BOP applications.' },
   { title: 'Well Service Equipment Seal', path: '/oil-gas-seal/well-service-equipment-seal', desc: 'Plunger packing, pump packing, valve seat inserts and liner seals for mud, frac and plunger pump service.' },
-  { title: 'Downhole Tool Seal', path: '/oil-gas-seal/downhole-tool-seal', desc: 'Unified stack seals, packers, RGD O-rings and PEEK back-up rings for deep-well and hostile-fluid environments.' },
+  { title: 'Downhole Tools', path: '/industries/downhole-tools', desc: 'Unified stack seals, packers, RGD O-rings and PEEK back-up rings for deep-well and hostile-fluid environments.' },
   { title: 'API 6D Ball Valve & LNG Seal', path: '/oil-gas-seal/api-6d-ball-valve-lng-seal', desc: 'Body-bonnet seals, seat retainers, PEEK seat rings and LNG seals for trunnion and floating ball valves.' },
 ];
 
@@ -47,6 +49,10 @@ export default function OilGasSealPage() {
                 </Link>
               </ScrollReveal>
             ))}
+          </div>
+          <div style={{ marginTop: '3rem', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: '2rem' }}>
+            <TypicalSpecs specs={oilGasSpringSeals} />
+            <ElastomerRanges />
           </div>
         </div>
       </section>

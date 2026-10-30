@@ -2,6 +2,51 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ScrollReveal from '../../shared/components/ScrollReveal';
+import imgOilGas from '../../assets/industries/Oil & Gas.webp';
+import imgLifeScience from '../../assets/industries/Life Science.webp';
+import imgSemiconductor from '../../assets/industries/Semiconductor.webp';
+import imgAerospace from '../../assets/industries/Aerospace.webp';
+import imgAutomotive from '../../assets/industries/Automotive.webp';
+import './IndustryPage.css';
+
+const sectors = [
+  {
+    title: 'Oil & Gas Seal',
+    path: '/oil-gas-seal',
+    image: imgOilGas,
+    desc: 'API 6A wellhead, well service and LNG ball valve sealing for HPHT, sour gas and cryogenic service.',
+  },
+  {
+    title: 'Downhole Tools',
+    path: '/industries/downhole-tools',
+    image: imgOilGas,
+    desc: 'Unified stack seals, packers, RGD O-rings and PEEK back-up rings for deep-well environments.',
+  },
+  {
+    title: 'Life Science',
+    path: '/industries/life-science',
+    image: imgLifeScience,
+    desc: 'Clean, low-friction seals and bearings for instruments, pumps and medical equipment.',
+  },
+  {
+    title: 'Semiconductor',
+    path: '/industries/semiconductor',
+    image: imgSemiconductor,
+    desc: 'High-purity polymer parts for process tools and vacuum pumps.',
+  },
+  {
+    title: 'Aerospace',
+    path: '/industries/aerospace',
+    image: imgAerospace,
+    desc: 'Polymer seals for engines, fuel and hydraulic systems.',
+  },
+  {
+    title: 'Automotive',
+    path: '/industries/automotive',
+    image: imgAutomotive,
+    desc: 'PEEK and PTFE parts for transmissions and electric drive units.',
+  },
+];
 
 export default function IndustriesPage() {
   useEffect(() => {
@@ -23,21 +68,19 @@ export default function IndustriesPage() {
       </section>
       <section className="section">
         <div className="container">
-          <ScrollReveal>
-            <Link to="/industries/energy-oil-gas" className="glass-card" id="industries-oil-gas-card"
-              style={{ display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'center', gap: '2rem', padding: '3rem', borderRadius: '1.25rem', marginBottom: '1.5rem', transition: 'transform 0.3s, border-color 0.3s' }}
-            >
-              <div>
-                <span style={{ color: 'var(--color-accent)', fontWeight: 700, fontSize: 'var(--text-xs)', letterSpacing: '0.12em', textTransform: 'uppercase', display: 'block', marginBottom: '0.5rem' }}>Primary Sector</span>
-                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-3xl)', fontWeight: 800, color: 'var(--color-text)', marginBottom: '1rem' }}>Energy — Oil & Gas</h2>
-                <p style={{ color: 'var(--color-text-2)', fontSize: 'var(--text-base)', lineHeight: 1.7, maxWidth: 600 }}>
-                  API 6A wellhead, well service, downhole and LNG ball valve sealing — rated for HPHT, sour gas and cryogenic service.
-                </p>
-              </div>
-              <span style={{ color: 'var(--color-accent)', fontSize: '2rem' }}>→</span>
-            </Link>
-          </ScrollReveal>
-
+          <div className="industry-grid">
+            {sectors.map((sector) => (
+              <ScrollReveal key={sector.path}>
+                <Link to={sector.path} className="industry-card" id={`industries-${sector.path.split('/').pop()}-card`}>
+                  <div className="industry-card-image">
+                    <img src={sector.image} alt="" loading="lazy" style={{ objectFit: 'cover', padding: 0 }} />
+                  </div>
+                  <h2 className="industry-card-title">{sector.title}</h2>
+                  <p className="industry-card-text">{sector.desc}</p>
+                </Link>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
     </div>

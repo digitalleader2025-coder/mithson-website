@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import OilGasSealTemplate from '../OilGasSealTemplate';
 import AccordionGallery from '../../../shared/components/AccordionGallery';
+import { ElastomerRanges } from '../../../shared/components/TypicalSpecs';
 
 import imgUnifiedStack from '../../../assets/downhole/Unified Stack Seal.png';
 import imgPacker from '../../../assets/downhole/Packer.png';
@@ -64,11 +65,12 @@ export default function DownholePage() {
 
   return (
     <OilGasSealTemplate
-      title="Downhole Tool Seal"
+      title="Downhole Tools"
       subtitle="Aggressive fluids, high temperature and deep-well pressure — unified stack seals, packers, RGD O-rings and PEEK back-up rings for demanding downhole environments."
       products={[]}
-      label="Oil & Gas Seal"
+      label="Industries"
       pageId="downhole"
+      backLink={{ to: '/industries', text: 'All Industries' }}
     >
       <div style={{ marginBottom: '3rem', position: 'relative' }}>
         <AccordionGallery
@@ -153,6 +155,9 @@ export default function DownholePage() {
             </motion.div>
           </AnimatePresence>
         </div>
+      </div>
+      <div style={{ marginBottom: '2rem' }}>
+        <ElastomerRanges />
       </div>
     </OilGasSealTemplate>
   );

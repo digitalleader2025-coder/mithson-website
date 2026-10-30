@@ -34,6 +34,11 @@ export const navigation = [
     activePaths: ['/industries', '/oil-gas-seal'],
     children: [
       { label: 'Oil & Gas Seal', path: '/oil-gas-seal' },
+      { label: 'Downhole Tools', path: '/industries/downhole-tools' },
+      { label: 'Life Science', path: '/industries/life-science' },
+      { label: 'Semiconductor', path: '/industries/semiconductor' },
+      { label: 'Aerospace', path: '/industries/aerospace' },
+      { label: 'Automotive', path: '/industries/automotive' },
     ],
   },
   {

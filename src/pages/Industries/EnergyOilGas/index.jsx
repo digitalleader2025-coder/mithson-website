@@ -20,7 +20,7 @@ const oilGasSections = [
     id: 'downhole',
     title: 'Downhole Tool Seals',
     desc: 'Aggressive fluids, high temperature and deep-well pressure — unified stack seals, packers, RGD O-rings and PEEK back-up rings.',
-    path: '/oil-gas-seal/downhole-tool-seal',
+    path: '/industries/downhole-tools',
   },
   {
     id: 'api6d',

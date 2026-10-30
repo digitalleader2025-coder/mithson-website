@@ -14,6 +14,8 @@ import {
 } from '../../shared/components/ProductPage';
 import { products } from '../../content/products';
 import SkewedCarousel from '../../shared/components/SkewedCarousel';
+import TypicalSpecs from '../../shared/components/TypicalSpecs';
+import { typicalSpecs } from '../../content/typicalSpecs';
 
 import imgCanti from '../../pages/Products/M-UNI-Seal/assets/genre/Canti Seals.png';
 import imgCoil from '../../pages/Products/M-UNI-Seal/assets/genre/Coil Seals.png';
@@ -148,6 +150,13 @@ export default function GenericProductPage({ product }) {
             <ScrollReveal>
               <ProductHighlights highlights={product.highlights} />
             </ScrollReveal>
+            {typicalSpecs[product.slug] && (
+              <ScrollReveal>
+                <div style={{ marginBottom: '2.5rem' }}>
+                  <TypicalSpecs specs={typicalSpecs[product.slug]} />
+                </div>
+              </ScrollReveal>
+            )}
             <ScrollReveal delay={0.1}>
               <ProductApplications applications={product.applications} />
             </ScrollReveal>

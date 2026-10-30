@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ScrollReveal from '../../shared/components/ScrollReveal';
 
-export default function OilGasSealTemplate({ title, subtitle, products: productList, label, pageId, children }) {
+export default function OilGasSealTemplate({ title, subtitle, products: productList, label, pageId, children, backLink = { to: '/oil-gas-seal', text: 'All Oil & Gas Seals' } }) {
   useEffect(() => {
     document.title = `${title} | Mithson Sealing Solutions`;
     return () => { document.title = 'Mithson Sealing Solutions'; };
@@ -63,7 +63,7 @@ export default function OilGasSealTemplate({ title, subtitle, products: productL
           )}
           <div style={{ marginTop: '3rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             <Link to="/connect-with-us" className="btn btn-primary" id={`${pageId}-enquire`}>Enquire Now</Link>
-            <Link to="/oil-gas-seal" className="btn btn-ghost" id={`${pageId}-back`}>← All Oil & Gas Seals</Link>
+            <Link to={backLink.to} className="btn btn-ghost" id={`${pageId}-back`}>← {backLink.text}</Link>
           </div>
         </div>
       </section>

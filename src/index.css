@@ -440,4 +440,34 @@ ul, ol {
   padding-top: var(--nav-height);
 }
 
+/* ----- Shared inner-page hero ----- */
+.page-hero {
+  position: relative;
+  padding: var(--space-32) 0 var(--space-20);
+  background: var(--grad-hero);
+  overflow: hidden;
+}
 
+.page-hero-content {
+  max-width: 640px;
+  position: relative;
+  z-index: 1;
+}
+
+.page-hero-content .section-title { margin: var(--space-2) 0 var(--space-4); }
+
+.page-hero-bg {
+  position: absolute;
+  inset: 0;
+}
+
+/* ----- Solid navy button (white text passes contrast on navy) ----- */
+.btn-navy {
+  background: var(--color-navy-base);
+  color: var(--color-white);
+}
+
+.btn-navy:hover {
+  background: var(--color-blue-l);
+  transform: translateY(-2px);
+}

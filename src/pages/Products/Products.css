@@ -1,82 +1,110 @@
 /* Products page styles */
-.page-hero {
-  position: relative;
-  padding: var(--space-32) 0 var(--space-20);
-  background: var(--grad-hero);
-  overflow: hidden;
+.product-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
 }
 
-.page-hero-content {
-  max-width: 640px;
-  position: relative;
-  z-index: 1;
+.product-filter {
+  min-height: 44px;
+  padding: 0 var(--space-5);
+  border: 1px solid rgba(3, 54, 163, 0.25);
+  border-radius: var(--radius-full);
+  background: var(--color-white);
+  color: var(--color-navy-base);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  transition: background var(--duration-fast), color var(--duration-fast), border-color var(--duration-fast);
 }
 
-.page-hero-content .section-title { margin: var(--space-2) 0 var(--space-4); }
+.product-filter:hover {
+  border-color: var(--color-blue-accent);
+  background: rgba(66, 164, 255, 0.08);
+}
 
-.page-hero-bg {
-  position: absolute;
-  inset: 0;
+.product-filter.is-active {
+  background: var(--color-navy-base);
+  border-color: var(--color-navy-base);
+  color: var(--color-white);
+}
+
+.product-count {
+  margin: var(--space-4) 0 var(--space-6);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
 }
 
 .products-landing-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--space-5);
 }
 
+.products-landing-grid > div {
+  height: 100%;
+}
+
 .product-landing-card {
-  border-radius: var(--radius-xl);
-  overflow: hidden;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  transition: transform var(--duration-base) var(--ease-out), border-color var(--duration-base);
-  position: relative;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: transform var(--duration-base) var(--ease-out), border-color var(--duration-base), box-shadow var(--duration-base);
 }
 
 .product-landing-card:hover {
   transform: translateY(-6px);
-  border-color: var(--color-border);
+  border-color: var(--color-blue-accent);
+  box-shadow: var(--shadow-lg);
 }
 
-.plc-accent {
-  height: 3px;
+.plc-image {
+  aspect-ratio: 4 / 3;
+  background: var(--color-bg-2);
+  overflow: hidden;
+}
+
+.plc-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: var(--space-4);
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.product-landing-card:hover .plc-image img {
+  transform: scale(1.06);
 }
 
 .plc-body {
-  padding: var(--space-6);
+  padding: var(--space-5);
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
-}
-
-.plc-number {
-  font-family: var(--font-display);
-  font-size: var(--text-xs);
-  font-weight: 700;
-  color: var(--color-dim);
-  letter-spacing: 0.1em;
+  gap: var(--space-2);
 }
 
 .plc-name {
   font-family: var(--font-display);
-  font-size: var(--text-2xl);
+  font-size: var(--text-xl);
   font-weight: 800;
-  color: var(--color-text);
-  line-height: 1.1;
+  color: var(--color-navy-base);
+  line-height: 1.2;
 }
 
 .plc-tagline {
   font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--color-accent-l);
+  color: var(--color-text-2);
+  line-height: 1.5;
 }
 
-.plc-desc {
+.plc-spec {
   font-size: var(--text-sm);
-  color: var(--color-muted);
-  line-height: 1.65;
+  font-weight: 700;
+  color: var(--color-navy-base);
 }
 
 .plc-materials {
@@ -84,22 +112,16 @@
   flex-wrap: wrap;
   gap: var(--space-1);
   margin-top: auto;
+  padding-top: var(--space-2);
 }
 
-.plc-footer {
-  padding: var(--space-4) var(--space-6);
-  border-top: 1px solid var(--color-border-2);
-}
-
-.plc-link {
-  font-size: var(--text-sm);
+.plc-chip {
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-full);
+  background: rgba(66, 164, 255, 0.12);
+  color: var(--color-navy-base);
+  font-size: var(--text-xs);
   font-weight: 600;
-  color: var(--color-accent);
-  transition: color var(--duration-fast);
-}
-
-.product-landing-card:hover .plc-link {
-  color: var(--color-accent-l);
 }
 
 /* CTA strip */
