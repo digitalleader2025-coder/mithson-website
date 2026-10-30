@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback, useId } from 'react';
 import { Link } from 'react-router-dom';
 import { products } from '../../../content/products';
+import ProductSpecList from '../ProductSpecList';
 import './ProductCarousel.css';
 
 // Crisp category & 1-line overview metadata for each product
@@ -497,6 +498,7 @@ export default function ProductCarousel() {
                     <h3 className="os-product-title">{product.name}</h3>
                   </div>
                   <p className="os-detail">{overview}</p>
+                  <ProductSpecList product={product} variant="compact" />
                   <div className="os-meta">
                     <span className="os-number">{String(index + 1).padStart(2, '0')}</span>
                     <span className="os-small-arrow" aria-hidden="true">

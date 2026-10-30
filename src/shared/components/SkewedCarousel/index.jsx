@@ -187,20 +187,19 @@ export default function SkewedCarousel({ items }) {
       </div>
       
       {/* Active Item Details */}
-      <AnimatePresence mode="wait">
-        {renderItems[currentIndex]?.details && (
-          <motion.div
-            key={currentIndex}
-            className="skewed-carousel-details"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
-          >
-            {renderItems[currentIndex].details}
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Swap straight away so the figures can never lag behind the selected product */}
+      {renderItems[currentIndex]?.details && (
+        <motion.div
+          key={currentIndex}
+          className="skewed-carousel-details"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.25 }}
+          aria-live="polite"
+        >
+          {renderItems[currentIndex].details}
+        </motion.div>
+      )}
     </div>
   );
 }

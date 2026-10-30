@@ -2,7 +2,7 @@
  * Generic product page template.
  * Receives product data from data.js in each product folder.
  */
-import { useEffect, useState } from 'react';
+import { cloneElement, useEffect, useState } from 'react';
 import ScrollReveal from '../../shared/components/ScrollReveal';
 import {
   ProductHero,
@@ -16,6 +16,8 @@ import { products } from '../../content/products';
 import SkewedCarousel from '../../shared/components/SkewedCarousel';
 import TypicalSpecs from '../../shared/components/TypicalSpecs';
 import { typicalSpecs } from '../../content/typicalSpecs';
+import { ItemSpecList } from './ProductSpecList';
+import { productItems } from '../../content/productItems';
 
 import imgCanti from '../../pages/Products/M-UNI-Seal/assets/genre/Canti Seals.png';
 import imgCoil from '../../pages/Products/M-UNI-Seal/assets/genre/Coil Seals.png';
@@ -250,7 +252,19 @@ function TemperatureRanges({ ranges }) {
   );
 }
 
-function CarouselItemDetails({ title, description, attributes }) {
+/** Adds each item's own description and figures to the panel under the carousel. */
+function withItemDetails(slug, items) {
+  return items.map((item) => {
+    const data = productItems[slug]?.[item.title];
+    if (!data) return item;
+    const details = item.details
+      ? cloneElement(item.details, { spec: data })
+      : <CarouselItemDetails title={item.title} description={data.description} spec={data} />;
+    return { ...item, details };
+  });
+}
+
+function CarouselItemDetails({ title, description, attributes, spec }) {
   return (
     <div style={{
       background: 'linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%)',
@@ -271,6 +285,7 @@ function CarouselItemDetails({ title, description, attributes }) {
           {description}
         </p>
       )}
+      {spec && <ItemSpecList spec={spec} />}
       {attributes && attributes.length > 0 && (
         <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
           {attributes.map((attr, i) => (
@@ -300,7 +315,7 @@ function MUNISealCustomSection() {
 
   return (
     <div style={{ marginBottom: '3rem' }}>
-      <SkewedCarousel items={items} />
+      <SkewedCarousel items={withItemDetails('m-uni-seal', items)} />
     </div>
   );
 }
@@ -340,7 +355,7 @@ function XMasTreeCustomSection() {
 
   return (
     <div style={{ marginBottom: '3rem' }}>
-      <SkewedCarousel items={items} />
+      <SkewedCarousel items={withItemDetails('seals-x-mas-tree', items)} />
     </div>
   );
 }
@@ -386,7 +401,7 @@ function SealsValveCustomSection() {
 
   return (
     <div style={{ marginBottom: '3rem' }}>
-      <SkewedCarousel items={items} />
+      <SkewedCarousel items={withItemDetails('seals-valve', items)} />
     </div>
   );
 }
@@ -400,7 +415,7 @@ function PlugLinedValveCustomSection() {
 
   return (
     <div style={{ marginBottom: '3rem' }}>
-      <SkewedCarousel items={items} />
+      <SkewedCarousel items={withItemDetails('plug-lined-valve', items)} />
     </div>
   );
 }
@@ -514,7 +529,7 @@ function UniLubeBearingCustomSection() {
 
   return (
     <div style={{ marginBottom: '3rem' }}>
-      <SkewedCarousel items={items} />
+      <SkewedCarousel items={withItemDetails('uni-lube-bearing', items)} />
     </div>
   );
 }
@@ -553,7 +568,7 @@ function SealsHydraulicCustomSection() {
 
   return (
     <div style={{ marginBottom: '3rem' }}>
-      <SkewedCarousel items={items} />
+      <SkewedCarousel items={withItemDetails('seals-hydraulic', items)} />
     </div>
   );
 }
@@ -569,7 +584,7 @@ function DiaphragmAoddCustomSection() {
 
   return (
     <div style={{ marginBottom: '3rem' }}>
-      <SkewedCarousel items={items} />
+      <SkewedCarousel items={withItemDetails('diaphragm-aodd', items)} />
     </div>
   );
 }
@@ -582,7 +597,7 @@ function WashersTransmissionCustomSection() {
 
   return (
     <div style={{ marginBottom: '3rem' }}>
-      <SkewedCarousel items={items} />
+      <SkewedCarousel items={withItemDetails('washers-transmission', items)} />
     </div>
   );
 }

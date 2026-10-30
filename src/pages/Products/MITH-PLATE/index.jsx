@@ -11,7 +11,10 @@ import {
   ProductCTA,
   RelatedProducts,
 } from '../../../shared/components/ProductPage';
+import ProductSpecList from '../../../shared/components/ProductSpecList';
+import TypicalSpecs from '../../../shared/components/TypicalSpecs';
 import { products, getProductBySlug } from '../../../content/products';
+import { typicalSpecs } from '../../../content/typicalSpecs';
 import mithPlateImage from './assets/mith-plate.png';
 
 const product = getProductBySlug('mith-plate');
@@ -60,6 +63,7 @@ export default function MITHPLATEPage() {
                 <li><strong>Oil-Free Ready:</strong> Self-lubricating properties make them the only choice for Medical, Food, and Pharma air.</li>
               </ul>
             </div>
+            <ProductSpecList product={product} variant="hero" />
           </motion.div>
           </div>
 
@@ -110,6 +114,11 @@ export default function MITHPLATEPage() {
           <div>
             <ScrollReveal>
               <ProductHighlights highlights={product.highlights} />
+            </ScrollReveal>
+            <ScrollReveal>
+              <div style={{ marginBottom: '2.5rem' }}>
+                <TypicalSpecs specs={typicalSpecs[product.slug]} />
+              </div>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
               <ProductApplications applications={product.applications} />

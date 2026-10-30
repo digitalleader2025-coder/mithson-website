@@ -201,7 +201,7 @@
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   content-visibility: auto;
-  contain-intrinsic-size: 380px 420px;
+  contain-intrinsic-size: 380px 500px;
   transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
 }
 

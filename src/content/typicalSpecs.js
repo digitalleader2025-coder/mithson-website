@@ -21,7 +21,6 @@ const SOURCES = {
 
 export const typicalSpecs = {
   'mith-plate': {
-    keySpec: 'Typical 200 bar differential',
     rows: [
       { label: 'Differential pressure', value: 'Up to 200 bar, depending on gas temperature', source: SOURCES.hoerbigerPlates },
       { label: 'Minimum suction temperature', value: '-40°C', source: SOURCES.hoerbigerPlates },
@@ -29,7 +28,6 @@ export const typicalSpecs = {
     ],
   },
   'm-uni-seal': {
-    keySpec: 'Typical -268°C to +316°C',
     rows: [
       { label: 'Temperature', value: '-268°C to +316°C (-450°F to +600°F)', source: SOURCES.omnisealSpring },
       { label: 'Pressure', value: 'Vacuum to 50,000 psi', source: SOURCES.omnisealSpring },
@@ -38,7 +36,6 @@ export const typicalSpecs = {
     ],
   },
   'hammer-union-seal': {
-    keySpec: 'Typical 15,000 psi (Fig 1502)',
     rows: [
       { label: 'Working pressure', value: '15,000 psi (Fig 1502 union)', source: SOURCES.mfpHammer },
       { label: 'Test pressure', value: '22,500 psi', source: SOURCES.mfpHammer },
@@ -46,7 +43,6 @@ export const typicalSpecs = {
     ],
   },
   'seals-x-mas-tree': {
-    keySpec: 'Typical 30,000 psi packing',
     rows: [
       { label: 'Stem packing temperature', value: '-260°C to +315°C', source: SOURCES.parkerChevron },
       { label: 'Stem packing pressure', value: '30,000 psi (2,068 bar)', source: SOURCES.parkerChevron },
@@ -54,7 +50,6 @@ export const typicalSpecs = {
     ],
   },
   'seals-valve': {
-    keySpec: 'Typical PEEK seat to 260°C',
     rows: [
       { label: 'PTFE seat', value: '-60°C to +230°C, up to 70 bar', source: SOURCES.habonimSeats },
       { label: 'PEEK seat', value: '-40°C to +260°C, up to Class 2500', source: SOURCES.habonimSeats },
@@ -63,14 +58,12 @@ export const typicalSpecs = {
     ],
   },
   'plug-lined-valve': {
-    keySpec: 'Typical Class 150 to 600',
     rows: [
       { label: 'Pressure rating', value: 'Class 150 to 600', source: SOURCES.vahnTechPlug },
       { label: 'Working temperature', value: '-29°C to +150°C (-20°F to +302°F)', source: SOURCES.vahnTechPlug },
     ],
   },
   'uni-lube-bearing': {
-    keySpec: '-40°C to +300°C (MSS-MB)',
     rows: [
       { label: 'PTFE composite bushing', value: '-200°C to +250°C, up to 80 N/mm² at low speed', source: SOURCES.skfBushings },
       { label: 'Solid bronze bushing', value: '-40°C to +250°C, up to 25 N/mm²', source: SOURCES.skfBushings },
@@ -78,7 +71,6 @@ export const typicalSpecs = {
     ],
   },
   'seals-hydraulic': {
-    keySpec: 'Typical 60 MPa',
     rows: [
       { label: 'Pressure', value: 'Up to 60 MPa (8,700 psi)', source: SOURCES.trelleborgStepseal },
       { label: 'Temperature', value: '-45°C to +200°C (-49°F to +392°F)', source: SOURCES.trelleborgStepseal },
@@ -86,14 +78,17 @@ export const typicalSpecs = {
     ],
     note: 'Values shown are for a PTFE-based, O-ring energized piston seal.',
   },
+  'diaphragm-aodd': {
+    rows: [
+      { label: 'PTFE in AODD pumps', value: '4°C to 107°C (40°F to 225°F)', source: 'https://ftiair.com/temperature-guide/' },
+    ],
+  },
   'washers-transmission': {
-    keySpec: 'Up to 250°C continuous',
     rows: [
       { label: 'PEEK continuous use', value: 'Up to 260°C (500°F)', source: SOURCES.victrexEnergy },
     ],
   },
   'encapsulated-o-ring': {
-    keySpec: '-60°C to +205°C (silicone core)',
     rows: [
       { label: 'Pressure', value: 'Up to 1,500 psi', source: SOURCES.marcoEncapsulated },
     ],
@@ -120,3 +115,64 @@ export const elastomerRanges = {
     { material: 'EPDM', temperature: '-50°C to 140-150°C', use: 'Steam, hot water and polar solvents; not for hydrocarbon oils' },
   ],
 };
+
+// The headline numbers shown for each product on cards, the compare table and page heroes.
+// `origin: 'mithson'` is Mithson's own published figure; 'typical' is an industry value
+// from `typicalSpecs` above. `scope` says which part of the family the figure describes.
+// A null entry means no reliable figure exists yet, so the site says to ask engineers.
+export const productSummaries = {
+  'mith-plate': {
+    temperature: { value: '-40°C suction to 230°C discharge', origin: 'typical', scope: 'PEEK valve plate' },
+    pressure: { value: 'Up to 200 bar differential', origin: 'typical', scope: 'Depends on gas temperature' },
+  },
+  'm-uni-seal': {
+    temperature: { value: '-268°C to +316°C', origin: 'typical' },
+    pressure: { value: 'Vacuum to 50,000 psi', origin: 'typical' },
+  },
+  'hammer-union-seal': {
+    temperature: { value: '-40°C to +300°C', origin: 'typical', scope: 'Depends on material' },
+    pressure: { value: '15,000 psi working', origin: 'typical', scope: 'Fig 1502 union' },
+  },
+  'seals-x-mas-tree': {
+    temperature: { value: '-260°C to +315°C', origin: 'typical', scope: 'Stem packing' },
+    pressure: { value: '30,000 psi (2,068 bar)', origin: 'typical', scope: 'Stem packing' },
+  },
+  'seals-valve': {
+    temperature: { value: '-40°C to +260°C', origin: 'typical', scope: 'PEEK seat' },
+    pressure: { value: 'Up to Class 2500', origin: 'typical', scope: 'PEEK seat' },
+  },
+  'plug-lined-valve': {
+    temperature: { value: '-29°C to +150°C', origin: 'typical', scope: 'PTFE sleeved plug valve' },
+    pressure: { value: 'Class 150 to 600', origin: 'typical', scope: 'PTFE sleeved plug valve' },
+  },
+  'uni-lube-bearing': {
+    temperature: { value: '-40°C to +300°C', origin: 'mithson', scope: 'MSS-MB Solid Bush' },
+    pressure: { label: 'Load', value: 'Up to 80 N/mm²', origin: 'typical', scope: 'PTFE composite, low speed' },
+  },
+  'seals-hydraulic': {
+    temperature: { value: '-45°C to +200°C', origin: 'typical', scope: 'PTFE piston seal' },
+    pressure: { value: 'Up to 60 MPa (8,700 psi)', origin: 'typical', scope: 'PTFE piston seal' },
+    materials: ['High-performance polymers'],
+  },
+  'diaphragm-aodd': {
+    temperature: { value: '4°C to 107°C', origin: 'typical', scope: 'PTFE in AODD pumps' },
+    pressure: null,
+  },
+  'washers-transmission': {
+    temperature: { value: 'Up to 250°C continuous', origin: 'mithson' },
+    pressure: null,
+  },
+  'nozzles-power-grid': {
+    temperature: null,
+    pressure: null,
+  },
+  'encapsulated-o-ring': {
+    temperature: { value: '-60°C to +205°C', origin: 'mithson', scope: 'Silicone core' },
+    pressure: { value: 'Up to 1,500 psi', origin: 'typical' },
+  },
+};
+
+export function getProductSummary(product) {
+  const summary = productSummaries[product.slug] ?? { temperature: null, pressure: null };
+  return { ...summary, materials: product.materials ?? summary.materials ?? [] };
+}

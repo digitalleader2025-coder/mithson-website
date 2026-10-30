@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SceneWrapper from '../../shared/3d/SceneWrapper';
 import ProductViewer from '../../shared/3d/ProductViewer';
+import ProductSpecList from './ProductSpecList';
 import EnvironmentLight from '../../shared/3d/EnvironmentLight';
 import InteractiveProximityImage from '../../shared/components/InteractiveProximityImage';
 import './ProductPage.css';
@@ -69,6 +70,7 @@ export function ProductHero({ product }) {
           transition={{ duration: 0.7, delay: 0.2 }}
         >
           <div className="product-hero-desc">{heroDescription || shortDescription}</div>
+          <ProductSpecList product={product} variant="hero" />
         </motion.div>
         </div>
 

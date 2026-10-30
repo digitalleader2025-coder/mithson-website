@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import OilGasSealTemplate from '../OilGasSealTemplate';
 import AccordionGallery from '../../../shared/components/AccordionGallery';
+import { ItemSpecList } from '../../../shared/components/ProductSpecList';
+import { oilGasItems } from '../../../content/productItems';
 
 import imgStemPacking from '../../../assets/api6a/Stem Packing Set.png';
 import imgStemSeal from '../../../assets/api6a/Stem Seal.png';
@@ -123,35 +125,33 @@ export default function API6APage() {
         />
         
         <div style={{ marginTop: '2rem', minHeight: '200px', position: 'relative' }}>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeIndex}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-              className="glass-card"
-              style={{ padding: '2rem', borderRadius: '1rem' }}
-            >
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-blue-core)', marginBottom: '1rem' }}>
-                {activeItem.label}
-              </h3>
-              <p style={{ color: 'var(--color-text)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
-                {activeItem.desc}
-              </p>
-              
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
-                <div>
-                  <h4 style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--color-muted)', marginBottom: '0.5rem' }}>Material</h4>
-                  <p style={{ fontWeight: 600, color: 'var(--color-text)' }}>{activeItem.materials}</p>
-                </div>
-                <div>
-                  <h4 style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--color-muted)', marginBottom: '0.5rem' }}>Application</h4>
-                  <p style={{ fontWeight: 600, color: 'var(--color-text)' }}>{activeItem.application}</p>
-                </div>
+          <motion.div
+            key={activeIndex}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.25 }}
+            className="glass-card"
+            style={{ padding: '2rem', borderRadius: '1rem' }}
+          >
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-blue-core)', marginBottom: '1rem' }}>
+              {activeItem.label}
+            </h3>
+            <p style={{ color: 'var(--color-text)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+              {activeItem.desc}
+            </p>
+            {oilGasItems[activeItem.label] && <ItemSpecList spec={oilGasItems[activeItem.label]} />}
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
+              <div>
+                <h4 style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--color-muted)', marginBottom: '0.5rem' }}>Material</h4>
+                <p style={{ fontWeight: 600, color: 'var(--color-text)' }}>{activeItem.materials}</p>
               </div>
-            </motion.div>
-          </AnimatePresence>
+              <div>
+                <h4 style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--color-muted)', marginBottom: '0.5rem' }}>Application</h4>
+                <p style={{ fontWeight: 600, color: 'var(--color-text)' }}>{activeItem.application}</p>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </OilGasSealTemplate>
