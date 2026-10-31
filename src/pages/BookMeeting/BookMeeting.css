@@ -445,6 +445,13 @@ button.book-slot:hover {
   accent-color: var(--color-navy-base);
 }
 
+.book-platform-logo {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
 .book-form {
   padding: var(--space-8);
   display: flex;

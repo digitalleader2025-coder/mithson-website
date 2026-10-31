@@ -9,9 +9,12 @@ import {
   slotsByLocalDate,
 } from '../../content/booking';
 import { COUNTRIES, detectLocation, zoneLabel, zoneOptions } from '../../content/timezones';
+import googleMeetLogo from '../../assets/platforms/google-meet.png';
+import microsoftTeamsLogo from '../../assets/platforms/microsoft-teams.png';
 import './BookMeeting.css';
 
 const WEEKDAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const PLATFORM_LOGOS = { teams: microsoftTeamsLogo, meet: googleMeetLogo };
 const EMPTY_FORM = { name: '', email: '', company: '', phone: '', notes: '', website: '' };
 
 const monthKey = (dateStr) => dateStr.slice(0, 7);
@@ -461,6 +464,7 @@ export default function BookMeetingPage() {
                           setFieldErrors((errs) => ({ ...errs, platform: undefined }));
                         }}
                       />
+                      <img src={PLATFORM_LOGOS[id]} alt="" className="book-platform-logo" width="28" height="28" />
                       <span>{label}</span>
                     </label>
                   ))}
