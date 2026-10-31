@@ -75,6 +75,7 @@ export default function Footer() {
           <p className="footer-copy">
             &copy; {year} {company.legalName}. All rights reserved.
           </p>
+          <Link to="/privacy-policy" className="footer-link">Privacy Policy</Link>
           <p className="footer-copy footer-copy--muted">
             Built with precision. Engineered for performance.
           </p>

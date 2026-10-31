@@ -40,6 +40,7 @@ const API6D = lazy(() => import('./pages/OilGasSeal/API6D'));
 // Career & booking
 const Careers = lazy(() => import('./pages/Careers'));
 const BookMeeting = lazy(() => import('./pages/BookMeeting'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 
 // Gallery
 const ProductGallery = lazy(() => import('./pages/ProductGallery'));
@@ -176,6 +177,7 @@ export default function App() {
               {/* Career & booking */}
               <Route path="/careers" element={<Careers />} />
               <Route path="/book-a-meeting" element={<BookMeeting />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
               {/* Fallback */}
               <Route path="*" element={<Navigate to="/" replace />} />
