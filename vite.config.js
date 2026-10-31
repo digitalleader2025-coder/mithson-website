@@ -32,5 +32,9 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react(), devApi()],
+    build: {
+      // The lazy-loaded 3D library is about 950 kB on its own
+      chunkSizeWarningLimit: 1000,
+    },
   }
 })
