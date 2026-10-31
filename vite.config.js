@@ -25,7 +25,7 @@ function devApi() {
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
-  // Make .env values (SMTP, Zoom, Redis) visible to the dev API handlers
+  // Make .env values (SMTP, Teams, Google, Redis) visible to the dev API handlers
   for (const [key, value] of Object.entries(loadEnv(mode, process.cwd(), ''))) {
     if (process.env[key] === undefined) process.env[key] = value
   }

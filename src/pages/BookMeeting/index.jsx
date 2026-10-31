@@ -1,15 +1,14 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   BOOKING,
-  addDays,
   blocksFor,
-  isBookableDate,
-  isStartInFuture,
+  localParts,
   minutesToHHMM,
   minutesToLabel,
-  nowInIST,
-  startTimes,
+  slotInstant,
+  slotsByLocalDate,
 } from '../../content/booking';
+import { COUNTRIES, detectLocation, zoneLabel, zoneOptions } from '../../content/timezones';
 import './BookMeeting.css';
 
 const WEEKDAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -81,16 +80,18 @@ function ChevronIcon({ dir }) {
 }
 
 export default function BookMeetingPage() {
-  const today = nowInIST().date;
-  const lastDay = addDays(today, BOOKING.maxDaysAhead);
+  const [location, setLocation] = useState(detectLocation);
+  const { country, timeZone } = location;
+  const today = localParts(Date.now(), timeZone).date;
 
   const [duration, setDuration] = useState(BOOKING.durations[0]);
+  const [platform, setPlatform] = useState(null);
   const [viewMonth, setViewMonth] = useState(monthKey(today));
   const [selectedDate, setSelectedDate] = useState(null);
   const [busy, setBusy] = useState([]);
   const [loadingSlots, setLoadingSlots] = useState(false);
   const [slotsError, setSlotsError] = useState('');
-  const [selectedTime, setSelectedTime] = useState(null);
+  const [selectedSlot, setSelectedSlot] = useState(null);
   const [step, setStep] = useState('pick');
   const [form, setForm] = useState(EMPTY_FORM);
   const [fieldErrors, setFieldErrors] = useState({});
@@ -115,16 +116,20 @@ export default function BookMeetingPage() {
     headingRef.current?.focus();
   }, [step]);
 
-  const loadAvailability = useCallback(async (date) => {
+  // A customer's calendar day can span two India dates, so availability is read for each one
+  const loadAvailability = useCallback(async (dates) => {
     const requestId = ++requestRef.current;
     setLoadingSlots(true);
     setSlotsError('');
     try {
-      const res = await fetch(`/api/availability?date=${date}`);
-      const data = await res.json();
+      const days = await Promise.all(dates.map(async (date) => {
+        const res = await fetch(`/api/availability?date=${date}`);
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Could not load available times.');
+        return data;
+      }));
       if (requestId !== requestRef.current) return;
-      if (!res.ok) throw new Error(data.error || 'Could not load available times.');
-      setBusy(data.busy);
+      setBusy(days.flatMap(({ date, busy: blocks }) => blocks.map((block) => `${date}|${block}`)));
     } catch (err) {
       if (requestId !== requestRef.current) return;
       setBusy([]);
@@ -134,26 +139,46 @@ export default function BookMeetingPage() {
     }
   }, []);
 
+  const slotsByDay = useMemo(() => slotsByLocalDate(duration, timeZone), [duration, timeZone]);
+  const openDates = [...slotsByDay.keys()];
+  const lastDay = openDates[openDates.length - 1] ?? today;
+  const indiaDates = useMemo(
+    () => [...new Set((slotsByDay.get(selectedDate) ?? []).map((slot) => slot.date))],
+    [slotsByDay, selectedDate]
+  );
+  const indiaDatesKey = indiaDates.join(',');
+
+  useEffect(() => {
+    if (indiaDatesKey) loadAvailability(indiaDatesKey.split(','));
+  }, [indiaDatesKey, loadAvailability]);
+
   const pickDate = (date) => {
     setSelectedDate(date);
-    setSelectedTime(null);
-    loadAvailability(date);
+    setSelectedSlot(null);
   };
 
   const changeDuration = (value) => {
     setDuration(value);
-    setSelectedTime(null);
+    setSelectedSlot(null);
   };
+
+  // Dates and times all shift with the zone, so the customer picks again
+  const changeLocation = (next) => {
+    setLocation(next);
+    setSelectedDate(null);
+    setSelectedSlot(null);
+    setViewMonth(monthKey(localParts(Date.now(), next.timeZone).date));
+  };
+
+  const changeCountry = (code) => changeLocation({ country: code, timeZone: zoneOptions(code)[0] });
 
   const slots = useMemo(() => {
     if (!selectedDate) return [];
-    return startTimes(duration)
-      .filter((start) => isStartInFuture(selectedDate, start))
-      .map((start) => ({
-        start,
-        booked: blocksFor(start, duration).some((b) => busy.includes(b)),
-      }));
-  }, [selectedDate, duration, busy]);
+    return (slotsByDay.get(selectedDate) ?? []).map((slot) => ({
+      ...slot,
+      booked: blocksFor(slot.start, duration).some((b) => busy.includes(`${slot.date}|${b}`)),
+    }));
+  }, [selectedDate, slotsByDay, duration, busy]);
 
   const updateField = (e) => {
     const { name, value } = e.target;
@@ -176,10 +201,15 @@ export default function BookMeetingPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const errors = { name: validateField('name', form.name), email: validateField('email', form.email) };
-    if (errors.name || errors.email) {
+    const errors = {
+      name: validateField('name', form.name),
+      email: validateField('email', form.email),
+      platform: platform ? undefined : 'Choose Microsoft Teams or Google Meet.',
+    };
+    if (errors.name || errors.email || errors.platform) {
       setFieldErrors(errors);
-      document.getElementById(errors.name ? 'book-name' : 'book-email')?.focus();
+      const firstInvalid = errors.name ? 'book-name' : errors.email ? 'book-email' : `book-platform-${BOOKING.platforms[0].id}`;
+      document.getElementById(firstInvalid)?.focus();
       return;
     }
 
@@ -189,14 +219,22 @@ export default function BookMeetingPage() {
       const res = await fetch('/api/book', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, date: selectedDate, time: minutesToHHMM(selectedTime), duration }),
+        body: JSON.stringify({
+          ...form,
+          date: selectedSlot.date,
+          time: minutesToHHMM(selectedSlot.start),
+          duration,
+          platform,
+          country,
+          timeZone,
+        }),
       });
       const data = await res.json();
       if (res.status === 409) {
         // Someone took the slot first — return to the time list with fresh availability
-        setSelectedTime(null);
+        setSelectedSlot(null);
         setStep('pick');
-        await loadAvailability(selectedDate);
+        await loadAvailability(indiaDates);
         setSlotsError(data.error);
         return;
       }
@@ -218,16 +256,19 @@ export default function BookMeetingPage() {
     setFieldErrors({});
     setSubmitError('');
     setConfirmation(null);
-    setSelectedTime(null);
+    setSelectedSlot(null);
     setStep('pick');
-    if (selectedDate) loadAvailability(selectedDate);
+    if (indiaDates.length) loadAvailability(indiaDates);
   };
 
   const canGoPrev = viewMonth > monthKey(today);
   const canGoNext = viewMonth < monthKey(lastDay);
-  const summary = selectedDate && selectedTime !== null
-    ? `${minutesToLabel(selectedTime)} – ${minutesToLabel(selectedTime + duration)}, ${longDate(selectedDate)}`
+  const summary = selectedDate && selectedSlot
+    ? `${minutesToLabel(selectedSlot.minutes)} – ${minutesToLabel((selectedSlot.minutes + duration) % 1440)}, ${longDate(selectedDate)}`
     : null;
+  const zoneChoices = zoneOptions(country);
+  const zoneText = zoneLabel(timeZone);
+  const inIndia = timeZone === BOOKING.timeZone;
 
   return (
     <div className="page-wrapper book-page">
@@ -260,13 +301,41 @@ export default function BookMeetingPage() {
               </div>
             </fieldset>
 
-            <p className="book-meta"><VideoIcon /> Zoom video call — the link is emailed to you</p>
-            <p className="book-meta"><GlobeIcon /> {BOOKING.timeZoneLabel}</p>
+            <fieldset className="book-location" disabled={step !== 'pick'}>
+              <legend className="book-meta-label"><GlobeIcon /> Your location</legend>
+              <label className="book-select-label" htmlFor="book-country">Country</label>
+              <select id="book-country" className="book-select" value={country} onChange={(e) => changeCountry(e.target.value)}>
+                {COUNTRIES.map(({ code, name }) => <option key={code} value={code}>{name}</option>)}
+              </select>
+              {zoneChoices.length > 1 ? (
+                <>
+                  <label className="book-select-label" htmlFor="book-zone">Time zone</label>
+                  <select
+                    id="book-zone"
+                    className="book-select"
+                    value={timeZone}
+                    onChange={(e) => changeLocation({ country, timeZone: e.target.value })}
+                  >
+                    {zoneChoices.map((zone) => <option key={zone} value={zone}>{zoneLabel(zone)}</option>)}
+                  </select>
+                </>
+              ) : (
+                <p className="book-zone-text">{zoneText}</p>
+              )}
+            </fieldset>
+
+            <p className="book-meta"><VideoIcon /> Microsoft Teams or Google Meet — the link is emailed to you</p>
 
             {summary && step !== 'pick' && (
               <p className="book-summary">
                 <strong>{duration === 60 ? '1 hour' : `${duration} min`}</strong>
-                <span>{summary} (IST)</span>
+                <span>{summary}</span>
+                <span className="book-summary-zone">{zoneLabel(timeZone, slotInstant(selectedSlot.date, selectedSlot.start))}</span>
+                {!inIndia && (
+                  <span className="book-summary-zone">
+                    {minutesToLabel(selectedSlot.start)} India time, {longDate(selectedSlot.date)}
+                  </span>
+                )}
               </p>
             )}
           </aside>
@@ -307,7 +376,7 @@ export default function BookMeetingPage() {
                         key={date}
                         type="button"
                         className={`book-day${selectedDate === date ? ' is-selected' : ''}${date === today ? ' is-today' : ''}`}
-                        disabled={!isBookableDate(date)}
+                        disabled={!slotsByDay.has(date)}
                         aria-pressed={selectedDate === date}
                         aria-label={longDate(date)}
                         onClick={() => pickDate(date)}
@@ -319,7 +388,10 @@ export default function BookMeetingPage() {
                     )
                   )}
                 </div>
-                <p className="book-hours">Meetings run 10:00 am – 7:00 pm IST, Monday to Saturday.</p>
+                <p className="book-hours">
+                  We meet 8:00 am – 8:00 pm India time, Monday to Saturday.
+                  {!inIndia && ' Dates and times here are shown in your time zone.'}
+                </p>
               </div>
 
               <div className="book-times" aria-live="polite">
@@ -335,24 +407,24 @@ export default function BookMeetingPage() {
                     )}
                     {!loadingSlots && slots.length > 0 && (
                       <ul className="book-slot-list">
-                        {slots.map(({ start, booked }) => (
-                          <li key={start} className="book-slot-row">
-                            {booked ? (
-                              <span className="book-slot is-booked" aria-label={`${minutesToLabel(start)} booked`}>
-                                <span>{minutesToLabel(start)}</span>
+                        {slots.map((slot) => (
+                          <li key={`${slot.date}-${slot.start}`} className="book-slot-row">
+                            {slot.booked ? (
+                              <span className="book-slot is-booked" aria-label={`${minutesToLabel(slot.minutes)} booked`}>
+                                <span>{minutesToLabel(slot.minutes)}</span>
                                 <span className="book-slot-tag">Booked</span>
                               </span>
                             ) : (
                               <>
                                 <button
                                   type="button"
-                                  className={`book-slot${selectedTime === start ? ' is-selected' : ''}`}
-                                  aria-pressed={selectedTime === start}
-                                  onClick={() => setSelectedTime(start)}
+                                  className={`book-slot${selectedSlot?.date === slot.date && selectedSlot?.start === slot.start ? ' is-selected' : ''}`}
+                                  aria-pressed={selectedSlot?.date === slot.date && selectedSlot?.start === slot.start}
+                                  onClick={() => setSelectedSlot(slot)}
                                 >
-                                  {minutesToLabel(start)}
+                                  {minutesToLabel(slot.minutes)}
                                 </button>
-                                {selectedTime === start && (
+                                {selectedSlot?.date === slot.date && selectedSlot?.start === slot.start && (
                                   <button type="button" className="book-next" onClick={() => setStep('details')}>
                                     Next
                                   </button>
@@ -373,6 +445,29 @@ export default function BookMeetingPage() {
             <form className="book-form" onSubmit={handleSubmit} noValidate>
               <h2 className="book-section-title" tabIndex={-1} ref={headingRef}>Enter your details</h2>
 
+              <fieldset className="book-platform">
+                <legend>Meeting platform</legend>
+                <div className="book-platform-options">
+                  {BOOKING.platforms.map(({ id, label }) => (
+                    <label key={id} className={`book-platform-option${platform === id ? ' is-selected' : ''}`}>
+                      <input
+                        id={`book-platform-${id}`}
+                        type="radio"
+                        name="platform"
+                        value={id}
+                        checked={platform === id}
+                        onChange={() => {
+                          setPlatform(id);
+                          setFieldErrors((errs) => ({ ...errs, platform: undefined }));
+                        }}
+                      />
+                      <span>{label}</span>
+                    </label>
+                  ))}
+                </div>
+                {fieldErrors.platform && <p className="book-field-error" role="alert">{fieldErrors.platform}</p>}
+              </fieldset>
+
               <div className="book-field">
                 <label htmlFor="book-name">Name</label>
                 <input
@@ -392,7 +487,7 @@ export default function BookMeetingPage() {
                 />
                 {fieldErrors.email
                   ? <p className="book-field-error" id="book-email-error">{fieldErrors.email}</p>
-                  : <p className="book-field-help" id="book-email-help">The Zoom link and meeting details are sent here.</p>}
+                  : <p className="book-field-help" id="book-email-help">The meeting link and details are sent here.</p>}
               </div>
 
               <div className="book-field-row">
@@ -437,12 +532,16 @@ export default function BookMeetingPage() {
               </div>
               <h2 className="book-section-title" tabIndex={-1} ref={headingRef}>Meeting booked</h2>
               <p className="book-done-when">
-                {confirmation.booking.timeLabel} IST on {confirmation.booking.dateLabel}, for {confirmation.booking.duration} minutes
+                {confirmation.booking.localTimeLabel} on {confirmation.booking.localDateLabel}, for {confirmation.booking.duration} minutes
+              </p>
+              <p className="book-done-text">
+                {confirmation.booking.timeZoneLabel}
+                {!inIndia && <><br />{confirmation.booking.timeLabel} India time on {confirmation.booking.dateLabel}</>}
               </p>
               <p className="book-done-text">
                 {confirmation.emailed
-                  ? <>We sent the Zoom link and meeting details to <strong>{confirmation.booking.email}</strong>.</>
-                  : <>Your time is reserved, but the confirmation email could not be sent. Contact <a href="mailto:sales@mithson.com">sales@mithson.com</a> for your Zoom link.</>}
+                  ? <>We sent the {confirmation.booking.platformLabel} link and meeting details to <strong>{confirmation.booking.email}</strong>.</>
+                  : <>Your time is reserved, but the confirmation email could not be sent. Contact <a href="mailto:sales@mithson.com">sales@mithson.com</a> for your {confirmation.booking.platformLabel} link.</>}
               </p>
               <button type="button" className="book-back" onClick={startOver}>Book another meeting</button>
             </div>

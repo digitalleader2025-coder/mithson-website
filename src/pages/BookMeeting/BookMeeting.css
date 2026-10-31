@@ -113,6 +113,48 @@
   color: var(--color-white);
 }
 
+.book-location {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.book-location:disabled {
+  opacity: 0.6;
+}
+
+.book-select-label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-2);
+}
+
+.book-select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  border: 1px solid rgba(3, 54, 163, 0.3);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  color: var(--color-navy-base);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.book-select:focus {
+  outline: none;
+  border-color: var(--color-navy-base);
+  box-shadow: 0 0 0 3px rgba(66, 164, 255, 0.35);
+}
+
+.book-zone-text {
+  font-size: var(--text-sm);
+  color: var(--color-text-2);
+}
+
 .book-summary {
   margin-top: auto;
   padding: var(--space-4);
@@ -122,6 +164,10 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
+}
+
+.book-summary-zone {
+  font-size: var(--text-sm);
 }
 
 /* ---------- Right: calendar + times ---------- */
@@ -348,6 +394,57 @@ button.book-slot:hover {
 }
 
 /* ---------- Details form ---------- */
+.book-platform {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.book-platform legend {
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: var(--color-navy-base);
+  margin-bottom: var(--space-2);
+}
+
+.book-platform-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.book-platform-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  padding: 0 var(--space-4);
+  border: 1px solid rgba(3, 54, 163, 0.35);
+  border-radius: var(--radius-md);
+  color: var(--color-navy-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--duration-fast), border-color var(--duration-fast);
+}
+
+.book-platform-option:hover {
+  border-color: var(--color-blue-accent);
+}
+
+.book-platform-option:focus-within {
+  box-shadow: 0 0 0 3px rgba(66, 164, 255, 0.35);
+}
+
+.book-platform-option.is-selected {
+  border-color: var(--color-navy-base);
+  background: rgba(66, 164, 255, 0.12);
+}
+
+.book-platform-option input {
+  accent-color: var(--color-navy-base);
+}
+
 .book-form {
   padding: var(--space-8);
   display: flex;
@@ -561,6 +658,9 @@ button.book-slot:hover {
   }
   .book-field-row {
     flex-direction: column;
+  }
+  .book-platform-options {
+    grid-template-columns: 1fr;
   }
   .book-slot-list {
     max-height: none;

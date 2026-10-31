@@ -18,11 +18,16 @@ const transport = isMailConfigured
 const escapeHtml = (value = '') =>
   String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
-function renderEmail({ heading, intro, booking }) {
+function renderEmail({ heading, intro, booking, forCustomer }) {
+  const indiaTime = `${booking.dateLabel}, ${booking.timeLabel} (IST)`;
+  const customerTime = `${booking.localDateLabel}, ${booking.localTimeLabel} — ${booking.timeZoneLabel}`;
   const rows = [
-    ['Date', booking.dateLabel],
-    ['Time', `${booking.timeLabel} (IST)`],
+    ...(forCustomer
+      ? [['Your time', customerTime], ['India time', indiaTime]]
+      : [['India time', indiaTime], ['Customer time', customerTime]]),
     ['Duration', `${booking.duration} minutes`],
+    ['Platform', booking.platformLabel],
+    ['Country', booking.country],
     ['Name', booking.name],
     ['Email', booking.email],
     ['Company', booking.company],
@@ -30,9 +35,10 @@ function renderEmail({ heading, intro, booking }) {
     ['Notes', booking.notes],
   ].filter(([, v]) => v);
 
-  const zoom = booking.joinUrl
-    ? `<p style="margin:24px 0"><a href="${escapeHtml(booking.joinUrl)}" style="background:#0336A3;color:#FFFFFF;padding:12px 20px;border-radius:8px;text-decoration:none;font-weight:600">Join Zoom meeting</a></p>
-       <p style="font-size:13px;color:#475569">Zoom link: ${escapeHtml(booking.joinUrl)}${booking.zoomPassword ? `<br>Passcode: ${escapeHtml(booking.zoomPassword)}` : ''}</p>`
+  const inviteNote = `A ${booking.platformLabel === 'Google Meet' ? 'Google' : 'Microsoft'} calendar invitation with a reminder is sent separately.`;
+  const join = booking.joinUrl
+    ? `<p style="margin:24px 0"><a href="${escapeHtml(booking.joinUrl)}" style="background:#0336A3;color:#FFFFFF;padding:12px 20px;border-radius:8px;text-decoration:none;font-weight:600">Join ${escapeHtml(booking.platformLabel)} meeting</a></p>
+       <p style="font-size:13px;color:#475569">${escapeHtml(booking.platformLabel)} link: ${escapeHtml(booking.joinUrl)}<br>${escapeHtml(inviteNote)}</p>`
     : '';
 
   const html = `<div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:0 auto;color:#1E293B">
@@ -45,7 +51,7 @@ function renderEmail({ heading, intro, booking }) {
       <table style="border-collapse:collapse;width:100%">
         ${rows.map(([k, v]) => `<tr><td style="padding:6px 0;color:#475569;width:110px;vertical-align:top">${k}</td><td style="padding:6px 0">${escapeHtml(v)}</td></tr>`).join('')}
       </table>
-      ${zoom}
+      ${join}
     </div>
   </div>`;
 
@@ -55,8 +61,7 @@ function renderEmail({ heading, intro, booking }) {
     intro,
     '',
     ...rows.map(([k, v]) => `${k}: ${v}`),
-    booking.joinUrl ? `\nZoom link: ${booking.joinUrl}` : '',
-    booking.zoomPassword ? `Passcode: ${booking.zoomPassword}` : '',
+    booking.joinUrl ? `\n${booking.platformLabel} link: ${booking.joinUrl}\n${inviteNote}` : '',
   ].join('\n');
 
   return { html, text };
@@ -64,7 +69,7 @@ function renderEmail({ heading, intro, booking }) {
 
 /** Sends the confirmation to the customer and the notification to the Mithson inbox. */
 export async function sendBookingEmails(booking) {
-  const subject = `Meeting with Mithson — ${booking.dateLabel}, ${booking.timeLabel} IST (${booking.duration} min)`;
+  const subject = `Meeting with Mithson — ${booking.localDateLabel}, ${booking.localTimeLabel} (${booking.duration} min, ${booking.platformLabel})`;
   const messages = [
     {
       to: booking.email,
@@ -74,16 +79,18 @@ export async function sendBookingEmails(booking) {
         heading: 'Your meeting is booked',
         intro: `Hi ${booking.name}, thank you for booking a meeting with Mithson Sealing Solutions. Here are the details.`,
         booking,
+        forCustomer: true,
       }),
     },
     {
       to: companyInbox,
-      subject: `New booking: ${booking.name} — ${booking.dateLabel}, ${booking.timeLabel} IST`,
+      subject: `New booking: ${booking.name}, ${booking.country} — ${booking.dateLabel}, ${booking.timeLabel} IST (${booking.platformLabel})`,
       replyTo: booking.email,
       ...renderEmail({
         heading: 'New meeting booked',
         intro: 'A customer booked a meeting through the website.',
         booking,
+        forCustomer: false,
       }),
     },
   ];

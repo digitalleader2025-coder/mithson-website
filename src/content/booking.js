@@ -1,17 +1,22 @@
 // Meeting booking rules — shared by the Book a Meeting page and the /api booking functions.
-// All times are India Standard Time (UTC+5:30, no daylight saving).
+// Bookings are stored in India Standard Time (UTC+5:30, no daylight saving); each customer
+// sees the same slots converted to the time zone they pick.
 export const BOOKING = {
   timeZone: 'Asia/Kolkata',
   timeZoneLabel: 'India Standard Time (IST)',
   utcOffsetMinutes: 330,
-  dayStart: 10 * 60, // 10:00 am
-  dayEnd: 19 * 60, // 7:00 pm — meetings must finish by this time
+  dayStart: 8 * 60, // 8:00 am
+  dayEnd: 20 * 60, // 8:00 pm — meetings must finish by this time
   step: 30, // start times every 30 minutes; each booking holds whole 30-minute blocks
   durations: [30, 45, 60],
   closedWeekdays: [0], // Sunday
   maxDaysAhead: 60,
   minLeadMinutes: 60, // same-day slots must start at least this far in the future
   retentionDays: 2, // booking data is deleted from storage this long after the meeting ends
+  platforms: [
+    { id: 'teams', label: 'Microsoft Teams' },
+    { id: 'meet', label: 'Google Meet' },
+  ],
 };
 
 export function minutesToHHMM(minutes) {
@@ -62,11 +67,32 @@ export function nowInIST(now = Date.now()) {
   };
 }
 
+/** The moment (ms since epoch) of `start` minutes after midnight IST on `dateStr`. */
+export function slotInstant(dateStr, start) {
+  const [y, m, d] = dateStr.split('-').map(Number);
+  return Date.UTC(y, m - 1, d) + (start - BOOKING.utcOffsetMinutes) * 60000;
+}
+
 /** Unix time (seconds) when stored booking data should expire: meeting end + `retentionDays`. */
 export function expiryEpochSeconds(dateStr, start, duration) {
-  const [y, m, d] = dateStr.split('-').map(Number);
-  const endUtcMs = Date.UTC(y, m - 1, d) + (start + duration - BOOKING.utcOffsetMinutes) * 60000;
+  const endUtcMs = slotInstant(dateStr, start + duration);
   return Math.floor(endUtcMs / 1000) + BOOKING.retentionDays * 86400;
+}
+
+const zoneFormatters = new Map();
+
+/** Date (YYYY-MM-DD) and minutes from midnight on the clock in `timeZone`. */
+export function localParts(ms, timeZone) {
+  if (!zoneFormatters.has(timeZone)) {
+    zoneFormatters.set(timeZone, new Intl.DateTimeFormat('en-US', {
+      timeZone, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit',
+    }));
+  }
+  const parts = Object.fromEntries(zoneFormatters.get(timeZone).formatToParts(ms).map((p) => [p.type, p.value]));
+  return {
+    date: `${parts.year}-${parts.month}-${parts.day}`,
+    minutes: Number(parts.hour) * 60 + Number(parts.minute),
+  };
 }
 
 export function addDays(dateStr, days) {
@@ -93,4 +119,21 @@ export function isStartInFuture(dateStr, start, now = Date.now()) {
   if (dateStr > date) return true;
   if (dateStr < date) return false;
   return start >= minutes + BOOKING.minLeadMinutes;
+}
+
+/** Every open slot grouped by the date it falls on in `timeZone`; `date` and `start` stay in IST. */
+export function slotsByLocalDate(duration, timeZone, now = Date.now()) {
+  const days = new Map();
+  const today = nowInIST(now).date;
+  for (let i = 0; i <= BOOKING.maxDaysAhead; i++) {
+    const date = addDays(today, i);
+    if (!isBookableDate(date, now)) continue;
+    for (const start of startTimes(duration)) {
+      if (!isStartInFuture(date, start, now)) continue;
+      const local = localParts(slotInstant(date, start), timeZone);
+      if (!days.has(local.date)) days.set(local.date, []);
+      days.get(local.date).push({ date, start, minutes: local.minutes });
+    }
+  }
+  return days;
 }

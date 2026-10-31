@@ -38,7 +38,7 @@ export async function claimBlocks(date, blocks, bookingId, expiresAt) {
   return true;
 }
 
-/** Frees blocks held by `bookingId` (used when the Zoom meeting could not be created). */
+/** Frees blocks held by `bookingId` (used when the meeting link could not be created). */
 export async function releaseBlocks(date, blocks, bookingId) {
   for (const m of blocks) {
     const key = blockKey(date, m);
