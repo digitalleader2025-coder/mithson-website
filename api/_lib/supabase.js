@@ -19,9 +19,12 @@ export async function createUploadLink(path) {
   return data.signedUrl;
 }
 
-/** Name and size of everything uploaded for one enquiry. */
-export async function listEnquiryFiles(enquiryId) {
-  const { data, error } = await files().list(enquiryId);
+/** Keeps a customer's file name safe to use as a storage path. */
+export const safeFileName = (name) => name.replace(/[^a-zA-Z0-9._-]+/g, '-').slice(-100);
+
+/** Name and size of everything in one private folder. */
+export async function listFiles(folder) {
+  const { data, error } = await files().list(folder);
   if (error) throw error;
   return data.map((file) => ({ name: file.name, size: file.metadata?.size ?? 0 }));
 }
@@ -30,6 +33,11 @@ export async function createDownloadLink(path, expiresInSeconds) {
   const { data, error } = await files().createSignedUrl(path, expiresInSeconds, { download: true });
   if (error) throw error;
   return data.signedUrl;
+}
+
+export async function saveApplication(application) {
+  const { error } = await supabase.from('applications').insert(application);
+  if (error) throw error;
 }
 
 export async function saveEnquiry(enquiry) {

@@ -3,19 +3,10 @@ import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ScrollReveal from '../../../shared/components/ScrollReveal';
 import { company } from '../../../content/company';
-import { ENQUIRY, fileProblem, formatBytes } from '../../../content/enquiry';
+import { ENQUIRY, fileProblem, formatBytes, uploadFile } from '../../../content/enquiry';
 import './ConnectWithUs.css';
 
 const EMPTY_FORM = { name: '', email: '', subject: '', message: '', website: '' };
-
-/** Sends one file straight to private storage, using the link from /api/enquiry-upload. */
-async function uploadFile(file, url) {
-  const body = new FormData();
-  body.append('cacheControl', '3600');
-  body.append('', file);
-  const res = await fetch(url, { method: 'PUT', headers: { 'x-upsert': 'false' }, body });
-  if (!res.ok) throw new Error(`Could not upload ${file.name}. Please try again.`);
-}
 
 export default function ConnectWithUsPage() {
   const [params] = useSearchParams();

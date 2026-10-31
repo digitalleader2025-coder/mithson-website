@@ -1,7 +1,7 @@
 // POST /api/enquiry → checks any uploaded files, saves the enquiry and emails the Mithson inbox.
 import { randomUUID } from 'node:crypto';
 import { ENQUIRY, fileProblem } from '../src/content/enquiry.js';
-import { createDownloadLink, isSupabaseConfigured, listEnquiryFiles, saveEnquiry } from './_lib/supabase.js';
+import { createDownloadLink, isSupabaseConfigured, listFiles, saveEnquiry } from './_lib/supabase.js';
 import { isMailConfigured, sendEnquiryEmail } from './_lib/mailer.js';
 import { isOverLimit } from './_lib/store.js';
 import { clientAddress, getJsonBody, isProduction, sendJson } from './_lib/http.js';
@@ -32,7 +32,7 @@ async function prepareFiles(enquiryId, claimed) {
     throw new Error('Invalid file reference');
   }
 
-  const stored = await listEnquiryFiles(enquiryId);
+  const stored = await listFiles(enquiryId);
   return Promise.all(claimed.map(async ({ path, name }) => {
     const storedName = String(path ?? '').split('/').pop();
     const file = stored.find((item) => item.name === storedName);

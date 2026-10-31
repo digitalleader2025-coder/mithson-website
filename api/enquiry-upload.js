@@ -2,11 +2,9 @@
 // drawings go straight to Supabase instead of through the Vercel function.
 import { randomUUID } from 'node:crypto';
 import { ENQUIRY, fileProblem } from '../src/content/enquiry.js';
-import { createUploadLink, isSupabaseConfigured } from './_lib/supabase.js';
+import { createUploadLink, isSupabaseConfigured, safeFileName } from './_lib/supabase.js';
 import { isOverLimit } from './_lib/store.js';
 import { clientAddress, getJsonBody, sendJson } from './_lib/http.js';
-
-const safeName = (name) => name.replace(/[^a-zA-Z0-9._-]+/g, '-').slice(-100);
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return sendJson(res, 405, { error: 'Method not allowed.' });
@@ -38,7 +36,7 @@ export default async function handler(req, res) {
 
     const enquiryId = randomUUID();
     const uploads = await Promise.all(requested.map(async (file, index) => {
-      const path = `${enquiryId}/${index + 1}-${safeName(String(file.name))}`;
+      const path = `${enquiryId}/${index + 1}-${safeFileName(String(file.name))}`;
       return { path, name: String(file.name), url: await createUploadLink(path) };
     }));
     return sendJson(res, 200, { enquiryId, uploads });

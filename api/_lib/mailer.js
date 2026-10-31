@@ -1,5 +1,6 @@
 // Booking confirmation emails over SMTP.
 import nodemailer from 'nodemailer';
+import { APPLICATION } from '../../src/content/careers.js';
 import { ENQUIRY, formatBytes } from '../../src/content/enquiry.js';
 
 const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, MAIL_FROM } = process.env;
@@ -66,6 +67,82 @@ function renderEmail({ heading, intro, booking, forCustomer }) {
   ].join('\n');
 
   return { html, text };
+}
+
+const hrInbox = process.env.HR_NOTIFY_EMAIL || companyInbox;
+
+/** Sends a job application to Mithson HR, with a private link to the resume. */
+export async function sendApplicationToHr({ name, phone, email, role, skills, state, country, resume }) {
+  const details = [
+    ['Name', name], ['Phone', phone], ['Email', email], ['Role', role], ['State', state], ['Country', country],
+  ];
+  const html = `<div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:0 auto;color:#1E293B">
+    <div style="background:#0336A3;color:#FFFFFF;padding:20px 24px;border-radius:12px 12px 0 0">
+      <strong style="font-size:18px">Mithson Sealing Solutions</strong>
+    </div>
+    <div style="border:1px solid #D6E4FF;border-top:none;padding:24px;border-radius:0 0 12px 12px">
+      <h1 style="color:#0336A3;font-size:20px;margin:0 0 12px">New job application</h1>
+      <table style="border-collapse:collapse;width:100%">
+        ${details.map(([k, v]) => `<tr><td style="padding:6px 0;color:#475569;width:110px;vertical-align:top">${k}</td><td style="padding:6px 0">${escapeHtml(v)}</td></tr>`).join('')}
+      </table>
+      <h2 style="color:#0336A3;font-size:16px;margin:20px 0 8px">Skills</h2>
+      <p style="margin:0;white-space:pre-wrap">${escapeHtml(skills)}</p>
+      <p style="margin:24px 0"><a href="${escapeHtml(resume.url)}" style="background:#0336A3;color:#FFFFFF;padding:12px 20px;border-radius:8px;text-decoration:none;font-weight:600">Download resume</a></p>
+      <p style="font-size:13px;color:#475569">${escapeHtml(resume.name)} (${formatBytes(resume.size)}). This link stops working after ${APPLICATION.linkDays} days. The file stays in Supabase.</p>
+    </div>
+  </div>`;
+  const text = [
+    'New job application',
+    '',
+    ...details.map(([k, v]) => `${k}: ${v}`),
+    '',
+    'Skills:',
+    skills,
+    '',
+    `Resume: ${resume.url}`,
+  ].join('\n');
+
+  const mail = { to: hrInbox, subject: `Job application: ${name} — ${role}`, replyTo: email, html, text };
+  if (!transport) {
+    console.info('[application] SMTP not configured — email not sent:', mail.subject);
+    return false;
+  }
+  await transport.sendMail({ from: MAIL_FROM || SMTP_USER, ...mail });
+  return true;
+}
+
+/** Tells the applicant that their application arrived. */
+export async function sendApplicationConfirmation({ name, email, role }) {
+  const paragraphs = [
+    `Thank you for your interest in the ${role} position at Mithson Sealing Solutions. We have successfully received your application and resume.`,
+    'Our hiring team is currently reviewing applications to identify the candidates whose qualifications best match the requirements of the role.',
+    'If your background matches what we are looking for, a member of our recruiting team will reach out to you directly to discuss the next steps.',
+  ];
+  const html = `<div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:0 auto;color:#1E293B;line-height:1.6">
+    <div style="background:#0336A3;color:#FFFFFF;padding:20px 24px;border-radius:12px 12px 0 0">
+      <strong style="font-size:18px">Mithson Sealing Solutions</strong>
+    </div>
+    <div style="border:1px solid #D6E4FF;border-top:none;padding:24px;border-radius:0 0 12px 12px">
+      <p style="margin:0 0 16px">Hi ${escapeHtml(name)},</p>
+      ${paragraphs.map((p) => `<p style="margin:0 0 16px">${escapeHtml(p)}</p>`).join('')}
+      <p style="margin:0">Best regards,<br>The Mithson Recruitment Team</p>
+    </div>
+  </div>`;
+  const text = [`Hi ${name},`, ...paragraphs, 'Best regards,\nThe Mithson Recruitment Team'].join('\n\n');
+
+  const mail = {
+    to: email,
+    subject: `Your application for ${role} at Mithson Sealing Solutions`,
+    replyTo: hrInbox,
+    html,
+    text,
+  };
+  if (!transport) {
+    console.info('[application] SMTP not configured — confirmation not sent:', mail.subject);
+    return false;
+  }
+  await transport.sendMail({ from: MAIL_FROM || SMTP_USER, ...mail });
+  return true;
 }
 
 /** Sends a website enquiry to the Mithson inbox, with a private link to each uploaded file. */

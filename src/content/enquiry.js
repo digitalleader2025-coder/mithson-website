@@ -19,6 +19,15 @@ export function fileProblem({ name, size }) {
   return null;
 }
 
+/** Sends one file straight to private storage, using a link from the upload API. */
+export async function uploadFile(file, url) {
+  const body = new FormData();
+  body.append('cacheControl', '3600');
+  body.append('', file);
+  const res = await fetch(url, { method: 'PUT', headers: { 'x-upsert': 'false' }, body });
+  if (!res.ok) throw new Error(`Could not upload ${file.name}. Please try again.`);
+}
+
 export function formatBytes(bytes) {
   return bytes < 1024 * 1024
     ? `${Math.max(1, Math.round(bytes / 1024))} KB`

@@ -1,7 +1,7 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig, loadEnv } from 'vite'
 
-const API_ROUTES = ['availability', 'book', 'enquiry', 'enquiry-upload', 'keep-alive']
+const API_ROUTES = ['availability', 'book', 'enquiry', 'enquiry-upload', 'application', 'application-upload', 'keep-alive']
 
 // Serves the Vercel functions in /api from the Vite dev server, so booking works with `npm run dev`.
 function devApi() {
