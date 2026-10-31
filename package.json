@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-three/drei": "^10.7.8",
     "@react-three/fiber": "^9.7.0",
+    "@supabase/supabase-js": "2.118.0",
     "@upstash/redis": "^1.40.0",
     "countries-and-timezones": "3.11.0",
     "framer-motion": "^13.4.0",

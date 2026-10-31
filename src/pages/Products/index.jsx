@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { products } from '../../content/products';
+import { customProducts } from '../../content/customManufacturing';
 import { getProductSummary } from '../../content/typicalSpecs';
 import ProductSpecList from '../../shared/components/ProductSpecList';
 import './Products.css';
@@ -14,7 +15,10 @@ const FILTERS = [
   { id: 'bearings', label: 'Bearings' },
   { id: 'pump', label: 'Pump & Transmission' },
   { id: 'power', label: 'Power Grid' },
+  { id: 'custom', label: 'Custom' },
 ];
+
+const allProducts = [...products, ...customProducts];
 
 const VIEWS = [
   { id: 'cards', label: 'Cards' },
@@ -60,8 +64,14 @@ function CompareTable({ items }) {
                     <span>{product.name}</span>
                   </Link>
                 </th>
-                <td><CompareCell spec={temperature} /></td>
-                <td><CompareCell spec={pressure} /></td>
+                {product.custom ? (
+                  <td colSpan={2}><span className="compare-missing">Set by your design and material</span></td>
+                ) : (
+                  <>
+                    <td><CompareCell spec={temperature} /></td>
+                    <td><CompareCell spec={pressure} /></td>
+                  </>
+                )}
                 <td>{materials.join(', ')}</td>
               </tr>
             );
@@ -82,7 +92,7 @@ export default function ProductsPage() {
     return () => { document.title = 'Mithson Sealing Solutions'; };
   }, []);
 
-  const visible = filter === 'all' ? products : products.filter((p) => p.category === filter);
+  const visible = filter === 'all' ? allProducts : allProducts.filter((p) => p.category === filter);
 
   return (
     <div className="page-wrapper">
@@ -99,7 +109,7 @@ export default function ProductsPage() {
             <h1 className="section-title">Engineered Product Lines</h1>
             <p className="section-subtitle">
               {products.length} high-performance product families — seals, bearings, nozzles and precision polymer
-              components for the world's most demanding applications.
+              components for the world's most demanding applications — plus custom molded and machined parts.
             </p>
           </motion.div>
         </div>
@@ -141,7 +151,7 @@ export default function ProductsPage() {
           </div>
 
           <p className="product-count" aria-live="polite">
-            Showing {visible.length} of {products.length} product families
+            Showing {visible.length} of {allProducts.length} product families
           </p>
 
           {view === 'cards' ? (
@@ -161,7 +171,13 @@ export default function ProductsPage() {
                     <div className="plc-body">
                       <h2 className="plc-name">{product.name}</h2>
                       <p className="plc-tagline">{product.tagline}</p>
-                      <ProductSpecList product={product} />
+                      {product.custom ? (
+                        <ul className="spec-materials">
+                          {product.materials.map((material) => <li key={material}>{material}</li>)}
+                        </ul>
+                      ) : (
+                        <ProductSpecList product={product} />
+                      )}
                       <span className="plc-link">View full details</span>
                     </div>
                   </Link>

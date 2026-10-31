@@ -36,6 +36,10 @@ export default function PrivacyPolicyPage() {
             <li>The meeting date, time, length and video platform you choose</li>
             <li>Anything you write about what you would like to discuss</li>
           </ul>
+          <p>
+            When you send an enquiry, we collect your name, email address, subject and message, plus any
+            drawings or other files you choose to upload.
+          </p>
 
           <h2>How we use it</h2>
           <p>We use these details only to:</p>
@@ -43,13 +47,14 @@ export default function PrivacyPolicyPage() {
             <li>Reserve your meeting time and stop it being booked twice</li>
             <li>Create the video meeting and send you the link and calendar invitation</li>
             <li>Tell our team about the booking and prepare for your meeting</li>
+            <li>Reply to your enquiry and review any drawings or files you send</li>
           </ul>
           <p>We do not sell your information or use it for advertising.</p>
 
           <h2>Who we share it with</h2>
-          <p>We share your details only with the services that run the booking system:</p>
+          <p>We share your details only with the services that run our booking and enquiry systems:</p>
           <ul>
-            <li>Our website hosting and booking storage providers</li>
+            <li>Our website hosting providers, and the storage providers that hold bookings, enquiries and uploaded files</li>
             <li>Our email provider, which delivers the confirmation messages</li>
             <li>The video meeting provider for your meeting, such as Microsoft Teams or Google Meet</li>
           </ul>
@@ -59,6 +64,11 @@ export default function PrivacyPolicyPage() {
             Booking details held by the website are deleted automatically 2 days after your meeting
             ends. Confirmation emails and calendar invitations stay in the mailboxes and calendars
             that received them, including our team&apos;s, until they are deleted.
+          </p>
+
+          <p>
+            Enquiries and uploaded files are stored privately and kept for as long as we need them to deal
+            with your enquiry, unless you ask us to delete them sooner.
           </p>
 
           <h2>Google and Microsoft accounts</h2>

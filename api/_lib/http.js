@@ -19,5 +19,10 @@ export async function getJsonBody(req) {
   return raw ? JSON.parse(raw) : {};
 }
 
+/** The visitor's address as Vercel reports it, for simple abuse limits. */
+export function clientAddress(req) {
+  return String(req.headers?.['x-forwarded-for'] ?? 'local').split(',')[0].trim();
+}
+
 /** On Vercel every external service must be configured; locally missing ones fall back to dry-run. */
 export const isProduction = Boolean(process.env.VERCEL) || process.env.NODE_ENV === 'production';

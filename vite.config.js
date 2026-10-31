@@ -1,7 +1,7 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig, loadEnv } from 'vite'
 
-const API_ROUTES = ['availability', 'book']
+const API_ROUTES = ['availability', 'book', 'enquiry', 'enquiry-upload', 'keep-alive']
 
 // Serves the Vercel functions in /api from the Vite dev server, so booking works with `npm run dev`.
 function devApi() {
@@ -25,7 +25,7 @@ function devApi() {
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
-  // Make .env values (SMTP, Teams, Google, Redis) visible to the dev API handlers
+  // Make .env values (SMTP, Teams, Google, Redis, Supabase) visible to the dev API handlers
   for (const [key, value] of Object.entries(loadEnv(mode, process.cwd(), ''))) {
     if (process.env[key] === undefined) process.env[key] = value
   }

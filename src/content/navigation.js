@@ -14,6 +14,14 @@ export const navigation = [
     label: 'Products',
     path: '/products',
     children: [
+      {
+        label: 'Custom Manufacturing',
+        path: '/products/custom-manufacturing',
+        children: [
+          { label: 'Custom Molded Products', path: '/products/custom-molded-products' },
+          { label: 'Machined Products', path: '/products/machined-products' },
+        ],
+      },
       { label: 'MITH PLATE', path: '/products/mith-plate' },
       { label: 'M-UNI Seal', path: '/products/m-uni-seal' },
       { label: 'Hammer Union Seal', path: '/products/hammer-union-seal' },

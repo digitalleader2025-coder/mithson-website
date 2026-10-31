@@ -64,8 +64,119 @@
   min-height: 120px;
 }
 
+.form-input[aria-invalid='true'] {
+  border-color: var(--color-navy-base);
+  border-width: 2px;
+}
+
+.form-error {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-navy-base);
+}
+
+.form-help {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.form-optional {
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
+.connect-hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.connect-file {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 72px;
+  padding: var(--space-4);
+  border: 1px dashed rgba(3, 54, 163, 0.45);
+  border-radius: var(--radius-md);
+  background: rgba(66, 164, 255, 0.06);
+  color: var(--color-navy-base);
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color var(--duration-fast), background var(--duration-fast);
+}
+
+.connect-file:hover,
+.connect-file:focus-within {
+  border-color: var(--color-navy-base);
+  background: rgba(66, 164, 255, 0.12);
+}
+
+.connect-file input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.connect-file-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.connect-file-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-white);
+  font-size: var(--text-sm);
+  color: var(--color-text-2);
+}
+
+.connect-file-name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.connect-file-remove {
+  flex-shrink: 0;
+  min-height: 36px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  color: var(--color-navy-base);
+  font-weight: 700;
+}
+
+.connect-file-remove:hover {
+  background: rgba(66, 164, 255, 0.12);
+}
+
+.connect-alert {
+  padding: var(--space-3) var(--space-4);
+  border-left: 3px solid var(--color-navy-base);
+  border-radius: var(--radius-sm);
+  background: rgba(66, 164, 255, 0.12);
+  color: var(--color-navy-base);
+  font-weight: 500;
+}
+
 .connect-submit {
   align-self: flex-start;
+}
+
+.connect-submit:disabled {
+  opacity: 0.7;
+  cursor: progress;
 }
 
 /* Info sidebar */

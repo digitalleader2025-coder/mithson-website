@@ -49,6 +49,19 @@ export async function releaseBlocks(date, blocks, bookingId) {
   }
 }
 
+/** Counts an attempt and says whether this address has used up its hourly allowance. */
+export async function isOverLimit(scope, address, limit) {
+  const key = `mithson:limit:${scope}:${address}`;
+  if (redis) {
+    const count = await redis.incr(key);
+    if (count === 1) await redis.expire(key, 3600);
+    return count > limit;
+  }
+  const count = (memory.get(key) ?? 0) + 1;
+  memory.set(key, count);
+  return count > limit;
+}
+
 export async function saveBooking(booking, expiresAt) {
   const key = `mithson:booking:${booking.id}`;
   if (redis) await redis.set(key, JSON.stringify(booking), { exat: expiresAt });

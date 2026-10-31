@@ -1,5 +1,6 @@
 // Booking confirmation emails over SMTP.
 import nodemailer from 'nodemailer';
+import { ENQUIRY, formatBytes } from '../../src/content/enquiry.js';
 
 const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, MAIL_FROM } = process.env;
 
@@ -65,6 +66,53 @@ function renderEmail({ heading, intro, booking, forCustomer }) {
   ].join('\n');
 
   return { html, text };
+}
+
+/** Sends a website enquiry to the Mithson inbox, with a private link to each uploaded file. */
+export async function sendEnquiryEmail({ name, email, subject, message, files }) {
+  const details = [['Name', name], ['Email', email], ['Subject', subject]];
+  const fileRows = files
+    .map((file) => `<li style="margin:6px 0"><a href="${escapeHtml(file.url)}" style="color:#0336A3;font-weight:600">${escapeHtml(file.name)}</a> (${formatBytes(file.size)})</li>`)
+    .join('');
+  const html = `<div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:0 auto;color:#1E293B">
+    <div style="background:#0336A3;color:#FFFFFF;padding:20px 24px;border-radius:12px 12px 0 0">
+      <strong style="font-size:18px">Mithson Sealing Solutions</strong>
+    </div>
+    <div style="border:1px solid #D6E4FF;border-top:none;padding:24px;border-radius:0 0 12px 12px">
+      <h1 style="color:#0336A3;font-size:20px;margin:0 0 12px">New website enquiry</h1>
+      <table style="border-collapse:collapse;width:100%">
+        ${details.map(([k, v]) => `<tr><td style="padding:6px 0;color:#475569;width:110px;vertical-align:top">${k}</td><td style="padding:6px 0">${escapeHtml(v)}</td></tr>`).join('')}
+      </table>
+      <h2 style="color:#0336A3;font-size:16px;margin:20px 0 8px">Message</h2>
+      <p style="margin:0;white-space:pre-wrap">${escapeHtml(message)}</p>
+      ${files.length ? `<h2 style="color:#0336A3;font-size:16px;margin:20px 0 8px">Uploaded files</h2>
+      <ul style="margin:0;padding-left:20px">${fileRows}</ul>
+      <p style="font-size:13px;color:#475569">These links stop working after ${ENQUIRY.linkDays} days. The files stay in Supabase.</p>` : ''}
+    </div>
+  </div>`;
+  const text = [
+    'New website enquiry',
+    '',
+    ...details.map(([k, v]) => `${k}: ${v}`),
+    '',
+    message,
+    ...(files.length ? ['', 'Uploaded files:', ...files.map((file) => `${file.name}: ${file.url}`)] : []),
+  ].join('\n');
+
+  const mail = {
+    to: companyInbox,
+    subject: `New enquiry: ${name} — ${subject}${files.length ? ` (${files.length} file${files.length > 1 ? 's' : ''})` : ''}`,
+    replyTo: email,
+    html,
+    text,
+  };
+
+  if (!transport) {
+    console.info('[enquiry] SMTP not configured — email not sent:', mail.subject);
+    return false;
+  }
+  await transport.sendMail({ from: MAIL_FROM || SMTP_USER, ...mail });
+  return true;
 }
 
 /** Sends the confirmation to the customer and the notification to the Mithson inbox. */

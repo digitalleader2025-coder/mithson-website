@@ -15,6 +15,7 @@ import OurJourney from '../../shared/components/OurJourney';
 
 import { products } from '../../content/products';
 import { company } from '../../content/company';
+import { customProducts } from '../../content/customManufacturing';
 
 import HyperiuxDimensionalSwitch from '../../shared/components/HyperiuxDimensionalSwitch';
 import imgOil from '../../assets/industries/Oil & Gas.webp';
@@ -54,6 +55,7 @@ export default function HomePage() {
     <div className="home-page page-wrapper">
       <HeroSection />
       <ProductCarousel />
+      <CustomManufacturingSection />
       <OurJourney />
       <IndustriesSection />
       <CertificationSection />
@@ -153,6 +155,54 @@ function HeroSection() {
 }
 
 
+
+/* ----- Custom manufacturing ----- */
+function CustomManufacturingSection() {
+  return (
+    <section className="custom-home-section section" aria-labelledby="custom-home-title">
+      <div className="container">
+        <ScrollReveal>
+          <div className="custom-home-intro">
+            <span className="section-label">Custom Manufacturing</span>
+            <h2 className="section-title" id="custom-home-title">
+              Need something made to your drawing?
+            </h2>
+            <p className="section-subtitle">
+              When a standard part is not the right fit, we can help you choose the material and the
+              manufacturing route for your application.
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <div className="custom-home-grid">
+          {customProducts.map((item) => (
+            <ScrollReveal key={item.slug}>
+              <Link to={item.path} className="custom-home-card">
+                <div className="custom-home-image">
+                  <img src={item.image} alt={item.name} loading="lazy" />
+                </div>
+                <div className="custom-home-body">
+                  <h3>{item.name}</h3>
+                  <p>{item.homeText}</p>
+                  <span className="custom-home-link">View details</span>
+                </div>
+              </Link>
+            </ScrollReveal>
+          ))}
+        </div>
+
+        <div className="custom-home-actions">
+          <Link
+            to={`/connect-with-us?drawing=1&subject=${encodeURIComponent('Custom part enquiry')}`}
+            className="btn btn-navy"
+          >
+            Send your drawing
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 /* ----- Industries section ----- */
 function IndustriesSection() {

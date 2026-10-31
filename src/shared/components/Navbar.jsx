@@ -117,7 +117,7 @@ function MegaMenuItem({ item, onClose, isNavbarHidden }) {
       <AnimatePresence>
         {open && hasChildren && (
           <motion.div
-            className={`dropdown ${item.label === 'Products' ? 'dropdown--grid' : ''} ${item.children.some(c => c.children) ? 'dropdown--wide' : ''}`}
+            className={`dropdown ${item.label === 'Products' ? 'dropdown--grid' : ''} ${item.label !== 'Products' && item.children.some(c => c.children) ? 'dropdown--wide' : ''}`}
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 6 }}
@@ -127,20 +127,40 @@ function MegaMenuItem({ item, onClose, isNavbarHidden }) {
             onMouseLeave={handleMouseLeave}
           >
             {item.label === 'Products' ? (
-              // Special 2-column grid layout for Products
-              <div className="dropdown-grid-inner">
-                {item.children.map((child) => (
-                  <Link
-                    key={child.path}
-                    to={child.path}
-                    className="dropdown-link"
-                    role="menuitem"
-                    onClick={() => { setOpen(false); onClose?.(); }}
-                  >
-                    {child.label}
-                  </Link>
+              // Special 2-column grid layout for Products, with grouped links first
+              <>
+                {item.children.filter((child) => child.children).map((group) => (
+                  <div key={group.path} className="dropdown-feature">
+                    <span className="dropdown-group-label">{group.label}</span>
+                    <div className="dropdown-grid-inner">
+                      {group.children.map((sub) => (
+                        <Link
+                          key={sub.path}
+                          to={sub.path}
+                          className="dropdown-link"
+                          role="menuitem"
+                          onClick={() => { setOpen(false); onClose?.(); }}
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 ))}
-              </div>
+                <div className="dropdown-grid-inner">
+                  {item.children.filter((child) => !child.children).map((child) => (
+                    <Link
+                      key={child.path}
+                      to={child.path}
+                      className="dropdown-link"
+                      role="menuitem"
+                      onClick={() => { setOpen(false); onClose?.(); }}
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
+              </>
             ) : (
               item.children.map((child) =>
                 child.children ? (
