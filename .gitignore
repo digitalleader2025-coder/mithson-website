@@ -25,5 +25,16 @@ dist-ssr
 
 .vercel
 
-# Local secrets
+# Local secrets: never commit these. Only the blank .env.example template is allowed.
 .env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets.*
+credentials*.json
+client_secret*.json
+service-account*.json
+.claude/settings.local.json
