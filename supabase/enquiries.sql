@@ -18,3 +18,6 @@ alter table public.enquiries enable row level security;
 insert into storage.buckets (id, name, public, file_size_limit)
 values ('enquiry-files', 'enquiry-files', false, 20971520)
 on conflict (id) do update set public = false, file_size_limit = 20971520;
+
+-- Application Data Form details. Safe to run again.
+alter table public.enquiries add column if not exists application jsonb;

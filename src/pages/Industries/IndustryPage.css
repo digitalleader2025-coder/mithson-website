@@ -15,6 +15,25 @@
   z-index: 1;
 }
 
+.industry-why {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-8);
+  margin-bottom: var(--space-12);
+}
+
+.industry-why p {
+  margin-top: var(--space-3);
+  color: var(--color-text-2);
+  line-height: 1.75;
+}
+
+@media (max-width: 860px) {
+  .industry-why {
+    grid-template-columns: 1fr;
+  }
+}
+
 .industry-heading {
   margin-bottom: var(--space-8);
 }
@@ -120,6 +139,32 @@
 
 .industry-specs {
   margin-top: var(--space-12);
+}
+
+.industry-faqs {
+  margin-top: var(--space-12);
+  max-width: 820px;
+}
+
+.industry-faqs details {
+  margin-bottom: var(--space-3);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.industry-faqs summary {
+  min-height: 44px;
+  padding: var(--space-4) var(--space-5);
+  cursor: pointer;
+  color: var(--color-navy-base);
+  font-weight: 600;
+}
+
+.industry-faqs p {
+  padding: 0 var(--space-5) var(--space-4);
+  color: var(--color-text-2);
+  line-height: 1.7;
 }
 
 .industry-actions {

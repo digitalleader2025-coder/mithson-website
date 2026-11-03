@@ -98,6 +98,134 @@
   color: var(--color-text-2);
 }
 
+.careers-products-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.careers-arrows {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--space-2);
+}
+
+.careers-arrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background: var(--color-white);
+  border: 1px solid rgba(3, 54, 163, 0.18);
+  border-radius: 10px;
+  color: var(--color-navy-base);
+  cursor: pointer;
+  transition: background var(--duration-base), color var(--duration-base);
+}
+
+.careers-arrow:hover:not(:disabled) {
+  background: var(--color-navy-base);
+  color: var(--color-white);
+}
+
+.careers-arrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.careers-products-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-navy-base);
+}
+
+.careers-products {
+  display: flex;
+  gap: var(--space-5);
+  padding: var(--space-2) 2px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.careers-products::-webkit-scrollbar {
+  display: none;
+}
+
+.careers-product {
+  display: flex;
+  flex: 0 0 calc((100% - 3 * var(--space-5)) / 4);
+  flex-direction: column;
+  min-width: 0;
+  padding: var(--space-4);
+  scroll-snap-align: start;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  transition: transform var(--duration-base) var(--ease-out), border-color var(--duration-base);
+}
+
+.careers-product:hover,
+.careers-product:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--color-blue-accent);
+}
+
+.careers-product-image {
+  aspect-ratio: 4 / 3;
+  margin-bottom: var(--space-4);
+  overflow: hidden;
+  background: var(--color-bg-2);
+  border-radius: var(--radius-lg);
+}
+
+.careers-product-image img {
+  width: 100%;
+  height: 100%;
+  padding: var(--space-3);
+  object-fit: contain;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.careers-product:hover .careers-product-image img {
+  transform: scale(1.05);
+}
+
+.careers-product h4 {
+  margin-bottom: var(--space-1);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-navy-base);
+}
+
+.careers-product p {
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--color-text-2);
+}
+
+/* Tablet: two cards at a time. Phone: one card, with the next one peeking in */
+@media (max-width: 1023px) {
+  .careers-product {
+    flex-basis: calc((100% - var(--space-5)) / 2);
+  }
+}
+
+@media (max-width: 640px) {
+  .careers-product {
+    flex-basis: 84%;
+  }
+}
+
+.careers-products-all {
+  margin-top: var(--space-6);
+}
+
 .careers-sectors {
   margin-top: var(--space-6);
   color: var(--color-text-2);

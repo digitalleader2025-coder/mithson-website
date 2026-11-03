@@ -62,7 +62,7 @@ export default function AboutUsPage() {
                 {company.legalName} serves demanding sectors including Oil & Gas, Automotive, Life Science,
                 Mining, Semiconductor, Robotics and Aerospace.
               </p>
-              <Link to="/who-we-are/quality-and-certification" className="btn btn-primary" id="about-cert-link">
+              <Link to="/who-we-are/hsse-and-quality" className="btn btn-primary" id="about-cert-link">
                 Our Certifications
               </Link>
             </ScrollReveal>

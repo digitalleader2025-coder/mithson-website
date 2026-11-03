@@ -85,6 +85,7 @@ function CompareTable({ items }) {
 export default function ProductsPage() {
   const [filter, setFilter] = useState('all');
   const [view, setView] = useState('cards');
+  const [query, setQuery] = useState('');
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
@@ -92,7 +93,10 @@ export default function ProductsPage() {
     return () => { document.title = 'Mithson Sealing Solutions'; };
   }, []);
 
-  const visible = filter === 'all' ? allProducts : allProducts.filter((p) => p.category === filter);
+  const search = query.trim().toLowerCase();
+  const visible = allProducts.filter((p) =>
+    (filter === 'all' || p.category === filter)
+    && (!search || [p.name, ...getProductSummary(p).materials].join(' ').toLowerCase().includes(search)));
 
   return (
     <div className="page-wrapper">
@@ -121,6 +125,10 @@ export default function ProductsPage() {
       {/* Filterable products */}
       <section className="section">
         <div className="container">
+          <label className="product-search">
+            Search by product or material
+            <input type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="For example, PEEK or O-ring" />
+          </label>
           <div className="product-toolbar">
             <div className="product-filters" role="group" aria-label="Filter products by type">
               {FILTERS.map(({ id, label }) => (

@@ -1,18 +1,21 @@
 // Navigation structure — exact labels from AGENT.md / website-content.txt
 export const navigation = [
   {
-    label: 'Who We Are',
+    label: 'Company',
     path: '/who-we-are',
     activePaths: ['/who-we-are', '/events'],
     children: [
       { label: 'About Us', path: '/who-we-are/about-us' },
-      { label: 'Quality & Certification', path: '/who-we-are/quality-and-certification' },
+      { label: 'HSSE & Quality', path: '/who-we-are/hsse-and-quality' },
+      { label: 'Facilities', path: '/who-we-are/facilities' },
+      { label: 'Sustainability', path: '/who-we-are/sustainability' },
       { label: 'Events', path: '/events' },
     ],
   },
   {
     label: 'Products',
     path: '/products',
+    activePaths: ['/products', '/product-gallery'],
     children: [
       {
         label: 'Custom Manufacturing',
@@ -34,6 +37,7 @@ export const navigation = [
       { label: 'Washers - Transmission', path: '/products/washers-transmission' },
       { label: 'Nozzles - Power Grid', path: '/products/nozzles-power-grid' },
       { label: 'Encapsulated O-Ring', path: '/products/encapsulated-o-ring' },
+      { label: 'Product Gallery', path: '/product-gallery' },
     ],
   },
   {
@@ -47,6 +51,32 @@ export const navigation = [
       { label: 'Semiconductor', path: '/industries/semiconductor' },
       { label: 'Aerospace', path: '/industries/aerospace' },
       { label: 'Automotive', path: '/industries/automotive' },
+      { label: 'Mining', path: '/industries/mining' },
+      { label: 'Robotics', path: '/industries/robotics' },
+    ],
+  },
+  {
+    label: 'Capabilities',
+    path: '/capabilities',
+    children: [
+      { label: 'Overview', path: '/capabilities' },
+      { label: 'Manufacturing', path: '/capabilities/manufacturing' },
+      { label: 'Materials', path: '/capabilities/materials' },
+      { label: 'Engineering & Simulation', path: '/capabilities/engineering-simulation' },
+      { label: 'In-House Testing', path: '/capabilities/in-house-testing' },
+      { label: 'Prototyping & Samples', path: '/capabilities/prototyping-samples' },
+      { label: 'Customer Support', path: '/capabilities/customer-support' },
+    ],
+  },
+  {
+    label: 'Resources',
+    path: '/resources',
+    children: [
+      { label: 'Document Center', path: '/resources' },
+      { label: 'Guides', path: '/resources/guides' },
+      { label: 'Technical Support', path: '/resources/technical-support' },
+      { label: 'FAQs', path: '/resources/faqs' },
+      { label: 'Glossary', path: '/resources/glossary' },
     ],
   },
   {
@@ -55,13 +85,11 @@ export const navigation = [
     children: [],
   },
   {
-    label: 'Product Gallery',
-    path: '/product-gallery',
-    children: [],
-  },
-  {
     label: 'Enquire Now',
     path: '/connect-with-us',
-    children: [],
+    children: [
+      { label: 'Send an Enquiry', path: '/connect-with-us' },
+      { label: 'Application Data Form', path: '/connect-with-us/application-data' },
+    ],
   },
 ];

@@ -15,6 +15,7 @@ import {
 import { products } from '../../content/products';
 import SkewedCarousel from '../../shared/components/SkewedCarousel';
 import TypicalSpecs from '../../shared/components/TypicalSpecs';
+import ProductDetails from '../../shared/components/ProductDetails';
 import { typicalSpecs } from '../../content/typicalSpecs';
 import { ItemSpecList } from './ProductSpecList';
 import { productItems } from '../../content/productItems';
@@ -193,6 +194,8 @@ export default function GenericProductPage({ product }) {
           </aside>
         </div>
       </section>
+
+      <ProductDetails slug={product.slug} name={product.name} />
 
       <ProductCTA productName={product.name} />
 

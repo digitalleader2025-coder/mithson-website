@@ -1,7 +1,7 @@
 // Booking confirmation emails over SMTP.
 import nodemailer from 'nodemailer';
 import { APPLICATION } from '../../src/content/careers.js';
-import { ENQUIRY, formatBytes } from '../../src/content/enquiry.js';
+import { APPLICATION_FIELDS, ENQUIRY, formatBytes } from '../../src/content/enquiry.js';
 
 const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, MAIL_FROM } = process.env;
 
@@ -146,8 +146,11 @@ export async function sendApplicationConfirmation({ name, email, role }) {
 }
 
 /** Sends a website enquiry to the Mithson inbox, with a private link to each uploaded file. */
-export async function sendEnquiryEmail({ name, email, subject, message, files }) {
-  const details = [['Name', name], ['Email', email], ['Subject', subject]];
+export async function sendEnquiryEmail({ name, email, subject, message, files, application }) {
+  const details = [
+    ['Name', name], ['Email', email], ['Subject', subject],
+    ...APPLICATION_FIELDS.filter(([key]) => application?.[key]).map(([key, label]) => [label, application[key]]),
+  ];
   const fileRows = files
     .map((file) => `<li style="margin:6px 0"><a href="${escapeHtml(file.url)}" style="color:#0336A3;font-weight:600">${escapeHtml(file.name)}</a> (${formatBytes(file.size)})</li>`)
     .join('');

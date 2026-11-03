@@ -415,3 +415,8 @@
     align-items: flex-start;
   }
 }
+
+/* Lets wide carousels shrink to the column instead of widening the page */
+.product-body-inner > * {
+  min-width: 0;
+}

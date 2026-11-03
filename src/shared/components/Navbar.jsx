@@ -222,8 +222,10 @@ export default function Navbar() {
         window.requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
           setScrolled(currentScrollY > 20);
-          
-          if (currentScrollY > 80 && currentScrollY > lastScrollY) {
+          const atPageEnd = currentScrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+
+          // Keep the bar off the footer on the last screen
+          if (currentScrollY > 80 && (atPageEnd || currentScrollY > lastScrollY)) {
             setHidden(true); // scrolling down
           } else if (currentScrollY < lastScrollY || currentScrollY <= 80) {
             setHidden(false); // scrolling up
@@ -267,6 +269,10 @@ export default function Navbar() {
 
           <div className="navbar-cta">
             <Link to="/book-a-meeting" className="btn btn-primary btn--sm" id="nav-book-meeting-cta">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="16" rx="2" />
+                <path d="M8 3v4M16 3v4M3 10h18" />
+              </svg>
               Book a Meeting
             </Link>
           </div>

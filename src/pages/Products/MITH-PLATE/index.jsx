@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ScrollReveal from '../../../shared/components/ScrollReveal';
+import ProductDetails from '../../../shared/components/ProductDetails';
 import InteractiveProximityImage from '../../../shared/components/InteractiveProximityImage';
 import {
   ProductBreadcrumb,
@@ -131,6 +132,8 @@ export default function MITHPLATEPage() {
           </aside>
         </div>
       </section>
+
+      <ProductDetails slug={product.slug} name={product.name} />
 
       <ProductCTA productName={product.name} />
       <RelatedProducts currentSlug={product.slug} products={products} />

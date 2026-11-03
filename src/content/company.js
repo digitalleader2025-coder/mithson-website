@@ -43,6 +43,9 @@ export const company = {
     'Scrap reduction',
     'Targeting Scope 1, 2 & 3 carbon reduction',
   ],
+  socials: {
+    linkedin: 'https://www.linkedin.com/company/mithson-sealing-solutions-pvt-ltd/home/',
+  },
   contacts: {
     ceo: {
       name: 'G. M. Samy',

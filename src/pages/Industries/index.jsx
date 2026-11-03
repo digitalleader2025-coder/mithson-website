@@ -7,6 +7,8 @@ import imgLifeScience from '../../assets/industries/Life Science.webp';
 import imgSemiconductor from '../../assets/industries/Semiconductor.webp';
 import imgAerospace from '../../assets/industries/Aerospace.webp';
 import imgAutomotive from '../../assets/industries/Automotive.webp';
+import imgMining from '../../assets/industries/Mining.webp';
+import imgRobotics from '../../assets/industries/Robotics.webp';
 import './IndustryPage.css';
 
 const sectors = [
@@ -45,6 +47,18 @@ const sectors = [
     path: '/industries/automotive',
     image: imgAutomotive,
     desc: 'PEEK and PTFE parts for transmissions and electric drive units.',
+  },
+  {
+    title: 'Mining',
+    path: '/industries/mining',
+    image: imgMining,
+    desc: 'Tough seals, wear rings and bearings for abrasive, heavy-duty equipment.',
+  },
+  {
+    title: 'Robotics',
+    path: '/industries/robotics',
+    image: imgRobotics,
+    desc: 'Low-friction seals, bearings and precision parts for robot joints and actuators.',
   },
 ];
 

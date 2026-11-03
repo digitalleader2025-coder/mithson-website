@@ -121,7 +121,7 @@ function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            <span className="badge badge-blue">Part of Fluoro Carbon Seals Group</span>
+            <span className="badge badge-blue">Engineering the future of sealing technology</span>
           </motion.div>
 
           <h1 className="hero-title" id="hero-title">
@@ -136,8 +136,8 @@ function HeroSection() {
           </p>
 
           <div className="hero-actions hero-line">
-            <Link to="/connect-with-us" className="btn btn-primary" id="hero-enquire-now">
-              Enquire Now
+            <Link to="/book-a-meeting" className="btn btn-primary" id="hero-book-meeting">
+              Book a Meeting
             </Link>
           </div>
 
@@ -253,7 +253,7 @@ function CertificationSection() {
                 Every product is manufactured under ISO 9001:2015 quality management and
                 audited against international standards including API, NORSOK and BAM.
               </p>
-              <Link to="/who-we-are/quality-and-certification" className="btn btn-primary" style={{ marginTop: '1.5rem' }} id="home-cert-link">
+              <Link to="/who-we-are/hsse-and-quality" className="btn btn-primary" style={{ marginTop: '1.5rem' }} id="home-cert-link">
                 Our Certifications
               </Link>
             </div>

@@ -1,15 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ScrollReveal from '../../shared/components/ScrollReveal';
 import { company } from '../../content/company';
+import { products } from '../../content/products';
 import { COUNTRIES } from '../../content/timezones';
 import { uploadFile } from '../../content/enquiry';
 import {
   careerAreas,
+  careerProducts,
   careerStats,
   hiringSteps,
+  openRoles,
   resumeProblem,
-  whatWeDo,
   whyJoin,
 } from '../../content/careers';
 import './Careers.css';
@@ -30,6 +33,114 @@ function validate(form, resume) {
   if (form.state.trim().length < 2) errors.state = 'Enter your state.';
   if (!resume) errors.resume = 'Upload your resume.';
   return errors;
+}
+
+function OpenRoles() {
+  const [category, setCategory] = useState('All');
+  const [country, setCountry] = useState('All');
+  const options = (key) => ['All', ...new Set(openRoles.map((role) => role[key]))];
+  const roles = openRoles.filter((role) =>
+    (category === 'All' || role.category === category) && (country === 'All' || role.country === country));
+
+  return (
+    <section className="section">
+      <div className="container">
+        <h2 className="section-title">Open roles</h2>
+        <div className="career-row">
+          <div className="career-field">
+            <label htmlFor="role-category">Category</label>
+            <select id="role-category" value={category} onChange={(e) => setCategory(e.target.value)}>
+              {options('category').map((name) => <option key={name}>{name}</option>)}
+            </select>
+          </div>
+          <div className="career-field">
+            <label htmlFor="role-country">Country</label>
+            <select id="role-country" value={country} onChange={(e) => setCountry(e.target.value)}>
+              {options('country').map((name) => <option key={name}>{name}</option>)}
+            </select>
+          </div>
+        </div>
+        <div className="careers-grid careers-grid--3">
+          {roles.map((role) => (
+            <article key={role.title} className="careers-card">
+              <h3>{role.title}</h3>
+              <p>{role.location}. {role.summary}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const showcase = careerProducts.map(({ id, use }) => {
+  const product = products.find((item) => item.id === id);
+  const image = product.carouselImage ?? (Array.isArray(product.image) ? product.image[0] : product.image);
+  return { ...product, use, cardImage: image };
+});
+
+function Arrow({ direction }) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d={direction === 'next' ? 'M5 12h14M13 6l6 6-6 6' : 'M19 12H5M11 6l-6 6 6 6'} />
+    </svg>
+  );
+}
+
+function ProductShowcase() {
+  const rowRef = useRef(null);
+  const [ends, setEnds] = useState({ start: true, end: false });
+
+  const updateEnds = () => {
+    const row = rowRef.current;
+    if (!row) return;
+    setEnds({
+      start: row.scrollLeft <= 4,
+      end: row.scrollLeft + row.clientWidth >= row.scrollWidth - 4,
+    });
+  };
+
+  useEffect(() => {
+    updateEnds();
+    window.addEventListener('resize', updateEnds);
+    return () => window.removeEventListener('resize', updateEnds);
+  }, []);
+
+  const move = (direction) => {
+    const row = rowRef.current;
+    const card = row.firstElementChild;
+    const step = card.offsetWidth + parseFloat(getComputedStyle(row).columnGap);
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    row.scrollBy({ left: direction * step, behavior: reduceMotion ? 'auto' : 'smooth' });
+  };
+
+  return (
+    <>
+      <div className="careers-products-head">
+        <h3 className="careers-products-title">Products you could help make</h3>
+        <div className="careers-arrows">
+          <button type="button" className="careers-arrow" aria-label="Previous products" disabled={ends.start} onClick={() => move(-1)}>
+            <Arrow direction="previous" />
+          </button>
+          <button type="button" className="careers-arrow" aria-label="Next products" disabled={ends.end} onClick={() => move(1)}>
+            <Arrow direction="next" />
+          </button>
+        </div>
+      </div>
+      <div className="careers-products" ref={rowRef} onScroll={updateEnds}>
+        {showcase.map((product) => (
+          <Link key={product.id} to={product.path} className="careers-product">
+            <div className="careers-product-image">
+              <img src={product.cardImage} alt={product.name} />
+            </div>
+            <h4>{product.name}</h4>
+            <p>{product.use}</p>
+          </Link>
+        ))}
+      </div>
+      <Link to="/products" className="btn btn-outline careers-products-all">View All Products</Link>
+    </>
+  );
 }
 
 function Field({ id, label, error, children }) {
@@ -141,7 +252,7 @@ export default function CareersPage() {
             <span className="section-label">Career at Mithson</span>
             <h1 className="section-title">Build your career in high-performance engineering</h1>
             <p className="section-subtitle">
-              Join the {company.group} team in Chennai and help make the seals and polymer components that
+              Join the Mithson team in Chennai and help make the seals and polymer components that
               keep demanding equipment running in industries around the world.
             </p>
             <button type="button" className="btn btn-navy careers-apply" onClick={scrollToForm}>
@@ -172,14 +283,7 @@ export default function CareersPage() {
               </p>
             </div>
           </ScrollReveal>
-          <div className="careers-grid careers-grid--4">
-            {whatWeDo.map((item) => (
-              <article key={item.title} className="careers-card">
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </article>
-            ))}
-          </div>
+          <ProductShowcase />
           <p className="careers-sectors">
             <strong>Industries we serve:</strong> {company.sectors.join(', ')}.
           </p>
@@ -218,6 +322,8 @@ export default function CareersPage() {
           </ul>
         </div>
       </section>
+
+      {openRoles.length > 0 && <OpenRoles />}
 
       <section className="section careers-tint" ref={formRef} id="apply">
         <div className="container careers-apply-grid">

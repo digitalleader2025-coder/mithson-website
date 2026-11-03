@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ScrollReveal from '../../shared/components/ScrollReveal';
 import TypicalSpecs from '../../shared/components/TypicalSpecs';
-import { industries } from '../../content/industries';
+import { industries, industryFaqs } from '../../content/industries';
 import './IndustryPage.css';
 
 function ProductCard({ product }) {
@@ -50,6 +50,19 @@ export default function IndustryPage({ slug }) {
 
       <section className="section">
         <div className="container">
+          <div className="industry-why">
+            <div>
+              <h2 className="section-title">Why sealing matters in {industry.title.toLowerCase()}</h2>
+              <p>{industry.why}</p>
+            </div>
+            <div>
+              <h3 className="industry-subheading">Key challenges</h3>
+              <ul className="industry-list">
+                {industry.challenges.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </div>
+          </div>
+
           <h2 className="section-title industry-heading">Products for {industry.title}</h2>
           <div className="industry-grid">
             {industry.products.map((product) => (
@@ -83,8 +96,19 @@ export default function IndustryPage({ slug }) {
             </div>
           )}
 
+          <div className="industry-faqs">
+            <h3 className="industry-subheading">Common questions</h3>
+            {industryFaqs.map(({ q, a }) => (
+              <details key={q}>
+                <summary>{q}</summary>
+                <p>{a}</p>
+              </details>
+            ))}
+          </div>
+
           <div className="industry-actions">
-            <Link to="/book-a-meeting" className="btn btn-navy">Book a Meeting</Link>
+            <Link to="/connect-with-us/application-data" className="btn btn-navy">Request Engineering Support</Link>
+            <Link to="/book-a-meeting" className="btn btn-outline">Book a Meeting</Link>
             <Link to="/connect-with-us" className="btn btn-outline">Enquire Now</Link>
             <Link to="/industries" className="btn btn-ghost">← All Industries</Link>
           </div>

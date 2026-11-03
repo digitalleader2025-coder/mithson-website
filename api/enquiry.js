@@ -1,6 +1,6 @@
 // POST /api/enquiry → checks any uploaded files, saves the enquiry and emails the Mithson inbox.
 import { randomUUID } from 'node:crypto';
-import { ENQUIRY, fileProblem } from '../src/content/enquiry.js';
+import { APPLICATION_FIELDS, ENQUIRY, fileProblem } from '../src/content/enquiry.js';
 import { createDownloadLink, isSupabaseConfigured, listFiles, saveEnquiry } from './_lib/supabase.js';
 import { isMailConfigured, sendEnquiryEmail } from './_lib/mailer.js';
 import { isOverLimit } from './_lib/store.js';
@@ -23,6 +23,15 @@ function validate(body) {
   if (message.length < 2) errors.message = 'Enter your message.';
 
   return { errors, data: { name, email, subject, message } };
+}
+
+/** Keeps only the known Application Data Form fields. */
+function cleanApplication(application) {
+  if (!application || typeof application !== 'object') return null;
+  const fields = APPLICATION_FIELDS
+    .map(([key]) => [key, clean(application[key], 1000)])
+    .filter(([, value]) => value);
+  return fields.length ? Object.fromEntries(fields) : null;
 }
 
 /** Confirms each named file really is in this enquiry's private folder, then makes its link. */
@@ -85,7 +94,12 @@ export default async function handler(req, res) {
     return sendJson(res, 400, { error: 'We could not confirm your uploaded files. Please choose them and send again.' });
   }
 
-  const enquiry = { id: UUID_RE.test(body.enquiryId ?? '') ? body.enquiryId : randomUUID(), ...data };
+  const application = cleanApplication(body.application);
+  const enquiry = {
+    id: UUID_RE.test(body.enquiryId ?? '') ? body.enquiryId : randomUUID(),
+    ...data,
+    ...(application && { application }),
+  };
 
   // Email is what reaches the team, so a save problem is logged but never loses the enquiry
   if (isSupabaseConfigured) {

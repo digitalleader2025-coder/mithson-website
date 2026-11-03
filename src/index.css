@@ -74,9 +74,9 @@
   --space-32: 8rem;
 
   /* Layout */
-  --container-max:   1280px;
-  --container-wide:  1440px;
-  --nav-height:      75px;
+  --container-max:   1382px;
+  --container-wide:  1382px;
+  --nav-height:      96px;
 
   /* Border radius */
   --radius-sm:  4px;
@@ -178,13 +178,13 @@ ul, ol {
 .container {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 var(--space-6);
+  padding: 0 var(--space-4);
 }
 
 .container--wide {
   max-width: var(--container-wide);
   margin: 0 auto;
-  padding: 0 var(--space-6);
+  padding: 0 var(--space-4);
 }
 
 .section {

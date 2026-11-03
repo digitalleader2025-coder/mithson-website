@@ -22,27 +22,18 @@ export function resumeProblem({ name, size }) {
 export const careerStats = [
   { value: '1996', label: 'Group founded in Chennai' },
   { value: '25+', label: 'Years of polymer engineering' },
-  { value: '7', label: 'Industry sectors served' },
+  { value: '7+', label: 'Industry sectors served' },
   { value: '2', label: 'Sites in Tamil Nadu' },
 ];
 
-export const whatWeDo = [
-  {
-    title: 'We engineer seals and polymer components',
-    text: 'Mithson designs and manufactures high-performance seals and precision polymer parts for valves, pumps, compressors and hydraulic systems.',
-  },
-  {
-    title: 'We solve demanding problems',
-    text: 'Our parts protect equipment where pressure, heat, chemicals and wear are serious challenges, from oil wells to precision instruments.',
-  },
-  {
-    title: 'We work with advanced materials',
-    text: 'Our teams work with elastomers, fluoropolymers and thermoplastics, including PTFE, PEEK, FKM, FFKM and HNBR.',
-  },
-  {
-    title: 'We partner with customers',
-    text: 'We work closely with customers before and after a sale, and many parts are made to their exact requirements.',
-  },
+// Product showcase: ids match src/content/products.jsx
+export const careerProducts = [
+  { id: 'm-uni-seal', use: 'Pressure-assisted PTFE seals with a metal spring.' },
+  { id: 'mith-plate', use: 'Valve plates for reciprocating compressors.' },
+  { id: 'hammer-union-seal', use: 'Connection seals for extreme flow lines.' },
+  { id: 'encapsulated-o-ring', use: 'Two-part O-rings with a seamless FEP jacket.' },
+  { id: 'uni-lube-bearing', use: 'Self-lubricating bearings and bushings.' },
+  { id: 'seals-valve', use: 'Complete sealing solutions for valves.' },
 ];
 
 export const whyJoin = [
@@ -71,6 +62,9 @@ export const whyJoin = [
     text: 'Whether you are starting out or bringing years of experience, tell us about your skills and the kind of work you are looking for.',
   },
 ];
+
+// Add open roles here as { title, category, country, location, summary } once HR confirms them.
+export const openRoles = [];
 
 export const careerAreas = [
   'Design and application engineering',

@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ScrollReveal from '../../../shared/components/ScrollReveal';
 import { company } from '../../../content/company';
-import { ENQUIRY, fileProblem, formatBytes, uploadFile } from '../../../content/enquiry';
+import { ENQUIRY, fileProblem, formatBytes, sendEnquiry } from '../../../content/enquiry';
 import './ConnectWithUs.css';
 
 const EMPTY_FORM = { name: '', email: '', subject: '', message: '', website: '' };
@@ -85,41 +85,11 @@ export default function ConnectWithUsPage() {
 
     setSubmitError('');
     try {
-      let enquiryId;
-      let uploaded = [];
-      if (files.length) {
-        setStatus('Preparing upload…');
-        const res = await fetch('/api/enquiry-upload', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ files: files.map(({ name, size }) => ({ name, size })), website: form.website }),
-        });
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'Could not prepare your upload.');
-
-        for (const [index, upload] of data.uploads.entries()) {
-          setStatus(`Uploading file ${index + 1} of ${files.length}…`);
-          await uploadFile(files[index], upload.url);
-        }
-        enquiryId = data.enquiryId;
-        uploaded = data.uploads.map(({ path, name }) => ({ path, name }));
-      }
-
-      setStatus('Sending…');
-      const res = await fetch('/api/enquiry', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, enquiryId, files: uploaded }),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        setFieldErrors(data.fields || {});
-        throw new Error(data.error || 'Your message could not be sent. Please try again.');
-      }
-      setSent({ fileCount: uploaded.length });
+      setSent(await sendEnquiry({ form, files, onStatus: setStatus }));
       setForm(EMPTY_FORM);
       setFiles([]);
     } catch (err) {
+      setFieldErrors(err.fields || {});
       setSubmitError(err.message || 'Your message could not be sent. Please try again.');
     } finally {
       setStatus('');
@@ -275,6 +245,9 @@ export default function ConnectWithUsPage() {
                 ))}
                 <a href={`mailto:${company.contacts.sales.email}`} className="connect-person-link">
                   {company.contacts.sales.email}
+                </a>
+                <a href={company.socials.linkedin} target="_blank" rel="noopener noreferrer" className="connect-person-link">
+                  LinkedIn
                 </a>
               </div>
             </ScrollReveal>

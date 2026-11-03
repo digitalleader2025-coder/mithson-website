@@ -4,11 +4,19 @@ import Navbar from './shared/components/Navbar';
 import Footer from './shared/components/Footer';
 import PageTransition from './shared/components/PageTransition';
 import Lenis from 'lenis';
+import { capabilityPages, companyPages } from './content/capabilities';
 
 // Lazy loaded pages
 const Home = lazy(() => import('./pages/Home'));
 const AboutUs = lazy(() => import('./pages/WhoWeAre/AboutUs'));
-const QualityAndCertification = lazy(() => import('./pages/WhoWeAre/QualityAndCertification'));
+const HSSEQuality = lazy(() => import('./pages/WhoWeAre/HSSEQuality'));
+
+// Capabilities & resources
+const CapabilityPage = lazy(() => import('./pages/Capabilities/CapabilityPage'));
+const CapabilitiesOverview = lazy(() => import('./pages/Capabilities').then(module => ({ default: module.CapabilitiesOverview })));
+const MaterialsPage = lazy(() => import('./pages/Capabilities').then(module => ({ default: module.MaterialsPage })));
+const Resources = lazy(() => import('./pages/Resources'));
+const ApplicationData = lazy(() => import('./pages/More/ApplicationData'));
 
 // Products
 const Products = lazy(() => import('./pages/Products'));
@@ -129,7 +137,24 @@ export default function App() {
               {/* Who We Are */}
               <Route path="/who-we-are" element={<Navigate to="/who-we-are/about-us" replace />} />
               <Route path="/who-we-are/about-us" element={<AboutUs />} />
-              <Route path="/who-we-are/quality-and-certification" element={<QualityAndCertification />} />
+              <Route path="/who-we-are/quality-and-certification" element={<Navigate to="/who-we-are/hsse-and-quality" replace />} />
+              <Route path="/who-we-are/hsse-and-quality" element={<HSSEQuality />} />
+              <Route path="/who-we-are/facilities" element={<CapabilityPage page={companyPages.facilities} />} />
+              <Route path="/who-we-are/sustainability" element={<CapabilityPage page={companyPages.sustainability} />} />
+
+              {/* Capabilities */}
+              <Route path="/capabilities" element={<CapabilitiesOverview />} />
+              <Route path="/capabilities/materials" element={<MaterialsPage />} />
+              {Object.entries(capabilityPages).map(([slug, page]) => (
+                <Route key={slug} path={`/capabilities/${slug}`} element={<CapabilityPage page={page} />} />
+              ))}
+
+              {/* Resources */}
+              <Route path="/resources" element={<Resources />} />
+              <Route path="/resources/guides" element={<Resources view="guides" />} />
+              <Route path="/resources/technical-support" element={<Resources view="support" />} />
+              <Route path="/resources/faqs" element={<Resources view="faqs" />} />
+              <Route path="/resources/glossary" element={<Resources view="glossary" />} />
 
               {/* Products */}
               <Route path="/products" element={<Products />} />
@@ -156,6 +181,8 @@ export default function App() {
               <Route path="/industries/semiconductor" element={<IndustryPage slug="semiconductor" />} />
               <Route path="/industries/aerospace" element={<IndustryPage slug="aerospace" />} />
               <Route path="/industries/automotive" element={<IndustryPage slug="automotive" />} />
+              <Route path="/industries/mining" element={<IndustryPage slug="mining" />} />
+              <Route path="/industries/robotics" element={<IndustryPage slug="robotics" />} />
 
               {/* Oil & Gas Seal */}
               <Route path="/oil-gas-seal" element={<OilGasSeal />} />
@@ -170,6 +197,7 @@ export default function App() {
               {/* More / Connect */}
               <Route path="/more" element={<Navigate to="/connect-with-us" replace />} />
               <Route path="/connect-with-us" element={<ConnectWithUs />} />
+              <Route path="/connect-with-us/application-data" element={<ApplicationData />} />
 
               {/* Events */}
               <Route path="/events" element={<Events />} />
