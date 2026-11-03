@@ -23,6 +23,9 @@ This folder is only for the Mithson Sealing Solutions website. Read this whole f
 3. Ask for a screenshot or image whenever the look matters: "Please paste a screenshot of the part you mean, or an example you like."
 4. For larger work (new pages, redesigns, several files), give a short plan and wait for approval.
 5. Change only what was asked. The user often says "other than that don't change anything": treat it as a firm rule.
+   Never alter the menu bar (navbar) or the footer unless the user asks for a change to them by name.
+   Before any change, save a named restore point (a commit plus a `before-...` tag), and save an `after-...` tag once
+   it is done, so the user can say "revert to ..." safely. These are local only: push only when asked.
    If something else must change to make the request work, ask first or state it clearly.
 6. When an example image is given, copy the layout and spacing, not the logo, brand or text in it.
 7. Show the result, say how it was checked, and say plainly what was not checked.
