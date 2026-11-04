@@ -719,7 +719,7 @@ export default function AboutUsPage() {
       </Section>
 
       {/* 12 Sustainability */}
-      <Section id="sustainability" label="Sustainability & Responsible Manufacturing" title="Engineering with Greater Environmental Responsibility." foldable>
+      <Section id="sustainability" label="Sustainability & Responsible Manufacturing" title="Engineering with Greater Environmental Responsibility." foldable className="about-sustain">
         <div className="about-split">
           <div className="about-prose">
             <p>We recognize the importance of responsible manufacturing and reducing environmental impact.</p>
