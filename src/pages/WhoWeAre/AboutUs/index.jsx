@@ -33,6 +33,7 @@ import imgLifeScience from '../../../assets/industries/Life Science.webp';
 import imgSemiconductor from '../../../assets/industries/Semiconductor.webp';
 import imgAerospace from '../../../assets/industries/Aerospace.webp';
 import imgMining from '../../../assets/industries/Mining.webp';
+import imgDownholetools from '../../../assets/industries/Downhole Tools.webp';
 import imgIso from '../../../assets/certificates/ISO.png';
 import './AboutUs.css';
 
@@ -80,7 +81,7 @@ const ICONS = {
 const STAT_ICONS = ['calendar', 'layers', 'sectors', 'pin'];
 const HIGHLIGHT_ICONS = ['layers', 'gear', 'tools', 'shield'];
 const LIFECYCLE_ICONS = ['search', 'layers', 'ruler', 'cube', 'factory', 'shield'];
-const INDUSTRY_ICONS = { 'Oil & Gas': 'rig', Automotive: 'car', 'Life Sciences': 'flask', Semiconductor: 'chip', Aerospace: 'plane', Mining: 'truck', 'Industrial Processing': 'factory' };
+const INDUSTRY_ICONS = { 'Oil & Gas': 'rig', Automotive: 'car', 'Life Sciences': 'flask', Semiconductor: 'chip', Aerospace: 'plane', Mining: 'truck', 'Downhole Tools': 'factory' };
 
 function Icon({ name, size = 24 }) {
   return (
