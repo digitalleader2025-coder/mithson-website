@@ -22,6 +22,14 @@ export const journey = [
   { key: 'Today', tag: 'Mithson Sealing Solutions', title: 'Application-driven development', text: 'Today, our focus remains on combining established material knowledge with application-driven product development to support customers across diverse industries.' },
 ];
 
+// Short feature cards under Who We Are; each line is drawn from the approved copy above
+export const highlights = [
+  { title: 'Material Expertise', text: 'Fluoropolymers, high-performance thermoplastics and elastomers.' },
+  { title: 'Precision Manufacturing', text: 'Dimensional precision and consistent component quality.' },
+  { title: 'Application Engineering', text: 'Components developed around specific operating requirements.' },
+  { title: 'Reliable Quality', text: 'An ISO 9001:2015 certified quality management system.' },
+];
+
 export const philosophy = [
   'Application-specific product selection and design.',
   'Material compatibility with operating environments.',
@@ -40,44 +48,45 @@ export const manufactureGroups = [
   { title: 'Bearings, Washers and Other Polymer Components', product: 'uni-lube-bearing', path: '/products', text: 'Engineered components for applications requiring wear resistance, reduced friction, dimensional stability, and material compatibility.' },
 ];
 
-// Notes are general material guidance; names match materials.js where it has an entry
+// Notes are general material guidance; names match materials.js where it has an entry.
+// `swatch` picks the colour of the material tile drawn on the About page.
 export const materialFamilies = [
   {
     family: 'Fluoropolymers',
     items: [
-      { name: 'PTFE', match: 'PTFE' },
-      { name: 'Modified PTFE (TFM and NXT)', match: 'Modified PTFE (TFM & NXT)' },
-      { name: 'PFA', match: 'PFA' },
-      { name: 'FEP', strengths: 'Inert, smooth fluoropolymer that can be melt-processed', uses: 'Seamless jackets on encapsulated O-rings' },
+      { name: 'PTFE', match: 'PTFE', swatch: 'white' },
+      { name: 'Modified PTFE (TFM and NXT)', match: 'Modified PTFE (TFM & NXT)', swatch: 'white' },
+      { name: 'PFA', match: 'PFA', swatch: 'clear' },
+      { name: 'FEP', swatch: 'clear', strengths: 'Inert, smooth fluoropolymer that can be melt-processed', uses: 'Seamless jackets on encapsulated O-rings' },
     ],
   },
   {
     family: 'High-Performance Thermoplastics',
     items: [
-      { name: 'PEEK', match: 'VICTREX PEEK' },
-      { name: 'VESPEL', match: 'VESPEL' },
-      { name: 'POM (Delrin)', match: 'Delrin/POM' },
-      { name: 'Nylon', match: 'Nylon' },
-      { name: 'Devlon', strengths: 'Engineering polymer used for tough valve sealing faces', uses: 'Valve seat rings and insert seats' },
+      { name: 'PEEK', match: 'VICTREX PEEK', swatch: 'tan' },
+      { name: 'VESPEL', match: 'VESPEL', swatch: 'amber' },
+      { name: 'POM (Delrin)', match: 'Delrin/POM', swatch: 'white' },
+      { name: 'Nylon', match: 'Nylon', swatch: 'cream' },
+      { name: 'Devlon', swatch: 'cream', strengths: 'Engineering polymer used for tough valve sealing faces', uses: 'Valve seat rings and insert seats' },
     ],
   },
   {
     family: 'Elastomers',
     items: [
-      { name: 'HNBR', match: 'HNBR' },
-      { name: 'FKM', match: 'FKM/Viton' },
-      { name: 'FFKM', match: 'FFKM' },
-      { name: 'EPDM', match: 'EPDM' },
-      { name: 'PU', match: 'PU' },
+      { name: 'HNBR', match: 'HNBR', swatch: 'black' },
+      { name: 'FKM', match: 'FKM/Viton', swatch: 'black' },
+      { name: 'FFKM', match: 'FFKM', swatch: 'black' },
+      { name: 'EPDM', match: 'EPDM', swatch: 'black' },
+      { name: 'PU', match: 'PU', swatch: 'amber' },
     ],
   },
   {
     family: 'Other Engineered Materials',
     items: [
-      { name: 'RTFE', match: 'RTFE' },
-      { name: 'Carbon-filled PTFE', strengths: 'PTFE with carbon filler for better wear and creep resistance', uses: 'Valve plates, seats and packing' },
-      { name: 'Glass-filled PEEK', strengths: 'PEEK reinforced with glass for added stiffness', uses: 'Compressor valve plates' },
-      { name: 'MoS₂-filled materials', match: 'MOS2' },
+      { name: 'RTFE', match: 'RTFE', swatch: 'grey' },
+      { name: 'Carbon-filled PTFE', swatch: 'black', strengths: 'PTFE with carbon filler for better wear and creep resistance', uses: 'Valve plates, seats and packing' },
+      { name: 'Glass-filled PEEK', swatch: 'tan', strengths: 'PEEK reinforced with glass for added stiffness', uses: 'Compressor valve plates' },
+      { name: 'MoS₂-filled materials', match: 'MOS2', swatch: 'grey' },
     ],
   },
 ];
