@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { animate, motion, useInView, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { AnimatePresence, animate, motion, useInView, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import ScrollReveal from '../../../shared/components/ScrollReveal';
 import usePageMeta from '../../../shared/hooks/usePageMeta';
 import { company } from '../../../content/company';
@@ -25,6 +25,8 @@ import {
 import imgHeroProducts from '../../../assets/about/hero-products.webp';
 import imgBuilding from '../../../assets/about/mithson-building.webp';
 import imgHeritage from '../../../assets/about/group-heritage.webp';
+import imgExpansion from '../../../assets/about/journey-expansion.webp';
+import imgToday from '../../../assets/about/journey-today.webp';
 import imgOilGas from '../../../assets/industries/Oil & Gas.webp';
 import imgAutomotive from '../../../assets/industries/Automotive.webp';
 import imgLifeScience from '../../../assets/industries/Life Science.webp';
@@ -252,27 +254,84 @@ function Hero({ onJourney }) {
   );
 }
 
+// One picture per journey step, in the same order as `journey`
+const JOURNEY_IMAGES = [
+  { src: imgHeritage, alt: 'Fluoro Carbon Seals building in Chennai', caption: 'Fluoro Carbon Seals, Chennai: our group heritage' },
+  { src: imgExpansion, alt: 'Spring-energized and polymer seals', caption: 'Spring-energized and polymer seals' },
+  { src: imgBuilding, alt: 'Mithson Sealing Solutions building', caption: 'Illustrative image' },
+  { src: imgToday, alt: 'ISO 9001:2015 certificate with material test records for API 6A, NORSOK and BAM', caption: 'ISO 9001:2015 and material test records' },
+];
+
 function Journey() {
   const ref = useRef(null);
   const reduceMotion = useReducedMotion();
+  const [active, setActive] = useState(0);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start 75%', 'end 55%'] });
   const lineScale = useTransform(scrollYProgress, [0, 1], [reduceMotion ? 1 : 0, 1]);
+  const picture = JOURNEY_IMAGES[active];
+
+  // The step crossing the middle of the screen becomes the active one, so the picture follows the scroll
+  useEffect(() => {
+    const steps = ref.current?.querySelectorAll('li');
+    if (!steps) return undefined;
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => entry.isIntersecting && setActive(Number(entry.target.dataset.step))),
+      { rootMargin: '-45% 0px -45% 0px' },
+    );
+    steps.forEach((step) => observer.observe(step));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    JOURNEY_IMAGES.forEach(({ src }) => { new Image().src = src; });
+  }, []);
 
   return (
     <div className="about-journey">
-      <Figure className="about-journey-figure" src={imgHeritage} alt="Fluoro Carbon Seals building in Chennai" caption="Fluoro Carbon Seals, Chennai: our group heritage" />
+      <div className="about-journey-visual">
+        <figure className="about-figure about-journey-figure">
+          <AnimatePresence initial={false}>
+            <motion.img
+              key={picture.src}
+              src={picture.src}
+              alt={picture.alt}
+              initial={reduceMotion ? false : { opacity: 0, scale: 1.06 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            />
+          </AnimatePresence>
+          <figcaption>{picture.caption}</figcaption>
+          <span className="about-journey-count" aria-hidden="true">
+            <strong>{journey[active].key}</strong> {String(active + 1).padStart(2, '0')} / {String(journey.length).padStart(2, '0')}
+          </span>
+        </figure>
+        <div className="about-journey-pips" aria-hidden="true">
+          {journey.map((step, index) => <span key={step.key} className={index === active ? 'is-active' : ''} />)}
+        </div>
+      </div>
       <ol ref={ref} className="about-timeline">
         <span className="about-timeline-line" aria-hidden="true"><motion.span style={{ scaleY: lineScale }} /></span>
         {journey.map((step, index) => (
           <motion.li
             key={step.key}
+            data-step={index}
+            className={index === active ? 'is-active' : ''}
             initial={reduceMotion ? false : { opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.5, delay: index * 0.05 }}
           >
             <span className="about-timeline-dot" aria-hidden="true" />
-            <div className="about-timeline-card">
+            <div
+              className="about-timeline-card"
+              role="button"
+              tabIndex={0}
+              aria-pressed={index === active}
+              onClick={() => setActive(index)}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setActive(index); } }}
+            >
+              <img className="about-timeline-img" src={JOURNEY_IMAGES[index].src} alt="" loading="lazy" />
               <div className="about-timeline-top">
                 <strong>{step.key}</strong>
                 <span className={`about-tag${step.tag.startsWith('Group') ? '' : ' about-tag--mithson'}`}>{step.tag}</span>

@@ -165,12 +165,13 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
   margin-top: var(--space-10);
   padding: var(--space-4);
-  background: var(--about-glass);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--about-glass-border);
+  /* Same frosted white glass as the menu bar and its dropdowns */
+  background: rgba(255, 255, 255, 0.82);
+  -webkit-backdrop-filter: blur(6px) saturate(160%);
+  backdrop-filter: blur(6px) saturate(160%);
+  border: 1px solid rgba(66, 164, 255, 0.16);
   border-radius: var(--about-radius);
-  box-shadow: var(--about-shadow);
+  box-shadow: 0 10px 30px rgba(3, 54, 163, 0.1);
 }
 
 .about-stats li {
@@ -457,7 +458,70 @@
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
   gap: var(--space-12);
-  align-items: center;
+  align-items: start;
+}
+
+/* The picture stays in view while the steps scroll past, and changes with the active step */
+.about-journey-visual {
+  position: sticky;
+  top: 120px;
+}
+
+.about-journey-figure {
+  aspect-ratio: 1200 / 818;
+  background: #0b1530;
+}
+
+.about-journey-figure img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  object-fit: contain;
+}
+
+.about-journey-count {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 1;
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.82);
+  -webkit-backdrop-filter: blur(6px) saturate(160%);
+  backdrop-filter: blur(6px) saturate(160%);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-muted);
+}
+
+.about-journey-count strong {
+  margin-right: var(--space-1);
+  font-family: var(--font-display);
+  color: var(--color-navy-base);
+}
+
+.about-journey-figure figcaption {
+  z-index: 1;
+}
+
+.about-journey-pips {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.about-journey-pips span {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: rgba(3, 54, 163, 0.18);
+  transition: width var(--duration-base) var(--ease-out), background var(--duration-base);
+}
+
+.about-journey-pips .is-active {
+  width: 28px;
+  background: var(--about-blue);
 }
 
 .about-timeline {
@@ -502,13 +566,36 @@
 }
 
 .about-timeline-card {
+  display: block;
+  width: 100%;
   padding: var(--space-5);
-  transition: transform var(--duration-base) var(--ease-out), border-color var(--duration-base);
+  text-align: left;
+  cursor: pointer;
+  transition: transform var(--duration-base) var(--ease-out), border-color var(--duration-base), box-shadow var(--duration-base);
 }
 
 .about-timeline li:hover .about-timeline-card {
   transform: translateX(6px);
   border-color: var(--color-blue-accent);
+}
+
+.about-timeline li.is-active .about-timeline-card {
+  transform: translateX(6px);
+  border-color: var(--about-blue);
+  box-shadow: 0 0 0 3px rgba(10, 108, 255, 0.12), var(--about-shadow);
+}
+
+.about-timeline-dot {
+  transition: background var(--duration-base), transform var(--duration-base);
+}
+
+.about-timeline li.is-active .about-timeline-dot {
+  background: var(--about-blue);
+  transform: scale(1.15);
+}
+
+.about-timeline-img {
+  display: none;
 }
 
 .about-timeline-top {
@@ -1195,6 +1282,8 @@
   .about-figure img,
   .about-product-image img,
   .about-timeline-card,
+  .about-timeline-dot,
+  .about-journey-pips span,
   .about-flow-icon {
     transition: none;
   }
@@ -1249,8 +1338,15 @@
   .about-stats li:nth-child(3) {
     border-left: none;
   }
-  .about-journey-figure {
-    max-width: 620px;
+  .about-journey-visual {
+    display: none;
+  }
+  .about-timeline-img {
+    display: block;
+    width: 100%;
+    margin-bottom: var(--space-4);
+    background: #0b1530;
+    border-radius: 12px;
   }
   .about-product-cell {
     flex-basis: calc((100% - var(--space-5)) / 2);
