@@ -37,6 +37,8 @@ export default defineConfig(({ mode }) => {
       entries: ['index.html'],
     },
     server: {
+      // Lets temporary Cloudflare Quick Tunnel links reach the dev server for testing
+      allowedHosts: ['.trycloudflare.com'],
       watch: { ignored: ['**/flow-mcp/**'] },
     },
     build: {
