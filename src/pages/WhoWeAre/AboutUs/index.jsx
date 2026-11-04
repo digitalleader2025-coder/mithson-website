@@ -44,6 +44,7 @@ const INDUSTRY_IMAGES = {
   Semiconductor: imgSemiconductor,
   Aerospace: imgAerospace,
   Mining: imgMining,
+  'Downhole Tools': imgDownholetools,
 };
 
 const productImage = (id) => {

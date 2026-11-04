@@ -107,7 +107,7 @@ export const aboutIndustries = [
   { title: 'Semiconductor', image: 'Semiconductor', path: '/industries/semiconductor', text: 'Precision polymer components for specialized equipment and demanding process environments.' },
   { title: 'Aerospace', image: 'Aerospace', path: '/industries/aerospace', text: 'Engineered polymer components for applications requiring carefully selected materials and dimensional precision.' },
   { title: 'Mining', image: 'Mining', path: '/industries/mining', text: 'Wear-resistant polymer components for equipment operating in demanding industrial environments.' },
-  { title: 'Industrial Processing', path: '/industries', text: 'Sealing solutions for fluid handling, pumps, compressors, and process equipment.' },
+  { title: 'Downhole Tools', image: 'Downhole Tools', path: '/industries/downhole-tools', text: 'Sealing solutions for fluid handling, pumps, compressors, and process equipment.' },
 ];
 
 export const qualityFocus = [
