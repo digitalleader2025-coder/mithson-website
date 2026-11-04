@@ -32,6 +32,13 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react(), devApi()],
+    // Only scan the site itself: flow-mcp keeps a Chrome profile whose extension pages break the dependency scan
+    optimizeDeps: {
+      entries: ['index.html'],
+    },
+    server: {
+      watch: { ignored: ['**/flow-mcp/**'] },
+    },
     build: {
       // The lazy-loaded 3D library is about 950 kB on its own
       chunkSizeWarningLimit: 1000,
