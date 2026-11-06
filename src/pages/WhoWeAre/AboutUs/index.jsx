@@ -738,7 +738,7 @@ export default function AboutUsPage() {
         <div className="container">
           <ScrollReveal>
             <div className="about-cta">
-              <div className="about-cta-bg" style={{ backgroundImage: `url("${imgOilGas}")` }} aria-hidden="true" />
+              <div className="about-cta-bg" style={{ backgroundImage: `url("${imgAerospace}")` }} aria-hidden="true" />
               <div className="about-cta-text">
                 <span className="section-label">Get in Touch</span>
                 <h2>Let's Engineer Your Next Sealing Solution.</h2>

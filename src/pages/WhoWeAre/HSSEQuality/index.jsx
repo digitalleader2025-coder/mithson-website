@@ -24,7 +24,9 @@ import {
 import { siteImages } from '../../../content/siteImages';
 import imgProducts from '../../../assets/about/hero-products.webp';
 import imgBuilding from '../../../assets/about/mithson-building.webp';
-import imgOffshore from '../../../assets/industries/Oil & Gas.webp';
+// Backgrounds differ from the About page so each page has its own look
+import imgHeroBg from '../../../assets/industries/Life Science.webp';
+import imgCommitBg from '../../../assets/industries/Automotive.webp';
 import imgIso from '../../../assets/certificates/ISO.png';
 import imgQima from '../../../assets/certificates/QIMA.png';
 import './HSSEQuality.css';
@@ -160,7 +162,7 @@ function Hero() {
 
   return (
     <section ref={ref} className="hsse-hero" id="hsse-top">
-      <motion.div className="hsse-hero-bg" style={{ y: bgY, backgroundImage: `url("${imgOffshore}")` }} aria-hidden="true" />
+      <motion.div className="hsse-hero-bg" style={{ y: bgY, backgroundImage: `url("${imgHeroBg}")` }} aria-hidden="true" />
       <div className="container hsse-hero-grid">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: EASE }}>
           <span className="hsse-label hsse-label--dark">HSSE & Quality</span>
@@ -716,7 +718,7 @@ export default function HSSEQualityPage() {
 
       {/* 9. Commitment */}
       <section className="hsse-commit">
-        <div className="hsse-commit-bg" style={{ backgroundImage: `url("${imgOffshore}")` }} aria-hidden="true" />
+        <div className="hsse-commit-bg" style={{ backgroundImage: `url("${imgCommitBg}")` }} aria-hidden="true" />
         <div className="container hsse-commit-grid">
           <div>
             <span className="hsse-label hsse-label--dark">Our Commitment</span>
