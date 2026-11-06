@@ -10,6 +10,7 @@ import { capabilityPages, companyPages } from './content/capabilities';
 const Home = lazy(() => import('./pages/Home'));
 const AboutUs = lazy(() => import('./pages/WhoWeAre/AboutUs'));
 const HSSEQuality = lazy(() => import('./pages/WhoWeAre/HSSEQuality'));
+const Facilities = lazy(() => import('./pages/WhoWeAre/Facilities'));
 
 // Capabilities & resources
 const CapabilityPage = lazy(() => import('./pages/Capabilities/CapabilityPage'));
@@ -139,7 +140,7 @@ export default function App() {
               <Route path="/who-we-are/about-us" element={<AboutUs />} />
               <Route path="/who-we-are/quality-and-certification" element={<Navigate to="/who-we-are/hsse-and-quality" replace />} />
               <Route path="/who-we-are/hsse-and-quality" element={<HSSEQuality />} />
-              <Route path="/who-we-are/facilities" element={<CapabilityPage page={companyPages.facilities} />} />
+              <Route path="/who-we-are/facilities" element={<Facilities />} />
               <Route path="/who-we-are/sustainability" element={<CapabilityPage page={companyPages.sustainability} />} />
 
               {/* Capabilities */}
