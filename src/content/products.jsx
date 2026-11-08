@@ -187,6 +187,7 @@ export const products = [
           <li>DEVLON SEAT RING</li>
           <li>DEVLON INSERT METAL SEAT</li>
           <li>PTFE LINED</li>
+          <li>PFA LINED DISC</li>
         </ol>
       </div>
     ),
@@ -203,7 +204,7 @@ export const products = [
       'PTFE Chevron Packing', 'PTFE Carbon Graphite Chevron Packing',
       'PTFE Carbon Graphite Seat', 'PTFE Cavity Seat', 'PTFE Seat',
       'PTFE Plug', 'PTFE Sleeve', 'PEEK Seat Ring', 'PEEK Insert Metal Seat',
-      'Devlon Seat Ring', 'Devlon Insert Metal Seat', 'PTFE Lined', 'Elastomer O-Rings',
+      'Devlon Seat Ring', 'Devlon Insert Metal Seat', 'PTFE Lined', 'PFA Lined Disc', 'Elastomer O-Rings',
     ],
     applications: ['Gate Valves', 'Ball Valves', 'Globe Valves', 'Plug Valves', 'Butterfly Valves', 'Diaphragm Valves'],
     path: '/products/seals-valve',
@@ -304,6 +305,7 @@ export const products = [
       { name: 'Piston Seals', notes: 'Dynamic pressure barrier and lubrication-film support' },
       { name: 'Wiper Seals', notes: 'Exclude contaminants and help lubrication return' },
       { name: 'Rod Seals', notes: 'Pressure barrier preventing internal fluid leakage' },
+      { name: 'Hydraulic Seal Kits', notes: 'Matched seal set for resealing a cylinder' },
     ],
     // Elastomer sits beside the polymers here: hydraulic O-rings use it for different pressure/temperature duty
     materials: ['High-performance polymers', 'Elastomers'],
@@ -333,7 +335,7 @@ export const products = [
       'Low friction',
       'Reduced wear',
     ],
-    components: ['Diaphragm', 'Pilot Shaft', 'PTFE Ball', 'PTFE Valve', 'O-Ring', 'Seat'],
+    components: ['Diaphragm', 'Rubber Diaphragm', 'Pilot Shaft', 'PTFE Ball', 'PTFE Valve', 'O-Ring', 'Seat'],
     materials: ['PTFE', 'Fluoropolymers'],
     applications: ['Air Operated Double Diaphragm Pumps'],
     path: '/products/diaphragm-aodd',

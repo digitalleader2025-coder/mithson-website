@@ -181,6 +181,12 @@ export const productItems = {
   },
 
   'plug-lined-valve': {
+    'PFA Lined Disc': {
+      description: 'A butterfly valve disc covered in PFA, so the process medium meets the lining rather than the metal underneath.',
+      temperature: null,
+      pressure: null,
+      materials: ['PFA'],
+    },
     'PTFE Sleeved Plug': {
       description: 'A PTFE sleeve between the plug and body that seals all the way around. It needs no lubricant and removes the cavity where media could collect.',
       temperature: typical('-29°C to +150°C', SRC.vahnTechPlug, 'PTFE sleeved plug valve'),

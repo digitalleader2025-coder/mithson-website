@@ -52,6 +52,7 @@ import vsImg13b from '../../pages/Products/Seals-Valve/assets/Stem Packing API 6
 import plvImg1 from '../../pages/Products/Plug-Lined-Valve/assets/Image1.png';
 import plvImg2 from '../../pages/Products/Plug-Lined-Valve/assets/Image2.png';
 import plvImg3 from '../../pages/Products/Plug-Lined-Valve/assets/Image3.png';
+import plvImg4 from '../../pages/Products/Plug-Lined-Valve/assets/PFA Lined Disc.png';
 
 import ubImg1 from '../../pages/Products/UNI-LUBE-Bearing/assets/MSS-MF Self Lube - 1.png';
 import ubImg2 from '../../pages/Products/UNI-LUBE-Bearing/assets/MSS-MF Self Lube - 2.png';
@@ -65,16 +66,19 @@ import shImg1 from '../../pages/Products/Seals-Hydraulic/assets/Wear Rings.png';
 import shImg2 from '../../pages/Products/Seals-Hydraulic/assets/Piston Seals.png';
 import shImg3 from '../../pages/Products/Seals-Hydraulic/assets/Wiper Seals.png';
 import shImg4 from '../../pages/Products/Seals-Hydraulic/assets/Rod Seals.png';
+import shImg5 from '../../pages/Products/Seals-Hydraulic/assets/Hydraulic Seal Kit.png';
 
 import diaImg1 from '../../pages/Products/Diaphragm-AODD/assets/Diaphragm.png';
 import diaImg2 from '../../pages/Products/Diaphragm-AODD/assets/PILOT Shaft.png';
 import diaImg3 from '../../pages/Products/Diaphragm-AODD/assets/PTFE Ball.png';
 import diaImg4 from '../../pages/Products/Diaphragm-AODD/assets/PTFE O-Ring.png';
 import diaImg5 from '../../pages/Products/Diaphragm-AODD/assets/PTFE Seat.png';
+import diaImg6 from '../../pages/Products/Diaphragm-AODD/assets/Rubber Diaphragm.png';
 
 import wtImg1 from '../../pages/Products/Washers-Transmission/assets/PEEK-Split Lock Washer.png';
 import wtImg2 from '../../pages/Products/Washers-Transmission/assets/PEEK-Thrust Washer.png';
 import wtImg3 from '../../pages/Products/Washers-Transmission/assets/Product 1.png';
+import wtImg4 from '../../pages/Products/Washers-Transmission/assets/PTFE Transmission Seals.png';
 
 import npImg1 from '../../pages/Products/Nozzles-Power-Grid/assets/PTFE Nozzles-1.png';
 import npImg2 from '../../pages/Products/Nozzles-Power-Grid/assets/PTFE Nozzles-2.png';
@@ -414,6 +418,7 @@ function PlugLinedValveCustomSection() {
     { images: [plvImg1], title: 'PTFE Sleeved Plug' },
     { images: [plvImg2], title: 'PTFE Round Plug' },
     { images: [plvImg3], title: 'PTFE Lined Plug' },
+    { images: [plvImg4], title: 'PFA Lined Disc' },
   ];
 
   return (
@@ -566,6 +571,13 @@ function SealsHydraulicCustomSection() {
       details: <CarouselItemDetails 
         description="Rod seal is the most critical seal hydraulic cylinder. It acts as a pressure barrier and keeps the operating fluid inside the cylinder. It prevents leakage from within the cylinder to the outside which can reduce equipment performance."
       />
+    },
+    {
+      images: [shImg5],
+      title: 'Hydraulic Seal Kits',
+      details: <CarouselItemDetails
+        description="A matched set of the seals a hydraulic cylinder needs, supplied together so a cylinder can be resealed in one go. Contents are built around the cylinder and the seals it uses."
+      />
     }
   ];
 
@@ -582,7 +594,8 @@ function DiaphragmAoddCustomSection() {
     { images: [diaImg2], title: 'Pilot Shaft' },
     { images: [diaImg3], title: 'PTFE Ball' },
     { images: [diaImg4], title: 'PTFE O-Ring' },
-    { images: [diaImg5], title: 'PTFE Seat' }
+    { images: [diaImg5], title: 'PTFE Seat' },
+    { images: [diaImg6], title: 'Rubber Diaphragm' }
   ];
 
   return (
@@ -595,7 +608,8 @@ function DiaphragmAoddCustomSection() {
 function WashersTransmissionCustomSection() {
   const items = [
     { images: [wtImg1], title: 'PEEK-Split Lock Washer' },
-    { images: [wtImg2], title: 'PEEK-Thrust Washer' }
+    { images: [wtImg2], title: 'PEEK-Thrust Washer' },
+    { images: [wtImg4], title: 'PTFE Transmission Seals' }
   ];
 
   return (
