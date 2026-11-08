@@ -14,7 +14,6 @@ import {
   qualityCommitment,
 } from '../../../content/facilitiesPage';
 import imgBuilding from '../../../assets/about/mithson-building.webp';
-import imgCorporate from '../../../assets/about/group-heritage.webp';
 import imgSeals from '../../../assets/about/journey-expansion.webp';
 import imgUnit2 from '../../../assets/about/unit-2.webp';
 import imgRecords from '../../../assets/about/journey-today.webp';
@@ -215,10 +214,6 @@ function LocationCard({ loc, image, illustrative, delay }) {
           <h3>{loc.name}</h3>
           <address><Icon name="pin" size={18} /><span>{loc.address.map((line) => <span key={line}>{line}</span>)}</span></address>
           {loc.text.map((p) => <p key={p}>{p}</p>)}
-          <dl>
-            <div><dt>Location</dt><dd>{loc.place}</dd></div>
-            <div><dt>Facility type</dt><dd>{loc.type}</dd></div>
-          </dl>
           <div className="fac-loc-actions">
             <a href={loc.directions} target="_blank" rel="noopener noreferrer" className="btn btn-navy"><Icon name="pin" size={18} /> Get Directions</a>
             <Link to={loc.action.to} className="btn btn-outline">{loc.action.label} <Arrow /></Link>
@@ -316,7 +311,7 @@ export default function FacilitiesPage() {
         <div className="container">
           <Head label="Our Locations" title="Two Locations. One Engineering Commitment." />
           <div className="fac-locs">
-            <LocationCard loc={locations[0]} image={imgCorporate} delay={0} />
+            <LocationCard loc={locations[0]} image={imgBuilding} delay={0} />
             <LocationCard loc={locations[1]} image={imgUnit2} delay={0.1} />
           </div>
         </div>
