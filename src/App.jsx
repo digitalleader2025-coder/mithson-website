@@ -11,6 +11,7 @@ const Home = lazy(() => import('./pages/Home'));
 const AboutUs = lazy(() => import('./pages/WhoWeAre/AboutUs'));
 const HSSEQuality = lazy(() => import('./pages/WhoWeAre/HSSEQuality'));
 const Facilities = lazy(() => import('./pages/WhoWeAre/Facilities'));
+const Sustainability = lazy(() => import('./pages/WhoWeAre/Sustainability'));
 
 // Capabilities & resources
 const CapabilityPage = lazy(() => import('./pages/Capabilities/CapabilityPage'));
@@ -141,7 +142,7 @@ export default function App() {
               <Route path="/who-we-are/quality-and-certification" element={<Navigate to="/who-we-are/hsse-and-quality" replace />} />
               <Route path="/who-we-are/hsse-and-quality" element={<HSSEQuality />} />
               <Route path="/who-we-are/facilities" element={<Facilities />} />
-              <Route path="/who-we-are/sustainability" element={<CapabilityPage page={companyPages.sustainability} />} />
+              <Route path="/who-we-are/sustainability" element={<Sustainability />} />
 
               {/* Capabilities */}
               <Route path="/capabilities" element={<CapabilitiesOverview />} />
