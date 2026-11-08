@@ -473,13 +473,6 @@
   z-index: 1;
 }
 
-/* the cards sit on a photo now, so they need a little more body */
-.sustain-section .sustain-card {
-  background: rgba(255, 255, 255, 0.86);
-  -webkit-backdrop-filter: blur(6px) saturate(160%);
-  backdrop-filter: blur(6px) saturate(160%);
-  border-color: rgba(66, 164, 255, 0.22);
-}
 
 @media (max-width: 900px) {
   /* narrow screens: keep one soft wash so the text stays easy to read */
@@ -500,58 +493,135 @@
   align-items: start;
 }
 
-.sustain-cards {
+.sustain-arc {
+  position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
+  gap: var(--space-5);
+  padding-right: 34px;
 }
 
-.sustain-card {
-  padding: var(--space-4);
-  border-radius: var(--radius-xl);
+/* each row: label on the left, circular photo on the right, stepped to form an arc */
+.sustain-orbit {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
-  font-size: var(--text-sm);
-  color: var(--color-text-2);
-  line-height: 1.6;
+  justify-content: flex-end;
+  gap: var(--space-5);
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: 0;
+  text-align: right;
+  cursor: pointer;
 }
 
-.sustain-card-img {
+.sustain-orbit-text {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-navy-base);
+  opacity: 0.75;
+  transition: opacity var(--duration-base), transform var(--duration-base) var(--ease-out);
+}
+
+.sustain-orbit-ring {
+  position: relative;
+  display: block;
   flex-shrink: 0;
-  width: 68px;
-  height: 68px;
-  object-fit: cover;
-  border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(3, 54, 163, 0.14);
-  transition: transform var(--duration-base) var(--ease-out);
+  width: 104px;
+  height: 104px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 28px rgba(3, 54, 163, 0.22);
+  transition: width var(--duration-slow) var(--ease-out), height var(--duration-slow) var(--ease-out), box-shadow var(--duration-base);
 }
 
-.sustain-card:hover .sustain-card-img {
-  transform: scale(1.06);
+.sustain-orbit-ring img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sustain-orbit.is-active .sustain-orbit-ring {
+  width: 150px;
+  height: 150px;
+  box-shadow: 0 16px 40px rgba(3, 54, 163, 0.32);
+}
+
+.sustain-orbit.is-active .sustain-orbit-text {
+  opacity: 1;
+  transform: translateX(-4px);
+  color: var(--color-blue);
+}
+
+/* the arc: middle rows push further right */
+.sustain-orbit:nth-child(1) { padding-right: 0; }
+.sustain-orbit:nth-child(2) { padding-right: 34px; }
+.sustain-orbit:nth-child(3) { padding-right: 48px; }
+.sustain-orbit:nth-child(4) { padding-right: 34px; }
+.sustain-orbit:nth-child(5) { padding-right: 0; }
+
+.sustain-dots {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  display: grid;
+  gap: 9px;
+  transform: translateY(-50%);
+}
+
+.sustain-dots span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(3, 54, 163, 0.22);
+  transition: background var(--duration-base), transform var(--duration-base);
+}
+
+.sustain-dots .is-active {
+  background: var(--color-blue-accent);
+  transform: scale(1.5);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sustain-card-img {
+  .sustain-orbit-ring,
+  .sustain-orbit-text,
+  .sustain-dots span {
     transition: none;
   }
 }
 
-@media (max-width: 640px) {
-  .sustain-card-img {
-    width: 56px;
-    height: 56px;
-    border-radius: 12px;
+/* narrow screens: a plain list, no arc and no size change */
+@media (max-width: 900px) {
+  .sustain-arc {
+    gap: var(--space-3);
+    padding-right: 0;
   }
-}
-
-.sustain-card-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-blue);
-  flex-shrink: 0;
-  margin-top: 6px;
+  .sustain-orbit,
+  .sustain-orbit:nth-child(n) {
+    justify-content: flex-start;
+    gap: var(--space-4);
+    padding: var(--space-2) 0;
+    text-align: left;
+  }
+  .sustain-orbit-text {
+    order: 2;
+    opacity: 1;
+  }
+  .sustain-orbit-ring,
+  .sustain-orbit.is-active .sustain-orbit-ring {
+    order: 1;
+    width: 68px;
+    height: 68px;
+    border-width: 2px;
+  }
+  .sustain-orbit.is-active .sustain-orbit-text {
+    transform: none;
+  }
+  .sustain-dots {
+    display: none;
+  }
 }
 
 /* --- Home CTA --- */
@@ -620,7 +690,6 @@
 @media (max-width: 640px) {
   .products-grid { grid-template-columns: 1fr 1fr; }
   .sectors-grid  { grid-template-columns: repeat(2, 1fr); }
-  .sustain-cards { grid-template-columns: 1fr; }
   .cert-badges   { grid-template-columns: repeat(3, 1fr); }
 }
 

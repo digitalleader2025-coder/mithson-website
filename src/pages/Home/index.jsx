@@ -1,6 +1,6 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -287,6 +287,20 @@ const SUSTAIN_IMAGES = {
 
 /* ----- Sustainability section ----- */
 function SustainabilitySection() {
+  const items = company.sustainability;
+  const ref = useRef(null);
+  const inView = useInView(ref, { margin: '-120px' });
+  const reduceMotion = useReducedMotion();
+  const [active, setActive] = useState(2);
+  const [held, setHeld] = useState(false);
+
+  // the arc moves on by itself while it is on screen and nobody is pointing at it
+  useEffect(() => {
+    if (held || !inView || reduceMotion) return undefined;
+    const timer = setTimeout(() => setActive((a) => (a + 1) % items.length), 3200);
+    return () => clearTimeout(timer);
+  }, [active, held, inView, reduceMotion, items.length]);
+
   return (
     <section className="sustain-section section" aria-labelledby="sustain-title">
       <div className="container">
@@ -297,17 +311,36 @@ function SustainabilitySection() {
               Committed to a <span className="text-gradient-blue">Greener Future</span>
             </h2>
           </ScrollReveal>
-          <div className="sustain-cards">
-            {company.sustainability.map((item, i) => (
-              <ScrollReveal key={i} delay={i * 0.08}>
-                <div className="sustain-card glass-card">
-                  {SUSTAIN_IMAGES[item]
-                    ? <img className="sustain-card-img" src={SUSTAIN_IMAGES[item]} alt="" loading="lazy" />
-                    : <div className="sustain-card-dot" />}
-                  <p>{item}</p>
-                </div>
-              </ScrollReveal>
+
+          <div
+            ref={ref}
+            className="sustain-arc"
+            onMouseEnter={() => setHeld(true)}
+            onMouseLeave={() => setHeld(false)}
+          >
+            {items.map((item, i) => (
+              <motion.button
+                key={item}
+                type="button"
+                className={`sustain-orbit${i === active ? ' is-active' : ''}`}
+                aria-pressed={i === active}
+                onMouseEnter={() => setActive(i)}
+                onFocus={() => setActive(i)}
+                onClick={() => setActive(i)}
+                initial={reduceMotion ? false : { opacity: 0, x: 60 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.6, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <span className="sustain-orbit-text">{item}</span>
+                <span className="sustain-orbit-ring">
+                  <img src={SUSTAIN_IMAGES[item]} alt="" loading="lazy" />
+                </span>
+              </motion.button>
             ))}
+            <span className="sustain-dots" aria-hidden="true">
+              {items.map((item, i) => <span key={item} className={i === active ? 'is-active' : ''} />)}
+            </span>
           </div>
         </div>
       </div>
