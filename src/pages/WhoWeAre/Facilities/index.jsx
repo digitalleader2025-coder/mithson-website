@@ -16,6 +16,7 @@ import {
 import imgBuilding from '../../../assets/about/mithson-building.webp';
 import imgCorporate from '../../../assets/about/group-heritage.webp';
 import imgSeals from '../../../assets/about/journey-expansion.webp';
+import imgUnit2 from '../../../assets/about/unit-2.webp';
 import imgRecords from '../../../assets/about/journey-today.webp';
 import imgIso from '../../../assets/certificates/ISO.png';
 import imgQima from '../../../assets/certificates/QIMA.png';
@@ -316,7 +317,7 @@ export default function FacilitiesPage() {
           <Head label="Our Locations" title="Two Locations. One Engineering Commitment." />
           <div className="fac-locs">
             <LocationCard loc={locations[0]} image={imgCorporate} delay={0} />
-            <LocationCard loc={locations[1]} image={imgBuilding} illustrative delay={0.1} />
+            <LocationCard loc={locations[1]} image={imgUnit2} delay={0.1} />
           </div>
         </div>
       </section>
