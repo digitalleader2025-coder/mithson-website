@@ -181,19 +181,19 @@ export const productItems = {
   },
 
   'plug-lined-valve': {
-    'PTFE Plug Valve Sleeve': {
+    'PTFE Sleeved Plug': {
       description: 'A PTFE sleeve between the plug and body that seals all the way around. It needs no lubricant and removes the cavity where media could collect.',
       temperature: typical('-29°C to +150°C', SRC.vahnTechPlug, 'PTFE sleeved plug valve'),
       pressure: typical('Class 150 to 600', SRC.vahnTechPlug, 'PTFE sleeved plug valve'),
       materials: ['Virgin PTFE', 'Chemically Modified PTFE', 'Carbon-Filled PTFE', 'Glass-Filled PTFE', 'Bronze-Filled PTFE'],
     },
-    'PTFE Bushings and Sleeves': {
+    'PTFE Round Plug': {
       description: 'Machined PTFE parts that guide moving components and reduce friction without lubricant, in chemical service where metal would corrode.',
       temperature: ptfeMaterial,
       pressure: null,
       materials: ['Virgin PTFE', 'Carbon-Filled PTFE', 'Glass-Filled PTFE', 'Bronze-Filled PTFE'],
     },
-    'PTFE Valve Liners': {
+    'PTFE Lined Plug': {
       description: 'A PTFE lining that keeps corrosive media away from the metal valve body, so the body provides strength and the liner provides chemical resistance.',
       temperature: ptfeMaterial,
       pressure: null,
@@ -202,7 +202,7 @@ export const productItems = {
   },
 
   'uni-lube-bearing': {
-    'MSS-MF Self Lube': {
+    'MSS-MF Self Lube (MSS-DU Bush)': {
       temperature: typical('-200°C to +250°C', SRC.skfBushings, 'PTFE composite bushing'),
       pressure: typical('Up to 80 N/mm²', SRC.skfBushings, 'PTFE composite, low speed'),
       pressureLabel: 'Load',

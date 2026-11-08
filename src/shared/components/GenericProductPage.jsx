@@ -411,9 +411,9 @@ function SealsValveCustomSection() {
 
 function PlugLinedValveCustomSection() {
   const items = [
-    { images: [plvImg1], title: 'PTFE Plug Valve Sleeve' },
-    { images: [plvImg2], title: 'PTFE Bushings and Sleeves' },
-    { images: [plvImg3], title: 'PTFE Valve Liners' },
+    { images: [plvImg1], title: 'PTFE Sleeved Plug' },
+    { images: [plvImg2], title: 'PTFE Round Plug' },
+    { images: [plvImg3], title: 'PTFE Lined Plug' },
   ];
 
   return (
@@ -475,7 +475,7 @@ function UniLubeBearingCustomSection() {
   const items = [
     { 
       images: [ubImg1, ubImg2], 
-      title: 'MSS-MF Self Lube', 
+      title: 'MSS-MF Self Lube (MSS-DU Bush)', 
       details: <CarouselItemDetails 
         title="Metal-Polymer Self-Lubricating"
         description="MSS-MF series bearings deliver high-performance, self-lubricating operation with a wide range of applications. Designed for maintenance-free, long-life performance, they provide low friction, vibration and noise, excellent abrasion resistance under high loads and low speeds, and strong dimensional stability with efficient heat conductivity."

@@ -270,7 +270,7 @@ export const products = [
       'Temperature range -40°C to +300°C (MSS-MB)',
     ],
     variants: [
-      { name: 'MSS-MF Self Lube', notes: 'Dry lubrication, maintenance-free, low vibration/noise, abrasion resistance' },
+      { name: 'MSS-MF Self Lube (MSS-DU Bush)', notes: 'Dry lubrication, maintenance-free, low vibration/noise, abrasion resistance' },
       { name: 'MSS-MP Pre Lube', notes: 'Intermittent/boundary operation, high load/low speed, lubricant-retaining pockets, shock-load resistance' },
       { name: 'MSS-BIM Bi-Metal', notes: 'Heavy-load, high mechanical/fatigue/wear resistance' },
       { name: 'MSS-MB Solid Bush', notes: 'Thick-wall single-metal; turbines, pumps/compressors, foundries, steel/aluminium, packaging, food/beverage, agriculture, construction; -40°C to +300°C' },
@@ -305,6 +305,8 @@ export const products = [
       { name: 'Wiper Seals', notes: 'Exclude contaminants and help lubrication return' },
       { name: 'Rod Seals', notes: 'Pressure barrier preventing internal fluid leakage' },
     ],
+    // Elastomer sits beside the polymers here: hydraulic O-rings use it for different pressure/temperature duty
+    materials: ['High-performance polymers', 'Elastomers'],
     applications: ['Hydraulic Cylinders', 'Heavy Machinery', 'Industrial Equipment'],
     path: '/products/seals-hydraulic',
     folder: 'Seals-Hydraulic',

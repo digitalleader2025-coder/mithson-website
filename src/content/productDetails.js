@@ -183,7 +183,7 @@ export const productDetails = {
       'The UNI-LUBE family covers five types: MSS-MF Self Lube, MSS-MP Pre Lube, MSS-BIM Bi-Metal, MSS-MB Solid Bush and MSS-Mithlon thermoplastic bushings. Together they suit dry, lubricated, wet and high-load duties.',
     ],
     howItWorks: [
-      { title: 'MSS-MF Self Lube', text: 'Metal-polymer bearing with dry lubrication, low friction, low noise and long maintenance-free life.' },
+      { title: 'MSS-MF Self Lube (MSS-DU Bush)', text: 'Metal-polymer bearing with dry lubrication, low friction, low noise and long maintenance-free life.' },
       { title: 'MSS-MP Pre Lube', text: 'Retaining pockets hold lubricant for high-load, low-speed, stop-start and oscillating movement.' },
       { title: 'MSS-BIM Bi-Metal', text: 'Steel-backed bushing for lubricated operation under heavy load, shock and low-speed oscillation.' },
       { title: 'MSS-MB Solid Bush', text: 'Solid metal bearing with embedded solid lubricant, for long service without added lubrication. Source range: -40°C to +300°C.' },
