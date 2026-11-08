@@ -115,7 +115,8 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
-  margin-top: var(--space-5);
+  min-height: 44px;
+  margin-top: var(--space-4);
   font-weight: 600;
   color: var(--color-navy-base);
 }
@@ -164,10 +165,10 @@
   right: var(--space-2);
   bottom: var(--space-2);
   z-index: 2;
-  padding: 2px 9px;
-  background: rgba(255, 255, 255, 0.82);
+  padding: 3px 10px;
+  background: rgba(255, 255, 255, 0.86);
   border-radius: var(--radius-full);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-style: normal;
   color: var(--color-muted);
 }

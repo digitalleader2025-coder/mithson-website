@@ -389,10 +389,10 @@
   position: absolute;
   right: var(--space-2);
   bottom: var(--space-2);
-  padding: 2px 9px;
-  background: rgba(255, 255, 255, 0.82);
+  padding: 3px 10px;
+  background: rgba(255, 255, 255, 0.86);
   border-radius: var(--radius-full);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-style: normal;
   color: var(--color-muted);
 }

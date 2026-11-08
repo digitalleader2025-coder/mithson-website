@@ -433,7 +433,65 @@
 }
 
 /* --- Sustainability --- */
-.sustain-section { background: var(--color-bg-2); }
+.sustain-section {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #e9f3ff 0%, #f7fbff 50%, #edf6ff 100%);
+}
+
+/* Two faded photos behind the text: solar on the right, farmland on the left */
+.sustain-section::before,
+.sustain-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  /* tints the photo light blue instead of greying it out */
+  background-blend-mode: color;
+  pointer-events: none;
+}
+
+.sustain-section::before {
+  background-image: linear-gradient(135deg, rgba(10, 108, 255, 0.85), rgba(66, 164, 255, 0.7));
+  background-image: linear-gradient(135deg, rgba(10, 108, 255, 0.85), rgba(66, 164, 255, 0.7)), url('../../assets/site-images/sustainability-solar.webp');
+  background-position: center, center right;
+  opacity: 0.5;
+  -webkit-mask-image: linear-gradient(90deg, transparent 35%, #000 95%);
+  mask-image: linear-gradient(90deg, transparent 35%, #000 95%);
+}
+
+.sustain-section::after {
+  background-image: linear-gradient(135deg, rgba(10, 108, 255, 0.85), rgba(66, 164, 255, 0.7)), url('../../assets/site-images/sustainability-agriculture.webp');
+  background-position: center, bottom left;
+  opacity: 0.32;
+  -webkit-mask-image: linear-gradient(60deg, #000 5%, transparent 45%);
+  mask-image: linear-gradient(60deg, #000 5%, transparent 45%);
+}
+
+.sustain-section > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* the cards sit on a photo now, so they need a little more body */
+.sustain-section .sustain-card {
+  background: rgba(255, 255, 255, 0.86);
+  -webkit-backdrop-filter: blur(6px) saturate(160%);
+  backdrop-filter: blur(6px) saturate(160%);
+  border-color: rgba(66, 164, 255, 0.22);
+}
+
+@media (max-width: 900px) {
+  /* narrow screens: keep one soft wash so the text stays easy to read */
+  .sustain-section::before {
+    opacity: 0.4;
+    -webkit-mask-image: linear-gradient(180deg, transparent 40%, #000 100%);
+    mask-image: linear-gradient(180deg, transparent 40%, #000 100%);
+  }
+  .sustain-section::after {
+    display: none;
+  }
+}
 
 .sustain-layout {
   display: grid;

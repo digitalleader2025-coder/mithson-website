@@ -72,7 +72,9 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
-  margin-top: var(--space-4);
+  /* 44px tall so it is comfortable to tap on a touch screen */
+  min-height: 44px;
+  margin-top: var(--space-3);
   font-weight: 600;
   color: var(--color-navy-base);
 }
@@ -1408,18 +1410,29 @@
   .hsse-head {
     margin-bottom: var(--space-8);
   }
+  .hsse-wheel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+    aspect-ratio: auto;
+  }
+  .hsse-wheel-ring,
+  .hsse-wheel-hub {
+    display: none;
+  }
   .hsse-wheel-node {
-    width: 84px;
+    position: static;
+    flex: 0 0 calc(33.333% - var(--space-3));
+    width: auto;
+    transform: none;
   }
   .hsse-wheel-node > span {
-    width: 46px;
-    height: 46px;
+    width: 52px;
+    height: 52px;
   }
   .hsse-wheel-node em {
-    font-size: 0.65rem;
-  }
-  .hsse-wheel-hub {
-    inset: 30%;
+    font-size: var(--text-xs);
   }
   .hsse-cert {
     flex-direction: column;

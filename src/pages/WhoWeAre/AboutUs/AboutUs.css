@@ -341,7 +341,9 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
-  margin-top: var(--space-4);
+  /* 44px tall so it is comfortable to tap on a touch screen */
+  min-height: 44px;
+  margin-top: var(--space-3);
   font-weight: 600;
   color: var(--color-navy-base);
 }
