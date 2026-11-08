@@ -473,13 +473,6 @@
   z-index: 1;
 }
 
-/* the cards sit on a photo now, so they need a little more body */
-.sustain-section .sustain-card {
-  background: rgba(255, 255, 255, 0.86);
-  -webkit-backdrop-filter: blur(6px) saturate(160%);
-  backdrop-filter: blur(6px) saturate(160%);
-  border-color: rgba(66, 164, 255, 0.22);
-}
 
 @media (max-width: 900px) {
   /* narrow screens: keep one soft wash so the text stays easy to read */
@@ -500,60 +493,89 @@
   align-items: start;
 }
 
-.sustain-cards {
+.sustain-list {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
+  gap: var(--space-2);
 }
 
-.sustain-card {
-  padding: var(--space-4);
-  border-radius: var(--radius-xl);
+.sustain-row {
   display: flex;
   align-items: center;
   gap: var(--space-4);
-  font-size: var(--text-sm);
-  color: var(--color-text-2);
-  line-height: 1.6;
+  padding: var(--space-4) var(--space-5);
+  background: rgba(255, 255, 255, 0.86);
+  -webkit-backdrop-filter: blur(6px) saturate(160%);
+  backdrop-filter: blur(6px) saturate(160%);
+  border: 1px solid rgba(66, 164, 255, 0.22);
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  transition: opacity var(--duration-base), transform var(--duration-base) var(--ease-out), border-color var(--duration-base);
 }
 
-.sustain-card-img {
+.sustain-row-img {
   flex-shrink: 0;
   width: 68px;
   height: 68px;
   object-fit: cover;
   border-radius: 14px;
   box-shadow: 0 6px 18px rgba(3, 54, 163, 0.14);
-  transition: transform var(--duration-slow) var(--ease-out), box-shadow var(--duration-base);
 }
 
-.sustain-card:hover .sustain-card-img,
-.sustain-card:focus-within .sustain-card-img {
-  transform: scale(1.18);
-  box-shadow: 0 10px 26px rgba(3, 54, 163, 0.26);
+.sustain-row-text {
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--color-text-2);
+}
+
+/* Cursor-capable screens: the photo follows the pointer instead of sitting in the row */
+@media (hover: hover) and (pointer: fine) {
+  .sustain-row-img {
+    display: none;
+  }
+  .sustain-row {
+    padding: var(--space-5);
+  }
+  .sustain-row-text {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-navy-base);
+  }
+  /* the rows you are not pointing at step back */
+  .sustain-list.is-hovering .sustain-row {
+    opacity: 0.42;
+  }
+  .sustain-list.is-hovering .sustain-row.is-active {
+    opacity: 1;
+    transform: translateX(8px);
+    border-color: var(--color-blue-accent);
+  }
+}
+
+.sustain-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 60;
+  width: 320px;
+  height: 220px;
+  overflow: hidden;
+  border: 4px solid rgba(255, 255, 255, 0.95);
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(3, 54, 163, 0.32);
+  pointer-events: none;
+}
+
+.sustain-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sustain-card-img {
+  .sustain-row {
     transition: none;
   }
-}
-
-@media (max-width: 640px) {
-  .sustain-card-img {
-    width: 56px;
-    height: 56px;
-    border-radius: 12px;
-  }
-}
-
-.sustain-card-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-blue);
-  flex-shrink: 0;
-  margin-top: 6px;
 }
 
 /* --- Home CTA --- */
@@ -622,7 +644,6 @@
 @media (max-width: 640px) {
   .products-grid { grid-template-columns: 1fr 1fr; }
   .sectors-grid  { grid-template-columns: repeat(2, 1fr); }
-  .sustain-cards { grid-template-columns: 1fr; }
   .cert-badges   { grid-template-columns: repeat(3, 1fr); }
 }
 

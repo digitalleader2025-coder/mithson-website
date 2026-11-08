@@ -1,6 +1,6 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -286,7 +286,38 @@ const SUSTAIN_IMAGES = {
 };
 
 /* ----- Sustainability section ----- */
+// Hovering a line floats its photo alongside the cursor. Spring values match the
+// Framer PortfolioCursorList the user asked for. Touch screens get an inline photo instead.
+const PREVIEW_W = 320;
+const PREVIEW_H = 220;
+
 function SustainabilitySection() {
+  const items = company.sustainability;
+  const [active, setActive] = useState(null);
+  const [canHover, setCanHover] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const update = () => setCanHover(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const follow = (event) => {
+    if (!canHover || event.pointerType === 'touch') return;
+    const pad = 16;
+    // flip to the left of the cursor when there is no room on the right
+    const flip = event.clientX + 24 + PREVIEW_W > window.innerWidth - pad;
+    const nx = flip ? event.clientX - 24 - PREVIEW_W : event.clientX + 24;
+    const ny = Math.min(Math.max(event.clientY - PREVIEW_H / 2, pad), window.innerHeight - PREVIEW_H - pad);
+    x.set(nx);
+    y.set(ny);
+  };
+
   return (
     <section className="sustain-section section" aria-labelledby="sustain-title">
       <div className="container">
@@ -297,20 +328,43 @@ function SustainabilitySection() {
               Committed to a <span className="text-gradient-blue">Greener Future</span>
             </h2>
           </ScrollReveal>
-          <div className="sustain-cards">
-            {company.sustainability.map((item, i) => (
-              <ScrollReveal key={i} delay={i * 0.08}>
-                <div className="sustain-card glass-card">
-                  {SUSTAIN_IMAGES[item]
-                    ? <img className="sustain-card-img" src={SUSTAIN_IMAGES[item]} alt="" loading="lazy" />
-                    : <div className="sustain-card-dot" />}
-                  <p>{item}</p>
-                </div>
+
+          <ul
+            className={`sustain-list${active !== null ? ' is-hovering' : ''}`}
+            onPointerMove={follow}
+            onPointerLeave={() => setActive(null)}
+          >
+            {items.map((item, i) => (
+              <ScrollReveal key={item} delay={i * 0.07}>
+                <li
+                  className={`sustain-row${active === i ? ' is-active' : ''}`}
+                  onPointerEnter={(e) => { if (e.pointerType !== 'touch') { setActive(i); follow(e); } }}
+                  onFocus={() => setActive(i)}
+                  onBlur={() => setActive(null)}
+                  tabIndex={0}
+                >
+                  <img className="sustain-row-img" src={SUSTAIN_IMAGES[item]} alt="" loading="lazy" />
+                  <span className="sustain-row-text">{item}</span>
+                </li>
               </ScrollReveal>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
+
+      {canHover && active !== null && (
+        <motion.div
+          className="sustain-preview"
+          aria-hidden="true"
+          style={{ x, y }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <img src={SUSTAIN_IMAGES[items[active]]} alt="" />
+        </motion.div>
+      )}
     </section>
   );
 }
