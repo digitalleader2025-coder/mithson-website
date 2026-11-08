@@ -25,6 +25,11 @@ import imgMining from '../../assets/industries/Mining.webp';
 import imgSemi from '../../assets/industries/Semiconductor.webp';
 import imgRobo from '../../assets/industries/Robotics.webp';
 import imgAero from '../../assets/industries/Aerospace.webp';
+import imgSusAgri from '../../assets/site-images/sustainability-agriculture.webp';
+import imgSusEv from '../../assets/site-images/sustainability-ev.webp';
+import imgSusSolar from '../../assets/site-images/sustainability-solar.webp';
+import imgSusScrap from '../../assets/site-images/manufacturing.jpeg';
+import imgSusCarbon from '../../assets/industries/EnvironmentalSustainablility.webp';
 
 const industryItems = [
   { src: imgOil, alt: 'Oil & Gas', title: 'Oil & Gas' },
@@ -271,6 +276,15 @@ function CertificationSection() {
   );
 }
 
+// One photo per published initiative, keyed by its wording in company.js
+const SUSTAIN_IMAGES = {
+  'Sustainable agriculture': imgSusAgri,
+  'EV goods movement': imgSusEv,
+  'Solar energy adoption': imgSusSolar,
+  'Scrap reduction': imgSusScrap,
+  'Targeting Scope 1, 2 & 3 carbon reduction': imgSusCarbon,
+};
+
 /* ----- Sustainability section ----- */
 function SustainabilitySection() {
   return (
@@ -287,7 +301,9 @@ function SustainabilitySection() {
             {company.sustainability.map((item, i) => (
               <ScrollReveal key={i} delay={i * 0.08}>
                 <div className="sustain-card glass-card">
-                  <div className="sustain-card-dot" />
+                  {SUSTAIN_IMAGES[item]
+                    ? <img className="sustain-card-img" src={SUSTAIN_IMAGES[item]} alt="" loading="lazy" />
+                    : <div className="sustain-card-dot" />}
                   <p>{item}</p>
                 </div>
               </ScrollReveal>

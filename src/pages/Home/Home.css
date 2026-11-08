@@ -507,14 +507,42 @@
 }
 
 .sustain-card {
-  padding: var(--space-5);
+  padding: var(--space-4);
   border-radius: var(--radius-xl);
   display: flex;
-  align-items: flex-start;
-  gap: var(--space-3);
+  align-items: center;
+  gap: var(--space-4);
   font-size: var(--text-sm);
   color: var(--color-text-2);
   line-height: 1.6;
+}
+
+.sustain-card-img {
+  flex-shrink: 0;
+  width: 68px;
+  height: 68px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(3, 54, 163, 0.14);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.sustain-card:hover .sustain-card-img {
+  transform: scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sustain-card-img {
+    transition: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .sustain-card-img {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+  }
 }
 
 .sustain-card-dot {
