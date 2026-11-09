@@ -1,0 +1,460 @@
+/* M-UNI Seal: only the parts the shared product-page sheet (MithPlate.css) does not cover */
+
+.mu-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: var(--space-10);
+  align-items: center;
+}
+
+.mu-hero-visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.mu-hero-visual img {
+  width: 100%;
+  max-width: 440px;
+  filter: drop-shadow(0 30px 44px rgba(0, 0, 0, 0.5));
+  mix-blend-mode: screen;
+}
+
+/* 01 anatomy */
+.mu-anatomy {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.mu-sub {
+  margin-top: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px solid rgba(66, 164, 255, 0.18);
+  font-size: var(--text-xs);
+  line-height: 1.55;
+  color: var(--color-muted);
+}
+
+.mu-figure {
+  overflow: hidden;
+  background: #0b1530;
+  border: 6px solid rgba(255, 255, 255, 0.92);
+  border-radius: 22px;
+  box-shadow: 0 24px 60px rgba(3, 54, 163, 0.18);
+}
+
+.mu-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.mu-figure figcaption {
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-white);
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
+
+/* 02 stages: four, not six */
+.mu-stages {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.mu-stage-note {
+  margin-top: var(--space-8);
+}
+
+/* 03 seal types, on the dark band */
+.mu-type-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.mu-type-tabs button {
+  min-height: 44px;
+  padding: 0 var(--space-5);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  transition: background var(--duration-base), color var(--duration-base), border-color var(--duration-base);
+}
+
+.mu-type-tabs button[aria-selected='true'] {
+  background: var(--color-white);
+  border-color: var(--color-white);
+  color: var(--color-navy-base);
+}
+
+.mu-type-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: var(--space-8);
+  align-items: center;
+  padding: var(--space-6);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 22px;
+}
+
+.mu-type-visual {
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 16px;
+  background: radial-gradient(circle at 50% 45%, #15233f 0%, #080d18 100%);
+}
+
+.mu-type-visual img {
+  width: 100%;
+  max-height: 320px;
+  object-fit: contain;
+}
+
+.mu-type-body h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-white);
+}
+
+.mu-type-body > p {
+  margin-top: var(--space-3);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.mu-type-note {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(255, 255, 255, 0.08);
+  border-left: 3px solid #9fd0ff;
+  border-radius: 10px;
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.mu-type-note svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.mu-type-btn {
+  margin-top: var(--space-5);
+}
+
+/* 04-06 picker: options on the left, the chosen one on the right */
+.mu-picker {
+  display: grid;
+  grid-template-columns: 290px minmax(0, 1fr);
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.mu-picker-list {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.mu-thumb {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #0b1530;
+}
+
+.mu-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mu-picker-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: var(--space-6);
+  align-items: center;
+  padding: var(--space-6);
+  background: var(--color-white);
+  border: 1px solid rgba(66, 164, 255, 0.18);
+  border-radius: 20px;
+  box-shadow: 0 14px 40px rgba(3, 54, 163, 0.09);
+}
+
+.mu-panel-visual {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 16px;
+  background: radial-gradient(circle at 50% 45%, #15233f 0%, #080d18 100%);
+}
+
+.mu-panel-visual--light {
+  background: radial-gradient(circle at 50% 40%, #ffffff 0%, #e6efff 100%);
+}
+
+.mu-panel-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.mu-panel-body h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-navy-base);
+}
+
+.mu-panel-body > p {
+  margin-top: var(--space-3);
+  line-height: 1.7;
+  color: var(--color-text-2);
+}
+
+.mu-watch {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background: #f3f8ff;
+  border-left: 3px solid #42a4ff;
+  border-radius: 10px;
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--color-text-2);
+}
+
+.mu-watch svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #0a5fd0;
+}
+
+.mu-pills-light li {
+  background: #eef5ff;
+  border-color: rgba(66, 164, 255, 0.25);
+  color: var(--color-navy-base);
+}
+
+/* spring materials strip */
+.mu-springmat {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: var(--space-8);
+  align-items: center;
+  margin-top: var(--space-8);
+  padding: var(--space-6);
+  background: var(--color-white);
+  border: 1px solid rgba(66, 164, 255, 0.18);
+  border-radius: 20px;
+  box-shadow: 0 14px 40px rgba(3, 54, 163, 0.09);
+}
+
+.mu-springmat h3 {
+  margin: var(--space-3) 0 var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-navy-base);
+}
+
+.mu-springmat p {
+  font-size: var(--text-sm);
+  line-height: 1.65;
+  color: var(--color-text-2);
+}
+
+.mu-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.mu-chips span {
+  padding: 7px 14px;
+  background: #eef5ff;
+  border: 1px solid rgba(66, 164, 255, 0.25);
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-navy-base);
+}
+
+/* 07 advantages on the dark band */
+.mu-advantages {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.mu-adv {
+  padding: var(--space-5);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 18px;
+  transition: background var(--duration-base), border-color var(--duration-base);
+}
+
+.mu-adv:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(159, 208, 255, 0.5);
+}
+
+.mu-adv h3 {
+  margin: var(--space-3) 0 var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.mu-adv p {
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* 09 enquiry table */
+.mu-table {
+  overflow: hidden;
+  background: var(--color-white);
+  border: 1px solid rgba(66, 164, 255, 0.18);
+  border-radius: 16px;
+  box-shadow: 0 14px 40px rgba(3, 54, 163, 0.09);
+}
+
+.mu-table > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-5);
+  font-size: var(--text-sm);
+  color: var(--color-text-2);
+}
+
+.mu-table > div + div {
+  border-top: 1px solid rgba(3, 54, 163, 0.08);
+}
+
+.mu-table > div > span:first-child {
+  font-weight: 600;
+  color: var(--color-navy-base);
+}
+
+.mu-table-head {
+  background: #eef5ff;
+  font-family: var(--font-display);
+  font-size: var(--text-xs) !important;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.mu-table-head span {
+  color: #0a5fd0 !important;
+}
+
+.mp-numbered li > div strong {
+  color: var(--color-navy-base);
+}
+
+/* 10 installation */
+.mu-install {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.mu-install h3 {
+  margin-bottom: var(--space-4);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-navy-base);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mu-adv,
+  .mu-type-tabs button {
+    transition: none;
+  }
+}
+
+/* Small laptops and landscape tablets */
+@media (max-width: 1180px) {
+  .mu-picker {
+    grid-template-columns: 240px minmax(0, 1fr);
+  }
+  .mu-advantages,
+  .mu-install {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .mu-stages {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: var(--space-8);
+  }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+  .mu-hero-grid,
+  .mu-picker,
+  .mu-picker-panel,
+  .mu-type-panel,
+  .mu-springmat {
+    grid-template-columns: 1fr;
+  }
+  .mu-hero-visual {
+    max-width: 420px;
+    margin: 0 auto;
+    transform: none !important;
+  }
+  .mu-panel-visual {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* Phones */
+@media (max-width: 640px) {
+  .mu-stages,
+  .mu-advantages,
+  .mu-install {
+    grid-template-columns: 1fr;
+  }
+  .mu-type-panel,
+  .mu-picker-panel,
+  .mu-springmat {
+    padding: var(--space-4);
+  }
+  .mu-type-tabs button {
+    flex: 1 1 calc(50% - var(--space-2));
+    padding: 0 var(--space-3);
+    font-size: var(--text-sm);
+  }
+  .mu-table > div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+    padding: var(--space-3) var(--space-4);
+  }
+  .mu-table-head {
+    display: none !important;
+  }
+}
