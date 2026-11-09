@@ -208,17 +208,29 @@ export function ProductApplications({ applications }) {
 export function RelatedProducts({ currentSlug, products }) {
   const related = products.filter((p) => p.slug !== currentSlug).slice(0, 4);
   if (!related.length) return null;
+  const photo = (p) => p.carouselImage ?? (Array.isArray(p.image) ? p.image[0] : p.image);
   return (
     <section className="related-products section">
       <div className="container">
-        <h2 className="section-title" style={{ marginBottom: '2rem' }}>Related Products</h2>
+        <div className="related-head">
+          <div>
+            <span className="related-label">More from Mithson</span>
+            <h2 className="section-title">Related products</h2>
+          </div>
+          <Link to="/products" className="related-all">View all products <span aria-hidden="true">→</span></Link>
+        </div>
         <div className="related-grid">
           {related.map((p) => (
-            <Link key={p.slug} to={p.path} className="related-card glass-card" id={`related-${p.slug}`}>
-              <div className="related-card-accent" style={{ background: p.accent }} />
-              <h3 className="related-card-name">{p.name}</h3>
-              <p className="related-card-tagline">{p.tagline}</p>
-              <span className="related-card-arrow" aria-hidden="true">→</span>
+            <Link key={p.slug} to={p.path} className="related-card" id={`related-${p.slug}`}>
+              <span className="related-card-photo">
+                {photo(p) && <img src={photo(p)} alt="" loading="lazy" />}
+              </span>
+              <span className="related-card-body">
+                <span className="related-card-accent" style={{ background: p.accent }} aria-hidden="true" />
+                <h3 className="related-card-name">{p.name}</h3>
+                <p className="related-card-tagline">{p.tagline}</p>
+                <span className="related-card-go">View product <i aria-hidden="true">→</i></span>
+              </span>
             </Link>
           ))}
         </div>

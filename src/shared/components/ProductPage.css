@@ -276,60 +276,185 @@
 }
 
 /* Related Products */
+.related-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.related-label {
+  display: inline-flex;
+  padding: 5px 14px;
+  margin-bottom: var(--space-3);
+  background: rgba(66, 164, 255, 0.1);
+  border: 1px solid rgba(66, 164, 255, 0.35);
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0a5fd0;
+}
+
+.related-all {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  font-weight: 600;
+  color: var(--color-navy-base);
+}
+
+.related-all:hover {
+  color: var(--color-blue-accent);
+}
+
+.related-all span {
+  transition: transform var(--duration-base);
+}
+
+.related-all:hover span {
+  transform: translateX(4px);
+}
+
 .related-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--space-5);
 }
 
 .related-card {
-  padding: var(--space-6);
-  position: relative;
-  overflow: hidden;
-  transition: transform var(--duration-base) var(--ease-out), border-color var(--duration-base);
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  height: 100%;
+  overflow: hidden;
+  background: var(--color-white);
+  border: 1px solid rgba(66, 164, 255, 0.18);
+  border-radius: 20px;
+  box-shadow: 0 14px 40px rgba(3, 54, 163, 0.09);
+  transition: transform var(--duration-base) var(--ease-out), border-color var(--duration-base), box-shadow var(--duration-base);
 }
 
-.related-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--color-border);
+.related-card:hover,
+.related-card:focus-visible {
+  transform: translateY(-6px);
+  border-color: var(--color-blue-accent);
+  box-shadow: 0 22px 50px rgba(3, 54, 163, 0.18);
+}
+
+/* product photos sit on dark backgrounds, so the tile matches them */
+.related-card-photo {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 45%, #15233f 0%, #080d18 100%);
+}
+
+.related-card-photo img {
+  width: 100%;
+  height: 100%;
+  padding: var(--space-4);
+  object-fit: contain;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.related-card:hover .related-card-photo img {
+  transform: scale(1.07);
+}
+
+.related-card-body {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
 }
 
 .related-card-accent {
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  left: var(--space-5);
+  width: 40px;
+  height: 3px;
+  border-radius: 0 0 3px 3px;
 }
 
 .related-card-name {
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 700;
-  color: var(--color-text);
-  margin-top: var(--space-2);
+  color: var(--color-navy-base);
 }
 
 .related-card-tagline {
-  font-size: var(--text-sm);
-  color: var(--color-muted);
-  line-height: 1.5;
   flex: 1;
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  color: var(--color-text-2);
 }
 
-.related-card-arrow {
-  color: var(--color-accent);
-  font-size: var(--text-lg);
-  margin-top: auto;
-  transition: transform var(--duration-fast);
+.related-card-go {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-blue-accent);
 }
 
-.related-card:hover .related-card-arrow {
+.related-card-go i {
+  font-style: normal;
+  transition: transform var(--duration-base);
+}
+
+.related-card:hover .related-card-go i {
   transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .related-card,
+  .related-card-photo img,
+  .related-card-go i,
+  .related-all span {
+    transition: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .related-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+  .related-card {
+    flex-direction: row;
+    align-items: center;
+  }
+  .related-card-photo {
+    flex: 0 0 116px;
+    aspect-ratio: 1;
+  }
+  .related-card-body {
+    padding: var(--space-4);
+  }
+  .related-card-accent {
+    left: 0;
+    top: var(--space-4);
+    width: 3px;
+    height: 28px;
+    border-radius: 0 3px 3px 0;
+  }
 }
 
 /* CTA Section */
