@@ -2,6 +2,8 @@
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion, useInView, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { RelatedProducts } from '../../../shared/components/ProductPage';
+import { ItemSpecList } from '../../../shared/components/ProductSpecList';
+import { productItems } from '../../../content/productItems';
 import { products, getProductBySlug } from '../../../content/products';
 import {
   advantages,
@@ -65,6 +67,8 @@ const IMAGES = {
 };
 
 const product = getProductBySlug('m-uni-seal');
+// the approved temperature, pressure and speed figures each variant already carries
+const SPECS = productItems['m-uni-seal'];
 const EASE = [0.22, 1, 0.36, 1];
 const CONTACT = '/connect-with-us';
 const APPLICATION_DATA = '/connect-with-us/application-data';
@@ -210,6 +214,7 @@ function SealTypes() {
           <div className="mu-type-body">
             <h3>{item.name}</h3>
             <p>{item.text}</p>
+            {SPECS[item.name] && <ItemSpecList spec={SPECS[item.name]} />}
             <p className="mu-type-note"><Icon name="alert" size={16} /> {sealTypesNote}</p>
             <Link to={APPLICATION_DATA} className="btn btn-white mu-type-btn">Enquire about {item.name} <Arrow /></Link>
           </div>

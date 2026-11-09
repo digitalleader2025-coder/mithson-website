@@ -147,6 +147,42 @@
   color: rgba(255, 255, 255, 0.84);
 }
 
+/* the spec rows are built for white cards; recolour them for the dark band */
+.mu-type-body .spec-list--item {
+  margin: var(--space-4) 0 var(--space-2);
+  border-bottom-color: rgba(255, 255, 255, 0.18);
+}
+
+.mu-type-body .spec-row {
+  border-top-color: rgba(255, 255, 255, 0.18);
+}
+
+.mu-type-body .spec-row dt,
+.mu-type-body .spec-context,
+.mu-type-body .spec-missing {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.mu-type-body .spec-value {
+  color: var(--color-white);
+}
+
+.mu-type-body .spec-origin--typical {
+  background: rgba(255, 255, 255, 0.16);
+  color: #cfe6ff;
+}
+
+.mu-type-body .spec-origin--mithson {
+  background: var(--color-white);
+  color: var(--color-navy-base);
+}
+
+.mu-type-body .spec-materials li {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.88);
+}
+
 .mu-type-note {
   display: flex;
   gap: var(--space-2);
