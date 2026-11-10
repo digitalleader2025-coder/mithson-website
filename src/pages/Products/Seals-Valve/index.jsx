@@ -243,79 +243,65 @@ function Hero() {
   );
 }
 
-/** One catalogue card. Tilts very slightly towards the pointer: this page's signature move. */
-function ProductCard({ item, open, onToggle }) {
-  const ref = useRef(null);
-  const reduceMotion = useReducedMotion();
-  const spec = SPECS[item.spec];
-
-  const tilt = (event) => {
-    if (reduceMotion || !ref.current || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-    const r = ref.current.getBoundingClientRect();
-    const dx = (event.clientX - r.left) / r.width - 0.5;
-    const dy = (event.clientY - r.top) / r.height - 0.5;
-    ref.current.style.transform = `perspective(900px) rotateX(${(-dy * 5).toFixed(2)}deg) rotateY(${(dx * 5).toFixed(2)}deg) translateY(-4px)`;
-  };
-  const reset = () => { if (ref.current) ref.current.style.transform = ''; };
-
-  return (
-    <article ref={ref} className={`sv-card${open ? ' is-open' : ''}`} onPointerMove={tilt} onPointerLeave={reset}>
-      <div className="sv-card-photo"><img src={IMAGES[item.image]} alt={item.name} loading="lazy" /></div>
-      <div className="sv-card-body">
-        <span className="sv-card-family">{item.family}</span>
-        <h3>{item.name}</h3>
-        <p>{item.text}</p>
-        {spec && <ItemSpecList spec={spec} />}
-        <button type="button" className="sv-card-more" aria-expanded={open} onClick={onToggle}>
-          {open ? 'Show less' : 'View details'} <Arrow />
-        </button>
-        <AnimatePresence initial={false}>
-          {open && (
-            <motion.div
-              className="sv-card-detail"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <ul className="mp-checks">
-                {item.points.map((p) => <li key={p}><span><Icon name="check" size={14} /></span>{p}</li>)}
-              </ul>
-              <p className="sv-card-uses"><strong>Applications:</strong> {item.uses}</p>
-              {item.note && <p className="mu-watch"><Icon name="alert" size={16} /> {item.note}</p>}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </article>
-  );
-}
-
-/** The twelve products as a grid, filtered by component family. */
+/** The twelve products, picked one at a time from the numbered tabs. */
 function Catalogue() {
   const [family, setFamily] = useState('All');
-  const [open, setOpen] = useState(null);
+  const [active, setActive] = useState(catalogue[0].key);
 
   const shown = family === 'All' ? catalogue : catalogue.filter((c) => c.family === family);
+  const item = shown.find((c) => c.key === active) ?? shown[0];
+  const spec = SPECS[item.spec];
+
+  const pick = (f) => {
+    const next = f === 'All' ? catalogue : catalogue.filter((c) => c.family === f);
+    setFamily(f);
+    setActive(next[0].key);
+  };
 
   return (
     <>
       <div className="sv-filter" role="tablist" aria-label="Product families">
         {families.map((f) => (
-          <button key={f} type="button" role="tab" aria-selected={f === family} onClick={() => { setFamily(f); setOpen(null); }}>
+          <button key={f} type="button" role="tab" aria-selected={f === family} onClick={() => pick(f)}>
             {f}
             <b>{f === 'All' ? catalogue.length : catalogue.filter((c) => c.family === f).length}</b>
           </button>
         ))}
       </div>
 
-      <ul className="sv-grid">
-        {shown.map((item) => (
-          <li key={item.key}>
-            <ProductCard item={item} open={open === item.key} onToggle={() => setOpen(open === item.key ? null : item.key)} />
-          </li>
+      <div className="sv-picks" role="tablist" aria-label="Products">
+        {shown.map((c, i) => (
+          <button key={c.key} type="button" role="tab" aria-selected={c.key === item.key} onClick={() => setActive(c.key)}>
+            <b>{String(i + 1).padStart(2, '0')}</b>
+            <span>{c.name}</span>
+          </button>
         ))}
-      </ul>
+      </div>
+
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={item.key}
+          className="sv-panel"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.35, ease: EASE }}
+        >
+          <div className="sv-panel-photo"><img src={IMAGES[item.image]} alt={item.name} /></div>
+          <div className="sv-panel-body">
+            <span className="sv-card-family">{item.family}</span>
+            <h3>{item.name}</h3>
+            <p>{item.text}</p>
+            {spec && <ItemSpecList spec={spec} />}
+            <ul className="mp-checks">
+              {item.points.map((pt) => <li key={pt}><span><Icon name="check" size={14} /></span>{pt}</li>)}
+            </ul>
+            <p className="sv-card-uses"><strong>Applications:</strong> {item.uses}</p>
+            {item.note && <p className="mu-watch"><Icon name="alert" size={16} /> {item.note}</p>}
+            <Link to={APPLICATION_DATA} className="btn btn-navy mp-inline-btn">Enquire about {item.name} <Arrow /></Link>
+          </div>
+        </motion.div>
+      </AnimatePresence>
     </>
   );
 }
@@ -397,7 +383,7 @@ export default function SealsValvePage() {
       <section className="section mp-section" id="sv-catalogue">
         <div className="container">
           <Head number="01" label="Product portfolio" title="Twelve sealing components for industrial valves"
-            intro="Filter by component family, then open a card for its characteristics and applications." />
+            intro="Filter by component family, then pick a product to see its figures, characteristics and applications." />
           <Catalogue />
           <Reveal as="p" className="mp-note">{catalogueNote}</Reveal>
         </div>

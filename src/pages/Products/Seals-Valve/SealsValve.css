@@ -68,62 +68,86 @@
   color: var(--color-white);
 }
 
-.sv-grid {
+/* numbered product tabs, then one panel for the chosen product */
+.sv-picks {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-5);
-  list-style: none;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
 }
 
-.sv-card {
+.sv-picks button {
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  overflow: hidden;
+  gap: var(--space-3);
+  align-items: center;
+  min-height: 58px;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-white);
+  border: 1px solid rgba(66, 164, 255, 0.2);
+  border-radius: 14px;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: left;
+  color: var(--color-navy-base);
+  cursor: pointer;
+  transition: background var(--duration-base), color var(--duration-base), border-color var(--duration-base), box-shadow var(--duration-base);
+}
+
+.sv-picks button b {
+  flex-shrink: 0;
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  color: #0a5fd0;
+}
+
+.sv-picks button:hover {
+  border-color: var(--color-blue-accent);
+}
+
+.sv-picks button[aria-selected='true'] {
+  background: var(--color-navy-base);
+  border-color: var(--color-navy-base);
+  color: var(--color-white);
+  box-shadow: 0 16px 36px rgba(3, 54, 163, 0.22);
+}
+
+.sv-picks button[aria-selected='true'] b {
+  color: #9fd0ff;
+}
+
+.sv-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: var(--space-8);
+  align-items: start;
+  padding: var(--space-6);
   background: var(--color-white);
   border: 1px solid rgba(66, 164, 255, 0.18);
-  border-radius: 20px;
-  box-shadow: 0 14px 40px rgba(3, 54, 163, 0.08);
-  transition: transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out), border-color var(--duration-base);
-  will-change: transform;
+  border-radius: 22px;
+  box-shadow: 0 18px 50px rgba(3, 54, 163, 0.1);
 }
 
-.sv-card:hover,
-.sv-card.is-open {
-  border-color: var(--color-blue-accent);
-  box-shadow: 0 24px 54px rgba(3, 54, 163, 0.16);
-}
-
-.sv-card-photo {
+.sv-panel-photo {
   display: grid;
   place-items: center;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   background: linear-gradient(180deg, #ffffff 0%, #f1f7ff 100%);
-  border-bottom: 1px solid rgba(66, 164, 255, 0.14);
+  border: 1px solid rgba(66, 164, 255, 0.16);
+  border-radius: 18px;
 }
 
-.sv-card-photo img {
+.sv-panel-photo img {
   width: 100%;
   height: 100%;
-  padding: var(--space-4);
-  object-fit: contain;
-  transition: transform var(--duration-slow) var(--ease-out);
-}
-
-.sv-card:hover .sv-card-photo img {
-  transform: scale(1.06);
-}
-
-.sv-card-body {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
   padding: var(--space-5);
+  object-fit: contain;
 }
 
 .sv-card-family {
-  align-self: flex-start;
+  display: inline-block;
   margin-bottom: var(--space-3);
   padding: 3px 11px;
   background: #eef5ff;
@@ -136,84 +160,30 @@
   color: #0a5fd0;
 }
 
-.sv-card-body h3 {
+.sv-panel-body h3 {
   font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 700;
-  line-height: 1.3;
+  font-size: var(--text-3xl);
+  font-weight: 800;
+  line-height: 1.2;
   color: var(--color-navy-base);
 }
 
-.sv-card-body > p {
-  margin-top: var(--space-2);
-  font-size: var(--text-sm);
-  line-height: 1.65;
+.sv-panel-body > p {
+  margin-top: var(--space-3);
+  line-height: 1.7;
   color: var(--color-text-2);
 }
 
-/* the spec rows read as a two-column key/value block inside a card this wide */
-.sv-card .spec-list--item {
-  margin: var(--space-4) 0 var(--space-4);
-  padding-top: var(--space-2);
-  border-top: 1px solid rgba(66, 164, 255, 0.18);
+.sv-panel-body .spec-list--item {
+  margin: var(--space-5) 0;
   border-bottom: 0;
 }
 
-.sv-card .spec-row {
-  grid-template-columns: 86px minmax(0, 1fr);
-  gap: var(--space-2);
-  padding: var(--space-2) 0;
-  border-top: 0;
-}
-
-.sv-card .spec-row + .spec-row {
-  border-top: 1px dashed rgba(3, 54, 163, 0.1);
-}
-
-.sv-card .spec-row dt {
-  font-size: var(--text-xs);
-}
-
-.sv-card .spec-value {
-  font-size: var(--text-sm);
-}
-
-.sv-card .spec-context {
-  margin-top: 2px;
-  font-size: 0.7rem;
-}
-
-.sv-card-more {
-  display: inline-flex;
-  gap: var(--space-2);
-  align-items: center;
-  align-self: flex-start;
-  min-height: 44px;
-  margin-top: auto;
-  padding: 0;
-  background: none;
-  border: 0;
-  font-family: var(--font-display);
-  font-size: var(--text-sm);
-  font-weight: 700;
-  color: #0a5fd0;
-  cursor: pointer;
-}
-
-.sv-card-more svg {
-  transition: transform var(--duration-base) var(--ease-out);
-}
-
-.sv-card-more:hover svg {
-  transform: translateX(3px);
-}
-
-.sv-card-detail {
-  overflow: hidden;
+.sv-panel-body .mp-checks {
+  margin-bottom: var(--space-4);
 }
 
 .sv-card-uses {
-  margin-top: var(--space-3);
   font-size: var(--text-sm);
   line-height: 1.6;
   color: var(--color-text-2);
@@ -221,6 +191,10 @@
 
 .sv-card-uses strong {
   color: var(--color-navy-base);
+}
+
+.sv-panel-body .mp-inline-btn {
+  margin-top: var(--space-5);
 }
 
 /* 02 sealing system, on the dark band */
@@ -477,8 +451,8 @@
 
 /* Small laptops and landscape tablets */
 @media (max-width: 1180px) {
-  .sv-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .sv-picks {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .sv-system,
   .sv-materials {
@@ -491,6 +465,13 @@
 
 /* Tablets */
 @media (max-width: 900px) {
+  .sv-picks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .sv-panel {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
   .sv-valves,
   .sv-valve-panel {
     grid-template-columns: 1fr;
@@ -512,8 +493,14 @@
   .sv-valve-list {
     grid-template-columns: 1fr;
   }
-  .sv-grid {
+  .sv-picks {
     grid-template-columns: 1fr;
+  }
+  .sv-panel {
+    padding: var(--space-5) var(--space-4);
+  }
+  .sv-panel-body h3 {
+    font-size: var(--text-2xl);
   }
   .sv-valve-banner img {
     height: 170px;
