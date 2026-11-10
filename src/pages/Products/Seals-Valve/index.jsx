@@ -42,7 +42,6 @@ import imgPeekRing from './assets/Peek Seat Ring.png';
 import imgPeekInsert from './assets/Peek Insert Metal Seat.png';
 import imgDevlonRing from './assets/Devlon Seat Ring.png';
 import imgDevlonInsert from './assets/Devlon Insert Metal Seat.png';
-import imgPlant from './assets/ref/valve-plant.webp';
 import vGate from './assets/ref/valve-gate.webp';
 import vBall from './assets/ref/valve-ball.webp';
 import vGlobe from './assets/ref/valve-globe.webp';
@@ -475,11 +474,7 @@ export default function SealsValvePage() {
       <section className="section mp-section mp-tint" id="sv-valves">
         <div className="container">
           <Head number="04" label="Valve technologies" title="Sealing solutions across multiple valve technologies"
-            intro="Each application requires carefully selected sealing geometry and material properties to maintain the intended sealing interface." />
-          <Reveal className="sv-valve-banner">
-            <img src={imgPlant} alt="Valves and pipework in an industrial plant" loading="lazy" />
-            <p>Valves and pipework in service. The diagrams below show how each valve type closes and where the seal sits.</p>
-          </Reveal>
+            intro="Pick a valve type to see how it closes, where the seal sits and which Mithson components it takes." />
           <ValveTypes />
         </div>
       </section>

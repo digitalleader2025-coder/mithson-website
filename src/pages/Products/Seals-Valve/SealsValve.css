@@ -272,33 +272,9 @@
 
 /* 04 valve technologies. The section is sized to sit in one screen: a compact banner,
    the type list, the cut-away, the text and the real valve photo side by side. */
-.sv-valve-banner {
-  position: relative;
-  margin-bottom: var(--space-5);
-  overflow: hidden;
-  border-radius: 18px;
-  box-shadow: 0 14px 40px rgba(3, 54, 163, 0.12);
-}
-
-.sv-valve-banner img {
-  display: block;
-  width: 100%;
-  height: 96px;
-  object-fit: cover;
-}
-
-.sv-valve-banner p {
-  position: absolute;
-  inset: auto 0 0;
-  padding: var(--space-6) var(--space-5) var(--space-3);
-  background: linear-gradient(180deg, rgba(1, 19, 63, 0) 0%, rgba(1, 19, 63, 0.82) 70%);
-  font-size: var(--text-sm);
-  color: var(--color-white);
-}
-
 .sv-valve-panel {
   display: grid;
-  grid-template-columns: 215px minmax(0, 1fr) 215px;
+  grid-template-columns: 290px minmax(0, 1fr) 290px;
   gap: var(--space-5);
   align-items: center;
   padding: var(--space-5);
@@ -316,8 +292,8 @@
 .sv-valve-photo img {
   display: block;
   width: 100%;
-  height: 168px;
-  padding: var(--space-3);
+  height: 300px;
+  padding: var(--space-4);
   object-fit: contain;
 }
 
@@ -534,7 +510,11 @@
 /* Tablets */
 @media (max-width: 1180px) {
   .sv-valve-panel {
-    grid-template-columns: 180px minmax(0, 1fr) 180px;
+    grid-template-columns: 230px minmax(0, 1fr) 230px;
+  }
+  .sv-valve-art svg,
+  .sv-valve-photo img {
+    height: 240px;
   }
 }
 
@@ -591,11 +571,12 @@
   .sv-panel-body h3 {
     font-size: var(--text-2xl);
   }
-  .sv-valve-banner img {
-    height: 120px;
-  }
   .sv-valve-panel {
     grid-template-columns: 1fr;
+  }
+  .sv-valve-art svg,
+  .sv-valve-photo img {
+    height: 230px;
   }
   .sv-valve-panel,
   .sv-custom {
