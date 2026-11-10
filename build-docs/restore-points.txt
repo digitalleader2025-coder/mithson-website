@@ -1,0 +1,189 @@
+MITHSON WEBSITE — RESTORE POINTS
+Written 10 November 2026. Branch: feature/nav-booking
+
+HOW TO USE THIS FILE
+--------------------
+Every piece of work below has a short name. Tell me the name and I can put
+that part back. Two ways to go back:
+
+  1. "Revert <name>"  — undoes only that one change and keeps everything
+                        after it. This is almost always what you want.
+  2. "Go back to <name>" — puts the whole site back to how it was at that
+                        moment, losing everything after it.
+
+Each line shows:   NAME   |  commit  |  what it changed
+A "before-..." tag is the site just BEFORE that work.
+An "after-..." tag is the site just AFTER it.
+
+
+=====================================================================
+PART 1 — PRODUCT PAGES (the newest work, most likely to be changed)
+=====================================================================
+
+SEALS - VALVE
+  before-seals-valve     b2d5b34   the old basic Seals - Valve page
+  after-seals-valve      a4387c8   rebuilt page: 8 sections, 12 products,
+                                   materials, valve types, FAQ
+    commit da9957f  rebuild the product page from the approved copy
+
+  before-sv-tweaks       b3cf035   before the first fixes
+  after-sv-tweaks        2fed7b4   product grid instead of a cut-off rail,
+                                   plus valve diagrams
+    commit fb658a8  clearer product grid and illustrated valve section
+
+  before-sv-selector     28dbd70   before the one-at-a-time picker
+  after-sv-selector      fe98ce3   numbered 01-12 tabs with one big panel
+    commit 50fbfbb  pick products one at a time, as on the X-Mas Tree page
+
+  before-valve-visuals   558ee47   before the real valve photos
+  after-valve-visuals    31c10bc   real valve photos + proper cut-away
+                                   drawings, section fits one screen
+    commit f31e712  real valve photos and proper cut-aways, in one screen
+
+  before-valve-resize    ed3f5b2   before removing the banner photo
+  after-valve-resize     3d964cd   banner photo removed, valve visuals
+                                   enlarged to 300px
+    commit 2c7cb79  drop the banner photo, enlarge the valve visuals
+
+  before-pick-compact    7c414f9   before compacting the product list
+  after-pick-compact     cda496f   chips on laptop, dropdown on phone
+    commit 22fadfd  the product list no longer crowds out the product
+
+SEALS - X-MAS TREE
+  before-xmas-tree       690379f   the old basic page
+  after-xmas-tree        ae5e2c0   rebuilt: 12 sections, 4 components,
+                                   exploded view, hotspot drawing,
+                                   comparison table
+    commit 1e0e7b3  rebuild the product page from the approved copy
+
+HAMMER UNION SEAL
+  before-hammer-union    3fc5eda   the old basic page
+  after-hammer-union     57fbd2e   rebuilt: 13 sections, 3 constructions,
+                                   material picker, reinforcement cards
+    commit 96c6468  rebuild the product page from the approved copy
+
+M-UNI SEAL
+  before-muni-redesign   59b2ba8   the old basic page
+  after-muni-redesign    fa94f83   rebuilt: 12 sections, 5 seal types,
+                                   jacket and spring pickers
+    commits 99814ca  first rebuild
+            61d55bf  reverted back to the original page
+            b513ac5  rebuilt again, keeping the existing photos
+            eb5919e  hero photo on the navy, roomier hero text
+            07ca85f  each seal type shows its temperature and pressure
+
+MITH PLATE
+  before-mithplate-redesign  d902450   the old basic page
+  after-mithplate-redesign   c9df966   rebuilt: 9 sections, material picker
+    commit c9df966  rebuild the product page from the approved copy
+
+RELATED PRODUCTS (bottom of every product page)
+  before-related-products  c9df966   plain text cards
+  after-related-products   59b2ba8   cards with photos and a "view all" link
+    commit 59b2ba8  richer related-products cards
+
+PRODUCT NAMES AND NEW PRODUCTS
+    commit 992fe7e  match product names to the old Mithson catalogue
+    commit 70e8490  add the last four products from the old catalogue
+  before-add-4-products   aa606f1
+  after-add-4-products    70e8490
+
+
+=====================================================================
+PART 2 — COMPANY PAGES
+=====================================================================
+
+ABOUT US
+    commit 6a543db  save point before the About redesign
+    commit cb6f4bc  redesign About Us page
+    commit dcbd5b1  restyle to the new mockup
+    commit f7a83b3  glass key-facts bar, journey images follow each step
+    commit eb258e8  frosted strip behind industry tile text on hover
+  before-downhole-card    733b30d
+    commit 6da2ca1  Industrial Processing card becomes Downhole Tools
+  before-sustain-bg       b069525
+    commit 03b4759  faded background on the sustainability section
+    commit d0c50c1  make that background more visible
+
+HSSE & QUALITY
+    commit cf85913  redesign with interactive sections
+    commit 453c113  different industry backgrounds on HSSE and About
+
+FACILITIES
+    commit e51a630  redesign with image-rich interactive sections
+  before-unit2-photo      992fe7e
+  after-unit2-photo       2bce4c5   real Mithson photo on the Unit-II card
+  after-location-cards    f45fd8e   both location cards equal, fit one screen
+
+SUSTAINABILITY
+  before-sustainability-redesign  f45fd8e
+  after-sustainability-redesign   66f1e6c   rebuilt from the approved copy
+    commit 66f1e6c
+
+EVENTS AND THE THREE EXPO PAGES
+  before-events-redesign  66f1e6c
+  after-events-redesign   2bbd0f7   rebuilt, detail split across the expos
+    commit 2bbd0f7
+
+CAREER
+    commit 689d761  detailed Career page and job applications
+
+PRIVACY POLICY
+    commit 72bc2f5  Privacy Policy page and footer link
+
+
+=====================================================================
+PART 3 — HOME PAGE
+=====================================================================
+
+GREENER FUTURE SECTION (several attempts, in order)
+  after-sustain-card-images  aa606f1  a photo on each card
+    commit aa606f1
+  after-sustain-arc          3ee3bc1  circles laid out in an arc
+    commit 3ee3bc1
+  before-revert-arc          3ee3bc1
+  after-revert-arc           b84c3ae  back to cards, stronger hover zoom
+    commit b84c3ae
+  before-cursor-list         b84c3ae
+  after-cursor-list          d902450  photo follows the cursor (current)
+    commit d902450
+
+
+=====================================================================
+PART 4 — BOOKING, ENQUIRY AND SITE-WIDE
+=====================================================================
+
+    commit 038a973  time zones and a Teams or Meet choice when booking
+    commit 6a3233a  Teams and Google Meet logos on the platform choice
+    commit 5abf03c  custom manufacturing pages and enquiry file uploads
+    commit 94b4632  stronger secret-file rules in .gitignore
+    commit bb7ab06  remove unused industry PNGs (WebP copies are used)
+    commit ce81106  raise the chunk-size warning for the 3D library
+    commit 6b24165  stop Vite scanning the flow-mcp folder
+    commit b30f5c6  allow Cloudflare tunnel links on the dev server
+
+PHONE AND TABLET FIXES
+  before-responsive-fixes  2bbd0f7
+  after-responsive-fixes   d8ac8db  fixes across every page built that day
+    commit d8ac8db
+
+
+=====================================================================
+PART 5 — DOCUMENTATION
+=====================================================================
+
+    commit f4ed858  build-docs/design.md — the design system for product
+                    and industry pages
+    commit f395df2  the agreed build order recorded in that file
+
+
+=====================================================================
+NOTES
+=====================================================================
+- Nothing here touches the menu bar or the footer.
+- No .env file or secret is in any of these commits; .gitignore blocks them.
+- Supabase still needs this run by you:
+      alter table public.enquiries add column if not exists application jsonb;
+- Still waiting on Mithson: photos for in-house testing, prototyping,
+  HSSE, resources and the corporate office; a WhatsApp number; and the
+  brochure and datasheet files for the download buttons.
