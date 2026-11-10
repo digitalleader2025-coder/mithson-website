@@ -68,27 +68,11 @@
   color: var(--color-white);
 }
 
-.sv-rail-wrap {
-  position: relative;
-}
-
-.sv-rail {
-  display: flex;
+.sv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-5);
-  padding: var(--space-2) 2px var(--space-5);
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
   list-style: none;
-  scrollbar-width: none;
-}
-
-.sv-rail::-webkit-scrollbar {
-  display: none;
-}
-
-.sv-rail > li {
-  flex: 0 0 340px;
-  scroll-snap-align: start;
 }
 
 .sv-card {
@@ -113,7 +97,7 @@
 .sv-card-photo {
   display: grid;
   place-items: center;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   background: linear-gradient(180deg, #ffffff 0%, #f1f7ff 100%);
   border-bottom: 1px solid rgba(66, 164, 255, 0.14);
@@ -167,10 +151,36 @@
   color: var(--color-text-2);
 }
 
+/* the spec rows read as a two-column key/value block inside a card this wide */
 .sv-card .spec-list--item {
-  margin-top: var(--space-4);
-  margin-bottom: 0;
+  margin: var(--space-4) 0 var(--space-4);
+  padding-top: var(--space-2);
+  border-top: 1px solid rgba(66, 164, 255, 0.18);
   border-bottom: 0;
+}
+
+.sv-card .spec-row {
+  grid-template-columns: 86px minmax(0, 1fr);
+  gap: var(--space-2);
+  padding: var(--space-2) 0;
+  border-top: 0;
+}
+
+.sv-card .spec-row + .spec-row {
+  border-top: 1px dashed rgba(3, 54, 163, 0.1);
+}
+
+.sv-card .spec-row dt {
+  font-size: var(--text-xs);
+}
+
+.sv-card .spec-value {
+  font-size: var(--text-sm);
+}
+
+.sv-card .spec-context {
+  margin-top: 2px;
+  font-size: 0.7rem;
 }
 
 .sv-card-more {
@@ -211,43 +221,6 @@
 
 .sv-card-uses strong {
   color: var(--color-navy-base);
-}
-
-.sv-rail-controls {
-  display: flex;
-  gap: var(--space-5);
-  align-items: center;
-}
-
-.sv-rail-hint {
-  flex: 1;
-  font-size: var(--text-sm);
-  color: var(--color-muted);
-}
-
-.sv-rail-arrows {
-  display: flex;
-  gap: var(--space-2);
-}
-
-.sv-rail-arrows button {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  background: var(--color-white);
-  border: 1px solid rgba(66, 164, 255, 0.28);
-  border-radius: 50%;
-  font-size: var(--text-xl);
-  line-height: 1;
-  color: var(--color-navy-base);
-  cursor: pointer;
-  transition: background var(--duration-base), color var(--duration-base);
-}
-
-.sv-rail-arrows button:hover {
-  background: var(--color-navy-base);
-  color: var(--color-white);
 }
 
 /* 02 sealing system, on the dark band */
@@ -311,6 +284,52 @@
 }
 
 /* 04 valve technologies */
+.sv-valve-banner {
+  position: relative;
+  margin-bottom: var(--space-6);
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 14px 40px rgba(3, 54, 163, 0.12);
+}
+
+.sv-valve-banner img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.sv-valve-banner p {
+  position: absolute;
+  inset: auto 0 0;
+  padding: var(--space-8) var(--space-6) var(--space-4);
+  background: linear-gradient(180deg, rgba(1, 19, 63, 0) 0%, rgba(1, 19, 63, 0.82) 70%);
+  font-size: var(--text-sm);
+  color: var(--color-white);
+}
+
+.sv-valve-panel {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.sv-valve-art {
+  display: grid;
+  place-items: center;
+  padding: var(--space-4);
+  background: linear-gradient(180deg, #ffffff 0%, #f1f7ff 100%);
+  border: 1px solid rgba(66, 164, 255, 0.2);
+  border-radius: 16px;
+  color: var(--color-navy-base);
+}
+
+.sv-valve-art svg {
+  width: 100%;
+  height: auto;
+}
+
 .sv-valves {
   display: grid;
   grid-template-columns: 290px minmax(0, 1fr);
@@ -458,6 +477,9 @@
 
 /* Small laptops and landscape tablets */
 @media (max-width: 1180px) {
+  .sv-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .sv-system,
   .sv-materials {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -469,8 +491,13 @@
 
 /* Tablets */
 @media (max-width: 900px) {
-  .sv-valves {
+  .sv-valves,
+  .sv-valve-panel {
     grid-template-columns: 1fr;
+  }
+  .sv-valve-art {
+    max-width: 260px;
+    margin: 0 auto;
   }
   .sv-valve-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -485,8 +512,11 @@
   .sv-valve-list {
     grid-template-columns: 1fr;
   }
-  .sv-rail > li {
-    flex: 0 0 82vw;
+  .sv-grid {
+    grid-template-columns: 1fr;
+  }
+  .sv-valve-banner img {
+    height: 170px;
   }
   .sv-valve-panel,
   .sv-custom {

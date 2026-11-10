@@ -42,6 +42,7 @@ import imgPeekRing from './assets/Peek Seat Ring.png';
 import imgPeekInsert from './assets/Peek Insert Metal Seat.png';
 import imgDevlonRing from './assets/Devlon Seat Ring.png';
 import imgDevlonInsert from './assets/Devlon Insert Metal Seat.png';
+import imgPlant from './assets/ref/valve-plant.webp';
 
 const IMAGES = {
   'Spring Energized Seals': imgSpring,
@@ -75,6 +76,73 @@ const ICONS = {
   check: <path d="m5 12 5 5 9-10" />,
   alert: <><path d="M12 3 2 20h20L12 3Z" /><path d="M12 10v4M12 17h.01" /></>,
 };
+
+
+/* Schematic cross-sections, drawn to scale-free proportions. They show how each valve
+   closes, which a stock photograph of a painted valve body cannot. */
+const VALVE_ART = {
+  gate: (
+    <>
+      <path d="M8 64h40M112 64h40" strokeWidth="9" />
+      <path d="M48 44h64v40H48z" />
+      <path d="M72 44v40h16V44z" fill="currentColor" fillOpacity="0.18" />
+      <path d="M80 44V16M62 16h36" strokeWidth="5" />
+      <path d="M48 52h64M48 76h64" strokeWidth="2" strokeOpacity="0.45" />
+    </>
+  ),
+  ball: (
+    <>
+      <path d="M8 64h36M116 64h36" strokeWidth="9" />
+      <path d="M44 40h72v48H44z" />
+      <circle cx="80" cy="64" r="20" fill="currentColor" fillOpacity="0.18" />
+      <path d="M60 64h40" strokeWidth="7" />
+      <path d="M80 44V18M66 18h28" strokeWidth="5" />
+    </>
+  ),
+  globe: (
+    <>
+      <path d="M8 76h34M118 76h34" strokeWidth="9" />
+      <path d="M42 92V60a38 38 0 0 1 76 0v32z" />
+      <path d="M58 70h44" strokeWidth="4" />
+      <path d="M66 58h28v10H66z" fill="currentColor" fillOpacity="0.18" />
+      <path d="M80 58V18M66 18h28" strokeWidth="5" />
+    </>
+  ),
+  plug: (
+    <>
+      <path d="M8 64h38M114 64h38" strokeWidth="9" />
+      <path d="M46 40h68v48H46z" />
+      <path d="M66 40h28l-7 48H73z" fill="currentColor" fillOpacity="0.2" />
+      <path d="M80 40V18M64 18h32" strokeWidth="5" />
+    </>
+  ),
+  butterfly: (
+    <>
+      <path d="M8 64h144" strokeWidth="9" />
+      <path d="M52 36h56v56H52z" />
+      <path d="m62 86 36-44" strokeWidth="8" strokeLinecap="round" />
+      <circle cx="80" cy="64" r="5" fill="currentColor" />
+      <path d="M80 36V18M66 18h28" strokeWidth="5" />
+    </>
+  ),
+  diaphragm: (
+    <>
+      <path d="M8 82h30M122 82h30" strokeWidth="9" />
+      <path d="M38 94V62h84v32z" />
+      <path d="M38 70c14-18 28 6 42 6s28-24 42-6" strokeWidth="5" fill="none" />
+      <path d="M66 56h28v12H66z" fill="currentColor" fillOpacity="0.2" />
+      <path d="M80 56V18M64 18h32" strokeWidth="5" />
+    </>
+  ),
+};
+
+function ValveArt({ type }) {
+  return (
+    <svg viewBox="0 0 160 120" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {VALVE_ART[type]}
+    </svg>
+  );
+}
 
 function Icon({ name, size = 24 }) {
   return (
@@ -223,19 +291,12 @@ function ProductCard({ item, open, onToggle }) {
   );
 }
 
-/** Horizontal rail of the twelve products, filtered by family, with a progress bar. */
+/** The twelve products as a grid, filtered by component family. */
 function Catalogue() {
   const [family, setFamily] = useState('All');
   const [open, setOpen] = useState(null);
-  const railRef = useRef(null);
 
   const shown = family === 'All' ? catalogue : catalogue.filter((c) => c.family === family);
-
-  const nudge = (dir) => {
-    const el = railRef.current;
-    // scrollLeft, not scrollBy: the page's smooth-scroll library swallows the animated form
-    if (el) el.scrollLeft += dir * Math.max(320, el.clientWidth * 0.8);
-  };
 
   return (
     <>
@@ -248,22 +309,13 @@ function Catalogue() {
         ))}
       </div>
 
-      <div className="sv-rail-wrap">
-        <ul className="sv-rail" ref={railRef}>
-          {shown.map((item) => (
-            <li key={item.key}>
-              <ProductCard item={item} open={open === item.key} onToggle={() => setOpen(open === item.key ? null : item.key)} />
-            </li>
-          ))}
-        </ul>
-        <div className="sv-rail-controls">
-          <p className="sv-rail-hint">{shown.length} products &middot; scroll or use the arrows</p>
-          <div className="sv-rail-arrows">
-            <button type="button" aria-label="Scroll products left" onClick={() => nudge(-1)}>‹</button>
-            <button type="button" aria-label="Scroll products right" onClick={() => nudge(1)}>›</button>
-          </div>
-        </div>
-      </div>
+      <ul className="sv-grid">
+        {shown.map((item) => (
+          <li key={item.key}>
+            <ProductCard item={item} open={open === item.key} onToggle={() => setOpen(open === item.key ? null : item.key)} />
+          </li>
+        ))}
+      </ul>
     </>
   );
 }
@@ -291,14 +343,17 @@ function ValveTypes() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <h3>{item.name}</h3>
-          <p>{item.text}</p>
-          <ul className="mp-pills mu-pills-light">
-            {item.items.map((t) => <li key={t}>{t}</li>)}
-          </ul>
-          {item.link && (
-            <Link to={item.link} className="btn btn-navy mp-inline-btn">Open the Plug &amp; Lined Valve page <Arrow /></Link>
-          )}
+          <div className="sv-valve-art"><ValveArt type={item.key} /></div>
+          <div className="sv-valve-text">
+            <h3>{item.name}</h3>
+            <p>{item.text}</p>
+            <ul className="mp-pills mu-pills-light">
+              {item.items.map((t) => <li key={t}>{t}</li>)}
+            </ul>
+            {item.link && (
+              <Link to={item.link} className="btn btn-navy mp-inline-btn">Open the Plug &amp; Lined Valve page <Arrow /></Link>
+            )}
+          </div>
         </motion.div>
       </AnimatePresence>
     </div>
@@ -388,6 +443,10 @@ export default function SealsValvePage() {
         <div className="container">
           <Head number="04" label="Valve technologies" title="Sealing solutions across multiple valve technologies"
             intro="Each application requires carefully selected sealing geometry and material properties to maintain the intended sealing interface." />
+          <Reveal className="sv-valve-banner">
+            <img src={imgPlant} alt="Valves and pipework in an industrial plant" loading="lazy" />
+            <p>Valves and pipework in service. The diagrams below show how each valve type closes and where the seal sits.</p>
+          </Reveal>
           <ValveTypes />
         </div>
       </section>
