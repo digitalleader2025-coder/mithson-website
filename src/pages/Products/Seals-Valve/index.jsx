@@ -303,6 +303,16 @@ function Catalogue() {
         ))}
       </div>
 
+      {/* a dropdown on phones: twelve stacked buttons pushed the product itself off screen */}
+      <label className="sv-pick-select">
+        <span>Product</span>
+        <select value={item.key} onChange={(e) => setActive(e.target.value)}>
+          {shown.map((c, i) => (
+            <option key={c.key} value={c.key}>{`${String(i + 1).padStart(2, '0')} — ${c.name}`}</option>
+          ))}
+        </select>
+      </label>
+
       <div className="sv-picks" role="tablist" aria-label="Products">
         {shown.map((c, i) => (
           <button key={c.key} type="button" role="tab" aria-selected={c.key === item.key} onClick={() => setActive(c.key)}>
