@@ -52,6 +52,10 @@ This folder is only for the Mithson Sealing Solutions website. Read this whole f
 
 ## 4. Design rules already agreed
 
+- **Product and industry pages: read `build-docs/design.md` first, every time.** It holds the shared base design,
+  the section patterns, the motion palette and the quality gate. When the user pastes copy for a product or industry
+  page, no example image is needed: follow that file. Changing it needs the user's approval.
+
 - Colours: primary blue `#42A4FF`, navy `#0336A3`, white. Light theme only.
 - Page width: content and menu bar share one width, 1350 px at most, with a 16 px side gap (`--container-max` in `src/index.css`).
 - Menu bar: floating white rounded bar, menu text in normal capitals, divider lines, and Book a Meeting with a calendar icon.
