@@ -43,6 +43,21 @@ import imgPeekInsert from './assets/Peek Insert Metal Seat.png';
 import imgDevlonRing from './assets/Devlon Seat Ring.png';
 import imgDevlonInsert from './assets/Devlon Insert Metal Seat.png';
 import imgPlant from './assets/ref/valve-plant.webp';
+import vGate from './assets/ref/valve-gate.webp';
+import vBall from './assets/ref/valve-ball.webp';
+import vGlobe from './assets/ref/valve-globe.webp';
+import vPlug from './assets/ref/valve-plug.webp';
+import vButterfly from './assets/ref/valve-butterfly.webp';
+import vDiaphragm from './assets/ref/valve-diaphragm.webp';
+
+const VALVE_PHOTOS = {
+  gate: vGate,
+  ball: vBall,
+  globe: vGlobe,
+  plug: vPlug,
+  butterfly: vButterfly,
+  diaphragm: vDiaphragm,
+};
 
 const IMAGES = {
   'Spring Energized Seals': imgSpring,
@@ -78,67 +93,87 @@ const ICONS = {
 };
 
 
-/* Schematic cross-sections, drawn to scale-free proportions. They show how each valve
-   closes, which a stock photograph of a painted valve body cannot. */
+/* Cut-away cross-sections: body in outline, the closing part in accent blue and the
+   seal or seat in navy, so a reader can see where Mithson's component actually sits. */
 const VALVE_ART = {
   gate: (
     <>
-      <path d="M8 64h40M112 64h40" strokeWidth="9" />
-      <path d="M48 44h64v40H48z" />
-      <path d="M72 44v40h16V44z" fill="currentColor" fillOpacity="0.18" />
-      <path d="M80 44V16M62 16h36" strokeWidth="5" />
-      <path d="M48 52h64M48 76h64" strokeWidth="2" strokeOpacity="0.45" />
+      <path className="d-body" d="M6 88h18v42H6zM176 88h18v42h-18z" />
+      <path className="d-body" d="M24 96h44v26H24zM132 96h44v26h-44z" />
+      <path className="d-body" d="M62 74h76v56H62z" />
+      <path className="d-body" d="M84 34h32v40H84z" />
+      <rect className="d-seal" x="78" y="94" width="8" height="30" />
+      <rect className="d-seal" x="114" y="94" width="8" height="30" />
+      <rect className="d-part" x="86" y="46" width="28" height="78" rx="3" />
+      <rect className="d-stem" x="96" y="8" width="8" height="40" />
+      <rect className="d-stem" x="68" y="6" width="64" height="7" rx="3.5" />
     </>
   ),
   ball: (
     <>
-      <path d="M8 64h36M116 64h36" strokeWidth="9" />
-      <path d="M44 40h72v48H44z" />
-      <circle cx="80" cy="64" r="20" fill="currentColor" fillOpacity="0.18" />
-      <path d="M60 64h40" strokeWidth="7" />
-      <path d="M80 44V18M66 18h28" strokeWidth="5" />
+      <path className="d-body" d="M6 88h18v42H6zM176 88h18v42h-18z" />
+      <path className="d-body" d="M24 96h32v26H24zM144 96h32v26h-32z" />
+      <path className="d-body" d="M52 70h96v60H52z" />
+      <circle className="d-part" cx="100" cy="100" r="30" />
+      <rect className="d-bore" x="70" y="92" width="60" height="16" rx="2" />
+      <path className="d-seal" d="M60 86h12v28H60zM128 86h12v28h-12z" />
+      <rect className="d-stem" x="96" y="26" width="8" height="46" />
+      <rect className="d-stem" x="96" y="14" width="76" height="9" rx="4.5" />
     </>
   ),
   globe: (
     <>
-      <path d="M8 76h34M118 76h34" strokeWidth="9" />
-      <path d="M42 92V60a38 38 0 0 1 76 0v32z" />
-      <path d="M58 70h44" strokeWidth="4" />
-      <path d="M66 58h28v10H66z" fill="currentColor" fillOpacity="0.18" />
-      <path d="M80 58V18M66 18h28" strokeWidth="5" />
+      <path className="d-body" d="M6 98h18v38H6zM176 98h18v38h-18z" />
+      <path className="d-body" d="M24 106h36v22H24zM140 106h36v22h-36z" />
+      <path className="d-body" d="M46 136V98a54 38 0 0 1 108 0v38z" />
+      <rect className="d-body" x="78" y="34" width="44" height="34" />
+      <path className="d-seal" d="M74 96h52v8H74z" />
+      <path className="d-part" d="M82 72h36v24l-18 10-18-10z" />
+      <rect className="d-stem" x="96" y="8" width="8" height="40" />
+      <ellipse className="d-stem" cx="100" cy="8" rx="34" ry="5" />
     </>
   ),
   plug: (
     <>
-      <path d="M8 64h38M114 64h38" strokeWidth="9" />
-      <path d="M46 40h68v48H46z" />
-      <path d="M66 40h28l-7 48H73z" fill="currentColor" fillOpacity="0.2" />
-      <path d="M80 40V18M64 18h32" strokeWidth="5" />
+      <path className="d-body" d="M6 88h18v42H6zM176 88h18v42h-18z" />
+      <path className="d-body" d="M24 96h36v26H24zM140 96h36v26h-36z" />
+      <path className="d-body" d="M56 70h88v60H56z" />
+      <path className="d-seal" d="M72 70h56l-7 60H79z" />
+      <path className="d-part" d="M78 76h44l-5 48H83z" />
+      <rect className="d-bore" x="84" y="92" width="32" height="16" rx="2" />
+      <rect className="d-stem" x="96" y="30" width="8" height="46" />
+      <rect className="d-stem" x="96" y="18" width="72" height="9" rx="4.5" />
     </>
   ),
   butterfly: (
     <>
-      <path d="M8 64h144" strokeWidth="9" />
-      <path d="M52 36h56v56H52z" />
-      <path d="m62 86 36-44" strokeWidth="8" strokeLinecap="round" />
-      <circle cx="80" cy="64" r="5" fill="currentColor" />
-      <path d="M80 36V18M66 18h28" strokeWidth="5" />
+      <circle className="d-body" cx="100" cy="100" r="46" />
+      <circle className="d-seal" cx="100" cy="100" r="38" />
+      <circle className="d-bore" cx="100" cy="100" r="30" />
+      <ellipse className="d-part" cx="100" cy="100" rx="11" ry="30" transform="rotate(28 100 100)" />
+      <rect className="d-stem" x="96" y="54" width="8" height="92" rx="2" />
+      <rect className="d-stem" x="82" y="16" width="36" height="26" rx="4" />
+      <rect className="d-stem" x="96" y="40" width="8" height="18" />
     </>
   ),
   diaphragm: (
     <>
-      <path d="M8 82h30M122 82h30" strokeWidth="9" />
-      <path d="M38 94V62h84v32z" />
-      <path d="M38 70c14-18 28 6 42 6s28-24 42-6" strokeWidth="5" fill="none" />
-      <path d="M66 56h28v12H66z" fill="currentColor" fillOpacity="0.2" />
-      <path d="M80 56V18M64 18h32" strokeWidth="5" />
+      <path className="d-body" d="M6 104h18v38H6zM176 104h18v38h-18z" />
+      <path className="d-body" d="M24 112h30v22H24zM146 112h30v22h-30z" />
+      <path className="d-body" d="M40 142v-30h120v30z" />
+      <path className="d-weir" d="M70 112h60l-14-18H84z" />
+      <path className="d-body" d="M60 94h80v-6a40 40 0 0 0-80 0z" />
+      <path className="d-seal" d="M46 92c16-16 30 2 54 2s38-18 54-2v8c-16-14-30 4-54 4s-38-18-54-4z" />
+      <path className="d-part" d="M78 60h44v22a22 14 0 0 1-44 0z" />
+      <rect className="d-stem" x="96" y="10" width="8" height="52" />
+      <ellipse className="d-stem" cx="100" cy="10" rx="32" ry="5" />
     </>
   ),
 };
 
 function ValveArt({ type }) {
   return (
-    <svg viewBox="0 0 160 120" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg viewBox="0 0 200 150" aria-hidden="true">
       {VALVE_ART[type]}
     </svg>
   );
@@ -329,7 +364,10 @@ function ValveTypes() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="sv-valve-art"><ValveArt type={item.key} /></div>
+          <figure className="sv-valve-art">
+            <ValveArt type={item.key} />
+            <figcaption>How it closes</figcaption>
+          </figure>
           <div className="sv-valve-text">
             <h3>{item.name}</h3>
             <p>{item.text}</p>
@@ -340,6 +378,15 @@ function ValveTypes() {
               <Link to={item.link} className="btn btn-navy mp-inline-btn">Open the Plug &amp; Lined Valve page <Arrow /></Link>
             )}
           </div>
+          <motion.figure
+            className="sv-valve-photo"
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.45, delay: 0.1, ease: EASE }}
+          >
+            <img src={VALVE_PHOTOS[item.key]} alt={`${item.name} in service`} loading="lazy" />
+            <figcaption>{item.name}</figcaption>
+          </motion.figure>
         </motion.div>
       </AnimatePresence>
     </div>
