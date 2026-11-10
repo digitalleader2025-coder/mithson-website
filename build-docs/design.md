@@ -161,3 +161,14 @@ Grid collapse: 3 columns → 2 at 1180px → 1 at 640px. Pickers and split layou
 7. Report what was built, what was checked, and what was left out.
 
 If a page would need a brand-new pattern or a new colour, **ask first** — that is a change to this file, and this file changes only with Dinesh's approval.
+
+---
+
+## 11. Agreed build order (10 Nov 2026)
+
+Decided with Dinesh:
+
+1. **Products index rebuild** — filter bar (material, pressure, temperature, industry), category overview text, product cards carrying a spec tooltip and a variant count.
+2. **Industry page shape** — segment tabs, each with its own features, applications and products; certification strip; "other industries" row.
+
+Variety rule confirmed: **every new page uses at least two section patterns no other page uses**, plus one signature motion of its own.
