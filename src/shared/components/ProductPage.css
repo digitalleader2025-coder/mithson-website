@@ -346,13 +346,13 @@
   box-shadow: 0 22px 50px rgba(3, 54, 163, 0.18);
 }
 
-/* product photos sit on dark backgrounds, so the tile matches them */
+/* every product photo tile is white, as agreed */
 .related-card-photo {
   display: grid;
   place-items: center;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  background: radial-gradient(circle at 50% 45%, #15233f 0%, #080d18 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f1f7ff 100%);
 }
 
 .related-card-photo img {

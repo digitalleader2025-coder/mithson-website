@@ -1,0 +1,323 @@
+/* Hammer Union Seal: only the parts the shared product sheets do not cover */
+
+.hu-hero-sub {
+  margin-top: var(--space-4) !important;
+  font-size: var(--text-sm) !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* 01 overview */
+.hu-lead {
+  margin: var(--space-6) 0 var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-navy-base);
+}
+
+.hu-parts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.hu-part {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.hu-part h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-navy-base);
+}
+
+.hu-part p {
+  margin-top: 4px;
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--color-text-2);
+}
+
+.hu-figure img {
+  background: linear-gradient(180deg, #ffffff 0%, #f1f7ff 100%);
+}
+
+.hu-page .mu-panel-visual {
+  background: var(--color-white);
+  border: 1px solid rgba(66, 164, 255, 0.18);
+}
+
+/* 02 five stages, not four */
+.hu-stages {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.hu-stage-note {
+  margin-top: var(--space-8);
+}
+
+/* 03 constructions. The product photos are white-background studio shots, so the
+   tiles behind them are white rather than the dark gradient used elsewhere. */
+.hu-type-visual,
+.hu-reinforce-photo,
+.hu-page .mu-thumb {
+  background: var(--color-white);
+}
+
+.hu-type-visual {
+  padding: var(--space-4);
+}
+
+.hu-type-visual img {
+  max-height: 280px;
+}
+
+.hu-page .mu-thumb img {
+  object-fit: contain;
+  padding: 4px;
+}
+
+.hu-pills-dark {
+  margin-top: var(--space-4);
+}
+
+.hu-pills-dark li {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.24);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* 04 materials */
+.mu-panel-body h3 em {
+  margin-left: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  font-style: normal;
+  color: var(--color-muted);
+}
+
+.hu-temp {
+  display: inline-flex !important;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-3) !important;
+  padding: 6px 14px;
+  background: #eef5ff;
+  border: 1px solid rgba(66, 164, 255, 0.28);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm) !important;
+  color: var(--color-text-2);
+}
+
+.hu-temp svg {
+  flex-shrink: 0;
+  color: #0a5fd0;
+}
+
+.hu-temp strong {
+  color: var(--color-navy-base);
+}
+
+/* 05 reinforcement */
+.hu-reinforce {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+.hu-reinforce-card {
+  overflow: hidden;
+  background: var(--color-white);
+  border: 1px solid rgba(66, 164, 255, 0.18);
+  border-radius: 20px;
+  box-shadow: 0 14px 40px rgba(3, 54, 163, 0.09);
+}
+
+.hu-reinforce-photo {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: linear-gradient(180deg, #ffffff 0%, #f1f7ff 100%);
+}
+
+.hu-reinforce-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hu-reinforce-card > div:last-child {
+  padding: var(--space-5);
+}
+
+.hu-reinforce-card h3 {
+  margin-bottom: var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-navy-base);
+}
+
+.hu-reinforce-card p {
+  font-size: var(--text-sm);
+  line-height: 1.65;
+  color: var(--color-text-2);
+}
+
+/* 08 dimensions */
+.hu-measure {
+  display: grid;
+  place-items: center;
+  margin: var(--space-6) 0 var(--space-5);
+  padding: var(--space-5);
+  background: var(--color-white);
+  border: 1px solid rgba(66, 164, 255, 0.18);
+  border-radius: 20px;
+  box-shadow: 0 14px 40px rgba(3, 54, 163, 0.09);
+}
+
+.hu-measure img {
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+}
+
+.hu-dims {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.hu-dim {
+  padding: var(--space-4);
+  background: var(--color-white);
+  border: 1px solid rgba(66, 164, 255, 0.18);
+  border-radius: 14px;
+}
+
+.hu-dim strong {
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  color: var(--color-navy-base);
+}
+
+.hu-dim span {
+  font-size: var(--text-xs);
+  line-height: 1.6;
+  color: var(--color-text-2);
+}
+
+/* 10 specifications */
+.hu-specs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-8);
+  align-items: start;
+  margin-bottom: var(--space-6);
+}
+
+.hu-ratings {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.hu-rating {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-white);
+  border: 1px solid rgba(66, 164, 255, 0.18);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(3, 54, 163, 0.07);
+}
+
+.hu-rating-label {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-navy-base);
+}
+
+.hu-rating strong {
+  grid-row: 1 / 3;
+  grid-column: 2;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: #0a5fd0;
+}
+
+.hu-rating-scope {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
+
+.hu-rating-scope em {
+  padding: 1px var(--space-2);
+  background: rgba(66, 164, 255, 0.14);
+  border-radius: var(--radius-full);
+  font-style: normal;
+  font-weight: 600;
+  color: var(--color-navy-base);
+}
+
+.hu-product-spec {
+  margin-top: var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-white);
+  border: 1px solid rgba(66, 164, 255, 0.18);
+  border-radius: 14px;
+}
+
+.hu-safety {
+  margin-top: var(--space-6);
+}
+
+/* Small laptops and landscape tablets */
+@media (max-width: 1180px) {
+  .hu-stages {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: var(--space-8);
+  }
+  .hu-specs {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+  .hu-reinforce {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Phones */
+@media (max-width: 640px) {
+  .hu-parts,
+  .hu-dims {
+    grid-template-columns: 1fr;
+  }
+  .hu-stages {
+    grid-template-columns: 1fr;
+  }
+  .hu-rating {
+    grid-template-columns: 1fr;
+  }
+  .hu-rating strong {
+    grid-row: auto;
+    grid-column: auto;
+  }
+}

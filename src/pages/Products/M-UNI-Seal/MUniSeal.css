@@ -54,7 +54,7 @@
 
 .mu-figure {
   overflow: hidden;
-  background: #0b1530;
+  background: linear-gradient(180deg, #ffffff 0%, #f1f7ff 100%);
   border: 6px solid rgba(255, 255, 255, 0.92);
   border-radius: 22px;
   box-shadow: 0 24px 60px rgba(3, 54, 163, 0.18);
@@ -125,7 +125,7 @@
   place-items: center;
   overflow: hidden;
   border-radius: 16px;
-  background: radial-gradient(circle at 50% 45%, #15233f 0%, #080d18 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f1f7ff 100%);
 }
 
 .mu-type-visual img {
@@ -226,7 +226,7 @@
   height: 54px;
   overflow: hidden;
   border-radius: 12px;
-  background: #0b1530;
+  background: linear-gradient(180deg, #ffffff 0%, #f1f7ff 100%);
 }
 
 .mu-thumb img {
@@ -253,7 +253,7 @@
   aspect-ratio: 1;
   overflow: hidden;
   border-radius: 16px;
-  background: radial-gradient(circle at 50% 45%, #15233f 0%, #080d18 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f1f7ff 100%);
 }
 
 .mu-panel-visual--light {
