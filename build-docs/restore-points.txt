@@ -101,6 +101,13 @@ ENCAPSULATED O-RING
                                    switch, silicone and FKM cores compared
     commit f847adf  rebuild the product page from the approved copy
 
+CUSTOM MOLDED PRODUCTS
+  before-molded          2f558bb   the old shared Custom Molded page
+  after-molded           77eb36f   its own page: 11 sections, five molds you
+                                   can step through, a material matcher.
+                                   Machined Products is untouched.
+    commit 77eb36f  rebuild the page from the approved copy
+
 SEALS - X-MAS TREE
   before-xmas-tree       690379f   the old basic page
   after-xmas-tree        ae5e2c0   rebuilt: 12 sections, 4 components,
