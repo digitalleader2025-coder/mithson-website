@@ -23,6 +23,7 @@ const ApplicationData = lazy(() => import('./pages/More/ApplicationData'));
 // Products
 const Products = lazy(() => import('./pages/Products'));
 const CustomManufacturing = lazy(() => import('./pages/Products/CustomManufacturing'));
+const CustomMolded = lazy(() => import('./pages/Products/CustomMolded'));
 const MithPlate = lazy(() => import('./pages/Products/MITH-PLATE'));
 const MUniSeal = lazy(() => import('./pages/Products/M-UNI-Seal'));
 const HammerUnionSeal = lazy(() => import('./pages/Products/Hammer-Union-Seal'));
@@ -160,7 +161,7 @@ export default function App() {
 
               {/* Products */}
               <Route path="/products" element={<Products />} />
-              <Route path="/products/custom-molded-products" element={<CustomManufacturing slug="custom-molded-products" />} />
+              <Route path="/products/custom-molded-products" element={<CustomMolded />} />
               <Route path="/products/machined-products" element={<CustomManufacturing slug="machined-products" />} />
               <Route path="/products/mith-plate" element={<MithPlate />} />
               <Route path="/products/m-uni-seal" element={<MUniSeal />} />
