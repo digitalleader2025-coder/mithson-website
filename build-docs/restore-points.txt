@@ -115,6 +115,13 @@ MACHINED PRODUCTS
                                    six-axis material radar
     commit 9eb6f0a  rebuild the page from the approved copy
 
+INDUSTRIES - ENERGY, OIL & GAS
+  before-industry-oilgas 2b34293   the old thin card list, no images
+  after-industry-oilgas  dbeb42c   full industry page: 11 sections, a well
+                                   map you can click, six drawn seal sections,
+                                   five real oilfield photos
+    commit dbeb42c  rebuild Energy - Oil & Gas as a full industry page
+
 SEALS - X-MAS TREE
   before-xmas-tree       690379f   the old basic page
   after-xmas-tree        ae5e2c0   rebuilt: 12 sections, 4 components,
