@@ -274,7 +274,7 @@ export const productItems = {
       materials: ['PTFE', 'Fluoropolymers'],
     },
     'Pilot Shaft': {
-      description: 'Part of the air valve system that shifts the pump between strokes, so the two diaphragms keep working in turn.',
+      description: 'The shaft that joins the two diaphragms, so as one performs its discharge stroke the other performs its suction stroke. In some pump designs this is a different part from the pilot mechanism inside the air-distribution valve.',
       temperature: null,
       pressure: null,
       materials: ['PTFE', 'Fluoropolymers'],
