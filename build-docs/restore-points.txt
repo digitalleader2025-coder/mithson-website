@@ -108,6 +108,13 @@ CUSTOM MOLDED PRODUCTS
                                    Machined Products is untouched.
     commit 77eb36f  rebuild the page from the approved copy
 
+MACHINED PRODUCTS
+  before-machined        d0471f1   the old shared Machined Products page
+  after-machined         9eb6f0a   its own page: 10 sections, a blank that
+                                   loses material as you step through, a
+                                   six-axis material radar
+    commit 9eb6f0a  rebuild the page from the approved copy
+
 SEALS - X-MAS TREE
   before-xmas-tree       690379f   the old basic page
   after-xmas-tree        ae5e2c0   rebuilt: 12 sections, 4 components,
