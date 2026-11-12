@@ -69,9 +69,9 @@ PRODUCT PHOTOS SHOWN WHOLE
 
 SEALS - HYDRAULIC
   before-hydraulic       62c353a   the old basic Seals - Hydraulic page
-  after-hydraulic        (this)    rebuilt page: 15 sections, a cylinder
+  after-hydraulic        92cb716    rebuilt page: 15 sections, a cylinder
                                    that strokes, photo lightbox
-    commit (this)   rebuild the product page from the approved copy
+    commit 92cb716  rebuild the product page from the approved copy
 
 SEALS - X-MAS TREE
   before-xmas-tree       690379f   the old basic page
