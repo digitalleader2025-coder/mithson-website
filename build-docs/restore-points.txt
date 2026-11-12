@@ -49,6 +49,30 @@ SEALS - VALVE
   after-pick-compact     cda496f   chips on laptop, dropdown on phone
     commit 22fadfd  the product list no longer crowds out the product
 
+PLUG & LINED VALVE
+  before-plug-lined      8ee27cc   the old basic Plug & Lined Valve page
+  after-plug-lined       7f975a9   rebuilt page: 14 sections, a plug that
+                                   really turns, selection guide
+    commit 05cec0a  rebuild the product page from the approved copy
+
+UNI-LUBE BEARING
+  before-uni-lube        f7b9227   the old basic UNI-LUBE Bearing page
+  after-uni-lube         6d73c0a   rebuilt page: 15 sections, five bearing
+                                   families, turning shaft animation
+    commit 4ee465c  rebuild the product page from the approved copy
+
+PRODUCT PHOTOS SHOWN WHOLE
+  before-carousel-fix    4498ea3   product photos cut in half on most pages
+  after-carousel-fix     7e2df78   the side cards step back as the screen
+                                   narrows, so every photo is seen whole
+    commit eccc570  show the whole product photo, never half of one
+
+SEALS - HYDRAULIC
+  before-hydraulic       62c353a   the old basic Seals - Hydraulic page
+  after-hydraulic        (this)    rebuilt page: 15 sections, a cylinder
+                                   that strokes, photo lightbox
+    commit (this)   rebuild the product page from the approved copy
+
 SEALS - X-MAS TREE
   before-xmas-tree       690379f   the old basic page
   after-xmas-tree        ae5e2c0   rebuilt: 12 sections, 4 components,
