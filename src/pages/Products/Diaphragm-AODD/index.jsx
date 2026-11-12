@@ -169,7 +169,9 @@ function PumpDiagram({ side = 'left', highlight = null, animate = false, reduceM
       <path className="da-seat" d={`M${cx - 15} ${cy + 11}h30l-7 7h-16Z`} />
       <motion.circle
         cx={cx}
+        cy={open ? cy - 4 : cy + 4}
         r="10"
+        initial={{ cy: open ? cy - 4 : cy + 4 }}
         animate={{ cy: open ? cy - 4 : cy + 4 }}
         transition={timing.repeat ? { duration: 3.4, repeat: Infinity, ease: 'easeInOut' } : { duration: 0.6, ease: EASE }}
       />
