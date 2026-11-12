@@ -72,10 +72,11 @@
   transform: translateY(-2px);
 }
 
+/* full view: the photo keeps its own shape, nothing is cropped */
 .og-shot img {
+  display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  height: auto;
 }
 
 /* 01 the well map */
@@ -253,8 +254,44 @@
 
 .og-products {
   display: grid;
-  gap: var(--space-2);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
   margin: var(--space-5) 0;
+}
+
+.og-product-shot {
+  display: block;
+  width: 100%;
+  margin-bottom: var(--space-2);
+  padding: var(--space-3);
+  background: linear-gradient(180deg, #ffffff 0%, #eef5ff 100%);
+  border: 1px solid rgba(66, 164, 255, 0.14);
+  border-radius: 10px;
+  cursor: zoom-in;
+}
+
+/* whole product in view, never cropped */
+.og-product-shot img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  transition: transform var(--duration-base);
+}
+
+.og-product-shot:hover img {
+  transform: scale(1.04);
+}
+
+.og-product span b {
+  font-weight: 700;
+  color: var(--color-navy-base);
+}
+
+@media (max-width: 420px) {
+  .og-products {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .og-product {

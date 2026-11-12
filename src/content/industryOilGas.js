@@ -15,7 +15,7 @@ export const ogHero = {
   titleAccent: 'Oil & Gas.',
   titleRest: 'Sealed under pressure.',
   lead:
-    'In oil and gas, sealing reliability decides equipment integrity, operational safety and process efficiency. Mithson supplies specialised polymer and elastomer sealing for wellhead equipment, Christmas tree valves, well service pumps, downhole tools, pipeline valves and LNG systems.',
+    'In oil and gas, sealing reliability decides equipment integrity, operational safety and process efficiency. Mithson supplies specialised polymer and elastomer sealing for wellhead equipment, Christmas tree valves, blowout preventers, well service pumps, pipeline valves and LNG systems.',
   lead2:
     'The materials — PTFE, modified PTFE, PEEK, NBR, HNBR, FKM, FEPM and FFKM — are selected against the pressure, temperature, chemistry, mechanical loading and fluid your equipment actually sees, not from a catalogue.',
 };
@@ -32,15 +32,17 @@ export const heroTags = [
 ];
 
 export const heroChips = [
-  { icon: 'rig', title: '4 product families', text: 'Wellhead, well service, downhole, valve' },
+  { icon: 'rig', title: '12 oil & gas products', text: 'Wellhead, well service and pipeline valve' },
   { icon: 'flask', title: '8 material families', text: 'PTFE through FFKM' },
   { icon: 'book', title: 'API 6A & API 6D', text: 'The equipment these parts go into' },
   { icon: 'snow', title: 'LNG at ~−162°C', text: 'Cryogenic valve sealing' },
 ];
 
-// 01 - the four product families, each linking to its existing page
+// 01 - the three oil & gas product families, each linking to its existing page.
+// Downhole tools has its own page (/industries/downhole-tools) and is kept off this one.
+// `image` is the key of the existing Mithson product photo; `label` matches productItems.oilGasItems.
 export const familiesIntro =
-  'Four product families cover the equipment across upstream, midstream and downstream operations. Each links through to its full product page.';
+  'Three product families cover the equipment from the wellhead and the pump pad to the pipeline and the LNG terminal. Every part shown is a real Mithson product, and each family links through to its full product page.';
 
 export const families = [
   {
@@ -49,13 +51,12 @@ export const families = [
     name: 'API 6A Wellhead Equipment Seals',
     tagline: 'Precision sealing for wellhead and Christmas tree equipment',
     path: '/oil-gas-seal/api-6a-wellhead-equipment-seal',
-    photo: 'offshore',
     text: 'Wellhead and Christmas tree equipment runs under demanding pressure, temperature and fluid conditions, and the sealing components hold the pressure boundary, stop external leakage and protect the equipment interfaces.',
     products: [
-      { name: 'Stem packing set', job: 'Controls leakage along the moving stem', materials: 'Filled PTFE, PEEK and corrosion-resistant spring or support components' },
-      { name: 'Spring-energized stem seal', job: 'A polymer jacket plus a spring that holds sealing contact', materials: 'Filled PTFE, PEEK, with Elgiloy or stainless-steel spring options' },
-      { name: 'OD / ID face seal', job: 'Seals the inner and outer faces of the seat assembly', materials: 'PEEK, glass-filled PTFE and metallic energizers' },
-      { name: 'BOP seal', job: 'Holds sealing contact around the ram, pipe or equipment interface', materials: 'NBR and HNBR, subject to fluid compatibility' },
+      { name: 'Stem Packing Set', image: 'stemPacking', job: 'Controls leakage along the moving valve stem', materials: 'PEEK, Elgiloy / stainless-steel spring, filled PTFE', where: 'Wellhead gate valve' },
+      { name: 'Stem Seal', image: 'stemSeal', job: 'A polymer jacket plus a spring that holds sealing contact on the stem', materials: 'PEEK, Elgiloy / stainless-steel spring, filled PTFE', where: 'Wellhead gate valve' },
+      { name: 'OD / ID Face Seal', image: 'faceSeal', job: 'Seals the inner and outer faces of the seat assembly', materials: 'PEEK, Elgiloy / stainless-steel spring, filled PTFE', where: 'Wellhead gate valve' },
+      { name: 'BOP Seal', image: 'bop', job: 'Holds sealing contact around the ram, pipe or equipment interface', materials: 'NBR, HNBR', where: 'Blowout preventer' },
     ],
     uses: 'API 6A gate valves, wellhead equipment, Christmas tree valve assemblies, blowout preventers and well-control equipment.',
   },
@@ -65,52 +66,35 @@ export const families = [
     name: 'Well Service Equipment Seals',
     tagline: 'Reliable sealing for high-cycle pump operations',
     path: '/oil-gas-seal/well-service-equipment-seal',
-    photo: 'pipeline',
     text: 'Hydraulic fracturing, cementing and fluid pumping put reciprocating pump components through repeated movement, pressure swings, abrasive fluids and constant contact with the sealing surfaces.',
     products: [
-      { name: 'Plunger pump packing set', job: 'Seals the moving plunger against process-fluid leakage', materials: 'NBR/fabric, HNBR/fabric and FKM/fabric constructions' },
-      { name: 'Pump packing set', job: 'Seals around moving pump elements during operation', materials: 'Application-specific elastomer and fabric constructions' },
-      { name: 'Plunger sealing elements', job: 'Maintains contact between plunger and packing', materials: 'Selected against the process fluid and cycle rate' },
+      { name: 'Plunger Packing Set', image: 'plunger', job: 'Seals the moving plunger against process-fluid leakage', materials: 'NBR / fabric, FKM / fabric, HNBR / fabric', where: 'Plunger pump' },
+      { name: 'Pump Packing Set', image: 'pumpPacking', job: 'Seals around the moving pump elements during operation', materials: 'NBR, HNBR, FKM, filled PTFE', where: 'Mud and frac pump' },
+      { name: 'Valve Seat Insert', image: 'valveSeat', job: 'Seals the pump valve against its seat on every stroke', materials: 'PU', where: 'Mud and frac pump' },
+      { name: 'Mud Pump Liner Seal', image: 'linerSeal', job: 'Seals the liner in the mud pump fluid end', materials: 'PU, NBR, HNBR', where: 'Mud pump' },
     ],
     uses: 'Oilfield plunger pumps, well service pumps, hydraulic fracturing equipment, cementing pumps and high-pressure fluid pumping systems.',
     note: 'Fabric-reinforced packing and elastomer compounds are selected against the pump design, process fluid, pressure, temperature and cycling, not chosen from a shelf.',
   },
   {
-    key: 'downhole',
-    number: '03',
-    name: 'Downhole Tool Seals',
-    tagline: 'Sealing for extreme subsurface environments',
-    path: '/industries/downhole-tools',
-    photo: 'gasplant',
-    text: 'Downhole equipment works where high pressure, elevated temperature, aggressive well fluids, gas exposure and mechanical movement all attack the seal at once. Pressure retention, extrusion control and fluid compatibility decide whether the tool comes back up working.',
-    products: [
-      { name: 'Unified stack seal', job: 'Bi-directional sealing in a compact arrangement', materials: 'Filled PTFE and PEEK', pressure: 'Up to 15,000 psi — published for this specific design' },
-      { name: 'Packer elements', job: 'Seals between tubing or tool and the casing or wellbore', materials: 'NBR, HNBR and FKM, according to well conditions' },
-      { name: 'RGD-resistant O-rings', job: 'Withstands the pressure change when high-pressure gas is released fast', materials: 'Specialised HNBR, FKM and FFKM compounds, subject to qualification' },
-      { name: 'PEEK back-up rings', job: 'Stops the primary seal extruding into the clearance gap', materials: 'PEEK — uncut, scarf-cut or spiral-cut' },
-    ],
-    uses: 'Sliding sleeves, liner hanger systems, packers, subsurface safety valves and downhole tool assemblies.',
-  },
-  {
     key: 'api6d',
-    number: '04',
+    number: '03',
     name: 'API 6D Ball Valve & LNG Seals',
     tagline: 'Pipeline, ball valve and cryogenic sealing',
     path: '/oil-gas-seal/api-6d-ball-valve-lng-seal',
-    photo: 'lng',
     text: 'Ball valves in gas transmission, pipelines and LNG facilities need reliable sealing at several interfaces at once: body, bonnet, seat retainer and the ball-seat contact, through pressure, temperature swings and repeated cycles.',
     products: [
-      { name: 'Body-bonnet seal', job: 'Seals the pressure-containing joint between body and bonnet', materials: 'Carbon-filled PTFE with Elgiloy spring', pressure: 'Up to 10,000 psi — published for this specific configuration' },
-      { name: 'Seat retainer seal', job: 'Stops fluid leaking behind the valve seat', materials: 'PTFE, PEEK and Elgiloy spring components', pressure: 'Up to 10,000 psi — published for this specific configuration' },
-      { name: 'PEEK seat ring', job: 'Forms the sealing interface between ball and seat', materials: 'PEEK' },
-      { name: 'LNG spring-energized seal', job: 'Holds sealing contact through cryogenic thermal cycling', materials: 'PTFE with corrosion-resistant Elgiloy spring' },
+      { name: 'Body-Bonnet Seal', image: 'bodyBonnet', job: 'Seals the pressure-containing joint between body and bonnet', materials: 'Carbon-filled PTFE, Elgiloy spring', where: 'Trunnion ball valve', pressure: 'Up to 10,000 psi, published for this configuration' },
+      { name: 'Seat Retainer', image: 'seatRetainer', job: 'Stops fluid leaking behind the valve seat', materials: 'PTFE, Elgiloy spring, PEEK', where: 'Trunnion ball valve', pressure: 'Up to 10,000 psi, published for this configuration' },
+      { name: 'PEEK Seat Ring', image: 'seatRing', job: 'Forms the sealing interface between ball and seat', materials: 'PEEK', where: 'Trunnion and floating ball valve' },
+      { name: 'LNG Seal', image: 'lngSeal', job: 'Holds sealing contact through cryogenic thermal cycling', materials: 'PTFE, Elgiloy spring', where: 'LNG ball valve', pressure: 'Around −162°C service' },
     ],
     uses: 'Trunnion-mounted and floating ball valves, gas transmission systems, LNG ball valves and cryogenic gas-handling equipment.',
   },
 ];
 
 export const pressureNote =
-  'The three pressure figures above are published references for those specific designs, not ratings for the whole portfolio. Final limits depend on the design, the material grade, the operating temperature, the installation and the qualification.';
+  'The 10,000 psi figures above are published references for those specific API 6D configurations, not ratings for the whole portfolio. Final limits depend on the design, the material grade, the operating temperature, the installation and the qualification.';
 
 // 02 - the six sealing types, with a drawn cross-section each
 export const sealingIntro =
@@ -143,14 +127,14 @@ export const sealingTypes = [
     name: 'Anti-extrusion sealing',
     short: 'Anti-extrusion',
     text: 'A rigid back-up ring sits beside the primary seal and blocks the clearance gap, so pressure cannot force the softer seal out through it.',
-    examples: ['High-pressure valves', 'Downhole tools', 'Hydraulic and oilfield systems'],
+    examples: ['High-pressure valves', 'Wellhead gate valves', 'Hydraulic and oilfield systems'],
   },
   {
     key: 'rgd',
     name: 'RGD-resistant sealing',
     short: 'RGD-resistant',
     text: 'Specialised elastomer compounds resist the damage caused when high-pressure gas absorbed into the rubber is released faster than it can diffuse back out.',
-    examples: ['Sour gas systems', 'High-pressure wellhead equipment', 'Downhole tools'],
+    examples: ['Sour gas systems', 'High-pressure wellhead equipment', 'Gas compression equipment'],
   },
   {
     key: 'cryogenic',
@@ -168,9 +152,9 @@ export const materialsIntro =
 export const materials = [
   { key: 'ptfe', name: 'PTFE', family: 'Fluoropolymer', strength: 'Chemical resistance and low friction', uses: 'Valve seats, spring-energized seals, seat retainer seals, stem seals, LNG jackets and packing', watch: 'Creep and extrusion under sustained load must be designed around.' },
   { key: 'filled', name: 'Modified / filled PTFE', family: 'Fluoropolymer composite', strength: 'Improved mechanical and dimensional behaviour', uses: 'Valve seats, chevron packing, spring-energized seals and anti-friction components', watch: 'Properties depend on the filler and the grade.' },
-  { key: 'peek', name: 'PEEK', family: 'Engineering thermoplastic', strength: 'Mechanical strength and wear performance', uses: 'Back-up rings, valve seat rings, precision sealing components and downhole parts', watch: 'Chemical compatibility and temperature must be checked per grade.' },
+  { key: 'peek', name: 'PEEK', family: 'Engineering thermoplastic', strength: 'Mechanical strength and wear performance', uses: 'Back-up rings, valve seat rings, precision sealing components and pump parts', watch: 'Chemical compatibility and temperature must be checked per grade.' },
   { key: 'nbr', name: 'NBR', family: 'Elastomer', strength: 'Petroleum-oil compatibility', uses: 'O-rings, pump packing, packer elements and BOP seals', watch: 'Not universally suitable for high-temperature or sour-gas service.' },
-  { key: 'hnbr', name: 'HNBR', family: 'Elastomer', strength: 'Strength with improved thermal performance', uses: 'RGD O-rings, packer elements, BOP seals, wellhead and downhole seals', watch: 'Confirm compound-specific RGD and sour-service qualification.' },
+  { key: 'hnbr', name: 'HNBR', family: 'Elastomer', strength: 'Strength with improved thermal performance', uses: 'RGD O-rings, BOP seals, plunger packing, wellhead and pump seals', watch: 'Confirm compound-specific RGD and sour-service qualification.' },
   { key: 'fkm', name: 'FKM', family: 'Elastomer', strength: 'Hydrocarbon and temperature resistance', uses: 'O-rings, packer elements, wellhead seals and chemical-resistant components', watch: 'Compatibility varies a great deal with compound chemistry, steam, amines and sour gas.' },
   { key: 'fepm', name: 'FEPM', family: 'Elastomer', strength: 'Selected aggressive chemical environments', uses: 'Chemical-resistant O-rings, specialised oilfield seals and high-temperature process equipment', watch: 'Verify compatibility against the exact process fluids.' },
   { key: 'ffkm', name: 'FFKM', family: 'Perfluoroelastomer', strength: 'Broad chemical and thermal performance', uses: 'Specialised high-performance O-rings and critical aggressive-fluid service', watch: 'A specialised grade: select on compound-specific chemical and temperature data.' },
@@ -224,7 +208,7 @@ export const valueChain = [
     subtitle: 'Exploration and production',
     photo: 'offshore',
     text: 'Drilling, well completion, production and well-control equipment, exposed to demanding pressure, temperature and fluid conditions.',
-    items: ['Wellhead gate valves', 'Christmas tree assemblies', 'Blowout preventers', 'Downhole tools', 'Packers', 'Subsurface safety valves', 'Plunger pumps', 'Well service equipment'],
+    items: ['Wellhead gate valves', 'Christmas tree assemblies', 'Blowout preventers', 'Plunger pumps', 'Mud and frac pumps', 'Well service equipment'],
     materials: 'HNBR, FKM, FFKM, PTFE and PEEK, according to the application.',
   },
   {
@@ -251,8 +235,7 @@ export const valueChain = [
 export const equipment = [
   { key: 'tree', title: 'Christmas tree valves', components: ['Stem packing', 'Spring-energized stem seals', 'Seat seals', 'Elastomer O-rings'], purpose: 'Maintain sealing integrity in wellhead gate valve assemblies.' },
   { key: 'bop', title: 'Blowout preventers', components: ['BOP elastomer seals', 'Specialised sealing elements'], purpose: 'Support the sealing functions of well-control equipment.' },
-  { key: 'pumps', title: 'Well service pumps', components: ['Plunger packing sets', 'Pump packing'], purpose: 'Control leakage around reciprocating pumping components.' },
-  { key: 'downhole', title: 'Downhole tools', components: ['Unified stack seals', 'RGD-resistant O-rings', 'PEEK back-up rings', 'Packer elements'], purpose: 'Support sealing, isolation and extrusion control in subsurface equipment.' },
+  { key: 'pumps', title: 'Well service pumps', components: ['Plunger packing sets', 'Pump packing sets', 'Valve seat inserts', 'Mud pump liner seals'], purpose: 'Control leakage around reciprocating pumping components.' },
   { key: 'ball', title: 'Ball valves', components: ['PEEK seat rings', 'Body-bonnet seals', 'Seat retainer seals'], purpose: 'Maintain sealing contact at the critical valve interfaces.' },
   { key: 'lng', title: 'LNG valves', components: ['Spring-energized PTFE seals', 'Cryogenic sealing arrangements'], purpose: 'Support sealing performance in low-temperature gas-handling equipment.' },
 ];
@@ -288,7 +271,6 @@ export const faqs = [
   { q: 'What is the difference between FKM and FFKM?', a: 'FKM is a fluoroelastomer for hydrocarbon and higher-temperature service. FFKM is a perfluoroelastomer for more demanding chemical and thermal environments. Suitability depends on the compound.' },
   { q: 'What is a PEEK back-up ring?', a: 'A rigid ring that supports the primary elastomer seal and helps prevent extrusion into the clearance gap under pressure.' },
   { q: 'What is a BOP seal?', a: 'A specialised sealing component used in blowout preventer equipment to support well-control sealing functions.' },
-  { q: 'What is a unified stack seal?', a: 'A sealing arrangement that provides sealing in both pressure directions in selected downhole tools.' },
   { q: 'What does a ball valve seat ring do?', a: 'It creates the sealing interface between the ball and the valve seat assembly, controlling the flow of process media.' },
   { q: 'What is a cryogenic seal?', a: 'A seal designed for very low temperatures, where material flexibility, thermal contraction and sealing contact all have to be considered together.' },
   { q: 'What temperature is required for LNG sealing?', a: 'LNG is commonly stored and transported at approximately −162°C. The actual valve and seal requirements depend on the equipment design and operating conditions.' },
@@ -304,7 +286,7 @@ export const disclaimer =
 
 export const closing = [
   'Looking for reliable oil & gas sealing?',
-  'From high-pressure wellhead equipment to specialised downhole and cryogenic valve applications, share your technical drawing, equipment details and operating conditions, and our engineering team will review them.',
+  'From high-pressure wellhead equipment to well service pumps and cryogenic valve applications, share your technical drawing, equipment details and operating conditions, and our engineering team will review them.',
 ];
 
 // Unsplash photographs, used under the Unsplash licence. Credit is shown on the page.

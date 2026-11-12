@@ -37,8 +37,26 @@ import imgRefinery from '../../../assets/industries/oil-gas/refinery.jpg';
 import imgGasPlant from '../../../assets/industries/oil-gas/gas-plant.jpg';
 import imgLng from '../../../assets/industries/oil-gas/lng-terminal.jpg';
 import imgPipeline from '../../../assets/industries/oil-gas/pipeline-valve.jpg';
+// the real Mithson product photos, unchanged, from the oil & gas product pages
+import pStemPacking from '../../../assets/api6a/Stem Packing Set.png';
+import pStemSeal from '../../../assets/api6a/Stem Seal.png';
+import pFaceSeal from '../../../assets/api6a/ID OD Seal.png';
+import pBop from '../../../assets/api6a/BOP Seal.png';
+import pPlunger from '../../../assets/wellservice/Plunger Packing Set.png';
+import pPumpPacking from '../../../assets/wellservice/Pump Packing Set.png';
+import pValveSeat from '../../../assets/wellservice/Valve Seat Insert.png';
+import pLinerSeal from '../../../assets/wellservice/Mud Pump Liner Seal.png';
+import pBodyBonnet from '../../../assets/api6d/Body-Bonnet Seal.png';
+import pSeatRetainer from '../../../assets/api6d/Seat Retainer.png';
+import pSeatRing from '../../../assets/api6d/Peek Seat Ring.png';
+import pLngSeal from '../../../assets/api6d/LNG Seal.png';
 
 const IMAGES = { offshore: imgOffshore, refinery: imgRefinery, gasplant: imgGasPlant, lng: imgLng, pipeline: imgPipeline };
+const PRODUCTS = {
+  stemPacking: pStemPacking, stemSeal: pStemSeal, faceSeal: pFaceSeal, bop: pBop,
+  plunger: pPlunger, pumpPacking: pPumpPacking, valveSeat: pValveSeat, linerSeal: pLinerSeal,
+  bodyBonnet: pBodyBonnet, seatRetainer: pSeatRetainer, seatRing: pSeatRing, lngSeal: pLngSeal,
+};
 
 const EASE = [0.22, 1, 0.36, 1];
 const CONTACT = '/connect-with-us';
@@ -153,7 +171,7 @@ function Hero() {
 
 /**
  * 01 - the signature of this page: the well and the line out of it, drawn in section,
- * with each of the four product families marked where it actually sits.
+ * with each of the three product families marked where it actually sits.
  */
 function WellMap({ active, onPick }) {
   const lit = (k) => (active === k ? ' is-lit' : '');
@@ -184,14 +202,6 @@ function WellMap({ active, onPick }) {
         <circle cx="212" cy="106" r="7" />
       </g>
       <text className="og-map-label" x="225" y="84" textAnchor="middle">Well service pump</text>
-
-      {/* downhole packer and tool */}
-      <g className={`og-part og-packer${lit('downhole')}`} onClick={() => onPick('downhole')}>
-        <rect x="90" y="206" width="40" height="22" rx="3" />
-        <rect x="96" y="232" width="28" height="48" rx="3" />
-      </g>
-      <text className="og-map-label" x="176" y="222" textAnchor="middle">Downhole tools</text>
-      <path className="og-leader" d="M134 218h16" />
 
       {/* the line out: pipeline valve to LNG tank */}
       <path className="og-pipe" d="M158 62h120" />
@@ -238,9 +248,6 @@ function Families({ onZoom }) {
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.3, ease: EASE }}
           >
-            <button type="button" className="og-shot" onClick={() => onZoom({ src: IMAGES[item.photo], alt: item.name })}>
-              <img src={IMAGES[item.photo]} alt={item.name} loading="lazy" />
-            </button>
             <h3>{item.name}</h3>
             <p className="og-sub">{item.tagline}</p>
             <p>{item.text}</p>
@@ -248,9 +255,14 @@ function Families({ onZoom }) {
             <div className="og-products">
               {item.products.map((p) => (
                 <div key={p.name} className="og-product">
+                  <button type="button" className="og-product-shot" onClick={() => onZoom({ src: PRODUCTS[p.image], alt: `Mithson ${p.name}` })}
+                    aria-label={`Enlarge ${p.name} photo`}>
+                    <img src={PRODUCTS[p.image]} alt={`Mithson ${p.name}`} loading="lazy" />
+                  </button>
                   <strong>{p.name}</strong>
                   <em>{p.job}</em>
-                  <span>{p.materials}</span>
+                  <span><b>Material:</b> {p.materials}</span>
+                  <span><b>Equipment:</b> {p.where}</span>
                   {p.pressure && <b className="og-pressure">{p.pressure}</b>}
                 </div>
               ))}
@@ -432,7 +444,7 @@ export default function IndustriesEnergyPage() {
     <div className="page-wrapper mp-page og-page">
       <Hero />
 
-      {/* 01 The four families */}
+      {/* 01 The three families */}
       <section className="section mp-section" id="og-families">
         <div className="container">
           <Head number="01" label="Product portfolio" title="Where each seal family sits" intro={familiesIntro} />
@@ -523,7 +535,7 @@ export default function IndustriesEnergyPage() {
       <section className="mp-dark" id="og-chain">
         <div className="container">
           <Head number="06" label="The value chain" title="From wellhead to LNG" light
-            intro="Upstream, midstream and downstream put different demands on the same four product families." />
+            intro="Upstream, midstream and downstream put different demands on the same sealing families." />
           <div className="og-chain">
             {valueChain.map((v, i) => (
               <Reveal key={v.key} delay={i * 0.08} className="og-chain-card">
