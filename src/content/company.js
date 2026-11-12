@@ -60,7 +60,7 @@ export const company = {
       email: 'mithesh@mithson.com',
     },
     sales: {
-      phones: ['+91-9994204988'],
+      phones: ['+91-7845022800', '+91-7845384005'],
       email: 'sales@mithson.com',
     },
   },

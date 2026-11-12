@@ -623,7 +623,7 @@ export default function IndustriesEnergyPage() {
             <h2>{closing[0]}</h2>
             <p>{closing[1]}</p>
             <p className="mp-cta-contact">
-              Contact Mithson: <a href="mailto:sales@mithson.com">sales@mithson.com</a> &nbsp;·&nbsp; <a href="tel:+919994204988">+91 99942 04988</a>
+              Contact Mithson: <a href="mailto:sales@mithson.com">sales@mithson.com</a> &nbsp;·&nbsp; <a href="tel:+917845022800">+91 78450 22800</a> &nbsp;·&nbsp; <a href="tel:+917845384005">+91 78453 84005</a>
             </p>
           </div>
           <div className="mp-cta-actions">

@@ -322,7 +322,7 @@ export default function DownholeSections() {
           <span className="mp-label mp-label--dark">13 — Engineering review</span>
           <h2>Looking for reliable downhole sealing solutions?</h2>
           <p>Whether you need PEEK back-up rings, unified stack seals, packer elements or RGD-resistant O-rings, send your technical requirements, drawings or sample components to start an engineering discussion.</p>
-          <p className="mp-cta-contact">Contact Mithson: <a href="mailto:sales@mithson.com">sales@mithson.com</a> &nbsp;·&nbsp; <a href="tel:+919994204988">+91 99942 04988</a></p>
+          <p className="mp-cta-contact">Contact Mithson: <a href="mailto:sales@mithson.com">sales@mithson.com</a> &nbsp;·&nbsp; <a href="tel:+917845022800">+91 78450 22800</a> &nbsp;·&nbsp; <a href="tel:+917845384005">+91 78453 84005</a></p>
         </div>
         <div className="mp-cta-actions">
           <Link to="/connect-with-us/application-data" className="btn btn-white">Send technical drawing <Arrow /></Link>
