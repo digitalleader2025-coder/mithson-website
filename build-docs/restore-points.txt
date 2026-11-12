@@ -122,6 +122,15 @@ INDUSTRIES - ENERGY, OIL & GAS
                                    five real oilfield photos
     commit dbeb42c  rebuild Energy - Oil & Gas as a full industry page
 
+INDUSTRIES - OIL & GAS PRODUCTS, SIX INDUSTRY PAGES, DOWNHOLE TOOLS
+  before-industries-all  27f3396   before this round of industry work
+  after-oil-gas-products c45ffde   Oil & Gas: Downhole removed, 12 real
+                                   products with their photos, shown whole
+  after-industry-pages   dd504d7   Life Science, Semiconductor, Aerospace,
+                                   Automotive, Mining, Robotics rebuilt
+  after-downhole-tools   d738bc9   Downhole Tools: full page below the
+                                   existing gallery and temperature table
+
 SEALS - X-MAS TREE
   before-xmas-tree       690379f   the old basic page
   after-xmas-tree        ae5e2c0   rebuilt: 12 sections, 4 components,
