@@ -13,6 +13,21 @@ export default function SkewedCarousel({ items }) {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // How many neighbours fit beside the 280px centre card without covering it.
+  // The offsets clear each card's own scaled width, so no product photo is ever half hidden.
+  const [layout, setLayout] = useState({ sides: 2, offsets: [0, 272, 492] });
+  useEffect(() => {
+    const measure = () => {
+      const w = window.innerWidth;
+      if (w >= 1120) setLayout({ sides: 2, offsets: [0, 272, 492] });
+      else if (w >= 880) setLayout({ sides: 1, offsets: [0, 272] });
+      else setLayout({ sides: 0, offsets: [0] });
+    };
+    measure();
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, []);
+
   const next = () => {
     if (isInfinite) {
       setCurrentIndex((prev) => (prev + 1) % renderItems.length);
@@ -73,33 +88,16 @@ export default function SkewedCarousel({ items }) {
                 if (diff < -half) diff += renderItems.length;
               }
 
+              const step = Math.abs(diff);
               const isCenter = diff === 0;
-              const isVisible = Math.abs(diff) <= 3; // Show center + 3 on each side
 
-              if (!isVisible) return null;
+              if (step > layout.sides) return null;
 
-              // Base styling values based on position
-              let scale = 1;
-              let rotateY = 0;
-              let zIndex = 100 - Math.abs(diff);
-              let opacity = 1;
-              let xOffset = diff * 120; // Base spacing
-
-              if (Math.abs(diff) === 1) {
-                scale = 0.8;
-                rotateY = diff > 0 ? -15 : 15;
-                xOffset = diff * 160;
-              } else if (Math.abs(diff) === 2) {
-                scale = 0.65;
-                rotateY = diff > 0 ? -20 : 20;
-                xOffset = diff * 240;
-                opacity = 0.8;
-              } else if (Math.abs(diff) === 3) {
-                scale = 0.5;
-                rotateY = diff > 0 ? -25 : 25;
-                xOffset = diff * 300;
-                opacity = 0.4;
-              }
+              const scale = step === 0 ? 1 : step === 1 ? 0.8 : 0.65;
+              const rotateY = step === 0 ? 0 : (diff > 0 ? -1 : 1) * (step === 1 ? 15 : 20);
+              const zIndex = 100 - step;
+              const opacity = step === 2 ? 0.85 : 1;
+              const xOffset = Math.sign(diff) * layout.offsets[step];
 
               return (
                 <motion.div
