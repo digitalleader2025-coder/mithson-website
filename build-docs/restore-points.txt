@@ -94,6 +94,13 @@ NOZZLES - POWER GRID
                                    interruption with moving contacts
     commit 93b5547  rebuild the product page from the approved copy
 
+ENCAPSULATED O-RING
+  before-encapsulated    13aeb22   the old basic Encapsulated O-Ring page
+  after-encapsulated     f847adf   rebuilt page: 15 sections, a squeeze slider
+                                   that flattens the seal, a solid/hollow
+                                   switch, silicone and FKM cores compared
+    commit f847adf  rebuild the product page from the approved copy
+
 SEALS - X-MAS TREE
   before-xmas-tree       690379f   the old basic page
   after-xmas-tree        ae5e2c0   rebuilt: 12 sections, 4 components,
