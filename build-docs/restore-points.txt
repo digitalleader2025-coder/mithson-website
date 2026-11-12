@@ -73,6 +73,27 @@ SEALS - HYDRAULIC
                                    that strokes, photo lightbox
     commit 92cb716  rebuild the product page from the approved copy
 
+DIAPHRAGM - AODD
+  before-aodd            dfece36   the old basic Diaphragm - AODD page
+  after-aodd             f637aea   rebuilt page: 16 sections, a pump cut-away
+                                   with a hotspot on every part, a two-stroke
+                                   pump that runs, chemical-compatibility form
+    commit f637aea  rebuild the product page from the approved copy
+
+WASHERS - TRANSMISSION
+  before-washers         f637aea   the old basic Washers - Transmission page
+  after-washers          80216d8   rebuilt page: 12 sections, a thrust
+                                   interface you can view with and without the
+                                   washer, PEEK grade comparison
+    commit 80216d8  rebuild the product page from the approved copy
+
+NOZZLES - POWER GRID
+  before-nozzles         80216d8   the old basic Nozzles - Power Grid page
+  after-nozzles          93b5547   rebuilt page: 13 sections, the CIP line
+                                   drawn step by step, a four-stage arc
+                                   interruption with moving contacts
+    commit 93b5547  rebuild the product page from the approved copy
+
 SEALS - X-MAS TREE
   before-xmas-tree       690379f   the old basic page
   after-xmas-tree        ae5e2c0   rebuilt: 12 sections, 4 components,
