@@ -111,7 +111,7 @@ export const elastomerRanges = {
     { material: 'HNBR', temperature: '-30°C to 150°C', use: 'Better heat, H₂S and rapid gas decompression resistance than NBR' },
     { material: 'FKM', temperature: 'Up to 200-225°C', use: 'High temperature, hydrocarbons, fuels and many solvents' },
     { material: 'FEPM', temperature: 'Up to 200°C', use: 'Bases, amines, H₂S, steam and high-pH fluids' },
-    { material: 'FFKM', temperature: '260°C to 327°C', use: 'Ultra-HPHT service and the widest chemical resistance' },
+    { material: 'FFKM', temperature: 'Grade-dependent; some compounds ~260°C or higher', use: 'Ultra-HPHT service and the widest chemical resistance' },
     { material: 'EPDM', temperature: '-50°C to 140-150°C', use: 'Steam, hot water and polar solvents; not for hydrocarbon oils' },
   ],
 };

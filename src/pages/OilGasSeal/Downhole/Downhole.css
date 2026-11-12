@@ -1,0 +1,315 @@
+/* Downhole Tools: the sections below the existing gallery and temperature table */
+.dh-page {
+  padding-bottom: var(--space-12);
+  /* sits inside the existing page body, so no page-wide tint of its own */
+  background: transparent;
+}
+
+.dh-sec {
+  margin-top: var(--space-16, 64px);
+}
+
+.dh-intro {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 900px;
+  margin-top: var(--space-10);
+  line-height: 1.75;
+  color: var(--color-text-2);
+}
+
+.dh-intro .ind-chips {
+  margin-top: var(--space-3);
+}
+
+/* the navy band that carries the extrusion explainer */
+.dh-band {
+  padding: var(--space-10) var(--space-8);
+  background: linear-gradient(160deg, #0336a3 0%, #022a80 100%);
+  border-radius: 28px;
+}
+
+.dh-band-note {
+  margin-top: var(--space-5);
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.dh-interactive {
+  margin-top: var(--space-8);
+  padding: var(--space-6);
+  background: var(--color-white);
+  border: 1px solid rgba(66, 164, 255, 0.18);
+  border-radius: 22px;
+  box-shadow: 0 14px 40px rgba(3, 54, 163, 0.08);
+}
+
+.dh-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.dh-steps button {
+  display: inline-flex;
+  gap: var(--space-2);
+  align-items: center;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-white);
+  border: 1px solid rgba(66, 164, 255, 0.3);
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-navy-base);
+  cursor: pointer;
+  transition: background var(--duration-base), color var(--duration-base);
+}
+
+.dh-steps button b {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  background: #eef5ff;
+  border-radius: 50%;
+  font-size: var(--text-xs);
+  color: #0a5fd0;
+}
+
+.dh-steps button[aria-selected='true'] {
+  background: var(--color-navy-base);
+  border-color: var(--color-navy-base);
+  color: var(--color-white);
+}
+
+.dh-int-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.dh-art {
+  padding: var(--space-4);
+  background: linear-gradient(180deg, #ffffff 0%, #eef5ff 100%);
+  border-radius: 16px;
+}
+
+.dh-art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.dh-int-text h3 {
+  margin: var(--space-2) 0;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-navy-base);
+}
+
+.dh-int-text p {
+  line-height: 1.7;
+  color: var(--color-text-2);
+}
+
+.dh-small {
+  margin-top: var(--space-3);
+  font-size: var(--text-xs) !important;
+}
+
+.dh-benefits {
+  margin-top: var(--space-3);
+}
+
+/* drawing styles */
+.dh-metal {
+  fill: #c9dcf3;
+}
+
+.dh-gap {
+  fill: #ffffff;
+}
+
+.dh-tubing {
+  fill: #dbe8f9;
+  stroke: #8fb8e8;
+}
+
+.dh-oring {
+  fill: #1c2b4a;
+}
+
+.dh-extrude {
+  fill: #1c2b4a;
+  stroke: #42a4ff;
+  stroke-width: 1.5;
+  stroke-dasharray: 3 2;
+}
+
+.dh-backup {
+  fill: #c8a165;
+  stroke: #8a6a3a;
+}
+
+.dh-element {
+  fill: #1c2b4a;
+}
+
+.dh-arrow {
+  fill: none;
+  stroke: #42a4ff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dh-label {
+  font-family: var(--font-body, sans-serif);
+  font-size: 10px;
+  fill: #0a5fd0;
+}
+
+.dh-label--strong {
+  font-weight: 700;
+  fill: #0336a3;
+}
+
+.dh-rgd-ring {
+  fill: #1c2b4a;
+}
+
+.dh-gas {
+  fill: #9fd0ff;
+}
+
+.dh-blister {
+  fill: #eef5ff;
+  stroke: #42a4ff;
+}
+
+.dh-crack {
+  fill: none;
+  stroke: #eef5ff;
+  stroke-width: 1.6;
+}
+
+/* back-up ring cuts */
+.dh-designs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.dh-design {
+  padding: var(--space-5);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  text-align: center;
+}
+
+.dh-design svg {
+  width: 110px;
+  height: 110px;
+}
+
+.dh-design h3 {
+  margin: var(--space-2) 0 var(--space-1);
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.dh-design p {
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.dh-ring {
+  fill: none;
+  stroke: #c8a165;
+  stroke-width: 10;
+}
+
+.dh-ring--back {
+  stroke: #8a6a3a;
+  opacity: 0.6;
+}
+
+.dh-cut {
+  stroke: #ffffff;
+  stroke-width: 3;
+}
+
+.dh-checklist {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* closing call to action, as a navy card inside the page */
+.dh-cta {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+  gap: var(--space-8);
+  align-items: center;
+  padding: var(--space-10) var(--space-8);
+  background: linear-gradient(160deg, #0336a3 0%, #022a80 100%);
+  border-radius: 28px;
+  color: var(--color-white);
+}
+
+.dh-cta h2 {
+  margin: var(--space-2) 0 var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--color-white);
+}
+
+.dh-cta p {
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.dh-cta a:not(.btn) {
+  color: #9fd0ff;
+}
+
+@media (max-width: 1180px) {
+  .dh-checklist {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .dh-int-grid,
+  .dh-cta {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dh-designs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dh-band,
+  .dh-cta {
+    padding: var(--space-8) var(--space-5);
+  }
+}
+
+@media (max-width: 640px) {
+  .dh-interactive {
+    padding: var(--space-4);
+  }
+
+  .dh-checklist {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -5,6 +5,7 @@ import AccordionGallery from '../../../shared/components/AccordionGallery';
 import { ItemSpecList } from '../../../shared/components/ProductSpecList';
 import { oilGasItems } from '../../../content/productItems';
 import { ElastomerRanges } from '../../../shared/components/TypicalSpecs';
+import DownholeSections from './DownholeSections';
 
 import imgUnifiedStack from '../../../assets/downhole/Unified Stack Seal.png';
 import imgPacker from '../../../assets/downhole/Packer.png';
@@ -159,6 +160,7 @@ export default function DownholePage() {
       <div style={{ marginBottom: '2rem' }}>
         <ElastomerRanges />
       </div>
+      <DownholeSections />
     </OilGasSealTemplate>
   );
 }
