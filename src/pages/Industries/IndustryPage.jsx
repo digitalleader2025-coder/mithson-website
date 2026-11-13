@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { industryPages } from '../../content/industryPages';
-import { Arrow, Cards, Diagrams, Faqs, Feature, Head, Icon, Lightbox, Products, Reveal, Table } from './industryParts';
+import { Arrow, Cards, Diagrams, Faqs, Feature, Head, Icon, Lightbox, ProductExplorer, Products, Reveal, Table } from './industryParts';
 // shared section look (MITH PLATE, M-UNI) plus the Oil & Gas extras this template reuses
 import '../Products/MITH-PLATE/MithPlate.css';
 import '../Products/M-UNI-Seal/MUniSeal.css';
@@ -126,6 +126,8 @@ export default function IndustryPage({ slug }) {
     return () => { document.title = 'Mithson Sealing Solutions'; };
   }, [page.docTitle]);
 
+  const explorer = Boolean(page.products.families);
+
   // number the sections in the order they appear; every second light section gets the tint
   const order = [
     page.challenges && 'challenges', 'products', page.applications && 'applications',
@@ -147,18 +149,29 @@ export default function IndustryPage({ slug }) {
         </section>
       )}
 
-      <section className={`section mp-section${tint('products')}`} id="ind-products">
-        <div className="container">
-          <Head number={no('products')} label="Products" title={page.products.title} intro={page.products.intro} />
-          <Products items={page.products.items} onZoom={setShot} />
-          {page.products.note && <Reveal as="p" className="mp-warn"><Icon name="alert" size={18} /> {page.products.note}</Reveal>}
-        </div>
-      </section>
+      {explorer ? (
+        // families and their products, explored on one navy band instead of a card grid
+        <section className="mp-dark ind-dark" id="ind-products">
+          <div className="container">
+            <Head number={no('products')} label="Products" title={page.products.title} intro={page.products.intro} light />
+            <ProductExplorer families={page.products.families} specs={page.products.specs} onZoom={setShot} />
+          </div>
+        </section>
+      ) : (
+        <section className={`section mp-section${tint('products')}`} id="ind-products">
+          <div className="container">
+            <Head number={no('products')} label="Products" title={page.products.title} intro={page.products.intro} />
+            <Products items={page.products.items} onZoom={setShot} />
+            {page.products.note && <Reveal as="p" className="mp-warn"><Icon name="alert" size={18} /> {page.products.note}</Reveal>}
+          </div>
+        </section>
+      )}
 
       {page.applications && (
-        <section className="mp-dark ind-dark" id="ind-applications">
+        // with the explorer already on a navy band, the applications sit on a light band
+        <section className={explorer ? 'section mp-section mp-tint' : 'mp-dark ind-dark'} id="ind-applications">
           <div className="container">
-            <Head number={no('applications')} label="Applications" title={page.applications.title} intro={page.applications.intro} light />
+            <Head number={no('applications')} label="Applications" title={page.applications.title} intro={page.applications.intro} light={!explorer} />
             <Applications items={page.applications.items} onZoom={setShot} />
           </div>
         </section>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { ItemSpecList } from '../../shared/components/ProductSpecList';
 
 // Building blocks shared by the industry pages and the Downhole Tools page.
 const EASE = [0.22, 1, 0.36, 1];
@@ -105,6 +106,77 @@ export function Products({ items, onZoom }) {
 }
 
 /** the page's interactive centrepiece: pick an application, see what seals it and why */
+/**
+ * Family and product explorer on a navy band, in the UNI-LUBE style: pick a family, then one of
+ * its products, and the panel shows that product's photo, text, figures and uses on this page.
+ * With a single family the family row is left out.
+ */
+export function ProductExplorer({ families, specs = {}, onZoom }) {
+  const [fam, setFam] = useState(0);
+  const [prod, setProd] = useState(0);
+  const family = families[fam];
+  const item = family.items[prod];
+  const spec = specs[item.label];
+  const pickFamily = (i) => { setFam(i); setProd(0); };
+  return (
+    <div className="ind-x">
+      {families.length > 1 && (
+        <div className="ind-x-families" role="tablist" aria-label="Product families">
+          {families.map((f, i) => (
+            <button key={f.title} type="button" role="tab" aria-selected={i === fam} onClick={() => pickFamily(i)}>
+              <b>{String(i + 1).padStart(2, '0')}</b>
+              <span>{f.title}</span>
+            </button>
+          ))}
+        </div>
+      )}
+      {(family.intro || family.desc) && (
+        <div className="ind-x-family-text">
+          {family.intro && <p>{family.intro}</p>}
+          {family.desc && <p>{family.desc}</p>}
+        </div>
+      )}
+      <div className="ind-x-products" role="tablist" aria-label={`${family.title} products`}>
+        {family.items.map((p, i) => (
+          <button key={p.label} type="button" role="tab" aria-selected={i === prod} onClick={() => setProd(i)}>
+            {p.label}
+          </button>
+        ))}
+      </div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={`${fam}-${prod}`}
+          role="tabpanel"
+          className="ind-x-panel"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.35, ease: EASE }}
+        >
+          <button type="button" className="ind-x-photo" onClick={() => onZoom({ src: item.image, alt: `Mithson ${item.label}` })}
+            aria-label={`Enlarge ${item.label} photo`}>
+            <img src={item.image} alt={`Mithson ${item.label}`} />
+          </button>
+          <div className="ind-x-body">
+            <h3>{item.label}</h3>
+            <em>{family.title}</em>
+            {item.tag && <p className="ind-x-tag"><Icon name="gauge" size={16} /> {item.tag}</p>}
+            <p>{item.desc}</p>
+            {spec && <ItemSpecList spec={spec} />}
+            <dl className="ind-x-facts">
+              <div><dt>Material</dt><dd>{item.materials}</dd></div>
+              <div><dt>Application</dt><dd>{item.application}</dd></div>
+            </dl>
+            <Link to={`/connect-with-us?subject=${encodeURIComponent(`Enquiry: ${item.label}`)}`} className="btn mp-inline-btn ind-x-btn">
+              Enquire about {item.label} <Arrow />
+            </Link>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export function Table({ cols, rows }) {
   const template = cols.map((_, i) => (i === 0 ? 'minmax(130px, 0.8fr)' : 'minmax(0, 1fr)')).join(' ');
   return (

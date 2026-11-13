@@ -4,6 +4,7 @@
 import hero from '../../assets/industries/Downhole Tools.webp';
 import { downholeItems } from '../oilGasProducts';
 import { CONFIRM_NOTE, elastomerRanges } from '../typicalSpecs';
+import { oilGasItems } from '../productItems';
 import {
   dhApplications, dhCapabilities, dhChecklist, dhCompare, dhConditions, dhFaqs, dhHowItWorks, dhIntro,
   dhMaterials, dhProducts, dhQuality, dhRelated, dhStandards, dhSteps,
@@ -49,15 +50,12 @@ export default {
 
   products: {
     title: 'Complete sealing solutions for downhole equipment',
-    intro: 'Each product does a specific job in the sealing assembly.',
-    items: downholeItems.map((item, i) => ({
-      name: item.label,
-      tag: dhProducts[i].tag,
-      image: item.image,
-      desc: item.desc,
-      materials: item.materials,
-      uses: item.application,
-    })),
+    intro: 'Each product does a specific job in the sealing assembly. Choose one to see its description, figures, material and application.',
+    families: [{
+      title: 'Downhole Tool Seal',
+      items: downholeItems.map((item, i) => ({ ...item, tag: dhProducts[i].tag })),
+    }],
+    specs: oilGasItems,
   },
 
   applications: {
