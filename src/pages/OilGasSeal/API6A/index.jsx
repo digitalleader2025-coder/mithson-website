@@ -4,42 +4,10 @@ import OilGasSealTemplate from '../OilGasSealTemplate';
 import AccordionGallery from '../../../shared/components/AccordionGallery';
 import { ItemSpecList } from '../../../shared/components/ProductSpecList';
 import { oilGasItems } from '../../../content/productItems';
+import { api6aItems } from '../../../content/oilGasProducts';
 
-import imgStemPacking from '../../../assets/api6a/Stem Packing Set.png';
-import imgStemSeal from '../../../assets/api6a/Stem Seal.png';
-import imgFaceSeal from '../../../assets/api6a/ID OD Seal.png';
-import imgBopSeal from '../../../assets/api6a/BOP Seal.png';
 
-const galleryItems = [
-  { 
-    image: imgStemPacking, 
-    label: 'Stem Packing Set', 
-    desc: "Engineered for reliability, our valve stem packing delivers exceptional sealing performance under pressure and across a wide temperature range. Crafted from premium materials that meet strict API standards, it's the trusted choice for demanding applications.",
-    materials: 'PEEK, Elgiloy/SS steel, Filled PTFE',
-    application: 'Wellhead Gate Valve'
-  },
-  { 
-    image: imgStemSeal, 
-    label: 'Stem Seal', 
-    desc: "Spring-energized stem seals play a critical role in valve performance—securing internal fluids while blocking external contaminants. Designed for durability and precision, they are ideal for use in API 6A valves and API 6D ball valves, ensuring reliable sealing in high-demand environments.",
-    materials: 'PEEK, Elgiloy/SS steel, Filled PTFE',
-    application: 'Wellhead Gate Valve'
-  },
-  { 
-    image: imgFaceSeal, 
-    label: 'OD/ID Face Seal', 
-    desc: "The OD/ID Face Seal for FLS Gate Valves is a spring-loaded lip seal designed to enhance the performance and service life of the gate and seat. Specifically used for the valve seat, it ensures reliable sealing under demanding conditions. The seal jacket is typically made of high-performance PEEK for superior durability, with a cost-effective alternative available in glass-filled PTFE. Typically, the ID and OD face seal of the valve seat are used together.",
-    materials: 'PEEK, Elgiloy/SS steel, Filled PTFE',
-    application: 'Wellhead Gate Valve'
-  },
-  { 
-    image: imgBopSeal, 
-    label: 'BOP Seal', 
-    desc: "Outer BOP seals are critical components used in oil and gas wellhead blowout preventers (BOPs). They are designed to form a reliable seal around the drill pipe, effectively preventing oil and gas leaks and ensuring wellhead safety during drilling operations.",
-    materials: 'NBR , HNBR',
-    application: 'BOP (Blowout Preventers)'
-  }
-];
+const galleryItems = api6aItems;
 
 export default function API6APage() {
   const [activeIndex, setActiveIndex] = useState(0);

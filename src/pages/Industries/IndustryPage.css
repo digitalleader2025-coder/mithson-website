@@ -366,6 +366,12 @@
   margin-bottom: 0;
 }
 
+/* product photos are tall; keep the whole picture but at a sensible height */
+.ind-app-panel .og-shot img {
+  max-height: 360px;
+  object-fit: contain;
+}
+
 .ind-app-panel h3 {
   color: var(--color-navy-base);
 }

@@ -43,10 +43,8 @@ const EnergyOilGas = lazy(() => import('./pages/Industries/EnergyOilGas'));
 const IndustryPage = lazy(() => import('./pages/Industries/IndustryPage'));
 
 // Oil & Gas Seals
-const OilGasSeal = lazy(() => import('./pages/OilGasSeal'));
 const API6A = lazy(() => import('./pages/OilGasSeal/API6A'));
 const WellService = lazy(() => import('./pages/OilGasSeal/WellService'));
-const Downhole = lazy(() => import('./pages/OilGasSeal/Downhole'));
 const API6D = lazy(() => import('./pages/OilGasSeal/API6D'));
 
 // Career & booking
@@ -175,7 +173,7 @@ export default function App() {
               {/* Industries */}
               <Route path="/industries" element={<Industries />} />
               <Route path="/industries/energy-oil-gas" element={<EnergyOilGas />} />
-              <Route path="/industries/downhole-tools" element={<Downhole />} />
+              <Route path="/industries/downhole-tools" element={<IndustryPage key="downhole-tools" slug="downhole-tools" />} />
               <Route path="/industries/life-science" element={<IndustryPage slug="life-science" />} />
               <Route path="/industries/semiconductor" element={<IndustryPage slug="semiconductor" />} />
               <Route path="/industries/aerospace" element={<IndustryPage slug="aerospace" />} />
@@ -184,7 +182,7 @@ export default function App() {
               <Route path="/industries/robotics" element={<IndustryPage slug="robotics" />} />
 
               {/* Oil & Gas Seal */}
-              <Route path="/oil-gas-seal" element={<OilGasSeal />} />
+              <Route path="/oil-gas-seal" element={<IndustryPage key="oil-gas-seal" slug="oil-gas-seal" />} />
               <Route path="/oil-gas-seal/api-6a-wellhead-equipment-seal" element={<API6A />} />
               <Route path="/oil-gas-seal/well-service-equipment-seal" element={<WellService />} />
               <Route path="/oil-gas-seal/downhole-tool-seal" element={<Navigate to="/industries/downhole-tools" replace />} />

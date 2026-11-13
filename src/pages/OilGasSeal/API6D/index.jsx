@@ -4,42 +4,10 @@ import OilGasSealTemplate from '../OilGasSealTemplate';
 import AccordionGallery from '../../../shared/components/AccordionGallery';
 import { ItemSpecList } from '../../../shared/components/ProductSpecList';
 import { oilGasItems } from '../../../content/productItems';
+import { api6dItems } from '../../../content/oilGasProducts';
 
-import imgBodyBonnet from '../../../assets/api6d/Body-Bonnet Seal.png';
-import imgSeatRetainer from '../../../assets/api6d/Seat Retainer.png';
-import imgPeekSeatRing from '../../../assets/api6d/Peek Seat Ring.png';
-import imgLngSeal from '../../../assets/api6d/LNG Seal.png';
 
-const galleryItems = [
-  { 
-    image: imgBodyBonnet, 
-    label: 'Body-Bonnet Seal', 
-    desc: "In a Trunnion-mounted ball valve, the seal located between the valve body and the bonnet (or closure) serves as the primary pressure-containing seal. Its main function is to prevent internal fluid—whether liquid or gas—from escaping through the joint between the valve body and the bonnet or closure. This seal is capable of withstanding pressures up to 10,000 PSI.",
-    materials: 'CFT, Elgiloy Spring',
-    application: 'Trunnion Mount Ball Valve'
-  },
-  { 
-    image: imgSeatRetainer, 
-    label: 'Seat Retainer', 
-    desc: "The seat retainer seal, a primary seal, is positioned between the seat retainer (or seat insert) and valve body to prevent process fluid leakage behind the valve seat. It ensures full flow containment through the ball-seat interface and maintains pressure integrity in Trunnion-mounted ball valves. A PEEK T-ring enhances support and energizing force, helping the PTFE lip maintain consistent sealing by compensating for cold flow and deformation under varying conditions. This seal is capable of withstanding pressures up to 10,000 PSI.",
-    materials: 'PTFE, Elgiloy Spring, PEEK',
-    application: 'Trunnion Mount Ball Valve'
-  },
-  { 
-    image: imgPeekSeatRing, 
-    label: 'Peek Seat Ring', 
-    desc: "The seat ring in a ball valve is a key sealing component positioned between the valve ball and body. It creates a tight seal around the ball to allow or block flow. In trunnion-mounted designs, seat rings are typically spring-loaded or pressure-energized to maintain sealing even at low pressure. In floating ball valves, line pressure pushes the ball against the downstream seat ring, which acts as the primary sealing surface.",
-    materials: 'PEEK',
-    application: 'Trunnion Mount Ball Valve, Floating Ball Valve'
-  },
-  { 
-    image: imgLngSeal, 
-    label: 'LNG Seal', 
-    desc: "Spring-energized seals are critical sealing elements used in Ball valves operating in LNG (Liquefied Natural Gas) applications. LNG processes involve cryogenic temperatures around –162°C (–260°F), requiring sealing systems that perform reliably under extreme cold, pressure variations, and thermal cycling—conditions where conventional elastomeric seals would fail.",
-    materials: 'PTFE, Elgiloy Spring',
-    application: 'Ball Valve'
-  }
-];
+const galleryItems = api6dItems;
 
 export default function API6DPage() {
   const [activeIndex, setActiveIndex] = useState(0);

@@ -106,6 +106,7 @@ function Applications({ items, onZoom }) {
             </>
           )}
           {item.materials && <p className="og-uses"><strong>Common materials:</strong> {item.materials}</p>}
+          {item.path && <Link to={item.path} className="btn btn-navy mp-inline-btn">{item.pathLabel || 'View details'} <Arrow /></Link>}
         </motion.div>
       </AnimatePresence>
     </div>
@@ -128,7 +129,7 @@ export default function IndustryPage({ slug }) {
   // number the sections in the order they appear; every second light section gets the tint
   const order = [
     page.challenges && 'challenges', 'products', page.applications && 'applications',
-    ...(page.sections || []).map((x) => x.id), 'faq', 'cta',
+    ...(page.sections || []).map((x) => x.id), page.faqs && 'faq', 'cta',
   ].filter(Boolean);
   const no = (key) => String(order.indexOf(key) + 1).padStart(2, '0');
   const tint = (key) => ((order.indexOf(key) + 1) % 2 === 0 ? ' mp-tint' : '');
@@ -171,6 +172,9 @@ export default function IndustryPage({ slug }) {
             {s.table && <Reveal><Table cols={s.table.cols} rows={s.table.rows} /></Reveal>}
             {s.cards && <Cards items={s.cards} />}
             {s.diagrams && <Diagrams kinds={s.diagrams} />}
+            {/* a page-specific interactive drawing, e.g. the Downhole extrusion explainer */}
+            {s.component && <s.component />}
+            {s.products && <Products items={s.products} onZoom={setShot} />}
             {s.steps && (
               <ol className="og-steps">
                 {s.steps.map((st, i) => (
@@ -205,13 +209,15 @@ export default function IndustryPage({ slug }) {
         </section>
       ))}
 
-      <section className={`section mp-section${tint('faq')}`} id="ind-faq">
-        <div className="container mp-split mp-split--narrow">
-          <Head number={no('faq')} label="FAQ" title={page.faqTitle}
-            intro="General guidance only. Mithson engineering confirms the right seal for each application." />
-          <Faqs items={page.faqs} />
-        </div>
-      </section>
+      {page.faqs && (
+        <section className={`section mp-section${tint('faq')}`} id="ind-faq">
+          <div className="container mp-split mp-split--narrow">
+            <Head number={no('faq')} label="FAQ" title={page.faqTitle}
+              intro="General guidance only. Mithson engineering confirms the right seal for each application." />
+            <Faqs items={page.faqs} />
+          </div>
+        </section>
+      )}
 
       <section className="mp-cta" id="ind-contact">
         <div className="container mp-cta-grid">

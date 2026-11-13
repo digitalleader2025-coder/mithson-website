@@ -1,17 +1,9 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
-import {
-  dhApplications, dhCapabilities, dhChecklist, dhCompare, dhConditions, dhFaqs, dhHowItWorks, dhIntro,
-  dhMaterials, dhProducts, dhQuality, dhRelated, dhStandards, dhSteps,
-} from '../../../content/downholeTools';
-import { Arrow, Cards, Faqs, Head, Icon, Lightbox, Products, Reveal, Table } from '../../Industries/industryParts';
-import '../../Products/MITH-PLATE/MithPlate.css';
-import '../../Products/M-UNI-Seal/MUniSeal.css';
-import '../../Industries/EnergyOilGas/EnergyOilGas.css';
-import '../../Industries/IndustryPage.css';
+import { Icon, Reveal } from '../../Industries/industryParts';
 import './Downhole.css';
 
+// Interactive drawings for the Downhole Tools page, shown inside the shared industry template.
 const EASE = [0.22, 1, 0.36, 1];
 
 function Stepper({ label, steps, active, onPick }) {
@@ -225,117 +217,15 @@ function BackupDesigns() {
   );
 }
 
-export default function DownholeSections() {
-  const [shot, setShot] = useState(null);
+/** the anti-extrusion section: the three-stage drawing plus the three back-up ring cuts */
+export function ExtrusionExplainer() {
   return (
-    <div className="mp-page og-page ind-page dh-page">
-      <Reveal className="dh-intro">
-        {dhIntro.map((p) => <p key={p}>{p}</p>)}
-        <ul className="ind-chips">{dhCapabilities.map((c) => <li key={c}>{c}</li>)}</ul>
-      </Reveal>
-
-      <div className="dh-sec">
-        <Head number="01" label="Product portfolio" title="Complete sealing solutions for downhole equipment"
-          intro="Each product does a specific job in the sealing assembly." />
-        <Products items={dhProducts} onZoom={setShot} />
-      </div>
-
-      <div className="dh-sec">
-        <Head number="02" label="How it works" title="Engineering reliability at every sealing interface" />
-        <Cards items={dhHowItWorks} />
-      </div>
-
-      <div className="dh-sec dh-band">
-        <Head number="03" label="Anti-extrusion, explained" title="Understanding the role of the back-up ring" light
-          intro="Step through what happens to an O-ring under pressure, with and without a PEEK back-up ring." />
-        <Extrusion />
-        <BackupDesigns />
-        <p className="dh-band-note">The right design depends on the assembly, installation method, groove dimensions and pressure direction.</p>
-      </div>
-
-      <div className="dh-sec">
-        <Head number="04" label="Operating conditions" title="Engineered for challenging oilfield environments" />
-        <Cards items={dhConditions} />
-      </div>
-
-      <div className="dh-sec">
-        <Head number="05" label="Rapid gas decompression" title="What RGD does to an elastomer" />
-        <Rgd />
-      </div>
-
-      <div className="dh-sec">
-        <Head number="06" label="Packer elements" title="How a packer isolates the well" />
-        <Packer />
-      </div>
-
-      <div className="dh-sec">
-        <Head number="07" label="Material technology" title="Advanced materials for reliable downhole sealing" />
-        <Cards items={dhMaterials} />
-        <Reveal><Table cols={dhCompare.cols} rows={dhCompare.rows} /></Reveal>
-        <Reveal as="p" className="mp-warn"><Icon name="alert" size={18} /> Properties and limits depend on the exact formulation, grade, hardness, geometry and exposure. This is a selection guide, not a product certification or guaranteed specification.</Reveal>
-      </div>
-
-      <div className="dh-sec">
-        <Head number="08" label="Applications" title="Precision sealing for critical oilfield equipment" />
-        <Cards items={dhApplications} />
-      </div>
-
-      <div className="dh-sec">
-        <Head number="09" label="Engineering and manufacturing" title="From application requirements to precision sealing components" />
-        <ol className="og-steps">
-          {dhSteps.map((s, i) => (
-            <Reveal as="li" key={s.title} delay={(i % 3) * 0.06}>
-              <b>{String(i + 1).padStart(2, '0')}</b>
-              <h3>{s.title}</h3>
-              <p>{s.text}</p>
-            </Reveal>
-          ))}
-        </ol>
-      </div>
-
-      <div className="dh-sec">
-        <Head number="10" label="Selection parameters" title="What to consider before selecting a downhole seal" />
-        <div className="og-checklist dh-checklist">
-          {dhChecklist.map((c, i) => (
-            <Reveal key={c.title} delay={(i % 4) * 0.05} className="og-check-card">
-              <h3>{c.title}</h3>
-              <ul>{c.items.map((it) => <li key={it}>{it}</li>)}</ul>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-
-      <div className="dh-sec">
-        <Head number="11" label="Quality and standards" title="Quality-focused engineering for critical sealing"
-          intro="Depending on the equipment and your requirements, these standards and qualification frameworks may apply. They are listed as references, not as certifications held for every Mithson product." />
-        <Cards items={dhStandards} />
-        <Reveal as="ul" className="ind-chips ind-chips--wide">{dhQuality.map((q) => <li key={q}>{q}</li>)}</Reveal>
-      </div>
-
-      <div className="dh-sec mp-split mp-split--narrow">
-        <Head number="12" label="FAQ" title="Common technical questions" />
-        <Faqs items={dhFaqs} />
-      </div>
-
-      <div className="dh-sec dh-cta">
-        <div>
-          <span className="mp-label mp-label--dark">13 — Engineering review</span>
-          <h2>Looking for reliable downhole sealing solutions?</h2>
-          <p>Whether you need PEEK back-up rings, unified stack seals, packer elements or RGD-resistant O-rings, send your technical requirements, drawings or sample components to start an engineering discussion.</p>
-          <p className="mp-cta-contact">Contact Mithson: <a href="mailto:sales@mithson.com">sales@mithson.com</a> &nbsp;·&nbsp; <a href="tel:+917845022800">+91 78450 22800</a> &nbsp;·&nbsp; <a href="tel:+917845384005">+91 78453 84005</a></p>
-        </div>
-        <div className="mp-cta-actions">
-          <Link to="/connect-with-us/application-data" className="btn btn-white">Send technical drawing <Arrow /></Link>
-          <Link to="/connect-with-us" className="btn mp-btn-ghost">Enquire now <Arrow /></Link>
-        </div>
-      </div>
-
-      <div className="dh-sec">
-        <Head number="14" label="Related products" title="Explore more polymer sealing solutions" />
-        <Products items={dhRelated} onZoom={setShot} />
-      </div>
-
-      <Lightbox shot={shot} onClose={() => setShot(null)} />
-    </div>
+    <>
+      <Extrusion />
+      <BackupDesigns />
+      <p className="dh-band-note">The right design depends on the assembly, installation method, groove dimensions and pressure direction.</p>
+    </>
   );
 }
+
+export { Rgd, Packer };

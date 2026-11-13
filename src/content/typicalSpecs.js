@@ -95,6 +95,10 @@ export const typicalSpecs = {
   },
 };
 
+// shown under every typical-values table
+export const CONFIRM_NOTE =
+  'Typical values for this type of product, not guaranteed Mithson ratings. Limits depend on material, size and operating conditions, so confirm your application with Mithson engineers.';
+
 export const oilGasSpringSeals = {
   title: 'Typical range for spring-energized oil & gas seals',
   rows: [

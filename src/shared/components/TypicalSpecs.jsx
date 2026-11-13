@@ -1,8 +1,5 @@
-import { elastomerRanges } from '../../content/typicalSpecs';
+import { CONFIRM_NOTE, elastomerRanges } from '../../content/typicalSpecs';
 import './TypicalSpecs.css';
-
-const CONFIRM_NOTE =
-  'Typical values for this type of product, not guaranteed Mithson ratings. Limits depend on material, size and operating conditions, so confirm your application with Mithson engineers.';
 
 export default function TypicalSpecs({ specs }) {
   return (

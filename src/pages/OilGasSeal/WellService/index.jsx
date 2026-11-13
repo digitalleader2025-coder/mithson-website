@@ -4,42 +4,10 @@ import OilGasSealTemplate from '../OilGasSealTemplate';
 import AccordionGallery from '../../../shared/components/AccordionGallery';
 import { ItemSpecList } from '../../../shared/components/ProductSpecList';
 import { oilGasItems } from '../../../content/productItems';
+import { wellServiceItems } from '../../../content/oilGasProducts';
 
-import imgPlungerPacking from '../../../assets/wellservice/Plunger Packing Set.png';
-import imgPumpPacking from '../../../assets/wellservice/Pump Packing Set.png';
-import imgValveSeat from '../../../assets/wellservice/Valve Seat Insert.png';
-import imgMudPumpLiner from '../../../assets/wellservice/Mud Pump Liner Seal.png';
 
-const galleryItems = [
-  { 
-    image: imgPlungerPacking, 
-    label: 'Plunger Packing Set', 
-    desc: "A plunger pump packing set is a critical sealing assembly designed to prevent high-pressure fluid from leaking as the plunger reciprocates within the pump cylinder.",
-    materials: 'Nitrile/Fabric (NBR, Buna-N), Viton (FKM)/Fabric, HNBR/Fabric',
-    application: 'Plunger Pump'
-  },
-  { 
-    image: imgPumpPacking, 
-    label: 'Pump Packing Set', 
-    desc: "Hydraulic fracturing (fracking) and cementing activities in the oilfield require high-pressure pumps, where effective sealing around the pump's plunger or piston is essential to prevent fluid leakage. High-performance well service pump packings are available in a wide range of materials to suit specific well conditions and operating parameters.",
-    materials: 'NBR, HNBR, FKM, filled PTFE',
-    application: 'Mud Pump, Frac Pump'
-  },
-  { 
-    image: imgValveSeat, 
-    label: 'Valve Seat Insert', 
-    desc: "The valve insert seal is specifically designed to seal the valve seat in fracturing pumps. Manufactured from advanced, modified polyurethane, it offers outstanding resistance to extrusion, puncture, and fatigue—ensuring dependable performance across a wide range of demanding fracturing conditions.",
-    materials: 'PU (Poly Urethane)',
-    application: 'Mud Pump, Frac Pump'
-  },
-  { 
-    image: imgMudPumpLiner, 
-    label: 'Mud Pump Liner Seal', 
-    desc: "A liner seal in a mud pump is a sealing component placed between the liner and the pump housing (fluid end module) to prevent drilling fluid (mud) from leaking around the outside of the liner. The most important part of a mud pump with the function of ensuring mud circulation is the piston. Without a functioning liner seal, mud can leak into unwanted areas, reducing efficiency and increasing wear.",
-    materials: 'PU (Poly Urethane) , NBR , HNBR',
-    application: 'Mud Pump'
-  }
-];
+const galleryItems = wellServiceItems;
 
 export default function WellServicePage() {
   const [activeIndex, setActiveIndex] = useState(0);
