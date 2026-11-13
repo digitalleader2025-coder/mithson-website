@@ -199,6 +199,31 @@
   align-items: center;
 }
 
+/* hero spacing: the shared sheet keys this to .mp-hero-grid, so match the product pages here */
+.ind-hero-grid h1,
+.og-hero-grid h1 {
+  line-height: 1.14;
+}
+
+.ind-hero-grid > div > p,
+.og-hero-grid > div > p {
+  max-width: 600px;
+  margin-top: var(--space-6);
+  font-size: var(--text-base);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.ind-hero-grid .og-tags,
+.og-hero-grid .og-tags {
+  margin-top: var(--space-6);
+}
+
+.ind-hero-grid .mp-actions,
+.og-hero-grid .mp-actions {
+  margin-top: var(--space-8);
+}
+
 /* the existing hero picture, whole: natural shape, never cropped */
 .ind-hero-visual {
   display: block;

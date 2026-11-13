@@ -126,7 +126,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-  margin-top: var(--space-7);
+  /* --space-7 does not exist in index.css, so this was 0; 32px matches the other heroes */
+  margin-top: var(--space-8);
 }
 
 .mp-btn-ghost {

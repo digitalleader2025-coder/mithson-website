@@ -143,3 +143,15 @@ export const brandMessage = {
   title: 'Engineered for pressure. Designed for reliability.',
   text: 'In demanding oil and gas environments, every sealing component plays an important role in equipment performance and operational integrity. With expertise in advanced polymer and elastomer materials, application-focused engineering and specialised sealing technologies, Mithson supports critical sealing requirements across wellhead equipment, well service operations, pipeline valves and LNG systems.',
 };
+
+// The elastomer temperature table drawn as bars: the same figures as the table text, in °C.
+// `from` null means the table gives no lower figure; `to2` is the top of a quoted span; `open`
+// means the table says "or higher".
+export const elastomerBars = {
+  NBR: { from: -30, to: 120 },
+  HNBR: { from: -30, to: 150 },
+  FKM: { from: null, to: 200, to2: 225 },
+  FEPM: { from: null, to: 200 },
+  FFKM: { from: null, to: 260, open: true },
+  EPDM: { from: -50, to: 140, to2: 150 },
+};

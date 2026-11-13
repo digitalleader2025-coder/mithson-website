@@ -31,6 +31,7 @@ import {
   brandMessage,
   customParams,
   designConsiderations,
+  elastomerBars,
   familyIntros,
   materialDetails,
   productBrief,
@@ -52,6 +53,7 @@ import imgRefinery from '../../../assets/industries/oil-gas/refinery.jpg';
 import imgGasPlant from '../../../assets/industries/oil-gas/gas-plant.jpg';
 import imgLng from '../../../assets/industries/oil-gas/lng-terminal.jpg';
 import imgPipeline from '../../../assets/industries/oil-gas/pipeline-valve.jpg';
+import imgOilGasHero from '../../../assets/industries/Oil & Gas.webp';
 
 const IMAGES = { offshore: imgOffshore, refinery: imgRefinery, gasplant: imgGasPlant, lng: imgLng, pipeline: imgPipeline };
 
@@ -115,7 +117,7 @@ function Head({ number, label, title, intro, light }) {
   );
 }
 
-function Hero() {
+function Hero({ onZoom }) {
   const ref = useRef(null);
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
@@ -145,6 +147,19 @@ function Hero() {
             <Link to={APPLICATION_DATA} className="btn mp-btn-ghost">Send your requirement</Link>
           </div>
         </motion.div>
+
+        {/* the page's own Oil & Gas picture, shown whole, as on the other industry pages */}
+        <motion.button
+          type="button"
+          className="ind-hero-visual"
+          onClick={() => onZoom({ src: imgOilGasHero, alt: 'Offshore oil and gas platform at sunset' })}
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
+          aria-label="Enlarge: Offshore oil and gas platform at sunset"
+        >
+          <img src={imgOilGasHero} alt="Offshore oil and gas platform at sunset" />
+        </motion.button>
       </div>
 
       <div className="container">
@@ -337,35 +352,37 @@ function SealArt({ kind }) {
 }
 
 function SealingTypes() {
-  const [open, setOpen] = useState(sealingTypes[0].key);
+  const [active, setActive] = useState(sealingTypes[0].key);
+  const item = sealingTypes.find((t) => t.key === active);
   return (
     <div className="og-seals">
-      {sealingTypes.map((s, i) => {
-        const isOpen = s.key === open;
-        return (
-          <Reveal key={s.key} delay={(i % 3) * 0.06} className={`og-seal-card${isOpen ? ' is-open' : ''}`}>
-            <button type="button" aria-expanded={isOpen} onClick={() => setOpen(isOpen ? '' : s.key)}>
-              <span className="og-seal-art"><SealArt kind={s.key} /></span>
-              <b>{s.name}</b>
-            </button>
-            <AnimatePresence initial={false}>
-              {isOpen && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="og-seal-body">
-                    <p>{s.text}</p>
-                    <ul>{s.examples.map((e) => <li key={e}>{e}</li>)}</ul>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </Reveal>
-        );
-      })}
+      <div className="og-seal-picks" role="tablist" aria-label="Sealing arrangements">
+        {sealingTypes.map((s) => (
+          <button key={s.key} type="button" role="tab" aria-selected={s.key === active} onClick={() => setActive(s.key)}>
+            <span className="og-seal-art"><SealArt kind={s.key} /></span>
+            <b>{s.name}</b>
+          </button>
+        ))}
+      </div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={item.key}
+          role="tabpanel"
+          className="og-seal-panel"
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.3, ease: EASE }}
+        >
+          <span className="og-seal-art og-seal-art--big"><SealArt kind={item.key} /></span>
+          <div className="og-seal-body">
+            <h3>{item.name}</h3>
+            <p>{item.text}</p>
+            <h4>Typical examples</h4>
+            <ul>{item.examples.map((e) => <li key={e}>{e}</li>)}</ul>
+          </div>
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }
@@ -438,6 +455,43 @@ const explorerFamilies = [
   };
 });
 
+// axis of the temperature chart, °C
+const AXIS = { min: -60, max: 340, ticks: [-50, 0, 50, 100, 150, 200, 250, 300] };
+const pct = (t) => ((t - AXIS.min) / (AXIS.max - AXIS.min)) * 100;
+
+/** the elastomer temperature table as bars on one scale; the table's own wording sits on each bar */
+function ElastomerChart() {
+  return (
+    <div className="og-tchart">
+      <div className="og-tchart-axis" aria-hidden="true">
+        {AXIS.ticks.map((t) => <span key={t} style={{ left: `${pct(t)}%` }}>{t}°C</span>)}
+      </div>
+      {elastomerRanges.rows.map((row, i) => {
+        const b = elastomerBars[row.material];
+        const left = pct(b.from ?? AXIS.min);
+        const right = b.open ? 100 : pct(b.to2 ?? b.to);
+        const solid = b.to2 ? `${((pct(b.to) - left) / (right - left)) * 100}%` : '100%';
+        const kind = `${b.from === null ? ' is-open-start' : ''}${b.open ? ' is-open-end' : ''}`;
+        return (
+          <Reveal key={row.material} delay={i * 0.05} className="og-tchart-row">
+            <b>{row.material}</b>
+            <div className="og-tchart-track">
+              {AXIS.ticks.map((t) => <i key={t} style={{ left: `${pct(t)}%` }} aria-hidden="true" />)}
+              <span className={`og-tchart-bar${kind}`} style={{ left: `${left}%`, width: `${right - left}%`, '--solid': solid }} aria-hidden="true" />
+              <em>{row.temperature}</em>
+            </div>
+            <span className="og-tchart-use">{row.use}</span>
+          </Reveal>
+        );
+      })}
+      <p className="og-tchart-key">
+        <span className="is-solid" aria-hidden="true" /> stated range
+        <span className="is-fade" aria-hidden="true" /> no lower figure given, a quoted span, or &ldquo;or higher&rdquo;
+      </p>
+    </div>
+  );
+}
+
 /** 04 - pick a material, see its full description, key properties, uses and what to watch */
 function MaterialSelector() {
   const [active, setActive] = useState(materials[0].key);
@@ -478,7 +532,7 @@ export default function IndustriesEnergyPage() {
 
   return (
     <div className="page-wrapper mp-page og-page">
-      <Hero />
+      <Hero onZoom={setShot} />
 
       {/* 01 The three families */}
       <section className="section mp-section" id="og-families">
@@ -588,16 +642,19 @@ export default function IndustriesEnergyPage() {
             <h3 className="og-limits-h">Material temperature reference, grade-dependent</h3>
             <Table cols={['Material', 'General thermal characteristics', 'Important selection considerations']} rows={tempReference.thermal} />
           </Reveal>
-          <div className="og-limits">
-            <Reveal>
-              <h3 className="og-limits-h">{oilGasSpringSeals.title}</h3>
-              <Table cols={['Property', 'Typical range']} rows={oilGasSpringSeals.rows.map((row) => [row.label, row.value])} />
-            </Reveal>
-            <Reveal>
-              <h3 className="og-limits-h">Typical elastomer temperature ranges</h3>
-              <Table cols={['Material', 'Temperature', 'Best suited to']} rows={elastomerRanges.rows.map((row) => [row.material, row.temperature, row.use])} />
-            </Reveal>
+          <h3 className="og-limits-h">{oilGasSpringSeals.title}</h3>
+          <div className="og-tiles">
+            {oilGasSpringSeals.rows.map((row, i) => (
+              <Reveal key={row.label} delay={i * 0.06} className="og-tile">
+                <span className="mp-icon"><Icon name={['gauge', 'thermo', 'snow'][i]} size={20} /></span>
+                <em>{row.label}</em>
+                <strong>{row.value}</strong>
+                <small>Typical</small>
+              </Reveal>
+            ))}
           </div>
+          <h3 className="og-limits-h">Typical elastomer temperature ranges</h3>
+          <ElastomerChart />
           <Reveal as="p" className="mp-warn"><Icon name="alert" size={18} /> {CONFIRM_NOTE} {tempReference.disclaimer}</Reveal>
         </div>
       </section>
