@@ -908,3 +908,52 @@
     transition: none;
   }
 }
+
+/* explorer extras: function, benefits and notes on the navy band */
+.ind-x-lead {
+  color: var(--color-white);
+}
+
+.ind-x-mini {
+  margin: var(--space-4) 0 var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #9fd0ff;
+}
+
+.ind-x .ind-x-checks li {
+  color: rgba(255, 255, 255, 0.86) !important;
+}
+
+.ind-x .ind-x-note {
+  margin-top: var(--space-4);
+  background: rgba(255, 255, 255, 0.08);
+  border-left-color: #9fd0ff;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.ind-x .ind-x-note svg {
+  color: #9fd0ff;
+}
+
+/* ball valve drawing parts */
+.ind-d-ball {
+  fill: #9fb9dd;
+  stroke: #0336a3;
+  stroke-width: 2;
+}
+
+.ind-d-seat {
+  fill: #c8a165;
+}
+
+.ind-d-retainer {
+  fill: #0336a3;
+}
+
+.ind-d-seal {
+  fill: #42a4ff;
+}

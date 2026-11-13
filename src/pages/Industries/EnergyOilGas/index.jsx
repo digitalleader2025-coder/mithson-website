@@ -27,41 +27,37 @@ import {
   steps,
   valueChain,
 } from '../../../content/industryOilGas';
+import {
+  brandMessage,
+  customParams,
+  designConsiderations,
+  familyIntros,
+  materialDetails,
+  productBrief,
+  tempReference,
+  wellServiceExtras,
+} from '../../../content/industryOilGasMore';
+import { api6aItems, api6dItems, wellServiceItems } from '../../../content/oilGasProducts';
+import { oilGasItems } from '../../../content/productItems';
+import { CONFIRM_NOTE, elastomerRanges, oilGasSpringSeals } from '../../../content/typicalSpecs';
+import { Diagrams, ProductExplorer, Table } from '../industryParts';
 // the MITH PLATE sheet carries the shared section look; only the extras live here
 import '../../Products/MITH-PLATE/MithPlate.css';
 import '../../Products/M-UNI-Seal/MUniSeal.css';
 import './EnergyOilGas.css';
+import '../IndustryPage.css';
 
 import imgOffshore from '../../../assets/industries/oil-gas/offshore-rigs.jpg';
 import imgRefinery from '../../../assets/industries/oil-gas/refinery.jpg';
 import imgGasPlant from '../../../assets/industries/oil-gas/gas-plant.jpg';
 import imgLng from '../../../assets/industries/oil-gas/lng-terminal.jpg';
 import imgPipeline from '../../../assets/industries/oil-gas/pipeline-valve.jpg';
-// the real Mithson product photos, unchanged, from the oil & gas product pages
-import pStemPacking from '../../../assets/api6a/Stem Packing Set.png';
-import pStemSeal from '../../../assets/api6a/Stem Seal.png';
-import pFaceSeal from '../../../assets/api6a/ID OD Seal.png';
-import pBop from '../../../assets/api6a/BOP Seal.png';
-import pPlunger from '../../../assets/wellservice/Plunger Packing Set.png';
-import pPumpPacking from '../../../assets/wellservice/Pump Packing Set.png';
-import pValveSeat from '../../../assets/wellservice/Valve Seat Insert.png';
-import pLinerSeal from '../../../assets/wellservice/Mud Pump Liner Seal.png';
-import pBodyBonnet from '../../../assets/api6d/Body-Bonnet Seal.png';
-import pSeatRetainer from '../../../assets/api6d/Seat Retainer.png';
-import pSeatRing from '../../../assets/api6d/Peek Seat Ring.png';
-import pLngSeal from '../../../assets/api6d/LNG Seal.png';
 
 const IMAGES = { offshore: imgOffshore, refinery: imgRefinery, gasplant: imgGasPlant, lng: imgLng, pipeline: imgPipeline };
-const PRODUCTS = {
-  stemPacking: pStemPacking, stemSeal: pStemSeal, faceSeal: pFaceSeal, bop: pBop,
-  plunger: pPlunger, pumpPacking: pPumpPacking, valveSeat: pValveSeat, linerSeal: pLinerSeal,
-  bodyBonnet: pBodyBonnet, seatRetainer: pSeatRetainer, seatRing: pSeatRing, lngSeal: pLngSeal,
-};
 
 const EASE = [0.22, 1, 0.36, 1];
 const CONTACT = '/connect-with-us';
 const APPLICATION_DATA = '/connect-with-us/application-data';
-const OIL_GAS_SEAL = '/oil-gas-seal';
 
 const ICONS = {
   rig: <path d="M12 3 7 21M12 3l5 18M8.5 15h7M10 9h4M5 21h14" />,
@@ -73,6 +69,7 @@ const ICONS = {
   burst: <path d="M12 2v5M12 17v5M2 12h5M17 12h5M5 5l3.5 3.5M15.5 15.5 19 19M19 5l-3.5 3.5M8.5 15.5 5 19" />,
   shield: <><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z" /><path d="m9 12 2 2 4-4" /></>,
   check: <path d="m5 12 5 5 9-10" />,
+  ruler: <><path d="M3 17 17 3l4 4L7 21Z" /><path d="m7 13 2 2M10 10l2 2M13 7l2 2" /></>,
   alert: <><path d="M12 3 2 20h20L12 3Z" /><path d="M12 10v4M12 17h.01" /></>,
   doc: <><path d="M6 3h8l4 4v14H6z" /><path d="M14 3v5h4M9 13h6M9 17h4" /></>,
 };
@@ -219,7 +216,7 @@ function WellMap({ active, onPick }) {
   );
 }
 
-function Families({ onZoom }) {
+function Families() {
   const [active, setActive] = useState(families[0].key);
   const item = families.find((f) => f.key === active);
   return (
@@ -252,25 +249,19 @@ function Families({ onZoom }) {
             <p className="og-sub">{item.tagline}</p>
             <p>{item.text}</p>
 
-            <div className="og-products">
-              {item.products.map((p) => (
-                <div key={p.name} className="og-product">
-                  <button type="button" className="og-product-shot" onClick={() => onZoom({ src: PRODUCTS[p.image], alt: `Mithson ${p.name}` })}
-                    aria-label={`Enlarge ${p.name} photo`}>
-                    <img src={PRODUCTS[p.image]} alt={`Mithson ${p.name}`} loading="lazy" />
-                  </button>
-                  <strong>{p.name}</strong>
-                  <em>{p.job}</em>
-                  <span><b>Material:</b> {p.materials}</span>
-                  <span><b>Equipment:</b> {p.where}</span>
-                  {p.pressure && <b className="og-pressure">{p.pressure}</b>}
-                </div>
-              ))}
-            </div>
+            {familyIntros[item.key] && <p>{familyIntros[item.key]}</p>}
+            <h4 className="ind-mini">Products in this family</h4>
+            <ul className="ind-chips">{item.products.map((p) => <li key={p.name}>{p.name}</li>)}</ul>
+            {item.key === 'well-service' && (
+              <div className="og-extra">
+                <p><strong>{wellServiceExtras.element.name}.</strong> {wellServiceExtras.element.function} {wellServiceExtras.element.benefits.join('; ')}.</p>
+                <ul>{wellServiceExtras.materials.map((m) => <li key={m.name}><b>{m.name}:</b> {m.text}</li>)}</ul>
+              </div>
+            )}
 
             {item.note && <p className="mu-watch"><Icon name="alert" size={16} /> {item.note}</p>}
             <p className="og-uses"><strong>Used in:</strong> {item.uses}</p>
-            <Link to={item.path} className="btn btn-navy mp-inline-btn">View the full product page <Arrow /></Link>
+            <a href="#og-products" className="btn btn-navy mp-inline-btn">See each product below <Arrow /></a>
           </motion.div>
         </AnimatePresence>
       </div>
@@ -432,11 +423,56 @@ function Lightbox({ shot, onClose }) {
   );
 }
 
+// the catalogue products of each family, with the brief's function, benefits and notes added
+const explorerFamilies = [
+  { key: 'wellhead', items: api6aItems },
+  { key: 'well-service', items: wellServiceItems },
+  { key: 'api6d', items: api6dItems },
+].map(({ key, items }) => {
+  const f = families.find((x) => x.key === key);
+  return {
+    title: f.name,
+    intro: familyIntros[key],
+    desc: f.tagline,
+    items: items.map((item) => ({ ...item, ...productBrief[item.label] })),
+  };
+});
+
+/** 04 - pick a material, see its full description, key properties, uses and what to watch */
+function MaterialSelector() {
+  const [active, setActive] = useState(materials[0].key);
+  const m = materials.find((x) => x.key === active);
+  const d = materialDetails[m.key];
+  return (
+    <div className="og-matsel">
+      <div className="og-picks og-matsel-picks" role="tablist" aria-label="Materials">
+        {materials.map((x) => (
+          <button key={x.key} type="button" role="tab" aria-selected={x.key === active} onClick={() => setActive(x.key)}>
+            <span>{x.name}</span>
+          </button>
+        ))}
+      </div>
+      <AnimatePresence mode="wait">
+        <motion.div key={m.key} role="tabpanel" className="og-panel og-matsel-panel"
+          initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.3, ease: EASE }}>
+          <h3>{m.name}</h3>
+          <p className="og-sub">{d.full} · {m.family}</p>
+          <p>{d.desc}</p>
+          <h4 className="ind-mini">Key properties</h4>
+          <ul className="mp-checks">{d.props.map((pr) => <li key={pr}><span><Icon name="check" size={14} /></span>{pr}</li>)}</ul>
+          <p className="og-uses"><strong>Oilfield applications:</strong> {m.uses}</p>
+          <p className="mu-watch"><Icon name="alert" size={16} /> {d.consider}</p>
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export default function IndustriesEnergyPage() {
   const [shot, setShot] = useState(null);
 
   useEffect(() => {
-    document.title = 'Energy — Oil & Gas Sealing Solutions | Mithson Sealing Solutions';
+    document.title = 'Oil & Gas Seal | Mithson Sealing Solutions';
     return () => { document.title = 'Mithson Sealing Solutions'; };
   }, []);
 
@@ -448,16 +484,17 @@ export default function IndustriesEnergyPage() {
       <section className="section mp-section" id="og-families">
         <div className="container">
           <Head number="01" label="Product portfolio" title="Where each seal family sits" intro={familiesIntro} />
-          <Families onZoom={setShot} />
+          <Families />
           <Reveal as="p" className="mp-warn"><Icon name="alert" size={18} /> <strong>Those pressure figures.</strong> {pressureNote}</Reveal>
         </div>
       </section>
 
-      {/* 02 Sealing systems */}
-      <section className="mp-dark" id="og-sealing">
+      {/* 02 Every product, explored */}
+      <section className="mp-dark" id="og-products">
         <div className="container">
-          <Head number="02" label="Sealing systems" title="Six arrangements, in cross-section" light intro={sealingIntro} />
-          <SealingTypes />
+          <Head number="02" label="Products" title="Every oil & gas seal, in detail" light
+            intro="Choose a family, then a product: its photo, description, function, engineering benefits, figures, materials and where it is used." />
+          <ProductExplorer families={explorerFamilies} specs={oilGasItems} onZoom={setShot} />
         </div>
       </section>
 
@@ -476,6 +513,7 @@ export default function IndustriesEnergyPage() {
               </div>
             ))}
           </div>
+          <MaterialSelector />
           <div className="og-matgrid">
             {materials.map((m, i) => (
               <Reveal key={m.key} delay={(i % 4) * 0.04} className="og-matcard">
@@ -496,10 +534,27 @@ export default function IndustriesEnergyPage() {
         </div>
       </section>
 
-      {/* 04 Operating conditions */}
-      <section className="section mp-section mp-tint" id="og-conditions">
+      {/* 04 Sealing systems */}
+      <section className="mp-dark" id="og-sealing">
         <div className="container">
-          <Head number="04" label="Operating conditions" title="What a seal is actually up against"
+          <Head number="04" label="Sealing systems" title="Six arrangements, in cross-section" light intro={sealingIntro} />
+          <SealingTypes />
+        </div>
+      </section>
+
+      {/* 05 Inside the seals */}
+      <section className="section mp-section mp-tint" id="og-inside">
+        <div className="container">
+          <Head number="05" label="Engineering visualisation" title="Inside the seals"
+            intro="A spring-energized seal and the sealing points of a trunnion ball valve, drawn in section." />
+          <Diagrams kinds={['spring', 'ballvalve']} />
+        </div>
+      </section>
+
+      {/* 06 Operating conditions */}
+      <section className="section mp-section" id="og-conditions">
+        <div className="container">
+          <Head number="06" label="Operating conditions" title="What a seal is actually up against"
             intro="Pressure, temperature, fluid chemistry, mechanical movement and material behaviour all act together. Six things decide whether the seal survives." />
           <div className="og-conditions">
             {conditions.map((c, i) => (
@@ -513,10 +568,44 @@ export default function IndustriesEnergyPage() {
         </div>
       </section>
 
-      {/* 05 Standards */}
+      {/* 07 Pressure and temperature reference */}
+      <section className="section mp-section mp-tint" id="og-limits">
+        <div className="container">
+          <Head number="07" label="Operating limits" title="Understanding oilfield operating limits"
+            intro="Application-specific engineering ratings: pressure figures belong to named products, and temperature is confirmed by material grade and seal construction." />
+          <div className="og-limits">
+            <Reveal>
+              <h3 className="og-limits-h">Product-specific pressure references</h3>
+              <Table cols={['Product', 'Published reference', 'Scope']} rows={tempReference.pressureRefs} />
+            </Reveal>
+            <Reveal>
+              <h3 className="og-limits-h">Temperature reference</h3>
+              <Table cols={['Item', 'How it is set']} rows={tempReference.confirm} />
+            </Reveal>
+          </div>
+          <Reveal as="p" className="mp-warn"><Icon name="snow" size={18} /> <strong>LNG reference.</strong> {tempReference.lng}</Reveal>
+          <Reveal>
+            <h3 className="og-limits-h">Material temperature reference, grade-dependent</h3>
+            <Table cols={['Material', 'General thermal characteristics', 'Important selection considerations']} rows={tempReference.thermal} />
+          </Reveal>
+          <div className="og-limits">
+            <Reveal>
+              <h3 className="og-limits-h">{oilGasSpringSeals.title}</h3>
+              <Table cols={['Property', 'Typical range']} rows={oilGasSpringSeals.rows.map((row) => [row.label, row.value])} />
+            </Reveal>
+            <Reveal>
+              <h3 className="og-limits-h">Typical elastomer temperature ranges</h3>
+              <Table cols={['Material', 'Temperature', 'Best suited to']} rows={elastomerRanges.rows.map((row) => [row.material, row.temperature, row.use])} />
+            </Reveal>
+          </div>
+          <Reveal as="p" className="mp-warn"><Icon name="alert" size={18} /> {CONFIRM_NOTE} {tempReference.disclaimer}</Reveal>
+        </div>
+      </section>
+
+      {/* 08 Standards */}
       <section className="section mp-section" id="og-standards">
         <div className="container">
-          <Head number="05" label="Standards" title="Designed around industry requirements" intro={standardsIntro} />
+          <Head number="08" label="Standards" title="Designed around industry requirements" intro={standardsIntro} />
           <div className="og-standards">
             {standards.map((s, i) => (
               <Reveal key={s.key} delay={(i % 3) * 0.06} className="og-standard">
@@ -531,10 +620,10 @@ export default function IndustriesEnergyPage() {
         </div>
       </section>
 
-      {/* 06 The value chain */}
+      {/* 09 The value chain */}
       <section className="mp-dark" id="og-chain">
         <div className="container">
-          <Head number="06" label="The value chain" title="From wellhead to LNG" light
+          <Head number="09" label="The value chain" title="From wellhead to LNG" light
             intro="Upstream, midstream and downstream put different demands on the same sealing families." />
           <div className="og-chain">
             {valueChain.map((v, i) => (
@@ -553,10 +642,10 @@ export default function IndustriesEnergyPage() {
         </div>
       </section>
 
-      {/* 07 Equipment matrix */}
+      {/* 10 Equipment matrix */}
       <section className="section mp-section" id="og-equipment">
         <div className="container">
-          <Head number="07" label="Equipment" title="Critical equipment, reliable sealing"
+          <Head number="10" label="Equipment" title="Critical equipment, reliable sealing"
             intro="Which Mithson components go into which piece of equipment, and what they are there to do." />
           <div className="og-equipment">
             {equipment.map((e, i) => (
@@ -570,10 +659,32 @@ export default function IndustriesEnergyPage() {
         </div>
       </section>
 
-      {/* 08 How we work */}
-      <section className="section mp-section mp-tint" id="og-process">
+      {/* 11 Custom engineering */}
+      <section className="section mp-section mp-tint" id="og-custom">
         <div className="container">
-          <Head number="08" label="How we work" title="From application review to sealing solution" />
+          <Head number="11" label="Engineering design" title="Engineered around your equipment"
+            intro="Different oilfield equipment needs different seal geometries, material formulations and dimensions. Mithson reviews your drawings, equipment interfaces and operating conditions." />
+          <h3 className="og-limits-h">Customisation parameters</h3>
+          <ul className="ind-chips ind-chips--wide">{customParams.map((c) => <li key={c}>{c}</li>)}</ul>
+          <div className="og-conditions og-custom">
+            {designConsiderations.map((c, i) => (
+              <Reveal key={c.title} delay={(i % 3) * 0.06} className="mp-card">
+                <span className="mp-icon"><Icon name={c.icon} size={20} /></span>
+                <h3>{c.title}</h3>
+                <p>{c.text}</p>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal className="og-send-actions">
+            <Link to={APPLICATION_DATA} className="btn btn-navy">Share your technical drawing <Arrow /></Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 12 How we work */}
+      <section className="section mp-section" id="og-process">
+        <div className="container">
+          <Head number="12" label="How we work" title="From application review to sealing solution" />
           <ol className="og-steps">
             {steps.map((s, i) => (
               <Reveal as="li" key={s.number} delay={i * 0.06}>
@@ -586,10 +697,10 @@ export default function IndustriesEnergyPage() {
         </div>
       </section>
 
-      {/* 09 What to send us */}
-      <section className="section mp-section" id="og-send">
+      {/* 13 What to send us */}
+      <section className="section mp-section mp-tint" id="og-send">
         <div className="container">
-          <Head number="09" label="What to send us" title="Help us understand your sealing requirement"
+          <Head number="13" label="What to send us" title="Help us understand your sealing requirement"
             intro="Choosing the right seal needs accurate application information. The more of this you can send, the faster the engineering review." />
           <div className="og-checklist">
             {checklist.map((c, i) => (
@@ -606,28 +717,30 @@ export default function IndustriesEnergyPage() {
         </div>
       </section>
 
-      {/* 10 FAQ */}
-      <section className="section mp-section mp-tint" id="og-faq">
+      {/* 14 FAQ */}
+      <section className="section mp-section" id="og-faq">
         <div className="container mp-split mp-split--narrow">
-          <Head number="10" label="FAQ" title="Oil & gas sealing questions"
+          <Head number="14" label="FAQ" title="Oil & gas sealing questions"
             intro="General guidance only. Our engineers confirm the right seal for each application." />
           <Faqs />
         </div>
       </section>
 
-      {/* 11 CTA */}
+      {/* 15 CTA */}
       <section className="mp-cta" id="og-contact">
         <div className="container mp-cta-grid">
           <div>
-            <span className="mp-label mp-label--dark">11 — Engineering review</span>
+            <span className="mp-label mp-label--dark">15 — Engineering review</span>
+            <p className="og-brand">{brandMessage.title}</p>
             <h2>{closing[0]}</h2>
             <p>{closing[1]}</p>
+            <p>{brandMessage.text}</p>
             <p className="mp-cta-contact">
               Contact Mithson: <a href="mailto:sales@mithson.com">sales@mithson.com</a> &nbsp;·&nbsp; <a href="tel:+917845022800">+91 78450 22800</a> &nbsp;·&nbsp; <a href="tel:+917845384005">+91 78453 84005</a>
             </p>
           </div>
           <div className="mp-cta-actions">
-            <Link to={OIL_GAS_SEAL} className="btn btn-white">View all oil &amp; gas seals <Arrow /></Link>
+            <Link to={APPLICATION_DATA} className="btn btn-white">Send your requirement <Arrow /></Link>
             <Link to="/book-a-meeting" className="btn mp-btn-ghost">Book a meeting <Arrow /></Link>
           </div>
         </div>

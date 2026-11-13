@@ -162,11 +162,23 @@ export function ProductExplorer({ families, specs = {}, onZoom }) {
             <em>{family.title}</em>
             {item.tag && <p className="ind-x-tag"><Icon name="gauge" size={16} /> {item.tag}</p>}
             <p>{item.desc}</p>
+            {item.function && <p><strong className="ind-x-lead">Function.</strong> {item.function}</p>}
+            {item.benefits && (
+              <>
+                <h4 className="ind-x-mini">Engineering benefits</h4>
+                <ul className="mp-checks ind-x-checks">
+                  {item.benefits.map((b) => <li key={b}><span><Icon name="check" size={14} /></span>{b}</li>)}
+                </ul>
+              </>
+            )}
             {spec && <ItemSpecList spec={spec} />}
             <dl className="ind-x-facts">
               <div><dt>Material</dt><dd>{item.materials}</dd></div>
+              {item.materialOptions && <div><dt>Material options</dt><dd>{item.materialOptions}</dd></div>}
               <div><dt>Application</dt><dd>{item.application}</dd></div>
+              {item.apps && <div><dt>Used in</dt><dd>{item.apps.join(', ')}</dd></div>}
             </dl>
+            {item.note && <p className="mu-watch ind-x-note"><Icon name="alert" size={16} /> {item.note}</p>}
             <Link to={`/connect-with-us?subject=${encodeURIComponent(`Enquiry: ${item.label}`)}`} className="btn mp-inline-btn ind-x-btn">
               Enquire about {item.label} <Arrow />
             </Link>
@@ -210,6 +222,33 @@ const DIAGRAMS = {
         <path className="ind-d-arrow" d="M196 75h-26M176 69l-6 6 6 6" />
         <path className="ind-d-lip" d="M60 44 52 36M60 106l-8 8" />
         <text className="ind-d-text" x="200" y="64">P</text>
+      </svg>
+    ),
+  },
+  ballvalve: {
+    title: 'Trunnion ball valve, sealing points',
+    text: 'The seat rings press on the ball, the seat retainers seal behind the seats, and the body-bonnet seal closes the pressure-containing joint, so process fluid stays in the bore.',
+    labels: ['1 Valve body', '2 Valve ball', '3 Seat ring (PEEK)', '4 Seat retainer', '5 Body-bonnet seal', '6 Spring-energized seal'],
+    art: (
+      <svg viewBox="0 0 240 160" role="img" aria-label="Cross-section of a trunnion-mounted ball valve with its sealing points numbered">
+        <rect className="ind-d-metal" x="96" y="6" width="48" height="26" rx="4" />
+        <rect className="ind-d-metal" x="20" y="34" width="200" height="96" rx="10" />
+        <rect className="ind-d-cavity" x="20" y="68" width="200" height="28" />
+        <rect className="ind-d-seal" x="100" y="30" width="40" height="6" rx="2" />
+        <circle className="ind-d-ball" cx="120" cy="82" r="34" />
+        <rect className="ind-d-cavity" x="86" y="70" width="68" height="24" />
+        <rect className="ind-d-retainer" x="66" y="56" width="12" height="52" rx="2" />
+        <rect className="ind-d-retainer" x="162" y="56" width="12" height="52" rx="2" />
+        <rect className="ind-d-seat" x="78" y="60" width="8" height="44" rx="2" />
+        <rect className="ind-d-seat" x="154" y="60" width="8" height="44" rx="2" />
+        <circle className="ind-d-spring" cx="72" cy="114" r="4" />
+        <circle className="ind-d-spring" cx="168" cy="114" r="4" />
+        <text className="ind-d-text" x="34" y="54">1</text>
+        <text className="ind-d-text" x="116" y="128">2</text>
+        <text className="ind-d-text" x="80" y="54">3</text>
+        <text className="ind-d-text" x="56" y="90">4</text>
+        <text className="ind-d-text" x="146" y="22">5</text>
+        <text className="ind-d-text" x="56" y="124">6</text>
       </svg>
     ),
   },

@@ -11,9 +11,9 @@
 
 export const ogHero = {
   label: 'Oil & gas sealing solutions',
-  title: 'Energy —',
-  titleAccent: 'Oil & Gas.',
-  titleRest: 'Sealed under pressure.',
+  title: 'Oil & Gas',
+  titleAccent: 'Sealing Solutions.',
+  titleRest: 'Precision-engineered for critical oilfield applications.',
   lead:
     'In oil and gas, sealing reliability decides equipment integrity, operational safety and process efficiency. Mithson supplies specialised polymer and elastomer sealing for wellhead equipment, Christmas tree valves, blowout preventers, well service pumps, pipeline valves and LNG systems.',
   lead2:
@@ -42,7 +42,7 @@ export const heroChips = [
 // Downhole tools has its own page (/industries/downhole-tools) and is kept off this one.
 // `image` is the key of the existing Mithson product photo; `label` matches productItems.oilGasItems.
 export const familiesIntro =
-  'Three product families cover the equipment from the wellhead and the pump pad to the pipeline and the LNG terminal. Every part shown is a real Mithson product, and each family links through to its full product page.';
+  'Three product families cover the equipment from the wellhead and the pump pad to the pipeline and the LNG terminal. Every part shown is a real Mithson product, and each one is explained in full further down this page.';
 
 export const families = [
   {

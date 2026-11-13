@@ -172,7 +172,7 @@ export default function App() {
 
               {/* Industries */}
               <Route path="/industries" element={<Industries />} />
-              <Route path="/industries/energy-oil-gas" element={<EnergyOilGas />} />
+              <Route path="/industries/energy-oil-gas" element={<Navigate to="/oil-gas-seal" replace />} />
               <Route path="/industries/downhole-tools" element={<IndustryPage key="downhole-tools" slug="downhole-tools" />} />
               <Route path="/industries/life-science" element={<IndustryPage slug="life-science" />} />
               <Route path="/industries/semiconductor" element={<IndustryPage slug="semiconductor" />} />
@@ -182,7 +182,7 @@ export default function App() {
               <Route path="/industries/robotics" element={<IndustryPage slug="robotics" />} />
 
               {/* Oil & Gas Seal */}
-              <Route path="/oil-gas-seal" element={<IndustryPage key="oil-gas-seal" slug="oil-gas-seal" />} />
+              <Route path="/oil-gas-seal" element={<EnergyOilGas />} />
               <Route path="/oil-gas-seal/api-6a-wellhead-equipment-seal" element={<API6A />} />
               <Route path="/oil-gas-seal/well-service-equipment-seal" element={<WellService />} />
               <Route path="/oil-gas-seal/downhole-tool-seal" element={<Navigate to="/industries/downhole-tools" replace />} />
