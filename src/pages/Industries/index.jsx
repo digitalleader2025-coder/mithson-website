@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ScrollReveal from '../../shared/components/ScrollReveal';
 import imgOilGas from '../../assets/industries/Oil & Gas.webp';
+import imgDownhole from '../../assets/industries/Downhole Tools.webp';
 import imgLifeScience from '../../assets/industries/Life Science.webp';
 import imgSemiconductor from '../../assets/industries/Semiconductor.webp';
 import imgAerospace from '../../assets/industries/Aerospace.webp';
@@ -21,7 +22,7 @@ const sectors = [
   {
     title: 'Downhole Tools',
     path: '/industries/downhole-tools',
-    image: imgOilGas,
+    image: imgDownhole,
     desc: 'Unified stack seals, packers, RGD O-rings and PEEK back-up rings for deep-well environments.',
   },
   {
