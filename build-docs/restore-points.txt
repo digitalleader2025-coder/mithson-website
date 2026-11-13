@@ -131,6 +131,11 @@ INDUSTRIES - OIL & GAS PRODUCTS, SIX INDUSTRY PAGES, DOWNHOLE TOOLS
   after-downhole-tools   d738bc9   Downhole Tools: full page below the
                                    existing gallery and temperature table
 
+OIL & GAS SEAL AND DOWNHOLE TOOLS ON THE SHARED LAYOUT
+  before-oilgas-downhole-ui c99d445  old card list and the separate Downhole layout
+  after-oilgas-downhole-ui  ca5e2e4  both pages use the common industry layout,
+                                   Downhole card removed from Oil & Gas Seal
+
 SEALS - X-MAS TREE
   before-xmas-tree       690379f   the old basic page
   after-xmas-tree        ae5e2c0   rebuilt: 12 sections, 4 components,
