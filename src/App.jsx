@@ -59,10 +59,6 @@ const ProductGallery = lazy(() => import('./pages/ProductGallery'));
 
 // More
 const ConnectWithUs = lazy(() => import('./pages/More/ConnectWithUs'));
-const Events = lazy(() => import('./pages/More/Events'));
-const Expo2025 = lazy(() => import('./pages/More/Events/ExpoPages'));
-const Expo2024Page = lazy(() => import('./pages/More/Events/ExpoPages').then(module => ({ default: module.Expo2024Page })));
-const Expo2023Page = lazy(() => import('./pages/More/Events/ExpoPages').then(module => ({ default: module.Expo2023Page })));
 
 
 function ScrollToTop() {
@@ -202,11 +198,8 @@ export default function App() {
               <Route path="/connect-with-us" element={<ConnectWithUs />} />
               <Route path="/connect-with-us/application-data" element={<ApplicationData />} />
 
-              {/* Events */}
-              <Route path="/events" element={<Events />} />
-              <Route path="/events/oil-and-gas-expo-2025" element={<Expo2025 />} />
-              <Route path="/events/expo-2024" element={<Expo2024Page />} />
-              <Route path="/events/expo-2023" element={<Expo2023Page />} />
+              {/* Events is hidden for now (page files kept in src/pages/More/Events); old links go home */}
+              <Route path="/events/*" element={<Navigate to="/" replace />} />
 
               {/* Career & booking */}
               <Route path="/careers" element={<Careers />} />

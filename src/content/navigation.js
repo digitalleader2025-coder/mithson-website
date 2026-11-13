@@ -3,13 +3,12 @@ export const navigation = [
   {
     label: 'Company',
     path: '/who-we-are',
-    activePaths: ['/who-we-are', '/events'],
+    activePaths: ['/who-we-are'],
     children: [
       { label: 'About Us', path: '/who-we-are/about-us' },
       { label: 'HSSE & Quality', path: '/who-we-are/hsse-and-quality' },
       { label: 'Facilities', path: '/who-we-are/facilities' },
       { label: 'Sustainability', path: '/who-we-are/sustainability' },
-      { label: 'Events', path: '/events' },
     ],
   },
   {
