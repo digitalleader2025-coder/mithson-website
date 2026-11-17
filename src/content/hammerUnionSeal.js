@@ -181,6 +181,18 @@ export const dimensions = [
 export const dimensionsIntro =
   "Mithson's published product information lists hammer union seal sizes from 1 to 6 inches inner diameter. The correct seal must be selected using the dimensions and profile required by the specific union design.";
 
+// Size table from Mithson's Oil & Gas catalogue (page 10), in inches.
+export const sizeTable = [
+  ['1"', '1.05"', '1.75"', '0.45"'],
+  ['1-1/4"', '1.32"', '2.10"', '0.50"'],
+  ['1-1/2"', '1.56"', '2.40"', '0.52"'],
+  ['2"', '2.06"', '2.81"', '0.57"'],
+  ['2-1/2"', '2.56"', '3.41"', '0.57"'],
+  ['3"', '3.15"', '4.18"', '0.54"'],
+  ['4"', '4.19"', '5.18"', '0.54"'],
+  ['6"', '6.63"', '8.38"', '0.88"'],
+];
+
 export const dimensionsNote =
   "Dimensions should be confirmed against the relevant product drawing and the connection manufacturer's specifications.";
 

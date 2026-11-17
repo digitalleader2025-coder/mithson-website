@@ -14,6 +14,7 @@ import {
   dimensions,
   dimensionsIntro,
   dimensionsNote,
+  sizeTable,
   faqs,
   heroChips,
   huHero,
@@ -439,6 +440,12 @@ export default function HammerUnionSealPage() {
                 </Reveal>
               ))}
             </div>
+            <Reveal className="mu-table hu-sizes">
+              <div className="mu-table-head"><span>Size</span><span>Inside diameter (ID)</span><span>Outside diameter (OD)</span><span>Height</span></div>
+              {sizeTable.map((row) => (
+                <div key={row[0]}>{row.map((cell, i) => <span key={i}>{cell}</span>)}</div>
+              ))}
+            </Reveal>
             <Reveal as="p" className="mp-note">{dimensionsNote}</Reveal>
           </div>
           <div>

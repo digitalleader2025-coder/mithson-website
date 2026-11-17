@@ -321,3 +321,19 @@
     grid-column: auto;
   }
 }
+
+/* size table from the catalogue: four short columns that fit a phone */
+.hu-sizes {
+  margin-top: var(--space-5);
+}
+
+.hu-sizes > div {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: var(--space-2) !important;
+  padding: var(--space-3) var(--space-4) !important;
+}
+
+.hu-sizes > div > span:first-child {
+  font-weight: 700;
+  color: var(--color-navy-base);
+}

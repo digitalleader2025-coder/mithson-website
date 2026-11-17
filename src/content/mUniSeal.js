@@ -1,7 +1,7 @@
 // M-UNI Seal page copy, from the approved text supplied by the user (November 2026).
 // That text repeatedly flags which items are general industry options rather than confirmed
 // Mithson offerings. Those caveats are kept on the page: do not quietly turn them into claims,
-// and add no numerical ratings or size ranges until Mithson supplies its datasheets.
+// and add no numerical ratings until Mithson supplies its datasheets (the size range is from its brochure).
 
 export const mUniHero = {
   label: 'Spring-energised polymer seals',
@@ -188,8 +188,9 @@ export const enquiryTable = [
   ['Surface finish', 'Mating hardware requirements'],
 ];
 
+// size range from Mithson's company brochure (M-UNI Seal page): 6 mm to 1500 mm
 export const enquiryNote =
-  'Verified numerical ratings and available size ranges are published only after review against Mithson product datasheets and engineering documentation.';
+  "Available sizes: 6 mm to 1500 mm, as listed in Mithson's catalogue. Verified numerical ratings are published only after review against Mithson product datasheets and engineering documentation.";
 
 export const installation = [
   {
