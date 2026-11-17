@@ -600,8 +600,9 @@ export default function HSSEQualityPage() {
 
           <Reveal as="h3" className="hsse-subhead">Industry Standards and Material-Related References</Reveal>
           <Reveal as="p" className="hsse-sublead">
-            Mithson&apos;s official quality information references API 6A, NORSOK and BAM in connection with industry-recognised
-            materials. Their applicability depends on the specific material grade, product design, test method and customer specification.
+            Mithson&apos;s materials are compliant with NORSOK M-710 and tested to BAM requirements, with material compliance to
+            API 6A as per customer requirement. Mithson is not API 6A certified; products are manufactured to customer requirements
+            for API 6A equipment. Their applicability depends on the specific material grade, product design, test method and customer specification.
           </Reveal>
           <Standards />
           <Reveal as="p" className="hsse-important"><strong>Important:</strong> {standardsNote}</Reveal>

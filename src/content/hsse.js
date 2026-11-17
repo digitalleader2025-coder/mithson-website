@@ -12,9 +12,9 @@ import imgBam5C from '../assets/certificates/BAM FC005C.png';
 import imgQima from '../assets/certificates/QIMA.png';
 
 const pending = 'pending-validation';
-const API = 'API 6A / ISO 10423 sour fluid (FF/HH) resistance';
-const NORSOK = 'NORSOK M-710 rapid gas decompression resistance';
-const BAM = 'BAM oxygen compatibility';
+const API = 'Material compliance to API 6A / ISO 10423 sour fluid (FF/HH), as per customer requirement';
+const NORSOK = 'Materials compliant with NORSOK M-710 (rapid gas decompression resistance)';
+const BAM = 'Materials tested to BAM requirements (oxygen compatibility)';
 
 export const companyCertificates = [
   { name: 'ISO 9001:2015', scope: 'Certified quality management system', image: imgIso },

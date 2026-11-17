@@ -255,8 +255,9 @@ function CertificationSection() {
                 Certified to the Highest Standards
               </h2>
               <p className="section-subtitle" style={{ marginTop: '1rem' }}>
-                Every product is manufactured under ISO 9001:2015 quality management and
-                audited against international standards including API, NORSOK and BAM.
+                Every product is manufactured under ISO 9001:2015 quality management, with
+                materials compliant with NORSOK M-710, materials tested to BAM requirements and
+                material compliance to API 6A as per customer requirement.
               </p>
               <Link to="/who-we-are/hsse-and-quality" className="btn btn-primary" style={{ marginTop: '1.5rem' }} id="home-cert-link">
                 Our Certifications

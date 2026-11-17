@@ -121,9 +121,9 @@ export const qualityFocus = [
 export const qualityCredentials = [
   { title: 'ISO 9001:2015', text: 'Certified quality management system' },
   { title: 'QIMA', text: 'Audited' },
-  { title: 'API-6A', text: 'Material-related reference' },
-  { title: 'NORSOK', text: 'Material-related reference' },
-  { title: 'BAM', text: 'Material-related reference' },
+  { title: 'NORSOK M-710', text: 'Materials compliant with NORSOK M-710' },
+  { title: 'BAM', text: 'Materials tested to BAM requirements' },
+  { title: 'API 6A equipment', text: 'Products manufactured to customer requirements for API 6A equipment and Oil & Gas applications' },
 ];
 
 export const whyMithson = [

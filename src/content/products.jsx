@@ -139,16 +139,16 @@ export const products = [
     category: 'oilfield',
     name: 'Seals - X-Mas Tree',
     tagline: 'Christmas Tree Wellhead Gate-Valve Sealing',
-    shortDescription: 'High-performance API 6A compliant sealing solutions for Christmas Tree valve applications. Includes Spring-Energized Lip Seals, Stem Packing, Seat Seals, and O-Rings engineered from advanced polymer materials.',
+    shortDescription: 'High-performance sealing solutions for Christmas Tree valve applications, manufactured to customer requirements for API 6A equipment. Includes Spring-Energized Lip Seals, Stem Packing, Seat Seals, and O-Rings engineered from advanced polymer materials.',
     heroDescription: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        <p>We provide <strong>high-performance sealing solutions</strong> for <strong>Christmas Tree valve applications</strong>, including <strong>Spring-Energized Lip Seals, Stem Packing, Seat Seals, and O-Rings</strong>. Manufactured from advanced <strong>polymer materials</strong>, our components deliver reliable performance and meet <strong>API 6A (Appendix F)</strong> requirements. <strong>Spring-Energized Seals</strong> combine a <strong>PTFE jacket</strong> with a <strong>corrosion-resistant metal energizer spring</strong>, providing consistent sealing under demanding conditions.</p>
+        <p>We provide <strong>high-performance sealing solutions</strong> for <strong>Christmas Tree valve applications</strong>, including <strong>Spring-Energized Lip Seals, Stem Packing, Seat Seals, and O-Rings</strong>. Manufactured from advanced <strong>polymer materials</strong>, our components deliver reliable performance and are manufactured to customer requirements for <strong>API 6A equipment</strong>. <strong>Spring-Energized Seals</strong> combine a <strong>PTFE jacket</strong> with a <strong>corrosion-resistant metal energizer spring</strong>, providing consistent sealing under demanding conditions.</p>
         <p><strong>Gate Valve Stem Packing</strong> prevents leakage around the valve stem, ensuring reliable operation and sealing integrity. <strong>PTFE materials</strong> offer <strong>low friction, excellent temperature resistance, chemical resistance, and corrosion resistance</strong>. <strong>PTFE Spring-Energized Seals</strong> also provide <strong>unlimited shelf life</strong>, supporting long-term storage without compromising performance.</p>
       </div>
     ),
-    summary: 'High-performance sealing solutions for Christmas Tree valve applications, meeting API 6A (Appendix F) requirements. Features PTFE jackets and corrosion-resistant springs for extreme conditions.',
+    summary: 'High-performance sealing solutions for Christmas Tree valve applications, manufactured to customer requirements for API 6A equipment. Features PTFE jackets and corrosion-resistant springs for extreme conditions.',
     highlights: [
-      'API 6A Appendix F reference',
+      'Made to customer requirements for API 6A equipment',
       'Low friction PTFE jacket',
       'Unlimited shelf life (PTFE spring seals)',
       'Wide temperature range',

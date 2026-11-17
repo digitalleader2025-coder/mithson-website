@@ -35,7 +35,7 @@ export default function API6APage() {
   return (
     <OilGasSealTemplate
       title="API 6A Wellhead Equipment Seal"
-      subtitle="High-pressure, sour-gas and HPHT wellhead sealing — stem packing sets, stem seals, OD/ID face seals and BOP seals manufactured to API 6A."
+      subtitle="High-pressure, sour-gas and HPHT wellhead sealing — stem packing sets, stem seals, OD/ID face seals and BOP seals manufactured to customer requirements for API 6A equipment."
       products={[]}
       label="Oil & Gas Seal"
       pageId="api6a"

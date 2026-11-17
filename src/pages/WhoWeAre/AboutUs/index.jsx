@@ -261,7 +261,7 @@ const JOURNEY_IMAGES = [
   { src: imgHeritage, alt: 'Fluoro Carbon Seals building in Chennai', caption: 'Fluoro Carbon Seals, Chennai: our group heritage' },
   { src: imgExpansion, alt: 'Spring-energized and polymer seals', caption: 'Spring-energized and polymer seals' },
   { src: imgBuilding, alt: 'Mithson Sealing Solutions building', caption: 'Illustrative image' },
-  { src: imgToday, alt: 'ISO 9001:2015 certificate with material test records for API 6A, NORSOK and BAM', caption: 'ISO 9001:2015 and material test records' },
+  { src: imgToday, alt: 'ISO 9001:2015 certificate with material test records: NORSOK M-710, BAM and API 6A material compliance', caption: 'ISO 9001:2015 and material test records' },
 ];
 
 function Journey() {

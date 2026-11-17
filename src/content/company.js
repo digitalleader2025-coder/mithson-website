@@ -35,7 +35,7 @@ export const company = {
     'Delrin/POM',
     'PU',
   ],
-  certifications: ['ISO 9001:2015', 'QIMA Audited', 'API-6A', 'NORSOK', 'BAM'],
+  certifications: ['ISO 9001:2015', 'QIMA Audited', 'Materials compliant with NORSOK M-710', 'Materials tested to BAM requirements'],
   sustainability: [
     'Sustainable agriculture',
     'EV goods movement',

@@ -34,7 +34,7 @@ export const heroTags = [
 export const heroChips = [
   { icon: 'rig', title: '12 oil & gas products', text: 'Wellhead, well service and pipeline valve' },
   { icon: 'flask', title: '8 material families', text: 'PTFE through FFKM' },
-  { icon: 'book', title: 'API 6A & API 6D', text: 'The equipment these parts go into' },
+  { icon: 'book', title: 'For API 6A & 6D equipment', text: 'Manufactured to customer requirements' },
   { icon: 'snow', title: 'LNG at ~−162°C', text: 'Cryogenic valve sealing' },
 ];
 
@@ -189,12 +189,12 @@ export const standardsIntro =
   'Oilfield sealing components are designed and selected with reference to the equipment specification, the material requirements, the operating environment and the applicable industry standards.';
 
 export const standards = [
-  { key: 'api6a', code: 'API 6A', full: 'Specification for Wellhead and Tree Equipment', text: 'Sets requirements for the performance, design, materials, testing and inspection of wellhead and Christmas tree equipment.', applies: 'Wellhead equipment, Christmas tree assemblies, associated gate valves and pressure-containing equipment.' },
+  { key: 'api6a', code: 'API 6A', full: 'Specification for Wellhead and Tree Equipment', text: 'Sets requirements for the performance, design, materials, testing and inspection of wellhead and Christmas tree equipment. Mithson is not API 6A certified: products are manufactured to customer requirements for API 6A equipment, with material compliance to API 6A as per customer requirement.', applies: 'Wellhead equipment, Christmas tree assemblies, associated gate valves and pressure-containing equipment.' },
   { key: 'api6d', code: 'API 6D', full: 'Specification for Pipeline and Piping Valves', text: 'Covers design, manufacturing, materials, quality control, assembly, testing and documentation for pipeline valves.', applies: 'Ball valves, gate valves, check valves and plug valves.' },
-  { key: 'norsok', code: 'NORSOK M-710', full: 'Qualification of non-metallic sealing materials', text: 'A recognised qualification reference for non-metallic sealing materials in demanding petroleum service, including sour-gas and rapid gas decompression testing.', applies: 'Elastomer qualification, RGD-resistant compounds and sour-service material evaluation.' },
+  { key: 'norsok', code: 'NORSOK M-710', full: 'Qualification of non-metallic sealing materials', text: 'Materials compliant with NORSOK M-710. A recognised qualification reference for non-metallic sealing materials in demanding petroleum service, including sour-gas and rapid gas decompression testing.', applies: 'Elastomer qualification, RGD-resistant compounds and sour-service material evaluation.' },
   { key: 'iso2', code: 'ISO 23936-2', full: 'Non-metallic materials in contact with media related to oil and gas production — Elastomers', text: 'Requirements and guidance for elastomeric materials exposed to oilfield production media.', applies: 'Elastomer selection and evaluation.' },
   { key: 'iso1', code: 'ISO 23936-1', full: 'Non-metallic materials — Thermoplastics', text: 'Covers thermoplastic materials used in contact with oil and gas production media.', applies: 'PTFE, PEEK and other thermoplastic sealing components.' },
-  { key: 'bam', code: 'BAM', full: 'Material approval or assessment', text: 'Shown only where the specific compound or material holds the applicable documented approval.', applies: 'Named materials with documentation, not the portfolio.' },
+  { key: 'bam', code: 'BAM', full: 'Material approval or assessment', text: 'Materials tested to BAM requirements. Shown only where the specific compound or material holds the applicable documented approval.', applies: 'Named materials with documentation, not the portfolio.' },
 ];
 
 export const standardsNote =

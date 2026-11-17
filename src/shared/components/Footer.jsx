@@ -5,7 +5,7 @@ import { navigation } from '../../content/navigation';
 import logoImage from '../../../images/mithson-logo/Mithson-logo.png';
 import './Footer.css';
 
-const certifications = ['ISO 9001:2015', 'QIMA', 'API-6A', 'NORSOK', 'BAM'];
+const certifications = ['ISO 9001:2015', 'QIMA', 'Materials compliant with NORSOK M-710', 'Materials tested to BAM requirements'];
 
 const ICONS = {
   mail: <><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></>,
