@@ -337,3 +337,15 @@
   font-weight: 700;
   color: var(--color-navy-base);
 }
+
+/* the shared phone rule hides table headers because those tables stack; this one keeps 4 columns, so it keeps its header */
+.hu-sizes .mu-table-head {
+  display: grid !important;
+}
+
+@media (max-width: 480px) {
+  .hu-sizes .mu-table-head span {
+    font-size: 0.6rem;
+    letter-spacing: 0.02em;
+  }
+}
