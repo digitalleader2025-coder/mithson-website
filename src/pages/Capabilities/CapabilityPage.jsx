@@ -10,8 +10,9 @@ import AnimatedImage from '../../shared/components/AnimatedImage';
 import SealDiagram from './SealDiagram';
 import './Capabilities.css';
 
-export function PageHero({ label, title, intro, image, photo, children }) {
-  const photoSrc = siteImages[photo];
+export function PageHero({ label, title, intro, image, photo, realPhoto, realCaption, children }) {
+  // a real Mithson photo carries its own caption; the site-images set is labelled illustrative
+  const photoSrc = realPhoto || siteImages[photo];
 
   return (
     <section className="page-hero">
@@ -28,7 +29,7 @@ export function PageHero({ label, title, intro, image, photo, children }) {
           {children}
         </motion.div>
         {photoSrc
-          ? <AnimatedImage src={photoSrc} caption="Illustrative image" />
+          ? <AnimatedImage src={photoSrc} alt={realCaption || ''} caption={realPhoto ? realCaption : 'Illustrative image'} />
           : image && <img src={image} alt="" className="capability-hero-image" />}
       </div>
       <div className="page-hero-bg" aria-hidden="true"><div className="hero-grid" /></div>
@@ -78,6 +79,35 @@ export function PageActions() {
   );
 }
 
+/** equipment groups, each with its real photos and what every machine is used for */
+function Equipment({ data }) {
+  return (
+    <section className="section capability-tint">
+      <div className="container">
+        <ScrollReveal>
+          <h2 className="section-title capability-heading">{data.title}</h2>
+          <p className="capability-lead">{data.intro}</p>
+        </ScrollReveal>
+        <div className="equip-grid">
+          {data.groups.map((g, i) => (
+            <ScrollReveal key={g.title} delay={i * 0.08}>
+              <article className="equip-card">
+                <div className="equip-photos">
+                  {g.photos.map((p) => <img key={p.alt} src={p.src} alt={p.alt} loading="lazy" />)}
+                </div>
+                <h3>{g.title}</h3>
+                <ul>
+                  {g.items.map(([name, use]) => <li key={name}><strong>{name}</strong><span>{use}</span></li>)}
+                </ul>
+              </article>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function TestTable({ tests }) {
   return (
     <div className="capability-table-wrap" tabIndex={0} role="region" aria-label="Test methods">
@@ -110,7 +140,8 @@ export default function CapabilityPage({ page }) {
 
   return (
     <div className="page-wrapper">
-      <PageHero label={page.label} title={page.title} intro={page.intro} image={page.image} photo={page.photo} />
+      <PageHero label={page.label} title={page.title} intro={page.intro} image={page.image} photo={page.photo}
+        realPhoto={page.realPhoto} realCaption={page.realCaption} />
 
       {page.diagram && (
         <section className="section capability-tint">
@@ -137,6 +168,8 @@ export default function CapabilityPage({ page }) {
           </Fragment>
         );
       })}
+
+      {page.equipment && <Equipment data={page.equipment} />}
 
       {tests.length > 0 && (
         <section className="section capability-tint">

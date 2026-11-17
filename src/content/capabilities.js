@@ -7,6 +7,13 @@ import imgSpringSeal from '../pages/Products/Seals-Valve/assets/Spring Energized
 import imgPistonSeal from '../pages/Products/Seals-Hydraulic/assets/Piston Seals.png';
 import imgWearRing from '../pages/Products/Seals-Hydraulic/assets/Wear Rings.png';
 import imgElastomerRing from '../pages/Products/Seals-Valve/assets/Elastomer O-Ring.png';
+// real photos of Mithson's own lab and test rigs, from the company presentation
+import imgLab from '../assets/testing/lab.jpg';
+import imgCmm from '../assets/testing/cmm.jpg';
+import imgProjector from '../assets/testing/profile-projector.jpg';
+import imgRheometer from '../assets/testing/rheometer.jpg';
+import imgSealRig from '../assets/testing/seal-endurance-rig.jpg';
+import imgHydraulicRig from '../assets/testing/hydraulic-endurance-rig.jpg';
 
 const pending = 'pending-validation';
 
@@ -99,6 +106,46 @@ export const capabilityPages = {
     image: imgElastomerRing,
     intro: 'Testing and inspection run through Mithson\'s quality process, from incoming material to the finished part.',
     description: 'How Mithson inspects and tests materials, prototypes and finished parts.',
+    realPhoto: imgLab,
+    realCaption: 'Mithson in-house laboratory',
+    // equipment named in Mithson's company presentation (in-house testing and final inspection lab)
+    equipment: {
+      title: 'Our testing and inspection equipment',
+      intro: 'Material testing, dimensional inspection and seal performance testing are carried out in-house.',
+      groups: [
+        {
+          title: 'Material testing',
+          photos: [{ src: imgRheometer, alt: 'MDR rheometer for rubber compound testing' }, { src: imgLab, alt: 'Universal testing machine in the Mithson laboratory' }],
+          items: [
+            ['Universal testing machine', 'Tensile strength, elongation and modulus'],
+            ['Specific gravity', 'Density check for polymers'],
+            ['MDR rheometer', 'Rubber compound property analysis'],
+            ['Shore A and Shore D hardness', 'Hardness of rubbers (A) and plastics (D)'],
+            ['Compression set', 'How well rubber recovers after squeeze'],
+          ],
+        },
+        {
+          title: 'Dimensional inspection',
+          photos: [{ src: imgCmm, alt: 'Video measuring machine with CMM' }, { src: imgProjector, alt: 'Profile projector' }],
+          items: [
+            ['Video measuring machine with CMM', 'Precise dimensions and geometry'],
+            ['Profile projector', 'Seal profiles and edges checked against the drawing'],
+            ['Magnifying visual microscope', 'Close visual inspection of surfaces and edges'],
+            ['2D height master', 'Heights and steps'],
+            ['Roughness tester', 'Surface finish'],
+          ],
+        },
+        {
+          title: 'Seal performance testing',
+          photos: [{ src: imgSealRig, alt: 'Seal endurance test rig' }, { src: imgHydraulicRig, alt: 'Hydraulic seal endurance test rig' }],
+          items: [
+            ['Seal endurance test rig', 'Seals tested under pressure, temperature, rotary and linear movement'],
+            ['Hydraulic seal endurance test rigs', 'Hydraulic seals run under simulated working conditions'],
+            ['What it shows', 'Leakage, wear and deformation over time, against customer specifications'],
+          ],
+        },
+      ],
+    },
     sections: [
       {
         title: 'Why testing matters',

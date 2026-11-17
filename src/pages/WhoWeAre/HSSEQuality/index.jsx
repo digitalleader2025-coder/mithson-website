@@ -4,6 +4,8 @@ import { AnimatePresence, motion, useInView, useReducedMotion, useScroll, useTra
 import usePageMeta from '../../../shared/hooks/usePageMeta';
 import CircularCarousel from '../../../shared/components/CircularCarousel';
 import { companyCertificates, materialRecords } from '../../../content/hsse';
+import { capabilityPages } from '../../../content/capabilities';
+import imgLab from '../../../assets/testing/lab.jpg';
 import {
   applicationFactors,
   documents,
@@ -612,6 +614,29 @@ export default function HSSEQualityPage() {
           <div className="hsse-carousel">
             <CircularCarousel items={certImages} cardWidth={200} aspectRatio={1.45} speed={14} tilt={-5} perspective={2500} direction="left" gap={25} />
           </div>
+        </div>
+      </section>
+
+      {/* Quality assurance: the in-house testing and inspection equipment, same list as Capabilities */}
+      <section className="section hsse-section" id="hsse-testing">
+        <div className="container hsse-approach hsse-qa">
+          <div>
+            <Head label="Quality Assurance" title="Tested and inspected in-house"
+              intro={capabilityPages['in-house-testing'].equipment.intro} />
+            <div className="hsse-qa-groups">
+              {capabilityPages['in-house-testing'].equipment.groups.map((g, i) => (
+                <Reveal key={g.title} delay={i * 0.06} className="hsse-qa-group">
+                  <h3>{g.title}</h3>
+                  <ul>{g.items.filter(([name]) => name !== 'What it shows').map(([name]) => <li key={name}>{name}</li>)}</ul>
+                </Reveal>
+              ))}
+            </div>
+            <Link to="/capabilities/in-house-testing" className="hsse-link">See our testing equipment <Arrow /></Link>
+          </div>
+          <Reveal className="hsse-building">
+            <img src={imgLab} alt="Mithson in-house laboratory" loading="lazy" />
+            <span className="hsse-caption">Mithson in-house laboratory</span>
+          </Reveal>
         </div>
       </section>
 

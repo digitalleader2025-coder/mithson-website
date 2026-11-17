@@ -502,3 +502,75 @@ a.capability-card:focus-visible {
     padding: var(--space-4);
   }
 }
+
+/* testing and inspection equipment: real photos shown whole, then what each machine does */
+.equip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+
+.equip-card {
+  height: 100%;
+  padding: var(--space-4);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+}
+
+.equip-photos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+.equip-photos img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: #f1f6fd;
+  border-radius: var(--radius-md, 10px);
+}
+
+.equip-card h3 {
+  margin: var(--space-4) 0 var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-navy-base);
+}
+
+.equip-card ul {
+  display: grid;
+  gap: var(--space-2);
+  list-style: none;
+}
+
+.equip-card li {
+  display: grid;
+  gap: 2px;
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+}
+
+.equip-card li strong {
+  color: var(--color-navy-base);
+}
+
+.equip-card li span {
+  color: var(--color-text-2);
+}
+
+@media (max-width: 1100px) {
+  .equip-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .equip-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
