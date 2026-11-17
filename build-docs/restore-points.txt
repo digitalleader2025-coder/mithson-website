@@ -136,6 +136,11 @@ OIL & GAS SEAL AND DOWNHOLE TOOLS ON THE SHARED LAYOUT
   after-oilgas-downhole-ui  ca5e2e4  both pages use the common industry layout,
                                    Downhole card removed from Oil & Gas Seal
 
+BATCH 1 - CLIENT CORRECTIONS (name: batch1-client-corrections)
+  before-batch1          8492eb6   before the NORSOK / BAM / API 6A wording, sizes,
+                                   testing equipment and factory photos
+  after-batch1           c6b5e12   all of batch 1 done
+
 SEALS - X-MAS TREE
   before-xmas-tree       690379f   the old basic page
   after-xmas-tree        ae5e2c0   rebuilt: 12 sections, 4 components,
