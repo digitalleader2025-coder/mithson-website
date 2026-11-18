@@ -5,7 +5,6 @@ import usePageMeta from '../../../shared/hooks/usePageMeta';
 import CircularCarousel from '../../../shared/components/CircularCarousel';
 import { companyCertificates, materialRecords } from '../../../content/hsse';
 import { capabilityPages } from '../../../content/capabilities';
-import imgLab from '../../../assets/testing/lab.jpg';
 import {
   applicationFactors,
   documents,
@@ -619,7 +618,7 @@ export default function HSSEQualityPage() {
 
       {/* Quality assurance: the in-house testing and inspection equipment, same list as Capabilities */}
       <section className="section hsse-section" id="hsse-testing">
-        <div className="container hsse-approach hsse-qa">
+        <div className="container hsse-qa">
           <div>
             <Head label="Quality Assurance" title="Tested and inspected in-house"
               intro={capabilityPages['in-house-testing'].equipment.intro} />
@@ -633,10 +632,6 @@ export default function HSSEQualityPage() {
             </div>
             <Link to="/capabilities/in-house-testing" className="hsse-link">See our testing equipment <Arrow /></Link>
           </div>
-          <Reveal className="hsse-building">
-            <img src={imgLab} alt="Mithson in-house laboratory" loading="lazy" />
-            <span className="hsse-caption">Mithson in-house laboratory</span>
-          </Reveal>
         </div>
       </section>
 

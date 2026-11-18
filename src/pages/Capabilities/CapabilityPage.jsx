@@ -10,9 +10,8 @@ import AnimatedImage from '../../shared/components/AnimatedImage';
 import SealDiagram from './SealDiagram';
 import './Capabilities.css';
 
-export function PageHero({ label, title, intro, image, photo, realPhoto, realCaption, children }) {
-  // a real Mithson photo carries its own caption; the site-images set is labelled illustrative
-  const photoSrc = realPhoto || siteImages[photo];
+export function PageHero({ label, title, intro, image, photo, children }) {
+  const photoSrc = siteImages[photo];
 
   return (
     <section className="page-hero">
@@ -29,7 +28,7 @@ export function PageHero({ label, title, intro, image, photo, realPhoto, realCap
           {children}
         </motion.div>
         {photoSrc
-          ? <AnimatedImage src={photoSrc} alt={realCaption || ''} caption={realPhoto ? realCaption : 'Illustrative image'} />
+          ? <AnimatedImage src={photoSrc} caption="Illustrative image" />
           : image && <img src={image} alt="" className="capability-hero-image" />}
       </div>
       <div className="page-hero-bg" aria-hidden="true"><div className="hero-grid" /></div>
@@ -92,9 +91,11 @@ function Equipment({ data }) {
           {data.groups.map((g, i) => (
             <ScrollReveal key={g.title} delay={i * 0.08}>
               <article className="equip-card">
-                <div className="equip-photos">
-                  {g.photos.map((p) => <img key={p.alt} src={p.src} alt={p.alt} loading="lazy" />)}
-                </div>
+                {g.photos && (
+                  <div className="equip-photos">
+                    {g.photos.map((p) => <img key={p.alt} src={p.src} alt={p.alt} loading="lazy" />)}
+                  </div>
+                )}
                 <h3>{g.title}</h3>
                 <ul>
                   {g.items.map(([name, use]) => <li key={name}><strong>{name}</strong><span>{use}</span></li>)}
@@ -140,8 +141,7 @@ export default function CapabilityPage({ page }) {
 
   return (
     <div className="page-wrapper">
-      <PageHero label={page.label} title={page.title} intro={page.intro} image={page.image} photo={page.photo}
-        realPhoto={page.realPhoto} realCaption={page.realCaption} />
+      <PageHero label={page.label} title={page.title} intro={page.intro} image={page.image} photo={page.photo} />
 
       {page.diagram && (
         <section className="section capability-tint">

@@ -45,25 +45,6 @@ export const locations = [
   },
 ];
 
-// Machines and real shop-floor photos, from Mithson's company presentation (manufacturing capacity).
-export const machineList = [
-  ['CNC turning machines', '40', 'Precision turning of polymer and metal parts'],
-  ['Heavy-duty lathes', '10', 'Large and heavy components'],
-  ['Light-duty lathes', '15', 'Smaller turned parts'],
-  ['HAAS milling machines', '3', 'Milling'],
-  ['Milling machines', '4', 'Milling'],
-  ['Makino high-speed milling', '—', 'Tool and die making'],
-  ['Hwacheon vertical turning lathe (VTL)', '2', 'Turning capacity up to 1 m'],
-  ['Jagadeep vertical turning lathe (VTL)', '—', 'Turning capacity up to 1.5 m'],
-];
-
-export { default as imgCncShop } from '../assets/facilities/cnc-shop.jpg';
-export { default as imgMachineShop } from '../assets/facilities/machine-shop.jpg';
-export { default as imgCncLine } from '../assets/facilities/cnc-line.jpg';
-export { default as imgMouldingArea } from '../assets/facilities/moulding-area.jpg';
-export { default as imgMouldingPresses } from '../assets/facilities/moulding-presses.jpg';
-export { default as imgVtl } from '../assets/facilities/vtl-1.jpg';
-
 export const capabilityCards = [
   { icon: 'cube', title: 'Polymer Component Manufacturing', path: '/capabilities/manufacturing', image: 'manufacturing', text: 'Development and manufacture of polymer-based sealing components for valves, pumps, compressors, hydraulic systems and other industrial equipment.' },
   { icon: 'layers', title: 'Material Expertise', path: '/capabilities/materials', image: 'materials', text: 'Material selection depends on the intended application, operating environment and customer requirements.', chips: ['PTFE', 'RTFE', 'Modified PTFE', 'PEEK', 'PFA', 'FEP', 'Nylon', 'FKM', 'HNBR', 'FFKM', 'EPDM', 'POM'] },

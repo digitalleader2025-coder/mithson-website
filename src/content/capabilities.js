@@ -7,18 +7,6 @@ import imgSpringSeal from '../pages/Products/Seals-Valve/assets/Spring Energized
 import imgPistonSeal from '../pages/Products/Seals-Hydraulic/assets/Piston Seals.png';
 import imgWearRing from '../pages/Products/Seals-Hydraulic/assets/Wear Rings.png';
 import imgElastomerRing from '../pages/Products/Seals-Valve/assets/Elastomer O-Ring.png';
-// real photos of Mithson's own lab and test rigs, from the company presentation
-import imgLab from '../assets/testing/lab.jpg';
-import imgCmm from '../assets/testing/cmm.jpg';
-import imgProjector from '../assets/testing/profile-projector.jpg';
-import imgRheometer from '../assets/testing/rheometer.jpg';
-import imgSealRig from '../assets/testing/seal-endurance-rig.jpg';
-import imgHydraulicRig from '../assets/testing/hydraulic-endurance-rig.jpg';
-import imgCncShop from '../assets/facilities/cnc-shop.jpg';
-import imgVtl from '../assets/facilities/vtl-1.jpg';
-import imgMouldingArea from '../assets/facilities/moulding-area.jpg';
-import imgMouldingPresses from '../assets/facilities/moulding-presses.jpg';
-import imgMachineShop from '../assets/facilities/machine-shop.jpg';
 
 const pending = 'pending-validation';
 
@@ -39,44 +27,6 @@ export const capabilityPages = {
     image: imgPistonSeal,
     intro: 'Mithson makes seals and polymer components by molding and machining, chosen to suit the part, the material and your drawing.',
     description: 'How Mithson manufactures molded and machined seals and polymer components.',
-    realPhoto: imgCncShop,
-    realCaption: 'Mithson CNC machine shop',
-    // processes and machines named in Mithson's company presentation
-    equipment: {
-      title: 'Our manufacturing processes and machines',
-      intro: 'PTFE, rubber and polymer moulding, precision machining and in-house tooling, under one roof.',
-      groups: [
-        {
-          title: 'PTFE and polymer moulding',
-          photos: [{ src: imgMouldingArea, alt: 'Moulding area' }, { src: imgMouldingPresses, alt: 'Moulding presses in operation' }],
-          items: [
-            ['PTFE moulding', 'Compression moulding, extruder, isostatic and auto moulding'],
-            ['Polymer injection moulding', 'Horizontal and vertical moulding'],
-            ['Rubber moulding', 'Vacuum moulding, injection moulding, mixing mill, preform extruder'],
-            ['PU cast moulding', 'Cast polyurethane parts'],
-          ],
-        },
-        {
-          title: 'Machining',
-          photos: [{ src: imgCncShop, alt: 'CNC machine shop' }, { src: imgVtl, alt: 'Vertical turning lathe' }],
-          items: [
-            ['CNC turning machines', '40 machines'],
-            ['Heavy-duty and light-duty lathes', '10 heavy-duty and 15 light-duty'],
-            ['Milling', '3 HAAS milling machines and 4 milling machines'],
-            ['Vertical turning lathes (VTL)', 'Hwacheon VTL (2, up to 1 m) and Jagadeep VTL (up to 1.5 m)'],
-          ],
-        },
-        {
-          title: 'Tooling and finishing',
-          photos: [{ src: imgMachineShop, alt: 'Machine shop' }],
-          items: [
-            ['Tool and die', 'Rubber and plastic moulds made in-house; Makino high-speed milling'],
-            ['Spin-trim deflashing', 'Rubber parts trimmed and deflashed'],
-            ['Cryogenic deflashing', 'Deburring with liquid nitrogen, -100 to -160°C'],
-          ],
-        },
-      ],
-    },
     sections: [
       {
         title: 'Choosing the right route',
@@ -149,8 +99,6 @@ export const capabilityPages = {
     image: imgElastomerRing,
     intro: 'Testing and inspection run through Mithson\'s quality process, from incoming material to the finished part.',
     description: 'How Mithson inspects and tests materials, prototypes and finished parts.',
-    realPhoto: imgLab,
-    realCaption: 'Mithson in-house laboratory',
     // equipment named in Mithson's company presentation (in-house testing and final inspection lab)
     equipment: {
       title: 'Our testing and inspection equipment',
@@ -158,7 +106,6 @@ export const capabilityPages = {
       groups: [
         {
           title: 'Material testing',
-          photos: [{ src: imgRheometer, alt: 'MDR rheometer for rubber compound testing' }, { src: imgLab, alt: 'Universal testing machine in the Mithson laboratory' }],
           items: [
             ['Universal testing machine', 'Tensile strength, elongation and modulus'],
             ['Specific gravity', 'Density check for polymers'],
@@ -169,7 +116,6 @@ export const capabilityPages = {
         },
         {
           title: 'Dimensional inspection',
-          photos: [{ src: imgCmm, alt: 'Video measuring machine with CMM' }, { src: imgProjector, alt: 'Profile projector' }],
           items: [
             ['Video measuring machine with CMM', 'Precise dimensions and geometry'],
             ['Profile projector', 'Seal profiles and edges checked against the drawing'],
@@ -180,7 +126,6 @@ export const capabilityPages = {
         },
         {
           title: 'Seal performance testing',
-          photos: [{ src: imgSealRig, alt: 'Seal endurance test rig' }, { src: imgHydraulicRig, alt: 'Hydraulic seal endurance test rig' }],
           items: [
             ['Seal endurance test rig', 'Seals tested under pressure, temperature, rotary and linear movement'],
             ['Hydraulic seal endurance test rigs', 'Hydraulic seals run under simulated working conditions'],

@@ -12,13 +12,6 @@ import {
   facilityMaterials,
   locations,
   qualityCommitment,
-  imgCncLine,
-  imgCncShop,
-  imgMachineShop,
-  imgMouldingArea,
-  imgMouldingPresses,
-  imgVtl,
-  machineList,
 } from '../../../content/facilitiesPage';
 import imgBuilding from '../../../assets/about/mithson-building.webp';
 import imgSeals from '../../../assets/about/journey-expansion.webp';
@@ -35,16 +28,6 @@ import imgAerospace from '../../../assets/industries/Aerospace.webp';
 import imgRobotics from '../../../assets/industries/Robotics.webp';
 import imgDownhole from '../../../assets/industries/Downhole Tools.webp';
 import './Facilities.css';
-
-const floorPhotos = [
-  { src: imgCncShop, alt: 'CNC machine shop' },
-  { src: imgMachineShop, alt: 'Machine shop' },
-  { src: imgCncLine, alt: 'CNC turning line' },
-  { src: imgMouldingArea, alt: 'Moulding area' },
-  { src: imgMouldingPresses, alt: 'Moulding presses in operation' },
-  { src: imgVtl, alt: 'Vertical turning lathe for large parts' },
-];
-
 const INDUSTRY_IMAGES = {
   'Oil & Gas': imgOilGas,
   Automotive: imgAutomotive,
@@ -330,28 +313,6 @@ export default function FacilitiesPage() {
             <LocationCard loc={locations[0]} image={imgBuilding} delay={0} />
             <LocationCard loc={locations[1]} image={imgUnit2} delay={0.1} />
           </div>
-        </div>
-      </section>
-
-      {/* Inside the facility: real shop-floor photos and the machine list */}
-      <section className="section fac-section fac-floor">
-        <div className="container">
-          <Head label="Inside Our Facility" title="Machines and Manufacturing Capacity"
-            intro="Real photographs of Mithson's machine shop, moulding area and large turning machines, with the machines installed." />
-          <div className="fac-floor-photos">
-            {floorPhotos.map((p, i) => (
-              <Reveal key={p.alt} delay={(i % 3) * 0.06} className="fac-floor-photo">
-                <img src={p.src} alt={p.alt} loading="lazy" />
-                <span>{p.alt}</span>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal className="fac-machines">
-            <div className="fac-machines-head"><span>Machine</span><span>Quantity</span><span>Used for</span></div>
-            {machineList.map(([name, qty, use]) => (
-              <div key={name}><strong>{name}</strong><span data-label="Quantity">{qty}</span><span data-label="Used for">{use}</span></div>
-            ))}
-          </Reveal>
         </div>
       </section>
 
