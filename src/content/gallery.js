@@ -20,7 +20,7 @@ import img18 from '../assets/gallery/Encapsulated O-Ring.png';
 import img19 from '../assets/gallery/Product details.png';
 import img20 from '../assets/gallery/Hammer Union Seal.png';
 import img21 from '../assets/gallery/measurement.avif';
-import img22 from '../assets/gallery/Seal Measurement.png';
+import img22 from '../assets/gallery/Seal Measurment.webp';
 import img23 from '../assets/gallery/M-UNI Seal (2).png';
 import img24 from '../assets/gallery/mith plate.png';
 import img25 from '../assets/gallery/PTFE Nozzles-1.png';
