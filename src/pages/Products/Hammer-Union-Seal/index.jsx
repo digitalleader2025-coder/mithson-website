@@ -44,6 +44,7 @@ import imgMeasure from './assets/measurements/Seal Measurement.png';
 import imgBrass from './assets/ref/seal-brass-insert.webp';
 import imgSteel from './assets/ref/seal-steel-insert.webp';
 import imgPtfe from './assets/ref/ptfe-rings.webp';
+import imgElastomerSeal from './assets/ref/elastomer-seal.webp';
 
 const IMAGES = {
   hero: imgHero,
@@ -51,6 +52,7 @@ const IMAGES = {
   'seal-brass-insert': imgBrass,
   'seal-steel-insert': imgSteel,
   'ptfe-rings': imgPtfe,
+  'elastomer-seal': imgElastomerSeal,
 };
 
 const product = getProductBySlug('hammer-union-seal');

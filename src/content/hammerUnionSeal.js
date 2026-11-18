@@ -49,7 +49,7 @@ export const constructions = [
   {
     key: 'elastomer',
     name: 'Elastomeric seal',
-    image: 'measure',
+    image: 'elastomer-seal',
     text: 'An elastomeric seal provides a deformable sealing interface between compatible union components.',
     points: ['NBR', 'HNBR', 'FKM', 'FFKM'],
     note: 'Each elastomer has different chemical, mechanical and temperature characteristics. The appropriate compound must be selected according to the service environment.',
