@@ -279,3 +279,11 @@ NOTES
 - Still waiting on Mithson: photos for in-house testing, prototyping,
   HSSE, resources and the corporate office; a WhatsApp number; and the
   brochure and datasheet files for the download buttons.
+
+2026-11-21  keep-1-2-3-11-13
+  before-keep-1-2-3-11-13 / after-keep-1-2-3-11-13  (commit 5b7f493)
+  Kept from batch 1: footer badges, home Certified badges (old layout, new wording),
+  About Us quality credentials, Hammer Union size table, In-House Testing equipment list.
+  Reverted: HSSE standards + quality block, Oil & Gas chip + standards cards,
+  X-Mas Tree chip + standards note, API 6A page subtitle, M-UNI size range,
+  the two hidden Manufacturing items.
