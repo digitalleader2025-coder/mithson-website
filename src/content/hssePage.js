@@ -12,7 +12,7 @@ export const hsseFacts = [
   { icon: 'gear', title: '25+ Years', text: 'Group polymer engineering experience' },
   { icon: 'shield', title: 'ISO 9001:2015', text: 'Certified company' },
   { icon: 'clipboard', title: 'QIMA', text: 'Audited' },
-  { icon: 'layers', title: 'Material compliance', text: 'NORSOK M-710 compliant, BAM tested, API 6A as per customer requirement' },
+  { icon: 'layers', title: 'API 6A / NORSOK / BAM', text: 'Material-related references' },
 ];
 
 export const qualityApproach = [
@@ -31,9 +31,9 @@ export const isoText = [
 export const qimaText = 'Mithson identifies itself as a QIMA-audited company. An audit provides an assessment against the scope and criteria defined for that audit.';
 
 export const standards = [
-  { icon: 'rig', title: 'API 6A', text: 'Mithson is not API 6A certified. Products are manufactured to customer requirements for API 6A equipment and Oil & Gas applications, with material compliance to API 6A as per customer requirement. API 6A is a specification associated with wellhead and Christmas tree equipment used in the oil and gas industry. Relevant sealing components may need to meet specific equipment, material and application requirements.' },
-  { icon: 'wave', title: 'NORSOK M-710', text: 'Materials compliant with NORSOK M-710. NORSOK is a set of Norwegian petroleum industry standards addressing requirements in areas such as materials, design and operational performance. The relevant standard and revision must be identified for each application.' },
-  { icon: 'flask', title: 'BAM', text: 'Materials tested to BAM requirements. BAM is a reference associated with material compatibility and qualification activities. The exact BAM test, approval or material record should be identified rather than treating the term as a general certification.' },
+  { icon: 'rig', title: 'API 6A', text: 'A specification associated with wellhead and Christmas tree equipment used in the oil and gas industry. Relevant sealing components may need to meet specific equipment, material and application requirements.' },
+  { icon: 'wave', title: 'NORSOK', text: 'A set of Norwegian petroleum industry standards addressing requirements in areas such as materials, design and operational performance. The relevant standard and revision must be identified for each application.' },
+  { icon: 'flask', title: 'BAM', text: 'A reference associated with material compatibility and qualification activities. The exact BAM test, approval or material record should be identified rather than treating the term as a general certification.' },
 ];
 
 export const standardsNote = 'Product-specific compliance or qualification should be supported by the corresponding certificate, test report, material record or customer-approved specification.';

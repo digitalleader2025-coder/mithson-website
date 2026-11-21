@@ -9,7 +9,7 @@ export const api6aItems = [
   { 
     image: imgStemPacking, 
     label: 'Stem Packing Set', 
-    desc: "Engineered for reliability, our valve stem packing delivers exceptional sealing performance under pressure and across a wide temperature range. Crafted from premium materials and manufactured to customer requirements for API 6A equipment, it's the trusted choice for demanding applications.",
+    desc: "Engineered for reliability, our valve stem packing delivers exceptional sealing performance under pressure and across a wide temperature range. Crafted from premium materials that meet strict API standards, it's the trusted choice for demanding applications.",
     materials: 'PEEK, Elgiloy/SS steel, Filled PTFE',
     application: 'Wellhead Gate Valve'
   },

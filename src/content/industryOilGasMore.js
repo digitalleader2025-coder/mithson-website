@@ -4,7 +4,7 @@
 
 // Each family page's own summary line (from the API 6A, Well Service and API 6D pages), unchanged.
 export const familyIntros = {
-  wellhead: 'High-pressure, sour-gas and HPHT wellhead sealing — stem packing sets, stem seals, OD/ID face seals and BOP seals manufactured to customer requirements for API 6A equipment.',
+  wellhead: 'High-pressure, sour-gas and HPHT wellhead sealing — stem packing sets, stem seals, OD/ID face seals and BOP seals manufactured to API 6A.',
   'well-service': 'High-cycling, high-stress sealing for mud pumps, frac pumps and plunger pumps — plunger packing sets, pump packing, valve seat inserts and liner seals.',
   api6d: 'Gas transmission and cryogenic ball valve sealing — body-bonnet seals, PEEK seat rings and LNG seals for trunnion and floating ball valves.',
 };

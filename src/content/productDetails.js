@@ -93,7 +93,7 @@ export const productDetails = {
   'seals-x-mas-tree': {
     overview: [
       'A Christmas tree is the valve assembly on top of a well. It controls flow, so its valves must seal reliably through pressure, temperature changes and long service.',
-      'Mithson offers a full range for these valves: spring-energized lip seals, stem packing, seat seals and O-rings. Products use high-performance polymers and are manufactured to customer requirements for API 6A equipment.',
+      'Mithson offers a full range for these valves: spring-energized lip seals, stem packing, seat seals and O-rings. Products use high-performance polymers and are associated with API 6A Appendix F requirements.',
     ],
     howItWorks: [
       { title: 'Spring-energized lip seals', text: 'A PTFE jacket and corrosion-resistant metal spring hold sealing contact across changing conditions.' },

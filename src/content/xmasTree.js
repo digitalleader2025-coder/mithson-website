@@ -17,7 +17,7 @@ export const xtHero = {
 export const heroChips = [
   { icon: 'layers', title: '4 components', text: 'Spring, packing, seat, O-ring' },
   { icon: 'seal', title: 'PTFE jackets', text: 'With metal energiser springs' },
-  { icon: 'shield', title: 'For API 6A equipment', text: 'Made to customer requirements' },
+  { icon: 'shield', title: 'API 6A Appendix F', text: 'Referenced for this range' },
   { icon: 'flask', title: 'Polymer & elastomer', text: 'Selected per interface' },
 ];
 
@@ -195,7 +195,7 @@ export const specsNote =
   'Do not apply a single pressure or temperature range to the entire Christmas Tree seal product family. For each component, establish the validated minimum and maximum temperature, the approved pressure conditions, the applicable valve design and size, the relevant material class, and the qualification and testing evidence.';
 
 export const standardsNote =
-  "API Specification 6A is an important standard for wellhead and Christmas tree equipment. Mithson is not API 6A certified: its Christmas Tree sealing components are manufactured to customer requirements for API 6A equipment, with material compliance to API 6A as per customer requirement. Customers should request the relevant product-specific material, inspection and qualification documents when specifying a seal.";
+  "API Specification 6A is an important standard for wellhead and Christmas tree equipment. Mithson's published product information references API 6A Appendix F for its Christmas Tree sealing components. Customers should request the relevant product-specific material, inspection and qualification documents when specifying a seal.";
 
 export const quality = [
   { icon: 'flask', title: 'Material verification', text: 'Confirming the specified material grade and its suitability for the application.' },
@@ -253,7 +253,7 @@ export const faqs = [
   { q: 'Why are PTFE materials used?', a: 'PTFE offers low friction and broad chemical resistance, making it useful for suitable industrial sealing applications.' },
   { q: 'Are these seals suitable for sour-gas service?', a: 'Suitability depends on the exact material compound, operating conditions and applicable qualification requirements. Obtain material-specific confirmation before specifying a seal for sour service.' },
   { q: 'What information is required to select a replacement seal?', a: 'Provide the valve manufacturer, model, drawing, seal profile, dimensions, material, pressure, temperature and process-fluid information.' },
-  { q: 'Does API 6A apply to these products?', a: 'Mithson is not API 6A certified. Its products are manufactured to customer requirements for API 6A equipment, with material compliance to API 6A as per customer requirement. API Specification 6A applies to wellhead and Christmas tree equipment. The applicable product requirements and any material or qualification claims must be confirmed against the relevant documentation.' },
+  { q: 'Does API 6A apply to these products?', a: 'API Specification 6A applies to wellhead and Christmas tree equipment. The applicable product requirements and any material or qualification claims must be confirmed against the relevant documentation.' },
 ];
 
 export const closing = [

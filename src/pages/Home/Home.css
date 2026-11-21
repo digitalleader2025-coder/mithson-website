@@ -400,7 +400,8 @@
   padding: var(--space-12);
   border-radius: var(--radius-2xl);
   display: grid;
-  grid-template-columns: 1fr auto;
+  /* the badges keep a fixed column, so the longer badge wording cannot squeeze the text */
+  grid-template-columns: 1fr 400px;
   gap: var(--space-12);
   align-items: center;
 }
@@ -413,9 +414,8 @@
 .cert-badges {
   display: grid;
   /* minmax(0, ...) lets columns shrink below the longest word, so long badge text wraps */
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-3);
-  min-width: 320px;
 }
 
 .cert-badge-card {
@@ -639,7 +639,6 @@
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .industries-layout { grid-template-columns: 1fr; }
   .cert-inner { grid-template-columns: 1fr; }
-  .cert-badges { min-width: unset; }
   .sustain-layout { grid-template-columns: 1fr; gap: var(--space-8); }
 }
 

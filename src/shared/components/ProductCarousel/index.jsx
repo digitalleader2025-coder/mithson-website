@@ -23,7 +23,7 @@ const PRODUCT_METADATA = {
   },
   'seals-x-mas-tree': {
     category: 'WELLHEAD & GATE VALVES',
-    overview: 'Sealing for extreme Christmas Tree conditions, manufactured to customer requirements for API 6A equipment.',
+    overview: 'API 6A compliant sealing engineered for extreme Christmas Tree conditions.',
     badge: 'API 6A',
   },
   'seals-valve': {
