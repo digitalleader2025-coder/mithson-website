@@ -5,10 +5,10 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import SceneWrapper from '../../shared/3d/SceneWrapper';
-import HeroOrb from '../../shared/3d/HeroOrb';
+import heroVideo from '../../assets/video/plug-valve.mp4';
+import heroPoster from '../../assets/video/plug-valve-poster.jpg';
 import ParticleField from '../../shared/3d/ParticleField';
 import FloatingRing from '../../shared/3d/FloatingRing';
-import EnvironmentLight from '../../shared/3d/EnvironmentLight';
 import ScrollReveal from '../../shared/components/ScrollReveal';
 import ProductCarousel from '../../shared/components/ProductCarousel';
 import OurJourney from '../../shared/components/OurJourney';
@@ -73,10 +73,11 @@ export default function HomePage() {
 /* ----- Hero ----- */
 function HeroSection() {
   const textRef = useRef();
+  const reduceMotion = typeof window !== 'undefined'
+    && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   useEffect(() => {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) return;
+    if (reduceMotion) return;
 
     const ctx = gsap.context(() => {
       gsap.from('.hero-line', {
@@ -90,34 +91,10 @@ function HeroSection() {
     }, textRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [reduceMotion]);
 
   return (
     <section className="hero-section" aria-labelledby="hero-title">
-      {/* 3D canvas — full viewport background */}
-      <div className="hero-canvas" aria-hidden="true">
-        <SceneWrapper
-          camera={{ position: [0, 0, 8], fov: 55 }}
-          dpr={[1, 1.5]}
-          style={{ height: '100%' }}
-        >
-          <EnvironmentLight
-            preset="city"
-            ambientIntensity={0.4}
-            directionalIntensity={1.5}
-            shadowOpacity={0}
-          />
-          <HeroOrb position={[2.5, 0, -1]} scale={2.4} speed={0.35} distort={0.3} />
-          <FloatingRing position={[-3.5, 1.5, -2]} scale={1.8} color="#0336A3" speed={0.4} />
-          <FloatingRing position={[4, -2, -3]} scale={1.2} color="#42A4FF" speed={0.3} tubeRadius={0.04} />
-          <ParticleField count={500} spread={18} size={0.022} color="#42A4FF" speed={0.05} />
-        </SceneWrapper>
-      </div>
-
-      {/* Overlay gradient */}
-      <div className="hero-gradient" aria-hidden="true" />
-
-      {/* Content */}
       <div className="hero-content container" ref={textRef}>
         <div className="hero-text">
           <motion.div
@@ -154,6 +131,20 @@ function HeroSection() {
           </div>
         </div>
 
+        {/* Plug valve cutaway: the film is white-backed, so it sits on the page itself */}
+        <div className="hero-media" aria-hidden="true">
+          <video
+            className="hero-video"
+            src={heroVideo}
+            poster={heroPoster}
+            autoPlay={!reduceMotion}
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            tabIndex={-1}
+          />
+        </div>
       </div>
     </section>
   );
