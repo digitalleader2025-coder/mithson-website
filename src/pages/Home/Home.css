@@ -5,7 +5,8 @@
 /* --- Hero --- */
 .hero-section {
   position: relative;
-  min-height: 100vh;
+  /* the menu bar sits above the hero, and the hero never grows taller than its own content needs */
+  min-height: min(calc(100vh - 96px), 820px);
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -22,7 +23,7 @@
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--space-8);
   align-items: center;
-  min-height: 100vh;
+  min-height: min(calc(100vh - 96px), 820px);
 }
 
 .hero-text {
@@ -32,17 +33,22 @@
   gap: var(--space-5);
 }
 
-/* the film is shot on white, so it needs no frame; multiply drops its paper into the page */
+/* the film is shot on white: the panel gives it an edge, and multiply drops its paper into the panel */
 .hero-media {
   justify-self: end;
   width: 100%;
   max-width: 620px;
+  padding: var(--space-4);
+  background: var(--color-bg-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
 }
 
 .hero-video {
   display: block;
   width: 100%;
   height: auto;
+  border-radius: var(--radius-lg);
   mix-blend-mode: multiply;
 }
 
@@ -638,8 +644,13 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
+  /* one column from here down, and both parts use the full width so no space is left over */
   .hero-content { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
-  .hero-media { justify-self: center; max-width: 520px; }
+  .hero-text { max-width: none; }
+  .hero-subtitle { max-width: none; }
+  /* one column, so the head is sized to the page again */
+  .hero-title { font-size: clamp(2.5rem, 6vw, 4rem); }
+  .hero-media { justify-self: stretch; max-width: none; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .industries-layout { grid-template-columns: 1fr; }
   .cert-inner { grid-template-columns: 1fr; }

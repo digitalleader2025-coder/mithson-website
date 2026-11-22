@@ -131,7 +131,7 @@ function HeroSection() {
           </div>
         </div>
 
-        {/* Plug valve cutaway: the film is white-backed, so it sits on the page itself */}
+        {/* Plug valve cutaway: plays once and holds its last frame; a new visit to this page starts it again */}
         <div className="hero-media" aria-hidden="true">
           <video
             className="hero-video"
@@ -139,7 +139,6 @@ function HeroSection() {
             poster={heroPoster}
             autoPlay={!reduceMotion}
             muted
-            loop
             playsInline
             preload="metadata"
             tabIndex={-1}
