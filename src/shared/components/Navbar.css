@@ -431,10 +431,9 @@
   .mobile-nav {
     top: 92px;
     right: 10px;
-    /* the card is as tall as its own menu, and scrolls on its own when it runs out of room */
-    bottom: auto;
+    /* the card runs the whole screen, so every dropdown has room to open inside it */
+    bottom: 10px;
     left: auto;
-    max-height: calc(100vh - 102px);
     width: min(84vw, 340px);
     max-width: none;
     padding: var(--space-5) var(--space-4) var(--space-4);
