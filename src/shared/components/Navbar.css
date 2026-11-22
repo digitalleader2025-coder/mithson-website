@@ -410,3 +410,123 @@
   will-change: opacity;
   transform: translateZ(0);
 }
+
+/* The icon tiles, the count line and the button's icon belong to the phone drawer only */
+.mobile-nav-icon,
+.mobile-nav-count,
+.mobile-nav-cta svg {
+  display: none;
+}
+
+/* =========================================================
+   Phone drawer (<= 640px): a glass card, with the page
+   showing through the gap beside it
+   ========================================================= */
+@media (max-width: 640px) {
+  /* the bar keeps its own layer while the drawer is open, so the cross stays tappable */
+  .navbar--open {
+    z-index: calc(var(--z-nav) + 20);
+  }
+
+  .mobile-nav {
+    top: 92px;
+    right: 10px;
+    /* the card is as tall as its own menu, and scrolls on its own when it runs out of room */
+    bottom: auto;
+    left: auto;
+    max-height: calc(100vh - 102px);
+    width: min(84vw, 340px);
+    max-width: none;
+    padding: var(--space-5) var(--space-4) var(--space-4);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 26px;
+    background: rgba(255, 255, 255, 0.86);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(20px) saturate(180%);
+    box-shadow: 0 30px 70px -24px rgba(3, 54, 163, 0.45);
+    overscroll-behavior: contain;
+    touch-action: pan-y;
+  }
+
+  .mobile-nav-inner {
+    gap: var(--space-1, 4px);
+  }
+
+  .mobile-nav-count {
+    display: block;
+    margin-bottom: var(--space-2);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-muted);
+  }
+
+  .mobile-nav-trigger {
+    gap: var(--space-3);
+    padding: var(--space-2);
+    border-radius: 14px;
+    font-size: var(--text-base);
+    font-weight: 600;
+    transition: background var(--duration-base), color var(--duration-base);
+  }
+
+  .mobile-nav-trigger:active {
+    background: rgba(66, 164, 255, 0.14);
+  }
+
+  .mobile-nav-icon {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 11px;
+    background: rgba(66, 164, 255, 0.14);
+    color: var(--color-navy-base);
+  }
+
+  .mobile-nav-icon svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  /* the page you are on reads as the chosen row, as the menu bar already shows it */
+  .mobile-nav-trigger--current {
+    background: var(--color-blue-accent);
+    color: var(--color-white);
+  }
+
+  .mobile-nav-trigger--current .mobile-nav-icon {
+    background: rgba(255, 255, 255, 0.24);
+    color: var(--color-white);
+  }
+
+  .mobile-nav-children {
+    gap: var(--space-2);
+    margin-left: 18px;
+    padding: var(--space-2) 0 var(--space-3) var(--space-4);
+    border-left: 1px solid rgba(3, 54, 163, 0.14);
+  }
+
+  .mobile-nav-link {
+    padding: var(--space-1, 4px) 0;
+    font-size: 0.92rem;
+  }
+
+  .mobile-nav-cta svg {
+    display: block;
+  }
+
+  .mobile-nav-cta {
+    margin-top: var(--space-4);
+    gap: var(--space-2);
+    border-radius: 16px;
+  }
+
+  /* the gap beside the card: the page shows through it, softly blurred */
+  .mobile-overlay {
+    background: rgba(3, 54, 163, 0.14);
+    -webkit-backdrop-filter: blur(7px) saturate(120%);
+    backdrop-filter: blur(7px) saturate(120%);
+  }
+}

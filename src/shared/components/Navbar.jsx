@@ -5,6 +5,45 @@ import { navigation } from '../../content/navigation';
 import logoImage from '../../../images/mithson-logo/Mithson-logo.png';
 import './Navbar.css';
 
+/* One icon per top-level menu item. Phone drawer only: CSS hides them above 640px. */
+const NAV_ICONS = {
+  Company: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M3 21h18M5 21V7l7-4 7 4v14" /><path d="M9 21v-5h6v5" /><path d="M9 11h.01M15 11h.01" />
+    </svg>
+  ),
+  Products: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M21 16V8l-9-5-9 5v8l9 5 9-5z" /><path d="M3.3 7.3 12 12l8.7-4.7M12 12v9.5" />
+    </svg>
+  ),
+  Industries: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M3 21h18M4 21V10l6 4V10l6 4V6l4 2v13" /><path d="M8 21v-4M16 21v-4" />
+    </svg>
+  ),
+  Capabilities: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="3.2" /><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.2 5.2l2.1 2.1M16.7 16.7l2.1 2.1M18.8 5.2l-2.1 2.1M7.3 16.7l-2.1 2.1" />
+    </svg>
+  ),
+  Resources: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5z" /><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z" />
+    </svg>
+  ),
+  Career: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="3" y="7" width="18" height="13" rx="2" /><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 12h18" />
+    </svg>
+  ),
+  'Enquire Now': (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M21 11.5a8.4 8.4 0 0 1-9 8.4L3 21l1.1-9A8.4 8.4 0 1 1 21 11.5z" /><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01" />
+    </svg>
+  ),
+};
+
 function ChevronIcon({ open }) {
   return (
     <svg
@@ -204,7 +243,18 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  // the glass drawer, its swipe and the scroll lock belong to phones only
+  const [isPhone, setIsPhone] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(max-width: 640px)').matches
+  );
   const location = useLocation();
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 640px)');
+    const onChange = (e) => setIsPhone(e.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
 
   // Prevent rapid-click router freeze by disabling navbar clicks during page transition
   useEffect(() => {
@@ -248,6 +298,14 @@ export default function Navbar() {
     setMobileOpen(false);
     setMobileExpanded(null);
   }, []);
+
+  // Phones only: the page behind the drawer holds still, so only the drawer scrolls
+  useEffect(() => {
+    if (!mobileOpen || !isPhone) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = previous; };
+  }, [mobileOpen, isPhone]);
 
   return (
     <div style={{ pointerEvents: isTransitioning ? 'none' : 'auto' }}>
@@ -301,18 +359,27 @@ export default function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            drag={isPhone ? 'x' : false}
+            dragDirectionLock
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={{ left: 0, right: 0.5 }}
+            onDragEnd={(_, info) => {
+              if (info.offset.x > 80 || info.velocity.x > 500) closeMobile();
+            }}
             aria-label="Mobile navigation"
           >
             <div className="mobile-nav-inner">
+              <p className="mobile-nav-count">Menu: {navigation.length}</p>
               {navigation.map((item) => (
                 <div key={item.path} className="mobile-nav-group">
                   <button
-                    className="mobile-nav-trigger"
+                    className={`mobile-nav-trigger${location.pathname.startsWith(item.path) ? ' mobile-nav-trigger--current' : ''}`}
                     onClick={() =>
                       setMobileExpanded((v) => (v === item.path ? null : item.path))
                     }
                     aria-expanded={mobileExpanded === item.path}
                   >
+                    <span className="mobile-nav-icon" aria-hidden="true">{NAV_ICONS[item.label]}</span>
                     <Link
                       to={item.path}
                       onClick={closeMobile}
@@ -355,6 +422,10 @@ export default function Navbar() {
                 </div>
               ))}
               <Link to="/book-a-meeting" className="btn btn-primary mobile-nav-cta" onClick={closeMobile} id="mobile-nav-cta">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="16" rx="2" />
+                  <path d="M8 3v4M16 3v4M3 10h18" />
+                </svg>
                 Book a Meeting
               </Link>
             </div>
@@ -372,6 +443,8 @@ export default function Navbar() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={closeMobile}
+            onWheel={isPhone ? closeMobile : undefined}
+            onTouchMove={isPhone ? closeMobile : undefined}
             aria-hidden="true"
           />
         )}
