@@ -17,14 +17,37 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  opacity: 0.9;
+  overflow: hidden;
   pointer-events: none;
 }
 
-.hero-art svg {
-  display: block;
-  width: 100%;
-  height: 100%;
+.hero-art-wash {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(70% 90% at 78% 30%, rgba(66, 164, 255, 0.20), rgba(66, 164, 255, 0) 70%),
+    radial-gradient(60% 80% at 8% 75%, rgba(3, 54, 163, 0.10), rgba(3, 54, 163, 0) 72%),
+    linear-gradient(160deg, #EAF3FF 0%, #F7FBFF 48%, #FFFFFF 100%);
+}
+
+/* the platform: printed in blue, faded back, and cut off softly at every edge */
+.hero-art-rig {
+  position: absolute;
+  right: -4%;
+  bottom: -6%;
+  width: min(74%, 1100px);
+  height: auto;
+  opacity: 0.3;
+  filter: grayscale(1) sepia(1) hue-rotate(178deg) saturate(2.6) brightness(1.02);
+  /* fades into the page at the foot and clears the text column on the left */
+  -webkit-mask-image:
+    linear-gradient(to top, transparent 0%, #000 26%, #000 100%),
+    linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.35) 22%, #000 46%);
+  mask-image:
+    linear-gradient(to top, transparent 0%, #000 26%, #000 100%),
+    linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.35) 22%, #000 46%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
 }
 
 .hero-content {
@@ -57,8 +80,9 @@
   background: var(--color-white);
   border-radius: var(--radius-2xl);
   box-shadow:
-    0 2px 6px rgba(3, 54, 163, 0.06),
-    0 26px 60px -26px rgba(3, 54, 163, 0.38);
+    0 0 0 1px rgba(66, 164, 255, 0.22),
+    0 0 36px rgba(66, 164, 255, 0.45),
+    0 26px 60px -24px rgba(3, 54, 163, 0.45);
 }
 
 .hero-video {
@@ -662,8 +686,8 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
-  /* the drawing steps back on small screens so the heading always reads first */
-  .hero-art { opacity: 0.5; }
+  /* the platform steps back on small screens so the heading always reads first */
+  .hero-art-rig { width: 92%; right: -16%; opacity: 0.18; }
   /* one column from here down, and both parts use the full width so no space is left over */
   .hero-content { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
   .hero-text { max-width: none; }
@@ -678,7 +702,8 @@
 }
 
 @media (max-width: 640px) {
-  .hero-art { opacity: 0.38; }
+  /* phones keep the wash alone: the platform has nowhere to stand behind the text */
+  .hero-art-rig { display: none; }
   .products-grid { grid-template-columns: 1fr 1fr; }
   .sectors-grid  { grid-template-columns: repeat(2, 1fr); }
   .cert-badges   { grid-template-columns: repeat(2, minmax(0, 1fr)); }
