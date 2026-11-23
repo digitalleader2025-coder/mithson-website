@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import SceneWrapper from '../../shared/3d/SceneWrapper';
+import HeroBackdrop from './HeroBackdrop';
 import heroVideo from '../../assets/video/plug-valve.mp4';
 import heroPoster from '../../assets/video/plug-valve-poster.jpg';
 import ParticleField from '../../shared/3d/ParticleField';
@@ -95,6 +96,7 @@ function HeroSection() {
 
   return (
     <section className="hero-section" aria-labelledby="hero-title">
+      <HeroBackdrop />
       <div className="hero-content container" ref={textRef}>
         <div className="hero-text">
           <motion.div
