@@ -10,7 +10,8 @@ import AnimatedImage from '../../shared/components/AnimatedImage';
 import SealDiagram from './SealDiagram';
 import './Capabilities.css';
 
-export function PageHero({ label, title, intro, image, photo, children }) {
+export function PageHero({ label, title, intro, image, photo, photoCaption, photoAlt, photoRatio, children }) {
+  // a real Mithson photograph carries its own caption; the rest of the set is marked illustrative
   const photoSrc = siteImages[photo];
 
   return (
@@ -28,7 +29,7 @@ export function PageHero({ label, title, intro, image, photo, children }) {
           {children}
         </motion.div>
         {photoSrc
-          ? <AnimatedImage src={photoSrc} caption="Illustrative image" />
+          ? <AnimatedImage src={photoSrc} alt={photoAlt || ''} caption={photoCaption || 'Illustrative image'} ratio={photoRatio} />
           : image && <img src={image} alt="" className="capability-hero-image" />}
       </div>
       <div className="page-hero-bg" aria-hidden="true"><div className="hero-grid" /></div>
@@ -141,7 +142,8 @@ export default function CapabilityPage({ page }) {
 
   return (
     <div className="page-wrapper">
-      <PageHero label={page.label} title={page.title} intro={page.intro} image={page.image} photo={page.photo} />
+      <PageHero label={page.label} title={page.title} intro={page.intro} image={page.image} photo={page.photo}
+        photoCaption={page.photoCaption} photoAlt={page.photoAlt} photoRatio={page.photoRatio} />
 
       {page.diagram && (
         <section className="section capability-tint">

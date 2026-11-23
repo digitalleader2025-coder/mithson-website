@@ -7,8 +7,9 @@ const SPRING = { stiffness: 140, damping: 20, mass: 0.4 };
 /**
  * Photo with a wipe-in reveal, a slow settle zoom and a gentle tilt that follows the pointer.
  * Everything stops for visitors who ask for reduced motion, and touch screens skip the tilt.
+ * `ratio` sets the frame to the picture's own shape, so nothing is ever cropped.
  */
-export default function AnimatedImage({ src, alt = '', caption }) {
+export default function AnimatedImage({ src, alt = '', caption, ratio }) {
   const reduceMotion = useReducedMotion();
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
@@ -33,7 +34,7 @@ export default function AnimatedImage({ src, alt = '', caption }) {
     <figure className="animated-image">
       <motion.div
         className="animated-image-frame"
-        style={reduceMotion ? undefined : { rotateX, rotateY }}
+        style={{ ...(ratio ? { aspectRatio: ratio } : null), ...(reduceMotion ? null : { rotateX, rotateY }) }}
         onPointerMove={follow}
         onPointerLeave={reset}
         initial={reduceMotion ? false : { clipPath: 'inset(0 100% 0 0 round 20px)', opacity: 0 }}
