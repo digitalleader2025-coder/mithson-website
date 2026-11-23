@@ -73,25 +73,40 @@
   gap: var(--space-5);
 }
 
-/* the film floats on the backdrop in a white frame, so the drawing shows all around it */
+/* the film floats on the backdrop as a tilted panel, lit on its edge */
 .hero-media {
+  position: relative;
   justify-self: end;
   width: 100%;
   max-width: 620px;
-  padding: 10px;
+  padding: 12px;
   background: var(--color-white);
-  border-radius: var(--radius-2xl);
+  border-radius: 34px 22px 34px 22px;
+  transform: perspective(1600px) rotateY(-7deg) rotateX(2deg);
+  transform-origin: 85% 50%;
   box-shadow:
-    0 0 0 1px rgba(66, 164, 255, 0.22),
-    0 0 36px rgba(66, 164, 255, 0.45),
-    0 26px 60px -24px rgba(3, 54, 163, 0.45);
+    0 0 0 1px rgba(66, 164, 255, 0.30),
+    0 0 28px rgba(66, 164, 255, 0.55),
+    0 0 70px rgba(66, 164, 255, 0.28),
+    0 30px 64px -24px rgba(3, 54, 163, 0.45);
+}
+
+/* the white keyline just inside the edge, lit the same blue */
+.hero-media::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  border-radius: 24px 14px 24px 14px;
+  box-shadow: 0 0 14px rgba(66, 164, 255, 0.45);
+  pointer-events: none;
 }
 
 .hero-video {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: var(--radius-xl);
+  border-radius: 24px 14px 24px 14px;
   background: var(--color-white);
   mix-blend-mode: multiply;
 }
@@ -690,6 +705,8 @@
 @media (max-width: 1024px) {
   /* the platform steps back on small screens so the heading always reads first */
   .hero-art-rig { width: 92%; right: -16%; opacity: 0.18; }
+  /* the panel runs the full width here, so it sits square on */
+  .hero-media { transform: none; }
   /* one column from here down, and both parts use the full width so no space is left over */
   .hero-content { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
   .hero-text { max-width: none; }
