@@ -9,13 +9,15 @@
   min-height: min(calc(100vh - 96px), 820px);
   display: flex;
   align-items: center;
-  overflow: hidden;
+  /* the backdrop clips itself, so the section does not: that lets the wash reach up
+     behind the floating menu bar instead of leaving a white strip there */
 }
 
 /* the drawn plant and its ribbons sit behind everything in the hero */
 .hero-art {
   position: absolute;
-  inset: 0;
+  /* reaches up past the menu bar, so the top of the page is washed too */
+  inset: -96px 0 0 0;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
